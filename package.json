@@ -6,9 +6,10 @@
   "dependencies": {
     "express": "^4.15.4",
     "fs": "0.0.1-security",
-    "helmet": "^3.8.1",
-    "https": "^1.0.0",
+    "knex": "^0.13.0",
     "node-milight-promise": "^0.2.31",
+    "path": "^0.12.7",
+    "socket.io": "^2.0.3",
     "vue": "^2.4.4"
   },
   "devDependencies": {},

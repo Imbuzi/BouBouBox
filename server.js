@@ -1,28 +1,23 @@
 const http = require('http');
-const https = require('https');
 const fs = require('fs');
 const express = require('express');
-const helmet = require('helmet');
 const milight = require('node-milight-promise');
+const path = require('path');
 
 // Déclaration application Express + Middlewares et configurations
 const app = express();
-app.use(helmet());
+app.use(express.static(path.join(__dirname, 'public/')));
 
-// Redirection HTTP 301 en HTTPS
-http.createServer(function(req, res) {   
-        res.writeHead(301, {"Location": "https://" + req.headers['host'] + req.url});
-        res.end();
-}).listen(3000);
-console.log("Serveur HTTP de redirection en écoute ...");
+// Redirection HTTP
+const server = http.createServer(app).listen(3000);
+console.log("Serveur HTTP en écoute ...");
 
 // Routage Express
 app.get('/',function(req, res) {
-    res.send('Hello World !');
+    res.send('Hello World ! <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>');
 });
 
 app.get('/salon',function(req, res) {
-	
 	milight.discoverBridges({
 		type: 'all'
 	}).then(function (results) {
@@ -72,10 +67,11 @@ app.get('/link/:bridge/:zone',function(req, res) {
 	});
 });
 
-// Création du serveur HTTPS (certificats compris)
-https.createServer({ 
-        key: fs.readFileSync("/etc/letsencrypt/live/box.boubou.io/privkey.pem"),
-        cert: fs.readFileSync("/etc/letsencrypt/live/box.boubou.io/fullchain.pem"),
-        ca: fs.readFileSync("/etc/letsencrypt/live/box.boubou.io/chain.pem")
-}, app).listen(4000);
-console.log("Serveur HTTPS en écoute ...");
+// Création du WS Socket.io
+const io = require('socket.io')(server);
+io.on('connection', function(socket) {
+	console.log(`User with id ${socket.id} connected`);
+	socket.on('disconnect', function() {
+		console.log(`User with id ${socket.id} disconnected`);
+	});
+});
