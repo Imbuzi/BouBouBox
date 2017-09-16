@@ -14,7 +14,7 @@ console.log("Serveur HTTP en écoute ...");
 
 // Routage Express
 app.get('/',function(req, res) {
-    res.send('Hello World ! <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>');
+    res.send('Hello World ! <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script><script>io();</script>');
 });
 
 app.get('/salon',function(req, res) {
