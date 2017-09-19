@@ -1,13 +1,13 @@
 <template>
   <body v-bind:class="'theme-' + color">
     <navbar></navbar>
-    <widget-panel></widget-panel>
+    <main-section></main-section>
   </body>
 </template>
 
 <script>
   var NavBar = require('./navbar.vue');
-  var WidgetPanel = require('./widget-panel.vue');
+  var MainSection = require('./main-section.vue');
 
   module.exports = {
     data: function() {
@@ -17,7 +17,7 @@
     },
     components: {
       'navbar': NavBar,
-      'widget-panel': WidgetPanel
+      'main-section': MainSection
     }
   }
 </script>
