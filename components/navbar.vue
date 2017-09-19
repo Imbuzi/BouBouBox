@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar">
         <div class="container-fluid">
-            <navbar-header v-bind:title="Titre de test"></navbar-header>
+            <navbar-header title="Titre de test"></navbar-header>
             <navbar-collapse v-bind:count="0"></navbar-collapse>
         </div>
     </nav>
