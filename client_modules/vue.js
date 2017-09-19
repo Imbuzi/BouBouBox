@@ -1,9 +1,9 @@
 const Vue = require('vue');
-const NavbarComponent = require('../components/navbar.vue')
+const MainVueComponent = require('../components/main.vue')
 
-new Vue({
-    el: 'nav',
+const App = new Vue({
+    el: 'body',
     render: function (createElement) {
-		return createElement(NavbarComponent)
+		return createElement(MainVueComponent)
 	}
 });
