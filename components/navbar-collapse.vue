@@ -6,8 +6,17 @@
 					<i class="material-icons">notifications</i>
 					<span v-if="count" class="label-count">{{count}}</span>
 				</a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#">Action</a>
+          </li>
+          <li>
+            <a href="#">Separated link</a>
+          </li>
+          <li role="separator" class="divider"></li>
+        </ul>
 			</li>
-			<li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+			<li class="pull-right"><a href="#" v-on:click.prevent class="js-right-sidebar" data-close="true"><i class="material-icons">menu</i></a></li>
 		</ul>
 	</div>
 </template>
