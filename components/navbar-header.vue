@@ -21,6 +21,6 @@
 
 <style>
   .navbar-header .navbar-brand {
-    margin-left: auto;
+    margin-left: auto !important;
   }
 </style>
