@@ -4,7 +4,7 @@
 			<li class="dropdown">
 				<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
 					<i class="material-icons">notifications</i>
-					<span class="label-count">{{count}}</span>
+					<span v-if="count" class="label-count">{{count}}</span>
 				</a>
 			</li>
 			<li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
