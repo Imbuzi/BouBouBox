@@ -3,18 +3,20 @@ const fs = require('fs');
 const express = require('express');
 const milight = require('node-milight-promise');
 const path = require('path');
-
-// Déclaration application Express + Middlewares et configurations
+const morgan = require('morgan'); // Charge le middleware de logging
 const app = express();
-app.use(express.static(path.join(__dirname, 'public/')));
 
 // Redirection HTTP
 const server = http.createServer(app).listen(3000);
 console.log("Serveur HTTP en écoute ...");
 
+// Middlewares et configurations
+//app.use(morgan('combined'));
+app.use(express.static(__dirname + '/public'))
+
 // Routage Express
 app.get('/',function(req, res) {
-    res.send('Hello World ! <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script><script>io();</script>');
+    res.sendFile('./app.html', {root: __dirname });
 });
 
 app.get('/salon',function(req, res) {
