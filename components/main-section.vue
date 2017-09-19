@@ -14,13 +14,13 @@
   var WidgetPanel = require('./widget-panel.vue');
 
   module.exports = {
-    data: function() {
-      return {
-        'color': 'blue'
-      }
-    },
-    components: {
-      'widget-panel': WidgetPanel
-    }
+  data: function() {
+  return {
+  'color': 'blue'
+  }
+  },
+  components: {
+  'widget-panel': WidgetPanel
+  }
   }
 </script>

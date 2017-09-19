@@ -21,3 +21,9 @@
     }
   }
 </script>
+
+<style>
+  body {
+    padding-top: 90px;
+  }
+</style>
