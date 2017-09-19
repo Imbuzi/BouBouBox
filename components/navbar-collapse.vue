@@ -10,13 +10,13 @@
           <li>
             <a href="#">Action</a>
           </li>
+          <li role="separator" class="divider"></li>
           <li>
             <a href="#">Separated link</a>
           </li>
-          <li role="separator" class="divider"></li>
         </ul>
 			</li>
-			<li class="pull-right"><a href="#" v-on:click.prevent class="js-right-sidebar" data-close="true"><i class="material-icons">menu</i></a></li>
+			<li class="pull-right"><a href="#" v-on:click.prevent="" class="js-right-sidebar" data-close="true"><i class="material-icons">menu</i></a></li>
 		</ul>
 	</div>
 </template>
