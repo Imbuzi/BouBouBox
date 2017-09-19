@@ -1,5 +1,5 @@
 <template>
-  <body class="theme-{{color}}">
+  <body v-bind:class="'theme-' + color">
     <navbar></navbar>
   </body>
 </template>
