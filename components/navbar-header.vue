@@ -18,3 +18,9 @@
 		props: ['title']
 	}
 </script>
+
+<style>
+  .navbar-header .navbar-brand {
+    margin-left: auto;
+  }
+</style>
