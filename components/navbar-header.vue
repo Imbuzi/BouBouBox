@@ -1,14 +1,14 @@
 <template>
-	<div class="navbar-header">
-		<a class="navbar-brand" v-on:click.prevent="" href="#">{{title}}</a>
-    <ul class="right">
-      <li>
-        <a href="#" v-on:click.prevent="">
-          <i class="material-icons">menu</i>
-        </a>
-      </li>
-    </ul>
+	<div class="navbar-header col-xs-10">
+    <a class="navbar-brand" v-on:click.prevent="" href="#">{{title}}</a>
 	</div>
+  <div class="navbar-header col-xs-2">
+    <div class="pull-right">
+      <a class="navbar-brand" v-on:click.prevent="" href="#">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </div>
 </template>
 
 <script>
