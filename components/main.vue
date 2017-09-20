@@ -1,6 +1,7 @@
 <template>
   <body v-bind:class="'theme-' + color">
     <navbar></navbar>
+    <sidebar></sidebar>
     <main-section></main-section>
   </body>
 </template>
@@ -8,6 +9,7 @@
 <script>
   var NavBar = require('./navbar.vue');
   var MainSection = require('./main-section.vue');
+  var SideBar = require('./sidebar.vue');
 
   module.exports = {
     data: function() {
@@ -17,7 +19,8 @@
     },
     components: {
       'navbar': NavBar,
-      'main-section': MainSection
+      'main-section': MainSection,
+      'sidebar': SideBar
     }
   }
 </script>
