@@ -15,7 +15,7 @@
 		},
     methods: {
       toggleMenu: function() {
-        console.log('Received menu toggle on navbar !!!');
+        // Received 'toggle-menu' event, let's send it to the parent component !
         this.$emit('toggle-menu');
       }
     }

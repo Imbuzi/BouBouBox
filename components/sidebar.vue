@@ -1,6 +1,12 @@
 <template>
-    <aside class="right-sidebar">
-        <div class="container-fluid">
-        </div>
-    </aside>
+  <aside v-bind:class="{ open: opened }" class="right-sidebar">
+    <div class="container-fluid">
+    </div>
+  </aside>
 </template>
+
+<script>
+	module.exports = {
+		props: ['opened']
+	}
+</script>
