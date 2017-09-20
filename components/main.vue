@@ -1,6 +1,6 @@
 <template>
   <body v-bind:class="'theme-' + color">
-    <navbar></navbar>
+    <navbar v-on:toggle-menu="toggleMenu"></navbar>
     <sidebar></sidebar>
     <main-section></main-section>
   </body>
@@ -21,6 +21,11 @@
       'navbar': NavBar,
       'main-section': MainSection,
       'sidebar': SideBar
+    },
+    methods: {
+      toggleMenu: function() {
+        console.log('Received menu toggle on main vue component !!!');
+      }
     }
   }
 </script>
