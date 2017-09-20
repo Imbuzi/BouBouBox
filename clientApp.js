@@ -1,5 +1,5 @@
 // Testing
-const ApplicationVue;
+var ApplicationVue;
 
 document.addEventListener("DOMContentLoaded", function (event) {
 	require('./client_modules/io.js');
