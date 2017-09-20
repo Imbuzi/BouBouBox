@@ -6,7 +6,7 @@
     <div class="navbar-header col-xs-2">
       <div class="pull-right">
         <a class="navbar-brand" v-on:click.prevent.left="toggleMenu" href="#">
-          <transition name="fade">
+          <transition name="fade" mode="out-in">
             <i v-if="opened" class="material-icons" key="close">close</i>
             <i v-else class="material-icons" key="open">menu</i>
           </transition>
