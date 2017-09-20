@@ -5,7 +5,7 @@
 	  </div>
     <div class="navbar-header col-xs-2">
       <div class="pull-right">
-        <a class="navbar-brand" v-on:click.prevent="" href="#">
+        <a class="navbar-brand" v-on:click.prevent.left="toggleMenu" href="#">
           <i class="material-icons">menu</i>
         </a>
       </div>
@@ -15,7 +15,12 @@
 
 <script>
 	module.exports = {
-		props: ['title']
+		props: ['title'],
+    methods: {
+      toggleMenu: function(event) {
+        alert(event);
+      }
+    }
 	}
 </script>
 
