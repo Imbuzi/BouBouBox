@@ -14,9 +14,8 @@
 			'navbar-header': NavBarHeader
 		},
     methods: {
-      toggleMenu: function(event) {
-        alert(event);
-        console.log(event);
+      toggleMenu: function() {
+        console.log('Received menu toggle on navbar !!!');
       }
     }
 	}
