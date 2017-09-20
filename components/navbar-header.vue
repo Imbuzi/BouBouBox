@@ -38,11 +38,10 @@
   .navbar-header .navbar-brand {
     margin-left: auto !important;
   }
-  
-  .fade-enter-active, .fade-leave-active {
+  /*.fade-enter-active, .fade-leave-active {
     transition: opacity .3s ease;
   }
   .fade-enter, .fade-leave-to
     opacity: 0;
-  }
+  }*/
 </style>
