@@ -30,8 +30,6 @@
         // Received 'toggle-menu' event, toggling 'sidebarProps.opened' on/off
         this.sidebarProps.opened = this.sidebarProps.opened != true;
         console.log('Open : ' + this.sidebarProps.opened);
-        // Testing socket.io accessibility
-        console.log(io);
       }
     }
   }
