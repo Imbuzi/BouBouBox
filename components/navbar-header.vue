@@ -7,8 +7,8 @@
       <div class="pull-right">
         <a class="navbar-brand" v-on:click.prevent.left="toggleMenu" href="#">
           <transition name="fade" mode="out-in">
-            <i v-if="opened" class="material-icons">menu</i>
-            <i v-if="!opened" class="material-icons">close</i>
+            <i v-if="opened" class="material-icons">close</i>
+            <i v-else class="material-icons">menu</i>
           </transition>
         </a>
       </div>
@@ -37,5 +37,12 @@
 <style>
   .navbar-header .navbar-brand {
     margin-left: auto !important;
+  }
+  
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .3s ease;
+  }
+  .fade-enter, .fade-leave-to
+    opacity: 0;
   }
 </style>
