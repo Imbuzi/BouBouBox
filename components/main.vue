@@ -28,7 +28,7 @@
     methods: {
       toggleMenu: function() {
         // Received 'toggle-menu' event, toggling 'sidebarProps.opened' on/off
-        this.sidebarProps.opened = this.sidebarProps.opened != true;
+        this.sidebarProps.opened = !this.sidebarProps.opened;
         console.log('Open : ' + this.sidebarProps.opened);
       }
     }
