@@ -7,3 +7,6 @@ const App = new Vue({
 		return createElement(MainVueComponent)
 	}
 });
+
+// Testing
+module.exports = App;

@@ -1,5 +1,8 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+// Testing
+const ApplicationVue;
+
+document.addEventListener("DOMContentLoaded", function (event) {
 	require('./client_modules/io.js');
-    require('./client_modules/vue.js');
+    ApplicationVue = require('./client_modules/vue.js');
 	require('./scripts/script.js');
 });
