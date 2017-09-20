@@ -18,6 +18,7 @@
 		props: ['title'],
     methods: {
       toggleMenu: function(event) {
+        // Received 'click' event, let's send it to the parent component !
         this.$emit('toggle-menu');
       }
     }

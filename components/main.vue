@@ -1,7 +1,7 @@
 <template>
   <body v-bind:class="'theme-' + color">
     <navbar v-on:toggle-menu="toggleMenu"></navbar>
-    <sidebar></sidebar>
+    <sidebar v-bind="sidebarProps"></sidebar>
     <main-section></main-section>
   </body>
 </template>
@@ -14,7 +14,10 @@
   module.exports = {
     data: function() {
       return {
-      'color': 'blue'
+        'color': 'blue',
+        'sidebarProps': {
+          'opened': false
+        }
       }
     },
     components: {
@@ -24,7 +27,9 @@
     },
     methods: {
       toggleMenu: function() {
-        console.log('Received menu toggle on main vue component !!!');
+        // Received 'toggle-menu' event, toggling 'sidebarProps.opened' on/off
+        this.sidebarProps.opened = this.sidebarProps.opened != true;
+        console.log('Open : ' + this.sidebarProps.opened);
       }
     }
   }
