@@ -8,5 +8,4 @@ const App = new Vue({
 	}
 });
 
-// Testing
-module.exports = App;
+console.log(App);
