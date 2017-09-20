@@ -36,12 +36,12 @@
 
 <style>
   .navbar-header .navbar-brand {
-    margin-left: auto !important;
+    margin-left: auto !important
   }
-  /*.fade-enter-active, .fade-leave-active {
-    transition: opacity .3s ease;
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
   }
-  .fade-enter, .fade-leave-to
-    opacity: 0;
-  }*/
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0
+  }
 </style>
