@@ -2326,10 +2326,10 @@
   .navbar > .container-fluid .navbar-brand {
     margin-left: 35px;
     width: 73%; }
-  .navbar .navbar-header {
+  /*.navbar .navbar-header {
     display: inline-block;
     margin-bottom: -6px;
-    width: calc(100% + 30px); }
+    width: calc(100% + 30px); }*/
   .navbar .nav > li {
     display: inline-block; }
   .navbar .navbar-nav {
