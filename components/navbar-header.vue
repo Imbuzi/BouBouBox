@@ -18,8 +18,6 @@
 		props: ['title'],
     methods: {
       toggleMenu: function(event) {
-        console.log('Child event');
-        console.log(event);
         this.$emit('toggle-menu');
       }
     }
