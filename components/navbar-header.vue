@@ -7,8 +7,8 @@
       <div class="pull-right">
         <a class="navbar-brand" v-on:click.prevent.left="toggleMenu" href="#">
           <transition name="fade">
-            <i v-if="opened" class="material-icons">close</i>
-            <i v-else class="material-icons">menu</i>
+            <i v-if="opened" class="material-icons" key="close">close</i>
+            <i v-else class="material-icons" key="open">menu</i>
           </transition>
         </a>
       </div>
