@@ -18,7 +18,7 @@
 		props: ['title'],
     methods: {
       toggleMenu: function(event) {
-        alert(event);
+        this.$emit('toggleMenu');
       }
     }
 	}
