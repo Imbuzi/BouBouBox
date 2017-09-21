@@ -12,7 +12,6 @@
   var SideBar = require('./sidebar.vue');
 
   module.exports = {
-		props: ['$socket'],
     data: function() {
       return {
         'color': 'blue',
