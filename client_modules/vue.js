@@ -6,6 +6,10 @@ const MainVueComponent = require('../components/main.vue');
 
 Vue.use(VueSocketIO, SocketInstance);
 
+console.log("Fichier : main.vue");
+console.log(MainVueComponent.$socket);
+console.log(MainVueComponent.$root.$socket);
+
 const App = new Vue({
     el: 'body',
     render: function (createElement) {
@@ -18,6 +22,3 @@ const App = new Vue({
         );
 	}
 });
-
-console.log("Fichier : vue.js");
-console.log(App.$socket);
