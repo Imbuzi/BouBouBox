@@ -18,3 +18,6 @@ const App = new Vue({
         );
 	}
 });
+
+console.log("Fichier : vue.js");
+console.log(App.$socket);
