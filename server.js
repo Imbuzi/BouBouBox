@@ -72,7 +72,10 @@ app.get('/link/:bridge/:zone',function(req, res) {
 // Création du WS Socket.io
 const io = require('socket.io')(server);
 io.on('connection', function(socket) {
-	console.log(`User with id ${socket.id} connected`);
+    console.log(`User with id ${socket.id} connected`);
+    socket.on('sidebar_state', function (state) {
+        console.log('Sidebar opened : ' + state);
+    });
 	socket.on('disconnect', function() {
 		console.log(`User with id ${socket.id} disconnected`);
 	});
