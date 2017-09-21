@@ -10,6 +10,10 @@
   var NavBar = require('./navbar.vue');
   var MainSection = require('./main-section.vue');
   var SideBar = require('./sidebar.vue');
+  
+  console.log("Fichier : main.vue");
+  console.log(this.$socket);
+  console.log(this.$root.$socket);
 
   module.exports = {
     data: function() {
