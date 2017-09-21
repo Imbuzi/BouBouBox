@@ -12,6 +12,7 @@
     "node-milight-promise": "^0.2.31",
     "path": "^0.12.7",
     "socket.io": "^2.0.3",
+    "socket.io-client": "^2.0.3",
     "vue": "^2.4.4",
     "vue-socket.io": "^2.1.1-a"
   },
