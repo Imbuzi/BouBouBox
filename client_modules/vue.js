@@ -1,8 +1,9 @@
 const Vue = require('vue');
+const SocketIOClient = require('socket.io-client');
 const VueSocketIO = require('vue-socket.io');
 const MainVueComponent = require('../components/main.vue')
 
-Vue.use(VueSocketIO, 'http://box.boubou.io');
+Vue.use(VueSocketIO, SocketIOClient('http://localhost'));
 
 const App = new Vue({
     el: 'body',
