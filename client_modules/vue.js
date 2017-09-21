@@ -9,6 +9,12 @@ Vue.use(VueSocketIO, SocketInstance);
 const App = new Vue({
     el: 'body',
     render: function (createElement) {
-        return createElement(MainVueComponent, this.$socket);
+        return createElement(
+            MainVueComponent, {
+                'data': {
+                    '$socket': this.$socket
+                }
+            }
+        );
 	}
 });
