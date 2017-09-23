@@ -29,7 +29,7 @@
       toggleMenu: function() {
         // Received 'toggle-menu' event, toggling 'sidebarProps.opened' on/off
         this.sidebarProps.opened = !this.sidebarProps.opened;
-        this.$root.$socket.emit('sidebar_state', this.sidebarProps.opened);
+        this.$socket.emit('sidebar_state', this.sidebarProps.opened);
       }
     }
   }
