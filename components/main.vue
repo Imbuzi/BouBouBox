@@ -16,7 +16,7 @@
       color: function() {
         return this.$store.state.theme.color;
       }
-    }
+    },
     components: {
       'navbar': NavBar,
       'main-section': MainSection,
