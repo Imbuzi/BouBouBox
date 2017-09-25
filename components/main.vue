@@ -7,9 +7,9 @@
 </template>
 
 <script>
-  var NavBar = require('./navbar.vue');
-  var MainSection = require('./main-section.vue');
-  var SideBar = require('./sidebar.vue');
+  import NavBar from './navbar.vue';
+  import MainSection from './main-section.vue';
+  import SideBar from './sidebar.vue';
 
   export default {
     computed: {
