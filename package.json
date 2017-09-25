@@ -18,6 +18,10 @@
     "vuex": "^2.4.0"
   },
   "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
     "browserify": "^14.4.0",
     "uglify-js": "^3.1.1",
     "vueify": "^9.4.1",
@@ -26,7 +30,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "browserify -t vueify clientApp.js -o ./public/js/app.js",
+    "build": "browserify -t [ babelify --presets [ es2015 ] ] -t vueify clientApp.js -o ./public/js/app.js",
     "build-sourcemap": "browserify -d -t vueify clientApp.js -o ./public/js/app.js",
     "watch": "watchify -t vueify clientApp.js -o ./public/js/app.js -v"
   },
