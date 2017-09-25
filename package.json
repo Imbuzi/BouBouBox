@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "bufferutil": "^3.0.2",
     "express": "^4.15.4",
     "fs": "0.0.1-security",
     "knex": "^0.13.0",
@@ -13,8 +14,7 @@
     "path": "^0.12.7",
     "socket.io": "^2.0.3",
     "socket.io-client": "^2.0.3",
-    "vue": "^2.4.4",
-    "vue-socket.io": "^2.1.1-a"
+    "vue": "^2.4.4"
   },
   "devDependencies": {
     "browserify": "^14.4.0",
