@@ -2,7 +2,7 @@
   <article>
     <div class="container-fluid">
       <div class="block-header">
-        <h2>{{widget-title}}</h2>
+        <h2>{{widgetTitle}}</h2>
       </div>
       <div class="row">
         <div class="col-xs-12">
