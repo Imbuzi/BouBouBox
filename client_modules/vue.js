@@ -6,6 +6,8 @@ const MainVueComponent = require('../components/main.vue');
 
 const SocketIOInstance = SocketIO('http://box.boubou.io')
 
+Vue.use(Vuex);
+
 const store = new Vuex.Store({
     state: {
         sidebar: {
@@ -23,7 +25,6 @@ const store = new Vuex.Store({
 })
 
 Vue.use(VueSocketIO, SocketIOInstance, store);
-Vue.use(Vuex);
 
 const App = new Vue({
     el: 'body',
