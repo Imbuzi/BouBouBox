@@ -1,6 +1,6 @@
 <template>
   <body v-bind:class="'theme-' + color">
-    <navbar v-on:toggle-menu="toggleMenu"></navbar>
+    <navbar v-on:toggle-menu="toggleMenu" title="BouBouBox"></navbar>
     <sidebar v-bind="sidebarProps"></sidebar>
     <main-section></main-section>
   </body>
