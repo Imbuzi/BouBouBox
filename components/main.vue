@@ -11,7 +11,7 @@
   var MainSection = require('./main-section.vue');
   var SideBar = require('./sidebar.vue');
 
-  module.exports = {
+  export default {
     computed: {
       color: function() {
         return this.$store.state.theme.color;

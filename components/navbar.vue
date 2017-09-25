@@ -9,7 +9,7 @@
 <script>
 	var NavBarHeader = require('./navbar-header.vue');
 
-	module.exports = {
+	export default {
 		props: ['title'],
 		components: {
 			'navbar-header': NavBarHeader

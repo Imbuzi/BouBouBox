@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  module.exports = {
+  export default {
     computed: {
       opened: function() {
         return this.$store.state.sidebar.opened

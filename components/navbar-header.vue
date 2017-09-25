@@ -17,7 +17,7 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props: ['title'],
     computed: {
       'sidebaropened': function() {
