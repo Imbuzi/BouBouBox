@@ -15,6 +15,6 @@
 
 <script>
   export default {
-    props: ['widget-title'],
+    props: ['widget-title']
   }
 </script>

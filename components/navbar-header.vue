@@ -28,7 +28,6 @@
     methods: {
       toggleMenu: function(event) {
         this.$store.commit('toggleSidebar');
-        this.$socket.emit('hello', 'hello');
       }
     }
 	}
