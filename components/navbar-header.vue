@@ -18,17 +18,18 @@
 
 <script>
 	export default {
-		props: ['title'],
     computed: {
       'sidebaropened': function() {
         return this.$store.state.sidebar.opened;
+      },
+      'title': function() {
+        return this.$store.state.sidebar.title;
       }
     }
     ,
     methods: {
       toggleMenu: function(event) {
         this.$store.commit('toggleSidebar');
-        this.$socket.emit('hello', 'Message envoyé');
       }
     }
 	}
