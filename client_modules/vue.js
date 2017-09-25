@@ -11,7 +11,8 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         sidebar: {
-            opened: false
+            opened: false,
+            title: 'BouBouBox'
         },
         theme: {
             color: 'blue'
@@ -29,11 +30,7 @@ Vue.use(VueSocketIO, SocketIOInstance, store);
 const App = new Vue({
     el: 'body',
     store,
-    sockets: {
-        helloreply: function (val) {
-            console.log('this method was fired by the socket server. eg: io.emit("customEmit", data), with vlaue : ' + val)
-        }
-    },
+    sockets: {},
     render: function (createElement) {
         return createElement(MainVueComponent);
 	}

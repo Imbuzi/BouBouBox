@@ -78,8 +78,4 @@ io.on('connection', function(socket) {
 	socket.on('disconnect', function() {
 		console.log(`User with id ${socket.id} disconnected`);
     });
-    socket.on('hello', function (message) {
-        console.log('Received hello message, with content : ' + message);
-        socket.emit('helloreply', 'Received hello message, with content : ' + message);
-    });
 });
