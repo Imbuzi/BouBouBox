@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar">
         <div class="container-fluid">
-            <navbar-header v-on:toggle-menu="toggleMenu" title="Titre de test"></navbar-header>
+            <navbar-header v-on:toggle-menu="toggleMenu" v-bind:title="title"></navbar-header>
         </div>
     </nav>
 </template>
@@ -13,6 +13,11 @@
 		components: {
 			'navbar-header': NavBarHeader
 		},
+    data: function() {
+      return {
+        'title': 'Test'
+      }
+    },
     methods: {
       toggleMenu: function() {
         // Received 'toggle-menu' event, let's send it to the parent component !
