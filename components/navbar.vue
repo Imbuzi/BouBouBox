@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar">
         <div class="container-fluid">
-            <navbar-header v-on:toggle-menu="toggleMenu" title="{{title}}"></navbar-header>
+            <navbar-header v-on:toggle-menu="toggleMenu" v-bind:title="title"></navbar-header>
         </div>
     </nav>
 </template>
