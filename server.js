@@ -27,7 +27,9 @@ app.get('/salon',function(req, res) {
 			var bridge = new milight.MilightController({
 				ip: element.ip,
 				type: element.type
-			});
+            });
+
+            console.log(bridge);
 			
 			var zone = 4;
 			const commands = milight.commandsV6;
@@ -73,9 +75,6 @@ app.get('/link/:bridge/:zone',function(req, res) {
 const io = require('socket.io')(server);
 io.on('connection', function(socket) {
     console.log(`User with id ${socket.id} connected`);
-    socket.on('sidebar_state', function (state) {
-        console.log('Sidebar opened : ' + state);
-    });
 	socket.on('disconnect', function() {
 		console.log(`User with id ${socket.id} disconnected`);
 	});
