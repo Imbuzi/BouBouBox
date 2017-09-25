@@ -21,13 +21,14 @@
 		props: ['title'],
     computed: {
       'sidebaropened': function() {
-        return this.$store.state.sidebar.opened
+        return this.$store.state.sidebar.opened;
       }
     }
     ,
     methods: {
       toggleMenu: function(event) {
-        this.$store.commit('toggleSidebar')
+        this.$store.commit('toggleSidebar');
+        this.$socket.emit('hello', 'hello');
       }
     }
 	}
