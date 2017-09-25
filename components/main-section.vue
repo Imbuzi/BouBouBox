@@ -13,7 +13,7 @@
 <script>
   var WidgetPanel = require('./widget-panel.vue');
 
-  module.exports = {
+  export default {
     components: {
       'widget-panel': WidgetPanel
     }
