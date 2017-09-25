@@ -7,7 +7,7 @@
       <div class="pull-right">
         <a class="navbar-brand" v-on:click.prevent.left="toggleMenu" href="#">
           <transition name="fade" mode="out-in">
-            <i v-if="sidebar-opened" class="material-icons" key="close">close</i>
+            <i v-if="sidebaropened" class="material-icons" key="close">close</i>
             <i v-else class="material-icons" key="open">menu</i>
           </transition>
         </a>
@@ -20,7 +20,7 @@
 	module.exports = {
 		props: ['title'],
     computed: {
-      'sidebar-opened': function() {
+      'sidebaropened': function() {
         return this.$store.state.sidebar.opened
       }
     }
