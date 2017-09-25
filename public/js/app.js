@@ -8,26 +8,37 @@ document.addEventListener("DOMContentLoaded", function (event) {
 },{"./client_modules/vue.js":2}],2:[function(require,module,exports){
 'use strict';
 
+var _vue = require('vue');
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _vuex = require('vuex');
+
+var _vuex2 = _interopRequireDefault(_vuex);
+
+var _socket = require('socket.io-client');
+
+var _socket2 = _interopRequireDefault(_socket);
+
 var _vueSocket = require('vue-socket.io');
 
 var _vueSocket2 = _interopRequireDefault(_vueSocket);
 
+var _main = require('../components/main.vue');
+
+var _main2 = _interopRequireDefault(_main);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Vue = require('vue');
-var Vuex = require('vuex');
-var SocketIO = require('socket.io-client');
+var SocketIOInstance = (0, _socket2.default)('http://box.boubou.io');
 
-var MainVueComponent = require('../components/main.vue');
+_vue2.default.use(_vuex2.default);
 
-var SocketIOInstance = SocketIO('http://box.boubou.io');
-
-Vue.use(Vuex);
-
-var store = new Vuex.Store({
+var store = new _vuex2.default.Store({
     state: {
         sidebar: {
-            opened: false
+            opened: false,
+            title: 'BouBouBox'
         },
         theme: {
             color: 'blue'
@@ -40,13 +51,14 @@ var store = new Vuex.Store({
     }
 });
 
-Vue.use(_vueSocket2.default, SocketIOInstance, store);
+_vue2.default.use(_vueSocket2.default, SocketIOInstance, store);
 
-var App = new Vue({
+var App = new _vue2.default({
     el: 'body',
     store: store,
+    sockets: {},
     render: function render(createElement) {
-        return createElement(MainVueComponent);
+        return createElement(_main2.default);
     }
 });
 
@@ -54,11 +66,19 @@ var App = new Vue({
 ;(function(){
 'use strict';
 
-var WidgetPanel = require('./widget-panel.vue');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-module.exports = {
+var _widgetPanel = require('./widget-panel.vue');
+
+var _widgetPanel2 = _interopRequireDefault(_widgetPanel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
   components: {
-    'widget-panel': WidgetPanel
+    'widget-panel': _widgetPanel2.default
   }
 };
 })()
@@ -82,27 +102,41 @@ var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("body {\n
 ;(function(){
 'use strict';
 
-var NavBar = require('./navbar.vue');
-var MainSection = require('./main-section.vue');
-var SideBar = require('./sidebar.vue');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-module.exports = {
+var _navbar = require('./navbar.vue');
+
+var _navbar2 = _interopRequireDefault(_navbar);
+
+var _mainSection = require('./main-section.vue');
+
+var _mainSection2 = _interopRequireDefault(_mainSection);
+
+var _sidebar = require('./sidebar.vue');
+
+var _sidebar2 = _interopRequireDefault(_sidebar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
   computed: {
     color: function color() {
       return this.$store.state.theme.color;
     }
   },
   components: {
-    'navbar': NavBar,
-    'main-section': MainSection,
-    'sidebar': SideBar
+    'navbar': _navbar2.default,
+    'main-section': _mainSection2.default,
+    'sidebar': _sidebar2.default
   }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('body',{class:'theme-' + _vm.color},[_c('navbar',{attrs:{"title":"BouBouBox"}}),_vm._v(" "),_c('sidebar'),_vm._v(" "),_c('main-section')],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('body',{class:'theme-' + _vm.color},[_c('navbar'),_vm._v(" "),_c('sidebar'),_vm._v(" "),_c('main-section')],1)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -120,18 +154,22 @@ var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".navbar-
 ;(function(){
 'use strict';
 
-module.exports = {
-  props: ['title'],
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
   computed: {
     'sidebaropened': function sidebaropened() {
       return this.$store.state.sidebar.opened;
+    },
+    'title': function title() {
+      return this.$store.state.sidebar.title;
     }
   },
 
   methods: {
     toggleMenu: function toggleMenu(event) {
       this.$store.commit('toggleSidebar');
-      this.$socket.emit('hello', 'hello');
     }
   }
 };
@@ -156,12 +194,19 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 ;(function(){
 'use strict';
 
-var NavBarHeader = require('./navbar-header.vue');
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 
-module.exports = {
-	props: ['title'],
+var _navbarHeader = require('./navbar-header.vue');
+
+var _navbarHeader2 = _interopRequireDefault(_navbarHeader);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
 	components: {
-		'navbar-header': NavBarHeader
+		'navbar-header': _navbarHeader2.default
 	},
 	methods: {}
 };
@@ -169,7 +214,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"navbar"},[_c('div',{staticClass:"container-fluid"},[_c('navbar-header',{attrs:{"title":_vm.title}})],1)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"navbar"},[_c('div',{staticClass:"container-fluid"},[_c('navbar-header')],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -185,7 +230,10 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 ;(function(){
 "use strict";
 
-module.exports = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
   computed: {
     opened: function opened() {
       return this.$store.state.sidebar.opened;
@@ -212,7 +260,10 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 ;(function(){
 'use strict';
 
-module.exports = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
   props: ['widget-title']
 };
 })()
