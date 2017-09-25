@@ -23,6 +23,7 @@ const store = new Vuex.Store({
 
 const App = new Vue({
     el: 'body',
+    store,
     render: function (createElement) {
         return createElement(MainVueComponent);
 	}
