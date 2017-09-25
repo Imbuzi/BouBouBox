@@ -7,7 +7,7 @@
       <div class="pull-right">
         <a class="navbar-brand" v-on:click.prevent.left="toggleMenu" href="#">
           <transition name="fade" mode="out-in">
-            <i v-if="opened" class="material-icons" key="close">close</i>
+            <i v-if="sidebar-opened" class="material-icons" key="close">close</i>
             <i v-else class="material-icons" key="open">menu</i>
           </transition>
         </a>
@@ -19,16 +19,15 @@
 <script>
 	module.exports = {
 		props: ['title'],
-    data: function() {
-      return {
-        'opened': false
+    computed: {
+      sidebar-opened: {
+        return this.$store.state.sidebar.opened
       }
-    },
+    }
+    ,
     methods: {
       toggleMenu: function(event) {
-        // Received 'click' event, let's send it to the parent component !
-        this.opened = !this.opened;
-        this.$emit('toggle-menu');
+        this.$store.commit('toggleSidebar')
       }
     }
 	}

@@ -1,7 +1,7 @@
 <template>
   <body v-bind:class="'theme-' + color">
-    <navbar v-on:toggle-menu="toggleMenu" title="BouBouBox"></navbar>
-    <sidebar v-bind="sidebarProps"></sidebar>
+    <navbar title="BouBouBox"></navbar>
+    <sidebar></sidebar>
     <main-section></main-section>
   </body>
 </template>
@@ -14,10 +14,7 @@
   module.exports = {
     data: function() {
       return {
-        'color': 'blue',
-        'sidebarProps': {
-          'opened': false
-        }
+        'color': 'blue'
       }
     },
     components: {
@@ -25,12 +22,7 @@
       'main-section': MainSection,
       'sidebar': SideBar
     },
-    methods: {
-      toggleMenu: function() {
-        // Received 'toggle-menu' event, toggling 'sidebarProps.opened' on/off
-        this.sidebarProps.opened = !this.sidebarProps.opened;
-      }
-    }
+    methods: {}
   }
 </script>
 

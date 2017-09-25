@@ -9,8 +9,16 @@ Vue.prototype.$socket = SocketIOInstance;
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-    state: {},
-    mutations: {}
+    state: {
+        sidebar: {
+            opened: false
+        }
+    },
+    mutations: {
+        toggleSidebar (state) {
+            state.sidebar.opened = !state.sidebar.opened;
+        }
+    }
 })
 
 const App = new Vue({
