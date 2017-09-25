@@ -20,7 +20,7 @@
 	module.exports = {
 		props: ['title'],
     computed: {
-      sidebarOpened: function() {
+      'sidebar-opened': function() {
         return this.$store.state.sidebar.opened
       }
     }
