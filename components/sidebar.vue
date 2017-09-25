@@ -6,7 +6,11 @@
 </template>
 
 <script>
-	module.exports = {
-		props: ['opened']
-	}
+  module.exports = {
+    computed: {
+      opened: {
+        return this.$store.state.sidebar.opened
+      }
+    }
+  }
 </script>
