@@ -12,17 +12,16 @@
   var SideBar = require('./sidebar.vue');
 
   module.exports = {
-    data: function() {
-      return {
-        'color': 'blue'
+    computed: {
+      color: function() {
+        return this.$store.state.theme.color;
       }
-    },
+    }
     components: {
       'navbar': NavBar,
       'main-section': MainSection,
       'sidebar': SideBar
-    },
-    methods: {}
+    }
   }
 </script>
 

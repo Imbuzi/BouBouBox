@@ -12,6 +12,9 @@ const store = new Vuex.Store({
     state: {
         sidebar: {
             opened: false
+        },
+        theme: {
+            color: 'blue'
         }
     },
     mutations: {
