@@ -8,7 +8,7 @@
 <script>
   module.exports = {
     computed: {
-      opened: {
+      opened: function() {
         return this.$store.state.sidebar.opened
       }
     }
