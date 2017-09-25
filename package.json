@@ -30,7 +30,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "browserify -t babelify -t vueify clientApp.js -o ./public/js/app.js",
+    "build": "browserify -t [ babelify --presets [ es2015 ] ] -t vueify clientApp.js -o ./public/js/app.js",
     "build-sourcemap": "browserify -d -t vueify clientApp.js -o ./public/js/app.js",
     "watch": "watchify -t vueify clientApp.js -o ./public/js/app.js -v"
   },

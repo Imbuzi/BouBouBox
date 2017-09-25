@@ -1,20 +1,30 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+"use strict";
+
 document.addEventListener("DOMContentLoaded", function (event) {
     require('./client_modules/vue.js');
 });
 
 },{"./client_modules/vue.js":2}],2:[function(require,module,exports){
-const Vue = require('vue');
-const Vuex = require('vuex');
-const SocketIO = require('socket.io-client');
-const VueSocketIO = require('vue-socket.io');
-const MainVueComponent = require('../components/main.vue');
+'use strict';
 
-const SocketIOInstance = SocketIO('http://box.boubou.io');
+var _vueSocket = require('vue-socket.io');
+
+var _vueSocket2 = _interopRequireDefault(_vueSocket);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Vue = require('vue');
+var Vuex = require('vuex');
+var SocketIO = require('socket.io-client');
+
+var MainVueComponent = require('../components/main.vue');
+
+var SocketIOInstance = SocketIO('http://box.boubou.io');
 
 Vue.use(Vuex);
 
-const store = new Vuex.Store({
+var store = new Vuex.Store({
     state: {
         sidebar: {
             opened: false
@@ -24,18 +34,18 @@ const store = new Vuex.Store({
         }
     },
     mutations: {
-        toggleSidebar(state) {
+        toggleSidebar: function toggleSidebar(state) {
             state.sidebar.opened = !state.sidebar.opened;
         }
     }
 });
 
-Vue.use(VueSocketIO, SocketIOInstance, store);
+Vue.use(_vueSocket2.default, SocketIOInstance, store);
 
-const App = new Vue({
+var App = new Vue({
     el: 'body',
-    store,
-    render: function (createElement) {
+    store: store,
+    render: function render(createElement) {
         return createElement(MainVueComponent);
     }
 });
