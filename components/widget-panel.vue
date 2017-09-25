@@ -15,6 +15,6 @@
 
 <script>
   module.exports = {
-    props: ['widget-title']
+    props: ['widget-title'],
   }
 </script>
