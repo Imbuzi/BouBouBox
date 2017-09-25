@@ -1,9 +1,10 @@
 const Vue = require('vue');
-const SocketIOClient = require('socket.io-client');
-const VueSocketIO = require('vue-socket.io');
+const SocketIO = require('socket.io-client');
 const MainVueComponent = require('../components/main.vue');
 
-Vue.use(VueSocketIO, SocketIOClient('http://box.boubou.io'));
+const SocketIOInstance = SocketIO('http://box.boubou.io')
+
+Vue.prototype.$socket = SocketIOInstance;
 
 const App = new Vue({
     el: 'body',
