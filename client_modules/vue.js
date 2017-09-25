@@ -29,6 +29,11 @@ Vue.use(VueSocketIO, SocketIOInstance, store);
 const App = new Vue({
     el: 'body',
     store,
+    sockets: {
+        connect: function () {
+            console.log('socket connected');
+        }
+    },
     render: function (createElement) {
         return createElement(MainVueComponent);
 	}
