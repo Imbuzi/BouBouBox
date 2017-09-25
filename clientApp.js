@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	Vue.use(VueSocketIO, SocketIOInstance, store);
 
 	const App = new Vue({
-		el: 'body',
+		el: 'main',
 		store,
 		sockets: {},
 		render: function (createElement) {

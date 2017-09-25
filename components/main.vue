@@ -1,9 +1,9 @@
 <template>
-  <body v-bind:class="'theme-' + color">
+  <main v-bind:class="'theme-' + color">
     <navbar></navbar>
     <sidebar></sidebar>
     <main-section></main-section>
-  </body>
+  </main>
 </template>
 
 <script>
