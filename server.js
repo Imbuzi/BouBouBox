@@ -80,5 +80,6 @@ io.on('connection', function(socket) {
     });
     socket.on('hello', function (message) {
         console.log('Received hello message, with content : ' + message);
+        socket.emit('helloreply', 'Received hello message, with content : ' + message);
     });
 });
