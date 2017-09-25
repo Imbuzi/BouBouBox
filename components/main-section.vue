@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  var WidgetPanel = require('./widget-panel.vue');
+  import WidgetPanel from './widget-panel.vue';
 
   export default {
     components: {

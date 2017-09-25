@@ -7,7 +7,7 @@
 </template>
 
 <script>
-	var NavBarHeader = require('./navbar-header.vue');
+	import NavBarHeader from './navbar-header.vue';
 
 	export default {
 		props: ['title'],
