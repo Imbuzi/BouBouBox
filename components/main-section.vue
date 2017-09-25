@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12">
-          <widget-panel></widget-panel>
+          <widget-panel title="Titre"></widget-panel>
         </div>
       </div>
     </div>
@@ -14,13 +14,8 @@
   var WidgetPanel = require('./widget-panel.vue');
 
   module.exports = {
-  data: function() {
-  return {
-  'color': 'blue'
-  }
-  },
-  components: {
-  'widget-panel': WidgetPanel
-  }
+    components: {
+      'widget-panel': WidgetPanel
+    }
   }
 </script>
