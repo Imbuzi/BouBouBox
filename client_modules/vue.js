@@ -8,6 +8,11 @@ const SocketIOInstance = SocketIO('http://box.boubou.io')
 Vue.prototype.$socket = SocketIOInstance;
 Vue.use(Vuex);
 
+const store = new Vuex.Store({
+    state: {},
+    mutations: {}
+})
+
 const App = new Vue({
     el: 'body',
     render: function (createElement) {
