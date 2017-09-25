@@ -1,7 +1,7 @@
 const Vue = require('vue');
 const Vuex = require('vuex');
 const SocketIO = require('socket.io-client');
-const VueSocketIO = require('vue-socket.io');
+import VueSocketIO from 'vue-socket.io';
 const MainVueComponent = require('../components/main.vue');
 
 const SocketIOInstance = SocketIO('http://box.boubou.io')
