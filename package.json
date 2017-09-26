@@ -9,6 +9,7 @@
     "fs": "0.0.1-security",
     "knex": "^0.13.0",
     "morgan": "^1.8.2",
+    "mysql": "^2.14.1",
     "node-milight-promise": "^0.2.31",
     "path": "^0.12.7",
     "socket.io": "^2.0.3",
