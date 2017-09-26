@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as actions from './actions'
-import * as getters from './getters'
+//import * as actions from './actions'
+//import * as getters from './getters'
 import sidebar from './modules/sidebar'
 import theme from './modules/theme'
 
