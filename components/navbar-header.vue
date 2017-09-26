@@ -29,7 +29,7 @@
         ,
         methods: {
             toggleMenu: function(event) {
-            this.$store.commit('toggleSidebar');
+                this.$store.commit('toggleSidebar');
             }
         }
 	}
