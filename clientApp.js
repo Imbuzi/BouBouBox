@@ -6,8 +6,6 @@ import MainVueComponent from './components/main.vue';
 
 import store from './store';
 
-console.log(store);
-
 document.addEventListener("DOMContentLoaded", function (event) {
 	const SocketIOInstance = SocketIO('http://box.boubou.io')
 
