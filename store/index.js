@@ -15,7 +15,8 @@ export default new Vuex.Store({
     //getters,
     modules: {
         sidebar,
-        theme
+        theme,
+        panels
     },
     strict: dev
 })
