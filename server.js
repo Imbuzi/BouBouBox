@@ -3,6 +3,7 @@ const fs = require('fs');
 const express = require('express');
 const milight = require('node-milight-promise');
 const path = require('path');
+const db = require('./model/db.js');
 const morgan = require('morgan'); // Charge le middleware de logging
 const app = express();
 
