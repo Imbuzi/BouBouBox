@@ -16,7 +16,7 @@ app.use(express.static(__dirname + '/public'))
 
 // Routage Express
 app.get('/',function(req, res) {
-    res.sendFile('./app.html', {root: __dirname });
+    res.sendFile('./app.html', {root: __dirname});
 });
 
 app.get('/salon',function(req, res) {
