@@ -2,7 +2,7 @@
   <article>
     <div class="container-fluid">
       <div class="block-header">
-        <h2>{{widgetTitle}}</h2>
+        <h2>{{panelTitle}}</h2>
       </div>
       <div class="row">
         <div class="col-xs-12">
@@ -15,6 +15,6 @@
 
 <script>
   export default {
-    props: ['widget-title']
+    props: ['panel-title']
   }
 </script>
