@@ -5,6 +5,8 @@ import VueSocketIO from 'vue-socket.io';
 import Store from './store';
 import MainVueComponent from './components/main.vue';
 
+console.log(Store);
+
 document.addEventListener("DOMContentLoaded", function (event) {
 	const SocketIOInstance = SocketIO('http://box.boubou.io')
 
