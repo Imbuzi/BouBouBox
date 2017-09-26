@@ -11,6 +11,11 @@ const app = express();
 const server = http.createServer(app).listen(3000);
 console.log("Serveur HTTP en écoute ...");
 
+db.panel.getAll().asCallback((err, list) => {
+    if (err) return console.log('error, see server console');
+    console.log(list);
+}
+
 console.log(db.panel.getAll());
 
 // Middlewares et configurations
