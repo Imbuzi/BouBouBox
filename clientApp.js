@@ -8,7 +8,7 @@ import MainVueComponent from './components/main.vue';
 document.addEventListener("DOMContentLoaded", function (event) {
 	const SocketIOInstance = SocketIO('http://box.boubou.io')
 
-	Vue.use(VueSocketIO, SocketIOInstance, store);
+	Vue.use(VueSocketIO, SocketIOInstance, Store);
 
 	const App = new Vue({
 		el: 'main',
