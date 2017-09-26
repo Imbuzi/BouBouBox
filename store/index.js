@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 //import * as getters from './getters'
 import sidebar from './modules/sidebar'
 import theme from './modules/theme'
+import panels from './modules/panels'
 
 Vue.use(Vuex);
 
