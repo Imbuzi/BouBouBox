@@ -11,6 +11,8 @@ const app = express();
 const server = http.createServer(app).listen(3000);
 console.log("Serveur HTTP en écoute ...");
 
+console.log(db.panel.getAll());
+
 // Middlewares et configurations
 //app.use(morgan('combined'));
 app.use(express.static(__dirname + '/public'))
