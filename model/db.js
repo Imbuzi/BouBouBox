@@ -4,10 +4,12 @@ const knex = require('knex')(config);
 
 console.log(config);
 
-function panel() {
+const db = {};
+
+db.panel = function() {
     return knex('panel');
 }
 
-db.panel.getAll = () => panel().select();
+db.panel.getAll = () => db.panel().select();
 
 module.exports = db;
