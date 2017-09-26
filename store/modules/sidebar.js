@@ -8,10 +8,8 @@ const state = {
 
 // Mutations
 const mutations = {
-    sidebar: {
-        toggle(state) {
-            state.sidebar.opened = !state.sidebar.opened;
-        }
+    toggleSidebar(state) {
+        state.sidebar.opened = !state.sidebar.opened;
     }
 }
 
