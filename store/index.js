@@ -10,8 +10,8 @@ Vue.use(Vuex);
 const dev = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
-    actions,
-    getters,
+    //actions,
+    //getters,
     modules: {
         sidebar,
         theme
