@@ -26,7 +26,7 @@
 </script>
 
 <style scoped>
-  body {
+  main {
     padding-top: 90px;
   }
 </style>
