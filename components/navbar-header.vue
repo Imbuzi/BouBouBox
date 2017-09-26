@@ -18,20 +18,20 @@
 
 <script>
 	export default {
-    computed: {
-      'sidebaropened': function() {
-        return this.$store.state.sidebar.opened;
-      },
-      'title': function() {
-        return this.$store.state.sidebar.title;
-      }
-    }
-    ,
-    methods: {
-      toggleMenu: function(event) {
-        this.$store.commit('toggleSidebar');
-      }
-    }
+        computed: {
+            'sidebaropened': function() {
+            return this.$store.state.sidebar.opened;
+            },
+            'title': function() {
+            return this.$store.state.sidebar.title;
+            }
+        }
+        ,
+        methods: {
+            toggleMenu: function(event) {
+            this.$store.commit('toggleSidebar');
+            }
+        }
 	}
 </script>
 
