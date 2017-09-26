@@ -29,10 +29,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && node dist/server.js",
-    "build-client": "browserify -t [ babelify --presets [ es2015 ] ] -t vueify clientApp.js -o ./public/js/app.js",
-    "build-server": "browserify -t [ babelify --presets [ es2015 ] ] server.js -o ./dist/server.js",
-    "build": "npm run build-client && npm run build-server"
+    "start": "npm run build && node server.js",
+    "build": "browserify -t [ babelify --presets [ es2015 ] ] -t vueify clientApp.js -o ./public/js/app.js"
   },
   "repository": {
     "type": "git",
