@@ -1,9 +1,7 @@
 // Initial state
 const state = {
-    sidebar: {
-        opened: false,
-        title: 'BouBouBox'
-    }
+    opened: false,
+    title: 'BouBouBox'
 }
 
 // Mutations

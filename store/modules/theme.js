@@ -1,8 +1,6 @@
 // Initial state
 const state = {
-    theme: {
-        color: 'blue'
-    }
+    color: 'blue'
 }
 
 export default {
