@@ -6,12 +6,6 @@ const state = {
     }
 }
 
-// Getters
-const getters = {}
-
-// Actions
-const actions = {}
-
 // Mutations
 const mutations = {
     sidebar: {
@@ -23,7 +17,5 @@ const mutations = {
 
 export default {
     state,
-    getters,
-    actions,
     mutations
 }
