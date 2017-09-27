@@ -27,8 +27,9 @@
             fetch('/panel', {
                 headers: { Accept: 'application/json' }
             }).then(function (res) {
-                console.log(res);
                 res.json();
+            }).then(function (res) {
+                console.log(res);
             }).catch(function (err) {
                 console.log(err);
             })
