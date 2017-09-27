@@ -19,7 +19,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
   .navbar-header .navbar-brand {
     margin-left: auto !important;
   }
