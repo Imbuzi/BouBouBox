@@ -24,12 +24,13 @@
             }
         },
         created: function () {
+            var vm = this;
             fetch('/panel', {
                 headers: { Accept: 'application/json' }
             }).then(function (res) {
                 return res.json();
             }).then(function (res) {
-                this.$store.commit('setPanelList', res);
+                vm.$store.commit('setPanelList', res);
             }).catch(function (err) {
                 console.log(err);
             })
