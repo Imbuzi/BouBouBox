@@ -24,7 +24,14 @@
             }
         },
         created: function () {
-            console.log("Main section created!");
+            fetch('/panel', {
+                headers: { Accept: 'application/json' }
+            }).then(function (res) {
+                console.log(res);
+                res.json();
+            }).catch(function (err) {
+                console.log(err);
+            })
         }
     }
 </script>
