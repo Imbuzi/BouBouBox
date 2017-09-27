@@ -1,29 +1,32 @@
 <template>
-  <body v-bind:class="'theme-' + color">
+  <main v-bind:class="'theme-' + color">
     <navbar></navbar>
+    <sidebar></sidebar>
     <main-section></main-section>
-  </body>
+  </main>
 </template>
 
 <script>
-  var NavBar = require('./navbar.vue');
-  var MainSection = require('./main-section.vue');
+  import NavBar from './navbar.vue';
+  import MainSection from './main-section.vue';
+  import SideBar from './sidebar.vue';
 
-  module.exports = {
-    data: function() {
-      return {
-      'color': 'blue'
+  export default {
+    computed: {
+      color: function() {
+        return this.$store.state.theme.color;
       }
     },
     components: {
       'navbar': NavBar,
-      'main-section': MainSection
+      'main-section': MainSection,
+      'sidebar': SideBar
     }
   }
 </script>
 
 <style scoped>
-  body {
+  main {
     padding-top: 90px;
   }
 </style>

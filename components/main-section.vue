@@ -1,26 +1,27 @@
 <template>
-  <section>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-12">
-          <widget-panel></widget-panel>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <widget-panel v-for="panel in panels" v-bind:key="panel.id" v-bind:panel-title="panel.name">
+                    </widget-panel>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </template>
 
 <script>
-  var WidgetPanel = require('./widget-panel.vue');
+    import WidgetPanel from './widget-panel.vue';
 
-  module.exports = {
-  data: function() {
-  return {
-  'color': 'blue'
-  }
-  },
-  components: {
-  'widget-panel': WidgetPanel
-  }
-  }
+    export default {
+        components: {
+            'widget-panel': WidgetPanel
+        },
+        computed: {
+            panels: function () {
+                return this.$store.state.panels.list
+            }
+        }
+    }
 </script>

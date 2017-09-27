@@ -3,6 +3,7 @@ const fs = require('fs');
 const express = require('express');
 const milight = require('node-milight-promise');
 const path = require('path');
+const db = require('./model/db.js');
 const morgan = require('morgan'); // Charge le middleware de logging
 const app = express();
 
@@ -16,7 +17,7 @@ app.use(express.static(__dirname + '/public'))
 
 // Routage Express
 app.get('/',function(req, res) {
-    res.sendFile('./app.html', {root: __dirname });
+    res.sendFile('./app.html', {root: __dirname});
 });
 
 app.get('/salon',function(req, res) {
@@ -27,7 +28,9 @@ app.get('/salon',function(req, res) {
 			var bridge = new milight.MilightController({
 				ip: element.ip,
 				type: element.type
-			});
+            });
+
+            console.log(bridge);
 			
 			var zone = 4;
 			const commands = milight.commandsV6;
@@ -72,8 +75,8 @@ app.get('/link/:bridge/:zone',function(req, res) {
 // Création du WS Socket.io
 const io = require('socket.io')(server);
 io.on('connection', function(socket) {
-	console.log(`User with id ${socket.id} connected`);
+    console.log(`User with id ${socket.id} connected`);
 	socket.on('disconnect', function() {
 		console.log(`User with id ${socket.id} disconnected`);
-	});
+    });
 });

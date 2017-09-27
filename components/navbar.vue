@@ -1,17 +1,18 @@
 <template>
     <nav class="navbar">
         <div class="container-fluid">
-            <navbar-header title="Titre de test"></navbar-header>
+            <navbar-header></navbar-header>
         </div>
     </nav>
 </template>
 
 <script>
-	var NavBarHeader = require('./navbar-header.vue');
+	import NavBarHeader from './navbar-header.vue';
 
-	module.exports = {
+	export default {
 		components: {
 			'navbar-header': NavBarHeader
-		}
+		},
+    methods: {}
 	}
 </script>
