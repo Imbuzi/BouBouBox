@@ -20,6 +20,7 @@ app.get('/',function(req, res) {
     res.sendFile('./app.html', {root: __dirname});
 });
 
+// API panels
 app.get('/panel', (req, res) => {
     db.panel.getAll().asCallback((err, list) => {
         if (err) return res.status(500).send('Error, see server console')

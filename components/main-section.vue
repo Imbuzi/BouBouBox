@@ -22,6 +22,9 @@
             panels: function () {
                 return this.$store.state.panels.list
             }
+        },
+        created: function () {
+            console.log("Main section created!");
         }
     }
 </script>
