@@ -29,7 +29,7 @@
             }).then(function (res) {
                 return res.json();
             }).then(function (res) {
-                console.log(res);
+                this.$store.commit('setPanelList', res);
             }).catch(function (err) {
                 console.log(err);
             })

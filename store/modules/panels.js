@@ -8,6 +8,13 @@ const state = {
     ]
 }
 
+const mutations = {
+    setPanelList(state, list) {
+        state.list = list;
+    }
+}
+
 export default {
-    state
+    state,
+    mutations
 }
