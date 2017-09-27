@@ -20,6 +20,13 @@ app.get('/',function(req, res) {
     res.sendFile('./app.html', {root: __dirname});
 });
 
+app.get('/panel', (req, res) => {
+    db.panel.getAll().asCallback((err, list) => {
+        if (err) return res.status(500).send('Error, see server console')
+        res.json(list)
+    })
+})
+
 app.get('/salon',function(req, res) {
 	milight.discoverBridges({
 		type: 'all'
