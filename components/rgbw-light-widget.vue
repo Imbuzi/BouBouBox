@@ -1,6 +1,6 @@
 <template>
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-        <div class="card align-center">
+        <div class="card">
             <div class="header">
                 <h2>{{roomName}}</h2>
                 <ul class="header-dropdown m-r--5">
