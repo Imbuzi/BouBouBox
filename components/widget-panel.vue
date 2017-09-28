@@ -44,7 +44,12 @@
 </script>
 
 <style scoped>
-    .card .container-fluid .row div:not(:last-child) {
-        border-right: 1px solid black;
+    .card .container-fluid .row div:not(:nth-child(4n)):not(:last-child) {
+        border-right: 1px solid #9E9E9E;
+    }
+
+    .card {
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 </style>
