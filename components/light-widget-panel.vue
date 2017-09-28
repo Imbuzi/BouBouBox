@@ -25,7 +25,7 @@
     export default {
         props: ['panel-title'],
         computed: {
-            panels: function () {
+            rooms: function () {
                 return this.$store.state.rooms.list
             }
         },
