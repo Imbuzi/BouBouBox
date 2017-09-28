@@ -1,13 +1,19 @@
 <template>
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 main-widget-container">
         <div>
-            WIDGET
+            <color-wheel></color-wheel>
         </div>
     </div>
 </template>
 
 <script>
-    export default {}
+    import ColorWheel from './color-wheel.vue';
+
+    export default {
+        components: {
+            'color-wheel': ColorWheel
+        }
+    }
 </script>
 
 <style scoped>
