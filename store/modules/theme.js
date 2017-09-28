@@ -1,6 +1,6 @@
 // Initial state
 const state = {
-    color: 'blue'
+    color: 'blue-grey'
 }
 
 export default {
