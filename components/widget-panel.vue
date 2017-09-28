@@ -62,14 +62,3 @@
         }
     }
 </script>
-
-<style scoped>
-    widget:not(:nth-of-type(4n)):not(:last-of-type) {
-        border-right: 1px solid #9E9E9E;
-    }
-
-    widget {
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-</style>
