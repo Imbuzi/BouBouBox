@@ -1,8 +1,7 @@
 <template>
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 main-widget-container">
-        <div>
-            <color-wheel></color-wheel>
-        </div>
+        <span class="widget-title">Nom du widget</span>
+        <color-wheel></color-wheel>
     </div>
 </template>
 
@@ -24,5 +23,10 @@
     .main-widget-container {
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+
+    .widget-title {
+        text-align: center;
+        font-size: 16px;
     }
 </style>
