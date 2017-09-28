@@ -15,6 +15,23 @@
 
 <script>
   export default {
-    props: ['panel-title']
+        props: ['panel-title'],
+        computed: {
+            panels: function () {
+                return this.$store.state.rooms.list
+            }
+        },
+        created: function () {
+            var vm = this;
+            fetch('/room', {
+                headers: { Accept: 'application/json' }
+            }).then(function (res) {
+                return res.json();
+            }).then(function (res) {
+                vm.$store.commit('setRoomList', res);
+            }).catch(function (err) {
+                console.log(err);
+            })
+        }
   }
 </script>

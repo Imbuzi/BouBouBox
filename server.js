@@ -28,6 +28,14 @@ app.get('/panel', (req, res) => {
     })
 })
 
+// API room
+app.get('/room', (req, res) => {
+    db.room.getAll().asCallback((err, list) => {
+        if (err) return res.status(500).send('Error, see server console')
+        res.json(list)
+    })
+})
+
 app.get('/salon',function(req, res) {
 	milight.discoverBridges({
 		type: 'all'

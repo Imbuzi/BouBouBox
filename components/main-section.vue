@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12">
-                    <widget-panel v-for="panel in panels" v-bind:key="panel.id" v-bind:panel-title="panel.name">
+                    <widget-panel v-for="panel in panels" v-bind:key="panel.id" v-bind:panel-title="panel.name" v-bind:panel-type="panel.type">
                     </widget-panel>
                 </div>
             </div>

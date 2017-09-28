@@ -1,10 +1,10 @@
 // Initial state
 const state = {
-    list: [/* {id, name, type} */]
+    list: [/* {id, name, router, zone} */]
 }
 
 const mutations = {
-    setPanelList(state, list) {
+    setRoomList(state, list) {
         state.list = list;
     }
 }

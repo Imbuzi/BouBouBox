@@ -12,4 +12,10 @@ db.panel = function() {
 
 db.panel.getAll = () => db.panel().select();
 
+db.room = function () {
+    return knex('room');
+}
+
+db.room.getAll = () => db.room().select();
+
 module.exports = db;
