@@ -21,9 +21,7 @@
 
 <style scoped>
     svg {
-        width: 70%;
-        margin-left: 15%;
-        margin-right: 15%;
+        width: 100%;
         height: auto;
     }
 </style>
