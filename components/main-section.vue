@@ -3,8 +3,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12">
-                    <widget-panel v-for="panel in panels" v-bind:key="panel.id" v-bind:panel-title="panel.name" v-bind:panel-type="panel.type">
-                    </widget-panel>
+                    <light-widget-panel v-for="panel in panels" v-bind:key="panel.id" v-bind:panel-title="panel.name">
+                    </light-widget-panel>
                 </div>
             </div>
         </div>
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-    import WidgetPanel from './widget-panel.vue';
+    import LightWidgetPanel from './light-widget-panel.vue';
 
     export default {
         components: {
-            'widget-panel': WidgetPanel
+            'light-widget-panel': LightWidgetPanel
         },
         computed: {
             panels: function () {

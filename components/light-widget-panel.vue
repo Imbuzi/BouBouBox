@@ -9,23 +9,7 @@
                     <div class="card">
                         <div class="container-fluid">
                             <div class="row">
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
-                                <widget></widget>
+                                <rgb-light-widget v-for="room in rooms" v-bind:key="room.id" v-bind:room-name="room.name"></rgb-light-widget>
                             </div>
                         </div>
                     </div>
@@ -36,7 +20,7 @@
 </template>
 
 <script>
-    import Widget from './widget.vue';
+    import RGBLightWidget from './rgb-light-widget.vue';
 
     export default {
         props: ['panel-title'],
@@ -46,7 +30,7 @@
             }
         },
         components: {
-            'widget': Widget
+            'rgb-light-widget': RGBLightWidget
         },
         created: function () {
             var vm = this;
