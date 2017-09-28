@@ -5,19 +5,11 @@
                 <h2>{{panelTitle}}</h2>
             </div>
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="card">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <template v-for="room in rooms">
-                                    <template v-if="room.type ==='rgbw'">
-                                        <rgbw-light-widget v-bind:key="room.id" v-bind:room-name="room.name"></rgbw-light-widget>
-                                    </template>
-                                </template>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <template v-for="room in rooms">
+                    <template v-if="room.type ==='rgbw'">
+                        <rgbw-light-widget v-bind:key="room.id" v-bind:room-name="room.name"></rgbw-light-widget>
+                    </template>
+                </template>
             </div>
         </div>
     </article>
