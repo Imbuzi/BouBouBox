@@ -10,6 +10,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                    <widget></widget>
                                 </div>
                             </div>
                         </div>
@@ -21,12 +22,17 @@
 </template>
 
 <script>
+    import Widget from './widget.vue';
+
     export default {
         props: ['panel-title'],
         computed: {
             panels: function () {
                 return this.$store.state.rooms.list
             }
+        },
+        components: {
+            'widget': Widget
         },
         created: function () {
             var vm = this;
@@ -46,10 +52,5 @@
 <style scoped>
     .card .container-fluid .row div:not(:nth-child(4n)):not(:last-child) {
         border-right: 1px solid #9E9E9E;
-    }
-
-    .card {
-        padding-top: 20px;
-        padding-bottom: 20px;
     }
 </style>
