@@ -25,6 +25,8 @@
             'color-wheel': ColorWheel,
         },
         mounted: function () {
+            console.log(this.$refs);
+
             this.$refs.style.height = "250px";
 
             noUiSlider.create(this.$refs.slider, {
