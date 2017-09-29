@@ -8,11 +8,6 @@
                         <color-wheel></color-wheel>
                     </div>
                     <div class="intensity-selector-container">
-                        <nouislider :show-tooltips="false"
-                                    :slider-low-limit="0"
-                                    :slider-end-value.sync="endValue"
-                                    :slider-high-limit="10"
-                                    :slider-step="1"></nouislider>
                     </div>
                 </div>
             </div>
@@ -22,13 +17,11 @@
 
 <script>
     import ColorWheel from './color-wheel.vue';
-    import NoUiSlider from './nouislider.vue';
 
     export default {
         props: ['room-name'],
         components: {
             'color-wheel': ColorWheel,
-            'nouislider': NoUiSlider
         }
     }
 </script>
