@@ -154,7 +154,7 @@
                     let tipHandles = this.$el.querySelectorAll('.noUi-handle:last-of-type');
 
                     if (tipHandles.length) {
-                        tipHandles.append('<div id="js-price-slider-tooltip" class="tooltip"></div>');
+                        tipHandles.innerHTML += '<div id="js-price-slider-tooltip" class="tooltip"></div>';
                     }
 
                     // hide for empty field
