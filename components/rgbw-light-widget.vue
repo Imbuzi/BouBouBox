@@ -8,7 +8,7 @@
                         <color-wheel></color-wheel>
                     </div>
                     <div class="intensity-selector-container">
-                        <div class="sliders"></div>
+                        <slider></slider>
                     </div>
                 </div>
             </div>
@@ -18,11 +18,13 @@
 
 <script>
     import ColorWheel from './color-wheel.vue';
+    import Slider from 'vue-nouislider-component';
 
     export default {
         props: ['room-name'],
         components: {
-            'color-wheel': ColorWheel
+            'color-wheel': ColorWheel,
+            'slider': Slider
         }
     }
 </script>
