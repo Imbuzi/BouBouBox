@@ -2598,7 +2598,7 @@ section.content {
   position: relative;
   z-index: 1; }
 
-.noUi-origin {
+.noUi-horizontal .noUi-origin {
   position: absolute;
   right: 0;
   top: 6px;
