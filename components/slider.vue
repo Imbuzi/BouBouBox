@@ -5,7 +5,7 @@
 
 <script>
     export default {
-        mounted: function() {
+        created: function() {
             var noUiSlider = require('nouislider');
             var slider = document.querySelector('.slider');
 
