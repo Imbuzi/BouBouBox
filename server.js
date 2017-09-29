@@ -90,6 +90,9 @@ app.get('/link/:bridge/:zone',function(req, res) {
 const io = require('socket.io')(server);
 io.on('connection', function(socket) {
     console.log(`User with id ${socket.id} connected`);
+    socket.on('setLightIntensity', function (data) {
+        console.log(data);
+    });
 	socket.on('disconnect', function() {
 		console.log(`User with id ${socket.id} disconnected`);
     });

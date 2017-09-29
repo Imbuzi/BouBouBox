@@ -22,7 +22,9 @@
         props: ['panel-title'],
         methods: {
             valueSet: function (value) {
-                this.$socket.emit('setLightIntensity', )
+                this.$socket.emit('setLightIntensity', {
+                    value: value
+                });
             }
         },
         computed: {
