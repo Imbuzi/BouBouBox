@@ -2731,11 +2731,12 @@ section.content {
 .noUi-horizontal {
   height: 3px; }
 
-.noUi-connect {
-  height: 3px;
-  top: 6px;
-  background-color: #26A69A;
-  box-shadow: none; }
+    .noUi-horizontal .noUi-connect {
+        height: 3px;
+        top: 6px;
+        background-color: #26A69A;
+        box-shadow: none;
+    }
 
 .noUi-horizontal .noUi-handle {
   width: 15px;

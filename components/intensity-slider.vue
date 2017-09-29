@@ -31,10 +31,10 @@
     }
 
     .noUi-handle {
-        width: 15px;
-        height: 15px;
-        border-radius: 100%;
-        left: -5px;
-        top: -9px;
+        width: 15px !important;
+        height: 15px !important;
+        border-radius: 100% !important;
+        left: -5px !important;
+        top: -9px !important;
     }
 </style>
