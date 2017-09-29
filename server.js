@@ -40,18 +40,14 @@ app.get('/test', function (req, res) {
     milight.discoverBridges({
         type: 'all'
     }).then(function (results) {
-        results.forEach(function (element) {
-            var bridge = new milight.MilightController({
-                ip: element.ip,
-                type: element.type
-            });
+        let result = results.filter(function (element) {
+            return element.mac = 'F0:FE:6B:1E:36:70';
+        }).first();
 
-            console.log(element);
-            console.log(bridge);
-
-            res.send("Ended");
-        });
+        console.log(result);
     });
+
+    res.send("Ended");
 });
 
 app.get('/salon',function(req, res) {
