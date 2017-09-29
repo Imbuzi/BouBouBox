@@ -8,7 +8,7 @@
                         <color-wheel></color-wheel>
                     </div>
                     <div class="intensity-selector-container">
-                        <div ref="slider"></div>
+                        <intensity-slider></intensity-slider>
                     </div>
                 </div>
             </div>
@@ -18,27 +18,13 @@
 
 <script>
     import ColorWheel from './color-wheel.vue';
+    import IntensitySlider from './intensity-slider.vue';
 
     export default {
         props: ['room-name'],
         components: {
             'color-wheel': ColorWheel,
-        },
-        mounted: function () {
-            this.$refs.slider.style.height = "250px";
-
-            noUiSlider.create(this.$refs.slider, {
-                animate: true,
-                animationDuration: 300,
-                start: [5],
-                tooltips: true,
-                orientation: 'vertical',
-                step: 1,
-                range: {
-                    'min': 5,
-                    'max': 100
-                }
-            });
+            'intensity-slider': IntensitySlider
         }
     }
 </script>
