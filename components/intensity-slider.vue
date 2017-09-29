@@ -36,5 +36,6 @@
         border-radius: 100% !important;
         left: -5px !important;
         top: -9px !important;
+        outline: none;
     }
 </style>
