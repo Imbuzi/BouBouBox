@@ -21,7 +21,7 @@
                 }
             });
 
-            noUiSlider.on('update', function (values, handle) {
+            this.$refs.slider.noUiSlider.on('update', function (values, handle) {
                 console.log(values[0]);
             });
         }
