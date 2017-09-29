@@ -6,7 +6,6 @@
     export default {
         mounted: function () {
             this.$refs.slider.style.height = "100%";
-
             noUiSlider.create(this.$refs.slider, {
                 animate: true,
                 animationDuration: 300,
@@ -20,6 +19,10 @@
                     'min': 5,
                     'max': 100
                 }
+            });
+
+            noUiSlider.on('update', function (values, handle) {
+                console.log(values[0]);
             });
         }
     }
