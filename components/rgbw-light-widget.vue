@@ -18,7 +18,7 @@
 
 <script>
     import ColorWheel from './color-wheel.vue';
-    import Slider from 'vue-nouislider-component';
+    import Slider from './slider.vue';
 
     export default {
         props: ['room-name'],
