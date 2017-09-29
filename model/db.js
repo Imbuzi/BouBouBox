@@ -18,4 +18,10 @@ db.room = function () {
 
 db.room.getAll = () => db.room().select();
 
+db.bridge = function () {
+    return knex('bridge');
+}
+
+db.bridge.getAll = () => db.bridge().select();
+
 module.exports = db;

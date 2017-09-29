@@ -36,6 +36,14 @@ app.get('/room', (req, res) => {
     })
 })
 
+// API bridge
+app.get('/bridge', (req, res) => {
+    db.bridge.getAll().asCallback((err, list) => {
+        if (err) return res.status(500).send('Error, see server console')
+        res.json(list)
+    })
+})
+
 app.get('/test', function (req, res) {
     milight.discoverBridges({
         type: 'all'

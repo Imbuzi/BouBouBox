@@ -37,15 +37,36 @@
         },
         created: function () {
             var vm = this;
+
             fetch('/room', {
                 headers: { Accept: 'application/json' }
             }).then(function (res) {
                 return res.json();
             }).then(function (res) {
+                let bridges = [];
+                fetch('/bridge', {
+                    headers: { Accept: 'application/json' }
+                }).then(function (res) {
+                    return res.json();
+                }).then(function (res) {
+                    bridges = res;
+                }).catch(function (err) {
+                    console.log(err);
+                });
+
+                res.forEach(function (currRoom) {
+                    let bridge = bridges.filter(function (element) {
+                        return element.id = currRoom.router;
+                    })[0];
+                    currRoom.router = bridge;
+                });
+
+                return res;
+            }).then(function (res) {
                 vm.$store.commit('setRoomList', res);
             }).catch(function (err) {
                 console.log(err);
-            })
+            });
         }
     }
 </script>
