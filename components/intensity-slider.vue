@@ -37,5 +37,11 @@
         left: -5px !important;
         top: -9px !important;
         outline: none;
+        border: none !important;
+        background: #3FB8AF !important;
+    }
+
+    .noUi-handle:not(.noUi-active) {
+        box-shadow: none !important;
     }
 </style>
