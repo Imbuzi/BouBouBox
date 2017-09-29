@@ -10,7 +10,7 @@
             noUiSlider.create(this.$refs.slider, {
                 animate: true,
                 animationDuration: 300,
-                connect: true,
+                connect: [true, false],
                 start: [5],
                 tooltips: false,
                 direction: 'rtl',
