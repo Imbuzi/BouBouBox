@@ -46,6 +46,7 @@ app.get('/test', function (req, res) {
                 type: element.type
             });
 
+            console.log(element);
             console.log(bridge);
 
             res.send("Ended");
