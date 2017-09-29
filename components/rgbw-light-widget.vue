@@ -5,7 +5,7 @@
                 <div class="font-bold uppercase widget-header">{{roomName}}<div class="pull-right widget-button"><a href="#"><i class="material-icons">more_vert</i></a></div></div>
                 <div class="align-center">
                     <div class="light-selectors-container container-fluid">
-                        <div class="row">
+                        <div class="row flex-content">
                             <div class="intensity-selector-container col-xs-2">
                                 <intensity-slider></intensity-slider>
                             </div>
@@ -34,6 +34,10 @@
 </script>
 
 <style scoped>
+    .flex-content {
+        display: flex;
+    }
+
     .color-wheel-container {
         width: 100%;
     }
