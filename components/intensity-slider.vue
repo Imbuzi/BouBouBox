@@ -22,12 +22,14 @@
             });
 
             let timeout = null;
+            let vm = this;
+
             this.$refs.slider.noUiSlider.on('update', function (values, handle) {
                 (function (value) {
                     clearTimeout(timeout);
                     timeout = setTimeout(
                         function () {
-                            this.$emit('valueSet', value);
+                            vm.$emit('valueSet', value);
                         },
                         250
                     );
