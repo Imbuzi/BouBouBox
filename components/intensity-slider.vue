@@ -11,7 +11,7 @@
                 animate: true,
                 animationDuration: 300,
                 start: [5],
-                tooltips: true,
+                tooltips: false,
                 direction: 'rtl',
                 orientation: 'vertical',
                 step: 1,
