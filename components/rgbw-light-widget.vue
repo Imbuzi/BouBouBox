@@ -22,8 +22,7 @@
 
 <script>
     import ColorWheel from './color-wheel.vue';
-
-    const NoUiSlider = require('vue-nouislider-component');
+    import NoUiSlider from './nouislider.vue';
 
     export default {
         props: ['room-name'],
