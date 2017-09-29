@@ -42,7 +42,7 @@ app.get('/test', function (req, res) {
     }).then(function (results) {
         let result = results.filter(function (element) {
             return element.mac = 'F0:FE:6B:1E:36:70';
-        }).first();
+        })[0];
 
         console.log(result);
     });
