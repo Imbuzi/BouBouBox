@@ -12,7 +12,7 @@
                 animationDuration: 300,
                 start: [5],
                 tooltips: true,
-                direction: 'rtl',
+                direction: 'ltr',
                 orientation: 'vertical',
                 step: 1,
                 range: {
