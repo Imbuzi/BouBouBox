@@ -8,6 +8,7 @@
                         <color-wheel></color-wheel>
                     </div>
                     <div class="intensity-selector-container">
+                        <div class="slider"></div>
                     </div>
                 </div>
             </div>
