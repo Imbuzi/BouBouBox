@@ -36,6 +36,21 @@ app.get('/room', (req, res) => {
     })
 })
 
+app.get('/test', function (req, res) {
+    milight.discoverBridges({
+        type: 'all'
+    }).then(function (results) {
+        results.forEach(function (element) {
+            var bridge = new milight.MilightController({
+                ip: element.ip,
+                type: element.type
+            });
+
+            console.log(bridge);
+        });
+    });
+});
+
 app.get('/salon',function(req, res) {
 	milight.discoverBridges({
 		type: 'all'
