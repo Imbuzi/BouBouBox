@@ -21,8 +21,17 @@
                 }
             });
 
+            let timeout = null;
             this.$refs.slider.noUiSlider.on('update', function (values, handle) {
-                console.log(values[0]);
+                (function (value) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(
+                        function () {
+                            console.log(value);
+                        },
+                        250
+                    );
+                })(values[0]);
             });
         }
     }
