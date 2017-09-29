@@ -80,9 +80,9 @@ app.get('/link/:bridge/:zone',function(req, res) {
 		bridge.pause(5000);
 		bridge.sendCommands(commands.rgbw.on(zone), commands.rgbw.whiteMode(zone), commands.rgbw.brightness(zone, 100));
 		bridge.pause(1000);
-		bridge.close().then(function () {
-			res.send("Command executed, closing bridge.");
-		});
+        bridge.close().then(function () {
+            res.send("Command executed, closing bridge.");
+        });
 	});
 });
 
@@ -91,6 +91,7 @@ const io = require('socket.io')(server);
 io.on('connection', function(socket) {
     console.log(`User with id ${socket.id} connected`);
     socket.on('setLightIntensity', function (data) {
+        // Need to be improved
         console.log(data);
     });
 	socket.on('disconnect', function() {
