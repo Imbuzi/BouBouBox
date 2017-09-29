@@ -4,11 +4,13 @@
             <div class="body">
                 <div class="font-bold uppercase widget-header">{{roomName}}<div class="pull-right widget-button"><a href="#"><i class="material-icons">more_vert</i></a></div></div>
                 <div class="align-center">
-                    <div class="color-wheel-container">
-                        <color-wheel></color-wheel>
-                    </div>
-                    <div class="intensity-selector-container">
-                        <intensity-slider></intensity-slider>
+                    <div class="light-selectors-container">
+                        <div class="intensity-selector-container">
+                            <intensity-slider></intensity-slider>
+                        </div>
+                        <div class="color-wheel-container">
+                            <color-wheel></color-wheel>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -32,7 +34,11 @@
 <style scoped>
     .color-wheel-container {
         width: 50%;
-        margin: auto;
+    }
+
+    .intensity-selector-container {
+        width: 50%;
+        height: 100%;
     }
 
     .widget-button a i {
