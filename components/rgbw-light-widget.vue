@@ -7,7 +7,7 @@
                     <div class="light-selectors-container container-fluid">
                         <div class="row flex-content">
                             <div class="col-xs-2">
-                                <intensity-slider v-on:value-set="valueSet"></intensity-slider>
+                                <intensity-slider v-on:value="valueSet"></intensity-slider>
                             </div>
                             <div class="col-xs-8">
                                 <color-wheel></color-wheel>

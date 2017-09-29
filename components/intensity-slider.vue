@@ -29,7 +29,7 @@
                     clearTimeout(timeout);
                     timeout = setTimeout(
                         function () {
-                            vm.$emit('valueSet', value);
+                            vm.$emit('value', value);
                         },
                         250
                     );
