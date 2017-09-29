@@ -27,7 +27,7 @@
                     clearTimeout(timeout);
                     timeout = setTimeout(
                         function () {
-                            console.log(value);
+                            this.$emit('valueSet', value);
                         },
                         250
                     );

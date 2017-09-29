@@ -7,7 +7,7 @@
                     <div class="light-selectors-container container-fluid">
                         <div class="row flex-content">
                             <div class="col-xs-2">
-                                <intensity-slider></intensity-slider>
+                                <intensity-slider v-on:value-set="valueSet"></intensity-slider>
                             </div>
                             <div class="col-xs-8">
                                 <color-wheel></color-wheel>
@@ -26,6 +26,11 @@
 
     export default {
         props: ['room-name'],
+        methods: {
+            valueSet: function (value) {
+                console.log(value);
+            }
+        },
         components: {
             'color-wheel': ColorWheel,
             'intensity-slider': IntensitySlider
