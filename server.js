@@ -45,8 +45,6 @@ app.get('/salon',function(req, res) {
 				ip: element.ip,
 				type: element.type
             });
-
-            console.log(bridge);
 			
 			var zone = 4;
 			const commands = milight.commandsV6;
