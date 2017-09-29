@@ -55,6 +55,7 @@
                 });
 
                 res.forEach(function (currRoom) {
+                    console.log(bridges);
                     let bridge = bridges.filter(function (element) {
                         return element.id = currRoom.router;
                     })[0];
