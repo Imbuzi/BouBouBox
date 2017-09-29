@@ -32,6 +32,7 @@
                 animationDuration: 300,
                 start: [5],
                 tooltips: true,
+                orientation: 'vertical',
                 step: 1,
                 range: {
                     'min': 5,
