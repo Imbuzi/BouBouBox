@@ -8,7 +8,7 @@
                         <color-wheel></color-wheel>
                     </div>
                     <div class="intensity-selector-container">
-                        <div class="slider"></div>
+                        <div ref="slider"></div>
                     </div>
                 </div>
             </div>
@@ -23,6 +23,21 @@
         props: ['room-name'],
         components: {
             'color-wheel': ColorWheel,
+        },
+        mounted: function () {
+            this.$refs.style.height = "250px";
+
+            noUiSlider.create(this.$refs.slider, {
+                animate: true,
+                animationDuration: 300,
+                start: [5],
+                tooltips: true,
+                step: 1,
+                range: {
+                    'min': 5,
+                    'max': 100
+                }
+            });
         }
     }
 </script>
