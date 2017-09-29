@@ -47,6 +47,8 @@ app.get('/test', function (req, res) {
             });
 
             console.log(bridge);
+
+            res.send("Ended");
         });
     });
 });
