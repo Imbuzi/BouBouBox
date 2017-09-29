@@ -55,7 +55,7 @@
             }
         },
 
-        ready() {
+        mounted: function() {
             this.slider = document.getElementById(this.sliderId);
 
             let range = {};
@@ -105,7 +105,7 @@
             this.updateSlider();
         },
         methods: {
-            /*updateSlider() {
+            updateSlider() {
                 if (!this.isInnerChange) {
                     this.isInnerChange = true;
 
@@ -163,7 +163,7 @@
                         let tipHandles = this.$el.querySelector('.noUi-handle:last').style.display = 'none';;
                     }
 
-                    Vue.nextTick(() => {
+                    this.$nextTick(() => {
                         this.isInnerChange = false;
                     });
                 }
@@ -174,33 +174,29 @@
                 ) {
                     // range
                     if (this.sliderStartValue) {
-                        $(this.$el).parent().addClass('priceRange');
+                        this.$el.parentElement.classList.add('priceRange');
 
                         if (
                             typeof this.sliderRangeTooltip != 'undefined'
                             && this.sliderRangeTooltip
                         ) {
-                            $("#js-price-slider-tooltip", this.$el).html(
-                                this.sliderRangeTooltip
-                            );
+                            this.$el.querySelector("#js-price-slider-tooltip").innerHTML = this.sliderRangeTooltip;
                         }
                     }
 
                     // single
                     else {
-                        $(this.$el).parent().removeClass('priceRange');
+                        this.$el.parentElement.classList.remove("priceRange");
 
                         if (
                             typeof this.sliderSingleTooltip != 'undefined'
                             && this.sliderSingleTooltip
                         ) {
-                            $("#js-price-slider-tooltip", this.$el).html(
-                                this.sliderSingleTooltip
-                            );
+                            this.$el.querySelector("#js-price-slider-tooltip").innerHTML = this.sliderRangeTooltip;
                         }
                     }
                 }
-            },*/
+            },
 
             onSliderUpdate(values, handle) {
                 if (!this.isInnerChange) {
