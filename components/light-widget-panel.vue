@@ -46,7 +46,7 @@
                 fetch('/bridge', {
                     headers: { Accept: 'application/json' }
                 }).then(function (resBridge) {
-                    return res.json();
+                    return resBridge.json();
                 }).then(function (resBridge) {
                     res.forEach(function (currRoom) {
                         var bridge = resBridge.filter(function (element) {
