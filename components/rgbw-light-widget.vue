@@ -2,10 +2,13 @@
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="card">
             <div class="body">
-                <div class="font-bold uppercase">{{roomName}}<div class="pull-right widget-button"><a href="#"><i class="material-icons">more_vert</i></a></div></div>
+                <div class="font-bold uppercase widget-header">{{roomName}}<div class="pull-right widget-button"><a href="#"><i class="material-icons">more_vert</i></a></div></div>
                 <div class="align-center">
                     <div class="color-wheel-container">
                         <color-wheel></color-wheel>
+                    </div>
+                    <div class="intensity-selector-container">
+                        <div class="sliders"></div>
                     </div>
                 </div>
             </div>
@@ -34,6 +37,10 @@
         font-size: 20px;
         margin-top: -2px;
         color: #555;
+    }
+
+    .widget-header {
+        margin-bottom: 15px;
     }
 
     .uppercase {
