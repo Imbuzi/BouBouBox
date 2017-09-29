@@ -151,7 +151,7 @@
 
                     // tooltips
                     //let tipHandles = $('.noUi-handle:last', this.$el);
-                    let tipHandles = this.$el.querySelector('.noUi-handle:last');
+                    let tipHandles = this.$el.querySelector('.noUi-handle:last-of-type');
 
                     if (tipHandles.size()) {
                         tipHandles.append('<div id="js-price-slider-tooltip" class="tooltip"></div>');
@@ -160,7 +160,7 @@
                     // hide for empty field
                     if (!this.sliderEndValue) {
                         //$('.noUi-handle', this.$el).hide();
-                        let tipHandles = this.$el.querySelector('.noUi-handle:last').style.display = 'none';;
+                        let tipHandles = this.$el.querySelector('.noUi-handle:last-of-type').style.display = 'none';;
                     }
 
                     this.$nextTick(() => {
