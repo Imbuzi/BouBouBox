@@ -2719,7 +2719,7 @@ section.content {
   box-shadow: none;
   border: none; }
 
-.noUi-vertical .noUi-base {
+.noUi-horizontal .noUi-base {
     height: 15px;
     top: -6px;
 }
