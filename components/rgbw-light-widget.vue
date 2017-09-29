@@ -6,10 +6,10 @@
                 <div class="align-center">
                     <div class="light-selectors-container container-fluid">
                         <div class="row flex-content">
-                            <div class="intensity-selector-container col-xs-2">
+                            <div class="col-xs-2">
                                 <intensity-slider></intensity-slider>
                             </div>
-                            <div class="color-wheel-container col-xs-8">
+                            <div class="col-xs-8">
                                 <color-wheel></color-wheel>
                             </div>
                         </div>
@@ -36,14 +36,6 @@
 <style scoped>
     .flex-content {
         display: flex;
-    }
-
-    .color-wheel-container {
-        width: 100%;
-    }
-
-    .intensity-selector-container {
-        width: 100%;
     }
 
     .widget-button a i {
