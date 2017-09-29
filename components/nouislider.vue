@@ -215,7 +215,7 @@
                     }
                 }
 
-                Vue.nextTick(() => {
+                this.$nextTick(() => {
                     this.isInnerChange = false;
                 });
             },
