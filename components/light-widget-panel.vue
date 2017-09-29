@@ -21,7 +21,7 @@
     export default {
         props: ['panel-title'],
         methods: {
-            valueSet: function (value) {
+            intensitySet: function (value) {
                 this.$socket.emit('setLightIntensity', {
                     value: value
                 });
