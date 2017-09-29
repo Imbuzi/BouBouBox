@@ -44,4 +44,88 @@
     .noUi-handle:not(.noUi-active) {
         box-shadow: none !important;
     }
+
+    .theme-red .noUi-handle {
+        background-color: #F44336;
+    }
+
+    .theme-pink .noUi-handle {
+        background-color: #E91E63;
+    }
+
+    .theme-purple .noUi-handle {
+        background-color: #9C27B0;
+    }
+
+    .theme-deep-purple .noUi-handle {
+        background-color: #673AB7;
+    }
+
+    .theme-indigo .noUi-handle {
+        background-color: #3F51B5;
+    }
+
+    .theme-blue .noUi-handle {
+        background-color: #2196F3;
+    }
+
+    .theme-light-blue .noUi-handle {
+        background-color: #03A9F4;
+    }
+
+    .theme-cyan .noUi-handle {
+        background-color: #00BCD4;
+    }
+
+    .theme-teal .noUi-handle {
+        background-color: #009688;
+    }
+
+    .theme-green .noUi-handle {
+        background-color: #4CAF50;
+    }
+
+    .theme-light-green .noUi-handle {
+        background-color: #8BC34A;
+    }
+
+    .theme-lime .noUi-handle {
+        background-color: #CDDC39;
+    }
+
+    .theme-yellow .noUi-handle {
+        background-color: #FFEB3B;
+    }
+
+    .theme-amber .noUi-handle {
+        background-color: #FFC107;
+    }
+
+    .theme-orange .noUi-handle {
+        background-color: #FF9800;
+    }
+
+    .theme-orange .noUi-handle {
+        background-color: #FF9800;
+    }
+
+    .theme-deep-orange .noUi-handle {
+        background-color: #FF5722;
+    }
+
+    .theme-brown .noUi-handle {
+        background-color: #795548;
+    }
+
+    .theme-grey .noUi-handle {
+        background-color: #9E9E9E;
+    }
+
+    .theme-blue-grey .noUi-handle {
+        background-color: #607D8B;
+    }
+
+    .theme-black .noUi-handle {
+        background-color: #000;
+    }
 </style>
