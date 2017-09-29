@@ -22,6 +22,7 @@
 
 <script>
     import ColorWheel from './color-wheel.vue';
+    import Vue from 'vue';
     import NoUiSlider from 'vue-nouislider-component';
 
     export default {
