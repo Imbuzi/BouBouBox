@@ -25,7 +25,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .noUi-target {
         width: 5px;
     }
