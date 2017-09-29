@@ -6,11 +6,11 @@
 </template>
 
 <script>
-  export default {
-    computed: {
-      opened: function() {
-        return this.$store.state.sidebar.opened
-      }
+    export default {
+        computed: {
+            opened: function() {
+                return this.$store.state.sidebar.opened
+            }
+        }
     }
-  }
 </script>
