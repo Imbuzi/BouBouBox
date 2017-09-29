@@ -7,7 +7,7 @@
             <div class="row">
                 <template v-for="room in rooms">
                     <template v-if="room.type ==='rgbw'">
-                        <rgbw-light-widget v-bind:key="room.id" v-bind:room-name="room.name"></rgbw-light-widget>
+                        <rgbw-light-widget v-on:intensity="intensitySet" v-bind:key="room.id" v-bind:room-name="room.name"></rgbw-light-widget>
                     </template>
                 </template>
             </div>
@@ -20,6 +20,11 @@
 
     export default {
         props: ['panel-title'],
+        methods: {
+            valueSet: function (value) {
+                this.$socket.emit('setLightIntensity', )
+            }
+        },
         computed: {
             rooms: function () {
                 return this.$store.state.rooms.list
