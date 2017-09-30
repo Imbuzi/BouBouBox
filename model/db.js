@@ -12,7 +12,7 @@ const db = {
 
 db.panel.getAll = () => knex.select().from('panel');
 
-db.room.getAll = () => knex.select('room.id','room.name','room.zone','room.type','bridge.mac','bridge.name').from('room').innerJoin('bridge', 'room.router', 'bridge.id');
+db.room.getAll = () => knex.select('room.id as id','room.name as name','room.zone as zone','room.type as type','bridge.mac as router_mac','bridge.name as router_name').from('room').innerJoin('bridge', 'room.router', 'bridge.id');
 
 db.bridge.getAll = () => knex.select().from('bridge');
 
