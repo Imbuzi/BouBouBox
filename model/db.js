@@ -12,8 +12,6 @@ const db = {
 
 db.panel.getAll = () => knex.select().from('panel');
 
-db.room.getAll = () => knex.from('room').innerJoin('bridge', 'room.router', 'bridge.id').select('room.id as id', 'room.name as name', 'room.zone as zone', 'room.type as type', 'bridge.mac as router_mac', 'bridge.name as router_name');
-
 db.room.getAll = function () {
     return knex
         .from('room')
@@ -32,7 +30,5 @@ db.room.getAll = function () {
             return result;
         });
 }
-
-db.bridge.getAll = () => knex.select().from('bridge');
 
 module.exports = db;

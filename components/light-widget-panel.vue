@@ -43,23 +43,6 @@
             }).then(function (res) {
                 return res.json();
             }).then(function (res) {
-                fetch('/bridge', {
-                    headers: { Accept: 'application/json' }
-                }).then(function (resBridge) {
-                    return resBridge.json();
-                }).then(function (resBridge) {
-                    res.forEach(function (currRoom) {
-                        var bridge = resBridge.filter(function (element) {
-                            return element.id = currRoom.router;
-                        })[0];
-                        currRoom.router = bridge;
-                    });
-                }).catch(function (errBridge) {
-                    console.log(errBridge);
-                });
-
-                return res;
-            }).then(function (res) {
                 vm.$store.commit('setRoomList', res);
             }).catch(function (err) {
                 console.log(err);
