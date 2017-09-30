@@ -10,10 +10,10 @@ const db = {
     bridge: {},
 };
 
-db.panel.getAll = () => knex('panel').select();
+db.panel.getAll = () => knex.select().from('panel');
 
-db.room.getAll = () => knex('room').innerJoin('bridge', 'room.router', 'bridge.id').select();
+db.room.getAll = () => knex.select('room.id','room.name','room.zone','room.type','bridge.mac','bridge.name').from('room').innerJoin('bridge', 'room.router', 'bridge.id');
 
-db.bridge.getAll = () => knex('bridge').select();
+db.bridge.getAll = () => knex.select().from('bridge');
 
 module.exports = db;
