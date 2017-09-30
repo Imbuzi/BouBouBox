@@ -4,24 +4,16 @@ const knex = require('knex')(config);
 
 console.log(config);
 
-const db = {};
+const db = {
+    panel: {},
+    room: {},
+    bridge: {},
+};
 
-db.panel = function() {
-    return knex('panel');
-}
+db.panel.getAll = () => knex('panel').select();
 
-db.panel.getAll = () => db.panel().select();
+db.room.getAll = () => knex('room').innerJoin('bridge', 'room.router', 'bridge.id').select();
 
-db.room = function () {
-    return knex('room');
-}
-
-db.room.getAll = () => db.room().select();
-
-db.bridge = function () {
-    return knex('bridge');
-}
-
-db.bridge.getAll = () => db.bridge().select();
+db.bridge.getAll = () => knex('bridge').select();
 
 module.exports = db;
