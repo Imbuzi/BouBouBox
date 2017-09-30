@@ -18,12 +18,12 @@ db.room.getAll = function () {
         .from('room')
         .innerJoin('bridge', 'room.router', 'bridge.id')
         .then(function (result) {
-            result.router = {
+            /*result.router = {
                 name: result.router_name,
                 mac: result.router_mac
             };
             delete result.router_name;
-            delete result.router_mac;
+            delete result.router_mac;*/
 
             return result;
         });
