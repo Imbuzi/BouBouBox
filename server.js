@@ -21,12 +21,14 @@ milight.discoverBridges({
     type: 'all'
 }).then(function (results) {
     results.forEach(function (element) {
-        bridges.push(new milight.MilightController({
+        let bridge = new milight.MilightController({
             ip: element.ip,
             type: element.type
-        }));
+        });
+        bridge.mac = element.mac;
+        bridges.push(bridge);
     });
-    console.log(bridges[0]);
+    console.log(bridges[0].mac);
 });
 
 // Routage Express
