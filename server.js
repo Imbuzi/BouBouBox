@@ -50,7 +50,7 @@ io.on('connection', function(socket) {
         // Need to be improved
         console.log(data);
         let bridge = bridges.filter(function (element) {
-            return element.mac == data.room.mac;
+            return element.mac == data.room.router.mac;
         })[0];
 
         console.log(bridge);

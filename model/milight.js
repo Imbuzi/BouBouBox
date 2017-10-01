@@ -16,8 +16,6 @@ exp.createBridges = function () {
             bridges.push(bridge);
         });
 
-        console.log(bridges);
-
         return bridges;
     });
 }
