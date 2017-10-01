@@ -52,7 +52,11 @@ io.on('connection', function(socket) {
             return element.mac == data.room.router.mac;
         })[0];
 
-        milight.setLightIntensity(bridge, data.room.zone, data.value);
+        if (typeof bridge !== "undefined") {
+            milight.setLightIntensity(bridge, data.room.zone, data.value);
+        } else {
+            console.log('Bridge undefined !');
+        };
     });
 	socket.on('disconnect', function() {
 		console.log(`User with id ${socket.id} disconnected`);

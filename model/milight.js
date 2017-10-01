@@ -21,8 +21,6 @@ exp.createBridges = function () {
 }
 
 exp.setLightIntensity = function (bridge, zone, value) {
-    console.log(bridge);
-
     let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
 
     return bridge.ready().then(function () {
