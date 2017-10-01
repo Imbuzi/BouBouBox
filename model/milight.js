@@ -15,6 +15,8 @@ exp.createBridges = milight.discoverBridges({
         bridges.push(bridge);
     });
 
+    console.log(bridges);
+
     return bridges;
 });
 
