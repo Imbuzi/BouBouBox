@@ -26,8 +26,8 @@ milight.discoverBridges({
             type: element.type
         }));
     });
+    console.log(bridges);
 });
-console.log(bridges);
 
 // Routage Express
 app.get('/',function(req, res) {
