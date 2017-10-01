@@ -31,8 +31,7 @@
                 console.log(room);
                 console.log(room.name);
                 this.$emit('intensity', {
-                    value: value,
-                    room: room
+                    value: value
                 });
             }
         },
