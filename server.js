@@ -7,13 +7,27 @@ const db = require('./model/db.js');
 const morgan = require('morgan'); // Charge le middleware de logging
 const app = express();
 
-// Redirection HTTP
+// Ecoute serveur HTTP
 const server = http.createServer(app).listen(3000);
 console.log("Serveur HTTP en écoute ...");
 
 // Middlewares et configurations
 //app.use(morgan('combined'));
 app.use(express.static(__dirname + '/public'))
+
+// Init bridges list
+let bridges = [];
+milight.discoverBridges({
+    type: 'all'
+}).then(function (results) {
+    results.forEach(function (element) {
+        bridges.push(new milight.MilightController({
+            ip: element.ip,
+            type: element.type
+        }));
+    });
+});
+console.log(bridges);
 
 // Routage Express
 app.get('/',function(req, res) {

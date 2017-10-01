@@ -27,7 +27,7 @@
         },
         computed: {
             rooms: function () {
-                return this.$store.state.rooms.list
+                return this.$store.state.rooms.list;
             }
         },
         components: {
