@@ -28,6 +28,7 @@
         props: ['room'],
         methods: {
             intensitySet: function (value) {
+                console.log(this.room);
                 this.$emit('intensity', {
                     value: value
                 });
