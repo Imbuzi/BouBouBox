@@ -16,8 +16,9 @@ console.log("Serveur HTTP en écoute ...");
 app.use(express.static(__dirname + '/public'))
 
 // Init bridges list
-milight.createBridges().asCallback(function (value) {
-    console.log(value);
+let bridges = [];
+milight.createBridges().then(function (value) {
+    bridges = value;
 });
 
 // Routage Express
@@ -48,6 +49,11 @@ io.on('connection', function(socket) {
     socket.on('setLightIntensity', function (data) {
         // Need to be improved
         console.log(data);
+        let bridge = bridges.filter(function (element) {
+            return element.mac == data.room.mac;
+        })[0];
+
+        console.log(bridge);
     });
 	socket.on('disconnect', function() {
 		console.log(`User with id ${socket.id} disconnected`);
