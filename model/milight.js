@@ -1,5 +1,7 @@
 const milight = require('node-milight-promise');
 
+let exp = {};
+
 exp.createBridges = function () {
     let bridges = [];
     milight.discoverBridges({
