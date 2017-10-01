@@ -21,10 +21,8 @@
     export default {
         props: ['panel-title'],
         methods: {
-            intensitySet: function (value) {
-                this.$socket.emit('setLightIntensity', {
-                    value: value
-                });
+            intensitySet: function (obj) {
+                this.$socket.emit('setLightIntensity', obj);
             }
         },
         computed: {
