@@ -52,7 +52,7 @@ io.on('connection', function(socket) {
             return element.mac == data.room.router.mac;
         })[0];
 
-        milight.setLightIntensity(bridge, zone, data.value);
+        milight.setLightIntensity(bridge, data.room.zone, data.value);
     });
 	socket.on('disconnect', function() {
 		console.log(`User with id ${socket.id} disconnected`);
