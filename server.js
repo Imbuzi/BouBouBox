@@ -47,13 +47,12 @@ const io = require('socket.io')(server);
 io.on('connection', function(socket) {
     console.log(`User with id ${socket.id} connected`);
     socket.on('setLightIntensity', function (data) {
-        // Need to be improved
         console.log(data);
         let bridge = bridges.filter(function (element) {
             return element.mac == data.room.router.mac;
         })[0];
 
-        console.log(bridge);
+        milight.setLightIntensity(bridge, zone, data.value);
     });
 	socket.on('disconnect', function() {
 		console.log(`User with id ${socket.id} disconnected`);

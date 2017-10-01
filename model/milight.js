@@ -20,4 +20,12 @@ exp.createBridges = function () {
     });
 }
 
+exp.setLightIntensity = function (bridge, zone, value) {
+    let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
+
+    return bridge.ready().then(function () {
+        return light.sendCommands(commands.rgbw.brightness(zone, value)).pause(100).close();
+    });
+}
+
 module.exports = exp;
