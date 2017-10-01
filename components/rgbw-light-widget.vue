@@ -2,7 +2,7 @@
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="card">
             <div class="body">
-                <div class="font-bold uppercase widget-header">{{roomName}}<div class="pull-right widget-button"><a href="#"><i class="material-icons">more_vert</i></a></div></div>
+                <div class="font-bold uppercase widget-header">{{room.name}}<div class="pull-right widget-button"><a href="#"><i class="material-icons">more_vert</i></a></div></div>
                 <div class="align-center">
                     <div class="light-selectors-container container-fluid">
                         <div class="row flex-content">
@@ -25,7 +25,7 @@
     import IntensitySlider from './intensity-slider.vue';
 
     export default {
-        props: ['room-name'],
+        props: ['room'],
         methods: {
             intensitySet: function (value) {
                 this.$emit('intensity', value);
