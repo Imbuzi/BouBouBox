@@ -26,7 +26,7 @@ milight.discoverBridges({
             type: element.type
         }));
     });
-    console.log(bridges);
+    console.log(bridges[0].mac);
 });
 
 // Routage Express
