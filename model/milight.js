@@ -23,9 +23,11 @@ exp.createBridges = function () {
 exp.setLightIntensity = function (bridge, zone, value) {
     let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
 
+    console.log(commands);
+
     return bridge.ready().then(function () {
-        bridge.sendCommands(commands.rgbw.on(zone), commands.rgbw.whiteMode(zone), commands.rgbw.brightness(zone, value));
-        bridge.pause(100);
+        bridge.sendCommands(commands.rgbw.brightness(zone, value));
+        bridge.pause(1000);
         return bridge.close();
     });
 }
