@@ -29,7 +29,7 @@
         methods: {
             intensitySet: function (value) {
                 this.$emit('intensity', {
-                    value: value,
+                    value: parseInt(value),
                     room: this.room
                 });
             }
