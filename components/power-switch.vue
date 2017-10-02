@@ -8,7 +8,7 @@
     export default {
         computed: {
             color: function () {
-                return this.$store.theme.color;
+                return this.$store.state.theme.color;
             }
         }
     }
