@@ -11,7 +11,7 @@
                             </div>
                             <div class="col-xs-8">
                                 <color-wheel></color-wheel>
-                                <power-switch></power-switch>
+                                <power-switch v-on:value="powerSwitch"></power-switch>
                             </div>
                         </div>
                     </div>
@@ -32,6 +32,12 @@
             intensitySet: function (value) {
                 this.$emit('intensity', {
                     value: parseInt(value),
+                    room: this.room
+                });
+            },
+            powerSwitch: function (value) {
+                this.$emit('power', {
+                    value: value == 'true',
                     room: this.room
                 });
             }
