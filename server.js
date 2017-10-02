@@ -53,9 +53,7 @@ io.on('connection', function(socket) {
         })[0];
 
         if (typeof bridge !== "undefined") {
-            milight.setLightIntensity(bridge, data.room.zone, data.value).then(function () {
-                console.log('Command executed !');
-            });
+            milight.setLightIntensity(bridge, data.room.zone, data.value);
         } else {
             console.log('Bridge undefined !');
         };
