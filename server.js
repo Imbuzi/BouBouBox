@@ -60,6 +60,12 @@ io.on('connection', function(socket) {
             console.log('Bridge undefined !');
         };
     });
+    socket.on('setLightPower', function (data) {
+        console.log(data);
+        let bridge = bridges.filter(function (element) {
+            return element.mac == data.room.router.mac;
+        })[0];
+    });
 	socket.on('disconnect', function() {
 		console.log(`User with id ${socket.id} disconnected`);
     });
