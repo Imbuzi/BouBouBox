@@ -11,6 +11,7 @@
                             </div>
                             <div class="col-xs-8">
                                 <color-wheel></color-wheel>
+                                <power-switch></power-switch>
                             </div>
                         </div>
                     </div>
@@ -23,6 +24,7 @@
 <script>
     import ColorWheel from './color-wheel.vue';
     import IntensitySlider from './intensity-slider.vue';
+    import PowerSwitch from './power-switch.vue';
 
     export default {
         props: ['room'],
@@ -36,7 +38,8 @@
         },
         components: {
             'color-wheel': ColorWheel,
-            'intensity-slider': IntensitySlider
+            'intensity-slider': IntensitySlider,
+            'power-switch': PowerSwitch
         }
     }
 </script>
