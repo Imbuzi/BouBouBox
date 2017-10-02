@@ -20,11 +20,6 @@
 
     export default {
         props: ['panel-title'],
-        sockets: {
-            updateLightPower: function (value) {
-                console.log(value);
-            }
-        },
         computed: {
             rooms: function () {
                 return this.$store.state.rooms.list;
