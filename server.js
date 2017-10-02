@@ -53,7 +53,7 @@ io.on('connection', function(socket) {
         })[0];
 
         if (typeof bridge !== "undefined") {
-            milight.setLightIntensity(bridge, data.room.zone, parseInt(data.value)).then(function () {
+            milight.setLightIntensity(bridge, data.room.zone, data.value).then(function () {
                 console.log('Command executed !');
             });
         } else {
