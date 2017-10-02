@@ -30,13 +30,13 @@
         props: ['room'],
         methods: {
             intensitySet: function (value) {
-                this.$emit('intensity', {
+                this.$socket.emit('setLightIntensity', {
                     value: parseInt(value),
                     room: this.room
                 });
             },
             powerSwitch: function (value) {
-                this.$emit('power', {
+                this.$socket.emit('setLightPower', {
                     value: value,
                     room: this.room
                 });

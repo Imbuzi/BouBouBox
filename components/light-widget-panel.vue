@@ -7,7 +7,7 @@
             <div class="row">
                 <template v-for="room in rooms">
                     <template v-if="room.type ==='rgbw'">
-                        <rgbw-light-widget v-on:intensity="intensitySet" v-on:power="powerSwitch" v-bind:key="room.id" v-bind:room="room"></rgbw-light-widget>
+                        <rgbw-light-widget v-bind:key="room.id" v-bind:room="room"></rgbw-light-widget>
                     </template>
                 </template>
             </div>
@@ -23,14 +23,6 @@
         sockets: {
             updateLightPower: function (value) {
                 console.log(value);
-            }
-        },
-        methods: {
-            intensitySet: function (obj) {
-                this.$socket.emit('setLightIntensity', obj);
-            },
-            powerSwitch: function (obj) {
-                this.$socket.emit('setLightPower', obj);
             }
         },
         computed: {
