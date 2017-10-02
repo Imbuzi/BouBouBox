@@ -28,12 +28,12 @@
 
     export default {
         props: ['room'],
+        sockets: {
+            updateLightPower: function (value) {
+                console.log(value);
+            }
+        },
         methods: {
-            sockets: {
-                updateLightPower: function (value) {
-                    console.log(value);
-                }
-            },
             intensitySet: function (value) {
                 this.$socket.emit('setLightIntensity', {
                     value: parseInt(value),
