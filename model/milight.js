@@ -25,11 +25,11 @@ exp.setLightIntensity = function (bridge, zone, value) {
 
     console.log(commands);
 
-    return bridge.ready().then(function () {
+    //return bridge.ready().then(function () {
         bridge.sendCommands(commands.rgbw.brightness(zone, value));
         bridge.pause(1000);
         return bridge.close();
-    });
+    //});
 }
 
 module.exports = exp;
