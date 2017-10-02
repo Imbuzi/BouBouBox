@@ -25,7 +25,21 @@ exp.setLightIntensity = function (bridge, zone, value) {
         let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
 
         bridge.sendCommands(commands.rgbw.brightness(zone, value));
-        bridge.pause(1000);
+        bridge.pause(100);
+        resolve();
+    });
+}
+
+exp.setLightPower = function (bridge, zone, value) {
+    return new Promise((resolve, reject) => {
+        let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
+
+        if (value) {
+            bridge.sendCommands(commands.rgbw.on(zone));
+        } else {
+            bridge.sendCommands(commands.rgbw.off(zone));
+        }
+        bridge.pause(100);
         resolve();
     });
 }

@@ -57,7 +57,7 @@ io.on('connection', function(socket) {
                 console.log('Command executed !');
             });
         } else {
-            console.log('Bridge undefined !');
+            console.log('Error while setting light intensity : bridge undefined !');
         };
     });
     socket.on('setLightPower', function (data) {
@@ -65,6 +65,14 @@ io.on('connection', function(socket) {
         let bridge = bridges.filter(function (element) {
             return element.mac == data.room.router.mac;
         })[0];
+
+        if (typeof bridge !== "undefined") {
+            milight.setLightPower(bridge, data.room.zone, data.value).then(function () {
+                console.log('Command executed !');
+            });
+        } else {
+            console.log('Error while setting light power : bridge undefined !');
+        };
     });
 	socket.on('disconnect', function() {
 		console.log(`User with id ${socket.id} disconnected`);
