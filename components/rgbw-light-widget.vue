@@ -37,7 +37,7 @@
             },
             powerSwitch: function (value) {
                 this.$emit('power', {
-                    value: value == 'true',
+                    value: value,
                     room: this.room
                 });
             }
