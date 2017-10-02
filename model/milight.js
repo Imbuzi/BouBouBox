@@ -21,10 +21,13 @@ exp.createBridges = function () {
 }
 
 exp.setLightIntensity = function (bridge, zone, value) {
-    let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
+    return new Promise((resolve, reject) => {
+        let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
 
-    bridge.sendCommands(commands.rgbw.brightness(zone, value));
-    bridge.pause(1000);
+        bridge.sendCommands(commands.rgbw.brightness(zone, value));
+        bridge.pause(1000);
+        resolve();
+    });
 }
 
 module.exports = exp;
