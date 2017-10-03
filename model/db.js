@@ -8,7 +8,7 @@ const db = {
     panel: {},
     room: {},
     bridge: {},
-    widget{}
+    widget: {}
 };
 
 db.panel.getAll = () => knex.select().from('panel');
