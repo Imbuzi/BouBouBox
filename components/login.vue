@@ -10,16 +10,16 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">person</i>
                                 </span>
-                                <div class="form-line" v-bind:class="usernameFocused ? 'focused'">
-                                    <input type="text" class="form-control" v-on:focus="toggleUsernameFocused" name="mail" placeholder="Adresse mail" required autofocus>
+                                <div class="form-line" v-bind:class="{ focused: mailFocused }">
+                                    <input type="text" class="form-control" v-on:blur="toggleMailFocused(false)" v-on:focus="toggleMailFocused(true)" name="mail" placeholder="Adresse mail" required autofocus>
                                 </div>
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="material-icons">lock</i>
                                 </span>
-                                <div class="form-line" v-bind:class="passwordFocused ? 'focused'">
-                                    <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
+                                <div class="form-line" v-bind:class="{ focused: passwordFocused }">
+                                    <input type="password" class="form-control" v-on:blur="togglePasswordFocused(false)" v-on:focus="togglePasswordFocused(true)" name="password" placeholder="Mot de passe" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -51,16 +51,16 @@
     export default {
         data: function () {
             return {
-                usernameFocused: false,
+                mailFocused: false,
                 passwordFocused: false
             }
         },
         methods: {
-            toggleUsernameFocused: function () {
-                this.usernameFocused = !this.usernameFocused;
+            toggleMailFocused: function (value) {
+                this.mailFocused = value;
             },
-            togglePasswordFocused: function () {
-                this.passwordFocused = !this.passwordFocused;
+            togglePasswordFocused: function (value) {
+                this.passwordFocused = value;
             }
         },
         computed: {
