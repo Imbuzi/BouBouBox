@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json())
 
-app.get("/login", function (req, res) {
+app.post("/login", function (req, res) {
     if (req.body.name && req.body.password) {
         var name = req.body.name;
         var password = req.body.password;
