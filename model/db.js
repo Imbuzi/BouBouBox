@@ -36,7 +36,8 @@ db.widget.getAll = function () {
     return knex
         .from('widget')
         .leftOuterJoin('room', 'widget.id', 'room.widget_id')
-        .select('widget.id as id', 'widget.name as name', 'widget.type as type', 'room.type as light_type', 'room.zone as light_zone')
+        .innerJoin('bridge', 'bridge.id', 'room.router')
+        .select('widget.id as id', 'widget.name as name', 'widget.type as type', 'room.type as light_type', 'room.zone as light_zone', 'bridge.mac as router_mac')
         .then(function (result) {
             result.forEach(function (element) {
                 element.room = {
@@ -45,6 +46,11 @@ db.widget.getAll = function () {
                 };
                 delete element.light_type;
                 delete element.light_zone;
+
+                element.bridge = {
+                    mac: element.router_mac
+                };
+                delete element.router_mac;
             });
 
             return result;
