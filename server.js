@@ -39,7 +39,7 @@ function getWidgetListAPI() {
 
 app.get('/widget', (req, res) => {
     getWidgetListAPI().then(function (widgetList) {
-        if (widgetlist) {
+        if (widgetList) {
             res.json(widgetList);
         } else {
             res.status(500).send('Error, see server console');
