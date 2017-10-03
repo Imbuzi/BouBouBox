@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="body">
                         <form>
-                            <h4>{{title}}</h4>
+                            <h4>Connexion requise</h4>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="material-icons">person</i>
@@ -49,9 +49,6 @@
 
 <script>
     export default {
-        'title': function () {
-            return this.$store.state.sidebar.title;
-        }
     }
 </script>
 
