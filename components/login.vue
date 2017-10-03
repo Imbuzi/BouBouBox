@@ -25,7 +25,7 @@
                             <div class="row">
                                 <div class="col-xs-8 p-t-5">
                                     <input type="checkbox" name="rememberme" class="filled-in chk-col-pink">
-                                    <label for="rememberme">Rester connecté</label>
+                                    <label for="rememberme">Rester connectÃ©</label>
                                 </div>
                                 <div class="col-xs-4">
                                     <button class="btn btn-block bg-pink waves-effect" type="submit">SE CONNECTER</button>
@@ -33,10 +33,10 @@
                             </div>
                             <div class="row m-t-15 m-b--20">
                                 <div class="col-xs-6">
-                                    <a href="#">Créer un compte</a>
+                                    <a href="#">CrÃ©er un compte</a>
                                 </div>
                                 <div class="col-xs-6 align-right">
-                                    <a href="#">Mot de passe oublié</a>
+                                    <a href="#">Mot de passe oubliÃ©</a>
                                 </div>
                             </div>
                         </form>
