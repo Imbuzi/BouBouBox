@@ -10,7 +10,7 @@
                 animate: true,
                 animationDuration: 300,
                 connect: [true, false],
-                start: [5],
+                start: [100],
                 tooltips: false,
                 direction: 'rtl',
                 orientation: 'vertical',
