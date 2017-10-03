@@ -1,6 +1,6 @@
 <template>
     <main v-bind:class="'theme-' + color">
-        <template v-if="user">
+        <template v-if="user.username">
             <navbar></navbar>
             <sidebar></sidebar>
             <main-section></main-section>
