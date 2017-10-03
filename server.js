@@ -8,6 +8,7 @@ const db = require('./model/db.js');
 const morgan = require('morgan'); // Charge le middleware de logging
 const app = express();
 
+const jwt = require('jsonwebtoken');
 const passport = require("passport");
 const passportJWT = require("passport-jwt");
 
