@@ -22,18 +22,23 @@
             });
 
             let timeout = null;
+            let initEventFired = false;
             let vm = this;
 
             this.$refs.slider.noUiSlider.on('update', function (values, handle) {
-                (function (value) {
-                    clearTimeout(timeout);
-                    timeout = setTimeout(
-                        function () {
-                            vm.$emit('value', value);
-                        },
-                        250
-                    );
-                })(values[0]);
+                if (initEventFired) {
+                    (function (value) {
+                        clearTimeout(timeout);
+                        timeout = setTimeout(
+                            function () {
+                                vm.$emit('value', value);
+                            },
+                            250
+                        );
+                    })(values[0]);
+                } else {
+                    initEventFired = true;
+                }
             });
         }
     }
