@@ -1,17 +1,15 @@
 <template>
-    <div class="card">
-        <div class="body">
-            <div class="font-bold uppercase widget-header">{{light.name}}<div class="pull-right widget-button"><a href="#"><i class="material-icons">more_vert</i></a></div></div>
-            <div class="align-center">
-                <div class="light-selectors-container container-fluid">
-                    <div class="row flex-content">
-                        <div class="col-xs-2">
-                            <intensity-slider v-on:value="intensitySet"></intensity-slider>
-                        </div>
-                        <div class="col-xs-8">
-                            <color-wheel></color-wheel>
-                            <power-switch v-on:value="powerSwitch"></power-switch>
-                        </div>
+    <div class="body">
+        <div class="font-bold uppercase widget-header">{{light.name}}<div class="pull-right widget-button"><a href="#"><i class="material-icons">more_vert</i></a></div></div>
+        <div class="align-center">
+            <div class="light-selectors-container container-fluid">
+                <div class="row flex-content">
+                    <div class="col-xs-2">
+                        <intensity-slider v-on:value="intensitySet"></intensity-slider>
+                    </div>
+                    <div class="col-xs-8">
+                        <color-wheel></color-wheel>
+                        <power-switch v-on:value="powerSwitch"></power-switch>
                     </div>
                 </div>
             </div>
