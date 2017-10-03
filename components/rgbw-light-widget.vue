@@ -50,18 +50,4 @@
     .flex-content {
         display: flex;
     }
-
-    .widget-button a i {
-        font-size: 20px;
-        margin-top: -2px;
-        color: #555;
-    }
-
-    .widget-header {
-        margin-bottom: 15px;
-    }
-
-    .uppercase {
-        text-transform: uppercase;
-    }
 </style>
