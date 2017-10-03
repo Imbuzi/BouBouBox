@@ -10,6 +10,9 @@
     import RGBWLightWidget from './rgbw-light-widget.vue';
 
     export default {
-        props: ['light']
+        props: ['light'],
+        components: {
+            'rgbw-light-widget': RGBWLightWidget
+        }
     }
 </script>
