@@ -24,7 +24,7 @@ var users = [
 ];
 
 var jwtOptions = {}
-jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 jwtOptions.secretOrKey = 'secret';
 
 var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
