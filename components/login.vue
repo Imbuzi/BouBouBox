@@ -28,15 +28,15 @@
                                     <label for="rememberme">Rester connecté</label>
                                 </div>
                                 <div class="col-xs-6">
-                                    <button class="btn btn-block bg-pink waves-effect" type="submit">SE CONNECTER</button>
+                                    <button class="btn btn-block waves-effect" v-bind:class="'bg-' + color" type="submit">SE CONNECTER</button>
                                 </div>
                             </div>
                             <div class="row m-t-15 m-b--20">
                                 <div class="col-xs-6">
-                                    <a href="#">Créer un compte</a>
+                                    <a v-bind:class="'col-' + color" href="#">Créer un compte</a>
                                 </div>
                                 <div class="col-xs-6 align-right">
-                                    <a href="#">Mot de passe oublié</a>
+                                    <a v-bind:class="'col-' + color" href="#">Mot de passe oublié</a>
                                 </div>
                             </div>
                         </form>
