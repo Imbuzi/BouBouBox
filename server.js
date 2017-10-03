@@ -31,7 +31,7 @@ jwtOptions.secretOrKey = 'secret';
 var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
     console.log('payload received', jwt_payload);
     // usually this would be a database call:
-    var user = users.filter((element) => (element.id == jwt_payload.id));
+    var user = users.filter((element) => (element.id == jwt_payload.id))[0];
     if (user) {
         next(null, user);
     } else {
@@ -55,7 +55,7 @@ app.post("/login", function (req, res) {
         var password = req.body.password;
     }
     // usually this would be a database call:
-    var user = users.filter((element) => (element.name == name));
+    var user = users.filter((element) => (element.name == name))[0];
     if (!user) {
         res.status(401).json({ message: "No such user found" });
     }
