@@ -31,4 +31,23 @@ db.room.getAll = function () {
         });
 }
 
+db.widget.getAll = function () {
+    return knex
+        .from('widget')
+        .leftOuterJoin('room', 'widget.id', 'room.widget_id')
+        .select('widget.id as id', 'widget.name as name', 'widget.type as type', 'room.type as light_type', 'room.zone as light_zone')
+        .then(function (result) {
+            result.forEach(function (element) {
+                element.room = {
+                    type: element.light_type,
+                    zone: element.light_zone
+                };
+                delete element.light_type;
+                delete element.light_zone;
+            });
+
+            return result;
+        });
+}
+
 module.exports = db;
