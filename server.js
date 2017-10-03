@@ -59,7 +59,7 @@ io.on('connection', function(socket) {
     socket.on('setLightIntensity', function (data) {
         console.log(data);
         let bridge = bridges.filter(function (element) {
-            return element.mac == data.room.router.mac;
+            return element.mac == data.light.bridge.mac;
         })[0];
 
         if (typeof bridge !== "undefined") {
@@ -76,7 +76,7 @@ io.on('connection', function(socket) {
         socket.broadcast.emit('updateLightPower', data);
 
         let bridge = bridges.filter(function (element) {
-            return element.mac == data.room.router.mac;
+            return element.mac == data.light.bridge.mac;
         })[0];
 
         if (typeof bridge !== "undefined") {

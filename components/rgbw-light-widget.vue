@@ -28,13 +28,13 @@
             intensitySet: function (value) {
                 this.$socket.emit('setLightIntensity', {
                     value: parseInt(value),
-                    room: this.light
+                    light: this.light
                 });
             },
             powerSwitch: function (value) {
                 this.$socket.emit('setLightPower', {
                     value: value,
-                    room: this.light
+                    light: this.light
                 });
             }
         },
