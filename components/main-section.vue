@@ -2,38 +2,36 @@
     <section>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-12">
-                    <light-widget-panel v-for="panel in panels" v-bind:key="panel.id" v-bind:panel-title="panel.name">
-                    </light-widget-panel>
-                </div>
+                <template v-for="widget in widgets">
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <widget v-bind:key="widget.id" v-bind:widget="widget">
+                        </widget>
+                    </div>
+                </template>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-    import LightWidgetPanel from './light-widget-panel.vue';
+    import Widget from './widget.vue';
 
     export default {
         components: {
-            'light-widget-panel': LightWidgetPanel
+            'widget': Widget
+        },
+        sockets: {
+            widgetList: function (value) {
+                this.$store.commit('setWidgetList', value);
+            }
         },
         computed: {
-            panels: function () {
-                return this.$store.state.panels.list
+            widgets: function () {
+                return this.$store.state.widget.list;
             }
         },
         created: function () {
-            var vm = this;
-            fetch('/panel', {
-                headers: { Accept: 'application/json' }
-            }).then(function (res) {
-                return res.json();
-            }).then(function (res) {
-                vm.$store.commit('setPanelList', res);
-            }).catch(function (err) {
-                console.log(err);
-            })
+            this.$socket.emit('getWidgetList');
         }
     }
 </script>

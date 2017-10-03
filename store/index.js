@@ -6,6 +6,7 @@ import sidebar from './modules/sidebar'
 import theme from './modules/theme'
 import panels from './modules/panels'
 import rooms from './modules/rooms'
+import widget from './modules/widget'
 
 Vue.use(Vuex);
 
@@ -18,7 +19,8 @@ export default new Vuex.Store({
         sidebar,
         theme,
         panels,
-        rooms
+        rooms,
+        widget
     },
     strict: dev
 })

@@ -1,18 +1,16 @@
 <template>
-    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-        <div class="card">
-            <div class="body">
-                <div class="font-bold uppercase widget-header">{{room.name}}<div class="pull-right widget-button"><a href="#"><i class="material-icons">more_vert</i></a></div></div>
-                <div class="align-center">
-                    <div class="light-selectors-container container-fluid">
-                        <div class="row flex-content">
-                            <div class="col-xs-2">
-                                <intensity-slider v-on:value="intensitySet"></intensity-slider>
-                            </div>
-                            <div class="col-xs-8">
-                                <color-wheel></color-wheel>
-                                <power-switch v-on:value="powerSwitch"></power-switch>
-                            </div>
+    <div class="card">
+        <div class="body">
+            <div class="font-bold uppercase widget-header">{{light.name}}<div class="pull-right widget-button"><a href="#"><i class="material-icons">more_vert</i></a></div></div>
+            <div class="align-center">
+                <div class="light-selectors-container container-fluid">
+                    <div class="row flex-content">
+                        <div class="col-xs-2">
+                            <intensity-slider v-on:value="intensitySet"></intensity-slider>
+                        </div>
+                        <div class="col-xs-8">
+                            <color-wheel></color-wheel>
+                            <power-switch v-on:value="powerSwitch"></power-switch>
                         </div>
                     </div>
                 </div>
@@ -27,7 +25,7 @@
     import PowerSwitch from './power-switch.vue';
 
     export default {
-        props: ['room'],
+        props: ['light'],
         sockets: {
             updateLightPower: function (value) {
                 console.log(value);
@@ -37,13 +35,13 @@
             intensitySet: function (value) {
                 this.$socket.emit('setLightIntensity', {
                     value: parseInt(value),
-                    room: this.room
+                    room: this.light
                 });
             },
             powerSwitch: function (value) {
                 this.$socket.emit('setLightPower', {
                     value: value,
-                    room: this.room
+                    room: this.light
                 });
             }
         },
