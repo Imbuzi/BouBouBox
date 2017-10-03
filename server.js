@@ -26,26 +26,38 @@ app.get('/',function(req, res) {
     res.sendFile('./app.html', {root: __dirname});
 });
 
-// API panels
-app.get('/panel', (req, res) => {
-    db.panel.getAll().asCallback((err, list) => {
-        if (err) return res.status(500).send('Error, see server console')
-        res.json(list)
-    })
-})
+// API widget
+function getWidgetListAPI() {
+    return db.widget.getAll().then(function (err, list) {
+        if (err) {
+            return null;
+        } else {
+            return list;
+        }
+    });
+}
 
-// API room
-app.get('/room', (req, res) => {
-    db.room.getAll().asCallback((err, list) => {
-        if (err) return res.status(500).send('Error, see server console')
-        res.json(list)
-    })
+app.get('/widget', (req, res) => {
+    getWidgetListAPI().then(function (widgetList) {
+        if (widgetlist) {
+            res.json(widgetlist);
+        } else {
+            res.status(500).send('Error, see server console');
+        }
+    });
 })
 
 // Création du WS Socket.io
 const io = require('socket.io')(server);
 io.on('connection', function(socket) {
     console.log(`User with id ${socket.id} connected`);
+
+    socket.on('getWidgetList', function () {
+        getWidgetListAPI().then(function (widgetList) {
+            socket.emit('widgetList', widgetList);
+        });
+    });
+
     socket.on('setLightIntensity', function (data) {
         console.log(data);
         let bridge = bridges.filter(function (element) {
