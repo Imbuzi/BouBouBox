@@ -1,4 +1,5 @@
 const http = require('http');
+const bodyParser = require("body-parser");
 const fs = require('fs');
 const express = require('express');
 const path = require('path');
@@ -6,6 +7,67 @@ const milight = require('./model/milight.js');
 const db = require('./model/db.js');
 const morgan = require('morgan'); // Charge le middleware de logging
 const app = express();
+
+const passport = require("passport");
+const passportJWT = require("passport-jwt");
+
+const ExtractJwt = passportJWT.ExtractJwt;
+const JwtStrategy = passportJWT.Strategy;
+
+// Array temporaire avec infos des utilisateurs, stocké en BDD plus tard ...
+var users = [
+    {
+        id: 1,
+        name: 'admin',
+        password: 'admin'
+    }
+];
+
+var jwtOptions = {}
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
+jwtOptions.secretOrKey = 'secret';
+
+var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
+    console.log('payload received', jwt_payload);
+    // usually this would be a database call:
+    var user = users.filter((element) => (element.id == jwt_payload.id));
+    if (user) {
+        next(null, user);
+    } else {
+        next(null, false);
+    }
+});
+
+passport.use(strategy);
+app.use(passport.initialize());
+
+// Bodyparser
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(bodyParser.json())
+
+app.get("/login", function (req, res) {
+    if (req.body.name && req.body.password) {
+        var name = req.body.name;
+        var password = req.body.password;
+    }
+    // usually this would be a database call:
+    var user = users.filter((element) => (element.name == name));
+    if (!user) {
+        res.status(401).json({ message: "No such user found" });
+    }
+
+    if (user.password === req.body.password) {
+        // from now on we'll identify the user by the id and the id is the only personalized value that goes into our token
+        var payload = { id: user.id };
+        var token = jwt.sign(payload, jwtOptions.secretOrKey);
+        res.json({ message: "Ok", token: token });
+    } else {
+        res.status(401).json({ message: "Passwords did not match" });
+    }
+});
 
 // Ecoute serveur HTTP
 const server = http.createServer(app).listen(3000);
