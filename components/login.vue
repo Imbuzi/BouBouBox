@@ -10,15 +10,15 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">person</i>
                                 </span>
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="mail" placeholder="Adresse mail" required autofocus>
+                                <div class="form-line" v-bind:class="usernameFocused ? 'focused'">
+                                    <input type="text" class="form-control" v-on:focus="toggleUsernameFocused" name="mail" placeholder="Adresse mail" required autofocus>
                                 </div>
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="material-icons">lock</i>
                                 </span>
-                                <div class="form-line">
+                                <div class="form-line" v-bind:class="passwordFocused ? 'focused'">
                                     <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
                                 </div>
                             </div>
@@ -49,6 +49,20 @@
 
 <script>
     export default {
+        data: function () {
+            return {
+                usernameFocused: false,
+                passwordFocused: false
+            }
+        },
+        methods: {
+            toggleUsernameFocused: function () {
+                this.usernameFocused = !this.usernameFocused;
+            },
+            togglePasswordFocused: function () {
+                this.passwordFocused = !this.passwordFocused;
+            }
+        },
         computed: {
             color: function () {
                 return this.$store.state.theme.color;
