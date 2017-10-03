@@ -5,6 +5,7 @@ import Vuex from 'vuex'
 import sidebar from './modules/sidebar'
 import theme from './modules/theme'
 import widget from './modules/widget'
+import user from './modules/user.js';
 
 Vue.use(Vuex);
 
@@ -16,7 +17,8 @@ export default new Vuex.Store({
     modules: {
         sidebar,
         theme,
-        widget
+        widget,
+        user
     },
     strict: dev
 })
