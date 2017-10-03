@@ -63,7 +63,7 @@ io.on('connection', function(socket) {
         })[0];
 
         if (typeof bridge !== "undefined") {
-            milight.setLightIntensity(bridge, data.room.zone, data.value).then(function () {
+            milight.setLightIntensity(bridge, data.light.zone, data.value).then(function () {
                 console.log('Command executed !');
             });
         } else {
@@ -80,7 +80,7 @@ io.on('connection', function(socket) {
         })[0];
 
         if (typeof bridge !== "undefined") {
-            milight.setLightPower(bridge, data.room.zone, data.value).then(function () {
+            milight.setLightPower(bridge, data.light.zone, data.value).then(function () {
                 console.log('Command executed !');
             });
         } else {
