@@ -24,7 +24,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-6 p-t-5">
-                                    <input type="checkbox" name="rememberme" class="filled-in chk-col-pink">
+                                    <input type="checkbox" id="rememberme" name="rememberme" class="filled-in" v-bind:class="'chk-col-' + color">
                                     <label for="rememberme">Rester connecté</label>
                                 </div>
                                 <div class="col-xs-6">
@@ -49,6 +49,11 @@
 
 <script>
     export default {
+        computed: {
+            color: function () {
+                return this.$store.state.theme.color;
+            }
+        }
     }
 </script>
 
