@@ -28,12 +28,10 @@ app.get('/',function(req, res) {
 
 // API widget
 function getWidgetListAPI() {
-    return db.widget.getAll().then(function (err, list) {
-        if (err) {
-            return null;
-        } else {
-            return list;
-        }
+    return db.widget.getAll().then(function (list) {
+        return list;
+    }).catch(function (error) {
+        return null;
     });
 }
 
