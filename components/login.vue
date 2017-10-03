@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
                 <div class="card">
                     <div class="body">
                         <form>
@@ -23,11 +23,11 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-8 p-t-5">
+                                <div class="col-xs-6 p-t-5">
                                     <input type="checkbox" name="rememberme" class="filled-in chk-col-pink">
                                     <label for="rememberme">Rester connecté</label>
                                 </div>
-                                <div class="col-xs-4">
+                                <div class="col-xs-6">
                                     <button class="btn btn-block bg-pink waves-effect" type="submit">SE CONNECTER</button>
                                 </div>
                             </div>
