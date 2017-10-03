@@ -8,6 +8,10 @@ const db = require('./model/db.js');
 const morgan = require('morgan'); // Charge le middleware de logging
 const app = express();
 
+/*
+    --- TESTS JWT ---
+*/
+
 const jwt = require('jsonwebtoken');
 const passport = require("passport");
 const passportJWT = require("passport-jwt");
@@ -69,6 +73,9 @@ app.post("/login", function (req, res) {
         res.status(401).json({ message: "Passwords did not match" });
     }
 });
+/*
+    --- FIN DES TESTS JWT ---
+*/
 
 // Ecoute serveur HTTP
 const server = http.createServer(app).listen(3000);
