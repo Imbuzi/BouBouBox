@@ -13,8 +13,8 @@ const app = express();
 */
 
 const jwt = require('jsonwebtoken');
-const passport = require("passport");
-const passportJWT = require("passport-jwt");
+//const passport = require("passport");
+//const passportJWT = require("passport-jwt");
 
 // Array temporaire avec infos des utilisateurs, stocké en BDD plus tard ...
 var users = [
@@ -25,7 +25,7 @@ var users = [
     }
 ];
 
-var jwtOptions = {
+/*var jwtOptions = {
     jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: 'secret'
 };
@@ -40,7 +40,7 @@ var localArrayStrategy = new passportJWT.Strategy(jwtOptions, function (jwt_payl
 });
 
 passport.use(localArrayStrategy);
-app.use(passport.initialize());
+app.use(passport.initialize());*/
 
 app.post("/login", function (req, res) {
     if (req.body.name && req.body.password) {
@@ -55,7 +55,7 @@ app.post("/login", function (req, res) {
     if (user.password === req.body.password) {
         // from now on we'll identify the user by the id and the id is the only personalized value that goes into our token
         var payload = { id: user.id };
-        var token = jwt.sign(payload, jwtOptions.secretOrKey);
+        var token = jwt.sign(payload, 'secret');
         res.json({ token: token });
     } else {
         res.status(401).json({ error: "PASSWORD_MISMATCH" });
