@@ -5,7 +5,7 @@ import Vuex from 'vuex'
 import sidebar from './modules/sidebar'
 import theme from './modules/theme'
 import widget from './modules/widget'
-import user from './modules/user.js';
+import user from './modules/user';
 
 Vue.use(Vuex);
 

@@ -16,9 +16,6 @@ const jwt = require('jsonwebtoken');
 const passport = require("passport");
 const passportJWT = require("passport-jwt");
 
-const ExtractJwt = passportJWT.ExtractJwt;
-const JwtStrategy = passportJWT.Strategy;
-
 // Array temporaire avec infos des utilisateurs, stocké en BDD plus tard ...
 var users = [
     {
@@ -28,13 +25,12 @@ var users = [
     }
 ];
 
-var jwtOptions = {}
-jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-jwtOptions.secretOrKey = 'secret';
+var jwtOptions = {
+    jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: 'secret'
+};
 
-var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
-    console.log('payload received', jwt_payload);
-    // usually this would be a database call:
+var localArrayStrategy = new passportJWT.Strategy(jwtOptions, function (jwt_payload, next) {
     var user = users.filter((element) => (element.id == jwt_payload.id))[0];
     if (user) {
         next(null, user);
@@ -43,34 +39,26 @@ var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
     }
 });
 
-passport.use(strategy);
+passport.use(localArrayStrategy);
 app.use(passport.initialize());
-
-// Bodyparser
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-app.use(bodyParser.json())
 
 app.post("/login", function (req, res) {
     if (req.body.name && req.body.password) {
         var name = req.body.name;
         var password = req.body.password;
     }
-    // usually this would be a database call:
     var user = users.filter((element) => (element.name == name))[0];
     if (!user) {
-        res.status(401).json({ message: "No such user found" });
+        res.status(401).json({ error: "USER_NOT_FOUND" });
     }
 
     if (user.password === req.body.password) {
         // from now on we'll identify the user by the id and the id is the only personalized value that goes into our token
         var payload = { id: user.id };
         var token = jwt.sign(payload, jwtOptions.secretOrKey);
-        res.json({ message: "Ok", token: token });
+        res.json({ token: token });
     } else {
-        res.status(401).json({ message: "Passwords did not match" });
+        res.status(401).json({ error: "PASSWORD_MISMATCH" });
     }
 });
 /*
@@ -80,6 +68,12 @@ app.post("/login", function (req, res) {
 // Ecoute serveur HTTP
 const server = http.createServer(app).listen(3000);
 console.log("Serveur HTTP en écoute ...");
+
+// Bodyparser
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 // Middlewares et configurations
 //app.use(morgan('combined'));
