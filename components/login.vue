@@ -5,14 +5,14 @@
                 <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
                     <div class="card">
                         <div class="body">
-                            <form>
+                            <form v-on:submit.prevent="submitForm">
                                 <h4>Connexion requise</h4>
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="material-icons">person</i>
                                     </span>
                                     <div class="form-line" v-bind:class="{ focused: mailFocused }">
-                                        <input type="text" class="form-control" v-on:blur="toggleMailFocused(false)" v-on:focus="toggleMailFocused(true)" name="mail" placeholder="Adresse mail" required autofocus>
+                                        <input type="email" v-model="mailAddress" class="form-control" v-on:blur="toggleMailFocused(false)" v-on:focus="toggleMailFocused(true)" name="mail" placeholder="Adresse mail" required autofocus>
                                     </div>
                                 </div>
                                 <div class="input-group">
@@ -20,7 +20,7 @@
                                         <i class="material-icons">lock</i>
                                     </span>
                                     <div class="form-line" v-bind:class="{ focused: passwordFocused }">
-                                        <input type="password" class="form-control" v-on:blur="togglePasswordFocused(false)" v-on:focus="togglePasswordFocused(true)" name="password" placeholder="Mot de passe" required>
+                                        <input type="password" v-model="password" class="form-control" v-on:blur="togglePasswordFocused(false)" v-on:focus="togglePasswordFocused(true)" name="password" placeholder="Mot de passe" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -54,7 +54,9 @@
         data: function () {
             return {
                 mailFocused: false,
-                passwordFocused: false
+                passwordFocused: false,
+                mailAddress: '',
+                password: ''
             }
         },
         methods: {
@@ -63,6 +65,9 @@
             },
             togglePasswordFocused: function (value) {
                 this.passwordFocused = value;
+            },
+            submitForm: function () {
+                console.log(mailAddress + '  ' + password);
             }
         },
         computed: {
