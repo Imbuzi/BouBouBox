@@ -28,25 +28,27 @@
                                         <input v-bind:disabled="formLocked" type="checkbox" id="rememberme" name="rememberme" class="filled-in" v-bind:class="'chk-col-' + color">
                                         <label for="rememberme">Rester connecté</label>
                                     </div>
-                                    <template v-if="!loading">
-                                        <div class="col-xs-6">
-                                            <button class="btn btn-block waves-effect" v-bind:class="'bg-' + color" type="submit">SE CONNECTER</button>
-                                        </div>
-                                    </template>
-                                    <template v-else>
-                                        <div class="col-xs-6 align-center">
-                                            <div class="preloader pl-size-xs">
-                                                <div class="spinner-layer" v-bind:class="'pl-' + color">
-                                                    <div class="circle-clipper left">
-                                                        <div class="circle"></div>
-                                                    </div>
-                                                    <div class="circle-clipper right">
-                                                        <div class="circle"></div>
+                                    <transition name="fade" mode="out-in">
+                                        <template v-if="!loading">
+                                            <div class="col-xs-6">
+                                                <button class="btn btn-block waves-effect" v-bind:class="'bg-' + color" type="submit">SE CONNECTER</button>
+                                            </div>
+                                        </template>
+                                        <template v-else>
+                                            <div class="col-xs-6 align-center">
+                                                <div class="preloader pl-size-xs">
+                                                    <div class="spinner-layer" v-bind:class="'pl-' + color">
+                                                        <div class="circle-clipper left">
+                                                            <div class="circle"></div>
+                                                        </div>
+                                                        <div class="circle-clipper right">
+                                                            <div class="circle"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </template>
+                                        </template>
+                                    </transition>
                                 </div>
                                 <div class="row m-t-15 m-b--20">
                                     <div class="col-xs-6">
@@ -101,7 +103,13 @@
         },
         sockets: {
             JWT: function (result) {
-                console.log(result);
+                if (result.error) {
+                    this.toggleLoading(false);
+                    this.lockForm(false);
+                    console.log(result);
+                } else {
+                    console.log(result);
+                }
             }
         },
         computed: {
@@ -115,5 +123,13 @@
 <style scoped>
     main {
         padding-top: 90px;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .2s
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0
     }
 </style>
