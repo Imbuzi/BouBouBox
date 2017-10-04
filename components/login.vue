@@ -35,7 +35,7 @@
                                     </template>
                                     <template v-else>
                                         <div class="col-xs-6 align-center">
-                                            <div class="preloader">
+                                            <div class="preloader pl-size-xs">
                                                 <div class="spinner-layer" v-bind:class="'pl-' + color">
                                                     <div class="circle-clipper left">
                                                         <div class="circle"></div>
