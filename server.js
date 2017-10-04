@@ -22,6 +22,7 @@ let users = [
 ];
 
 app.post("/login", function (req, res) {
+    console.log(req.body);
     if (req.body & req.body.name && req.body.password) {
         let name = req.body.name;
         let password = req.body.password;
