@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueRouter from 'vue-router';
+import VueLocalStorage from 'vue-localstorage'
 import SocketIO from 'socket.io-client';
 import VueSocketIO from 'vue-socket.io';
 import IndexVueComponent from './components/index.vue';
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	const SocketIOInstance = SocketIO('http://box.boubou.io')
 
 	Vue.use(VueSocketIO, SocketIOInstance, store);
+    Vue.use(VueLocalStorage);
 
 	const App = new Vue({
 		el: 'main',
