@@ -123,7 +123,9 @@ io.on('connection', function(socket) {
     });
 
     socket.on('getJWT', function (data) {
-        getJWTAPI(data.mail, data.password).all(function (result) {
+        getJWTAPI(data.mail, data.password).then(function (result) {
+            socket.emit('JWT', result);
+        }).catch(function (result) {
             socket.emit('JWT', result);
         });
     });
