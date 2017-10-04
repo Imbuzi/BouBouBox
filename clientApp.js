@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import SocketIO from 'socket.io-client';
 import VueSocketIO from 'vue-socket.io';
-import MainVueComponent from './components/main.vue';
+import IndexVueComponent from './components/index.vue';
 
 import store from './store';
 import router from './router';
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         router,
 		sockets: {},
 		render: function (createElement) {
-			return createElement(MainVueComponent);
+            return createElement(IndexVueComponent);
 		}
 	});
 });

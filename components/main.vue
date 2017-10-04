@@ -1,13 +1,8 @@
 <template>
     <main v-bind:class="'theme-' + color">
-        <template v-if="user.username">
-            <navbar></navbar>
-            <sidebar></sidebar>
-            <main-section></main-section>
-        </template>
-        <template v-else>
-            <login></login>
-        </template>
+        <navbar></navbar>
+        <sidebar></sidebar>
+        <main-section></main-section>
     </main>
 </template>
 
@@ -15,7 +10,6 @@
     import NavBar from './navbar.vue';
     import MainSection from './main-section.vue';
     import SideBar from './sidebar.vue';
-    import Login from './login.vue';
 
     export default {
         computed: {
@@ -29,8 +23,7 @@
         components: {
             'navbar': NavBar,
             'main-section': MainSection,
-            'sidebar': SideBar,
-            'login': Login
+            'sidebar': SideBar
         }
     }
 </script>
