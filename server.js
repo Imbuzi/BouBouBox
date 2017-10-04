@@ -13,18 +13,11 @@ const jwt = require('jsonwebtoken');
 app.use(bodyParser.json());
 
 app.post("/login", function (req, res) {
-    if (req.body.name && req.body.password) {
-        let name = req.body.name;
-        let password = req.body.password;
-
-        getJWTAPI(name, password).then(function (result) {
-            console.log(result);
-            res.json(result);
-        }).catch(function (result) {
-            console.log(result);
-            res.status(result.error).json(result);
-        });
-    }    
+    getJWTAPI(req.body.name, req.body.password).then(function (result) {
+        res.json(result);
+    }).catch(function (result) {
+        res.status(result.error).json(result);
+    });
 });
 
 // Ecoute serveur HTTP
@@ -44,44 +37,51 @@ milight.createBridges().then(function (value) {
 // API JWT
 function getJWTAPI(name, password) {
     return new Promise(function (resolve, reject) {
-        // Array temporaire avec infos des utilisateurs, stocké en BDD plus tard ...
-        let users = [
-            {
-                id: 1,
-                name: 'admin',
-                password: 'admin'
-            }
-        ];
-        let user = users.filter((element) => (element.name == name))[0];
-
-        if (!user) {
+        if (!name || !password) {
             reject({
-                error: 401,
-                message: "User not found"
+                error: 400,
+                message: "Bad request"
             });
         } else {
-            if (user.password === password) {
-                let payload = { id: user.id };
-                let cert = fs.readFileSync('./private.key');
-                let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
-                    if (err) {
-                        reject({
-                            error: 500,
-                            message: "Token encryption error"
-                        });
-                    } else {
-                        resolve({
-                            error: false,
-                            message: "Token retrieved",
-                            token: token
-                        });
-                    }
-                });
-            } else {
+            // Array temporaire avec infos des utilisateurs, stocké en BDD plus tard ...
+            let users = [
+                {
+                    id: 1,
+                    name: 'admin',
+                    password: 'admin'
+                }
+            ];
+            let user = users.filter((element) => (element.name == name))[0];
+
+            if (!user) {
                 reject({
                     error: 401,
-                    message: "Password mismatch"
+                    message: "User not found"
                 });
+            } else {
+                if (user.password === password) {
+                    let payload = { id: user.id };
+                    let cert = fs.readFileSync('./private.key');
+                    let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
+                        if (err) {
+                            reject({
+                                error: 500,
+                                message: "Token encryption error"
+                            });
+                        } else {
+                            resolve({
+                                error: false,
+                                message: "Token retrieved",
+                                token: token
+                            });
+                        }
+                    });
+                } else {
+                    reject({
+                        error: 401,
+                        message: "Password mismatch"
+                    });
+                }
             }
         }
     });
