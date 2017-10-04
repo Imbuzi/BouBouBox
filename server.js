@@ -85,11 +85,6 @@ milight.createBridges().then(function (value) {
     bridges = value;
 });
 
-// Routage Express
-app.get('/',function(req, res) {
-    res.sendFile('./app.html', {root: __dirname});
-});
-
 // API widget
 function getWidgetListAPI() {
     return db.widget.getAll().then(function (list) {
@@ -108,6 +103,11 @@ app.get('/widget', (req, res) => {
         }
     });
 })
+
+// Routage Express
+app.get('*', function (req, res) {
+    res.sendFile('./app.html', { root: __dirname });
+});
 
 // Création du WS Socket.io
 const io = require('socket.io')(server);
