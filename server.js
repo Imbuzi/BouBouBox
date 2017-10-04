@@ -12,6 +12,12 @@ const app = express();
     --- TESTS JWT ---
 */
 
+// Bodyparser
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+
 const jwt = require('jsonwebtoken');
 //const passport = require("passport");
 //const passportJWT = require("passport-jwt");
@@ -68,12 +74,6 @@ app.post("/login", function (req, res) {
 // Ecoute serveur HTTP
 const server = http.createServer(app).listen(3000);
 console.log("Serveur HTTP en écoute ...");
-
-// Bodyparser
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(bodyParser.json());
 
 // Middlewares et configurations
 //app.use(morgan('combined'));
