@@ -18,8 +18,10 @@ app.post("/login", function (req, res) {
         let password = req.body.password;
 
         getJWTAPI(name, password).then(function (result) {
+            console.log(result);
             res.json(result);
         }).catch(function (result) {
+            console.log(result);
             res.status(result.error).json(result);
         });
     }    
