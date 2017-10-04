@@ -3,5 +3,11 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+        beforeCreate: function () {
+            if (!this.$localstorage.get('accessToken')) {
+                this.$router.push('login');
+            }
+        }
+    }
 </script>
