@@ -67,7 +67,7 @@
                 this.passwordFocused = value;
             },
             submitForm: function () {
-                console.log(mailAddress + '  ' + password);
+                console.log(this.mailAddress + '  ' + this.password);
             }
         },
         computed: {
