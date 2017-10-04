@@ -60,7 +60,7 @@ function getJWTAPI(name, password) {
                 message: "User not found"
             });
         } else {
-            if (user.password === req.body.password) {
+            if (user.password === password) {
                 let payload = { id: user.id };
                 let cert = fs.readFileSync('./private.key');
                 let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
