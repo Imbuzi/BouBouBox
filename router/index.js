@@ -6,6 +6,7 @@ import LoginComponent from '../components/login.vue';
 Vue.use(VueRouter);
 
 export default new VueRouter({
+    mode: 'history',
     routes: [
         { path: '/', component: MainVueComponent },
         { path: '/login', component: LoginComponent }
