@@ -12,21 +12,13 @@ const jwt = require('jsonwebtoken');
 // Bodyparser
 app.use(bodyParser.json());
 
-app.post("/login", function (req, res) {
-    getJWTAPI(req.body.name, req.body.password).then(function (result) {
-        res.json(result);
-    }).catch(function (result) {
-        res.status(result.error).json(result);
-    });
-});
+// Middlewares et configurations
+//app.use(morgan('combined'));
+app.use(express.static(__dirname + '/public'))
 
 // Ecoute serveur HTTP
 const server = http.createServer(app).listen(3000);
 console.log("Serveur HTTP en écoute ...");
-
-// Middlewares et configurations
-//app.use(morgan('combined'));
-app.use(express.static(__dirname + '/public'))
 
 // Init bridges list
 let bridges = [];
@@ -96,6 +88,7 @@ function getWidgetListAPI() {
     });
 }
 
+// Routage Express
 app.get('/widget', (req, res) => {
     getWidgetListAPI().then(function (widgetList) {
         if (widgetList) {
@@ -106,7 +99,14 @@ app.get('/widget', (req, res) => {
     });
 })
 
-// Routage Express
+app.post("/login", function (req, res) {
+    getJWTAPI(req.body.name, req.body.password).then(function (result) {
+        res.json(result);
+    }).catch(function (result) {
+        res.status(result.error).json(result);
+    });
+});
+
 app.get('*', function (req, res) {
     res.sendFile('./app.html', { root: __dirname });
 });
@@ -121,6 +121,12 @@ io.on('connection', function(socket) {
             socket.emit('widgetList', widgetList);
         });
     });
+
+    socket.on('getJWT', function (data) {
+        getJWTAPI(data.name, data.password).all(function (result) {
+            socket.emit('JWT', result);
+        });
+    };
 
     socket.on('setLightIntensity', function (data) {
         console.log(data);
