@@ -96,11 +96,12 @@
                 this.formLocked = value;
             },
             showAlert: function (message, delay) {
-                this.alert.message = message;
-                this.alert.opened = true;
+                let vm = this;
+                vm.alert.message = message;
+                vm.alert.opened = true;
                 setTimeout(function () {
-                    this.alert.message = "";
-                    this.alert.opened = false;
+                    vm.alert.message = "";
+                    vm.alert.opened = false;
                 }, delay);
             },
             submitForm: function () {
