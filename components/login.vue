@@ -86,7 +86,7 @@
             },
             submitForm: function () {
                 console.log(this.mailAddress + '  ' + this.password);
-                toggleLoading(true);
+                this.toggleLoading(true);
                 this.$socket.emit('getJWT', {
                     mail: this.mailAddress,
                     password: this.password
