@@ -1,6 +1,6 @@
 <template>
     <div class="bootstrap-notify-container alert alert-dismissible bg-black p-r-35">
-        <button type="button" class="close">×</button>
+        <button type="button" class="close">Ã—</button>
         Turning standard Bootstrap alerts
     </div>
 </template>
