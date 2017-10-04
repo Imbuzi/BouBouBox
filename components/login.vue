@@ -95,7 +95,7 @@
             lockForm: function (value) {
                 this.formLocked = value;
             },
-            alert: function (message, delay) {
+            showAlert: function (message, delay) {
                 this.alert.message = message;
                 this.alert.opened = true;
                 setTimeout(function () {
@@ -117,7 +117,7 @@
                 if (result.error) {
                     this.toggleLoading(false);
                     this.lockForm(false);
-                    this.alert(result.message, 2000);
+                    this.showAlert(result.message, 2000);
                 } else {
                     console.log(result);
                 }
