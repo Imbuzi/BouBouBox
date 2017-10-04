@@ -126,7 +126,7 @@ io.on('connection', function(socket) {
         getJWTAPI(data.mail, data.password).all(function (result) {
             socket.emit('JWT', result);
         });
-    };
+    });
 
     socket.on('setLightIntensity', function (data) {
         console.log(data);
