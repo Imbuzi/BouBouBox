@@ -5,7 +5,7 @@
 <script>
     export default {
         beforeCreate: function () {
-            if (!this.$localstorage.get('accessToken')) {
+            if (!this.$localStorage.get('accessToken')) {
                 this.$router.push('login');
             }
         }
