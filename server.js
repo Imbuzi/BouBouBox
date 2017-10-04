@@ -32,30 +32,30 @@ app.post("/login", function (req, res) {
                 error: true,
                 message: "User not found"
             });
-        }
-
-        if (user.password === req.body.password) {
-            let payload = { id: user.id };
-            let cert = fs.readFileSync('./private.key');
-            let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
-                if (err) {
-                    res.status(500).json({
-                        error: true,
-                        message: "Token encryption error"
-                    });
-                } else {
-                    res.json({
-                        error: false,
-                        message: "Token retrieved",
-                        token: token
-                    });
-                }
-            });
         } else {
-            res.status(401).json({
-                error: true,
-                message: "Password mismatch"
-            });
+            if (user.password === req.body.password) {
+                let payload = { id: user.id };
+                let cert = fs.readFileSync('./private.key');
+                let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
+                    if (err) {
+                        res.status(500).json({
+                            error: true,
+                            message: "Token encryption error"
+                        });
+                    } else {
+                        res.json({
+                            error: false,
+                            message: "Token retrieved",
+                            token: token
+                        });
+                    }
+                });
+            } else {
+                res.status(401).json({
+                    error: true,
+                    message: "Password mismatch"
+                });
+            }
         }
     } else {
         res.status(400).json({
@@ -73,7 +73,6 @@ console.log("Serveur HTTP en écoute ...");
 // Middlewares et configurations
 //app.use(morgan('combined'));
 app.use(express.static(__dirname + '/public'))
-app.use(express.static('/public.pem'))
 
 // Init bridges list
 let bridges = [];
