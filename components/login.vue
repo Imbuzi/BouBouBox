@@ -100,7 +100,6 @@
                 vm.alert.message = message;
                 vm.alert.opened = true;
                 setTimeout(function () {
-                    vm.alert.message = "";
                     vm.alert.opened = false;
                 }, delay);
             },
@@ -118,7 +117,7 @@
                 if (result.error) {
                     this.toggleLoading(false);
                     this.lockForm(false);
-                    this.showAlert(result.message, 2000);
+                    this.showAlert(result.message, 6000);
                 } else {
                     console.log(result);
                 }
