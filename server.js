@@ -12,58 +12,17 @@ const jwt = require('jsonwebtoken');
 // Bodyparser
 app.use(bodyParser.json());
 
-// Array temporaire avec infos des utilisateurs, stocké en BDD plus tard ...
-let users = [
-    {
-        id: 1,
-        name: 'admin',
-        password: 'admin'
-    }
-];
-
 app.post("/login", function (req, res) {
     if (req.body.name && req.body.password) {
         let name = req.body.name;
         let password = req.body.password;
 
-        let user = users.filter((element) => (element.name == name))[0];
-        if (!user) {
-            res.status(401).json({
-                error: true,
-                message: "User not found"
-            });
-        } else {
-            if (user.password === req.body.password) {
-                let payload = { id: user.id };
-                let cert = fs.readFileSync('./private.key');
-                let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
-                    if (err) {
-                        res.status(500).json({
-                            error: true,
-                            message: "Token encryption error"
-                        });
-                    } else {
-                        res.json({
-                            error: false,
-                            message: "Token retrieved",
-                            token: token
-                        });
-                    }
-                });
-            } else {
-                res.status(401).json({
-                    error: true,
-                    message: "Password mismatch"
-                });
-            }
-        }
-    } else {
-        res.status(400).json({
-            error: true,
-            message: "Bad request"
+        getJWTAPI(name, password).then(function (result) {
+            res.json(result);
+        }).catch(function (result) {
+            res.status(result.error).json(result);
         });
-    }
-    
+    }    
 });
 
 // Ecoute serveur HTTP
@@ -79,6 +38,52 @@ let bridges = [];
 milight.createBridges().then(function (value) {
     bridges = value;
 });
+
+// API JWT
+function getJWTAPI(name, password) {
+    return new Promise(function (resolve, reject) {
+        // Array temporaire avec infos des utilisateurs, stocké en BDD plus tard ...
+        let users = [
+            {
+                id: 1,
+                name: 'admin',
+                password: 'admin'
+            }
+        ];
+        let user = users.filter((element) => (element.name == name))[0];
+
+        if (!user) {
+            reject({
+                error: 401,
+                message: "User not found"
+            });
+        } else {
+            if (user.password === req.body.password) {
+                let payload = { id: user.id };
+                let cert = fs.readFileSync('./private.key');
+                let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
+                    if (err) {
+                        reject({
+                            error: 500,
+                            message: "Token encryption error"
+                        });
+                    } else {
+                        resolve({
+                            error: false,
+                            message: "Token retrieved",
+                            token: token
+                        });
+                    }
+                });
+            } else {
+                reject({
+                    error: 401,
+                    message: "Password mismatch"
+                });
+            }
+        }
+    });
+}
 
 // API widget
 function getWidgetListAPI() {
