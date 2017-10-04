@@ -10,6 +10,7 @@
         props: ['alert'],
         methods: {
             close: function () {
+                clearTimeout(this.alert.timeout);
                 this.alert.opened = false;
             }
         }

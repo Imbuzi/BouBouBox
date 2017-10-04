@@ -78,7 +78,8 @@
                 formLocked: false,
                 alert: {
                     opened: false,
-                    message: ""
+                    message: "",
+                    timeout: null
                 }
             }
         },
@@ -99,7 +100,8 @@
                 let vm = this;
                 vm.alert.message = message;
                 vm.alert.opened = true;
-                setTimeout(function () {
+                clearTimeout(vm.alert.timeout);
+                vm.alert.timeout = setTimeout(function () {
                     vm.alert.opened = false;
                 }, delay);
             },
@@ -117,7 +119,7 @@
                 if (result.error) {
                     this.toggleLoading(false);
                     this.lockForm(false);
-                    this.showAlert(result.message, 6000);
+                    this.showAlert(result.message, 10000);
                 } else {
                     console.log(result);
                 }
