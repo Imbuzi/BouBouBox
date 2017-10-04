@@ -13,7 +13,7 @@ const jwt = require('jsonwebtoken');
 app.use(bodyParser.json());
 
 // Array temporaire avec infos des utilisateurs, stocké en BDD plus tard ...
-var users = [
+let users = [
     {
         id: 1,
         name: 'admin',
@@ -22,23 +22,48 @@ var users = [
 ];
 
 app.post("/login", function (req, res) {
-    if (req.body.name && req.body.password) {
-        var name = req.body.name;
-        var password = req.body.password;
-    }
-    var user = users.filter((element) => (element.name == name))[0];
-    if (!user) {
-        res.status(401).json({ error: "USER_NOT_FOUND" });
-    }
+    if (req.body & req.body.name && req.body.password) {
+        let name = req.body.name;
+        let password = req.body.password;
 
-    if (user.password === req.body.password) {
-        // from now on we'll identify the user by the id and the id is the only personalized value that goes into our token
-        var payload = { id: user.id };
-        var token = jwt.sign(payload, 'secret');
-        res.json({ token: token });
+        let user = users.filter((element) => (element.name == name))[0];
+        if (!user) {
+            res.status(401).json({
+                error: true,
+                message: "User not found"
+            });
+        }
+
+        if (user.password === req.body.password) {
+            let payload = { id: user.id };
+            let cert = fs.readFileSync('./private.key');
+            let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
+                if (err) {
+                    res.status(500).json({
+                        error: true,
+                        message: "Token encryption error"
+                    });
+                } else {
+                    res.json({
+                        error: false,
+                        message: "Token retrieved",
+                        token: token
+                    });
+                }
+            });
+        } else {
+            res.status(401).json({
+                error: true,
+                message: "Password mismatch"
+            });
+        }
     } else {
-        res.status(401).json({ error: "PASSWORD_MISMATCH" });
+        res.status(400).json({
+            error: true,
+            message: "Bad request"
+        });
     }
+    
 });
 
 // Ecoute serveur HTTP
