@@ -22,8 +22,6 @@ let users = [
 ];
 
 app.post("/login", function (req, res) {
-    console.log(req.body.name);
-    console.log(req.body.password);
     if (req.body.name && req.body.password) {
         let name = req.body.name;
         let password = req.body.password;
@@ -45,6 +43,7 @@ app.post("/login", function (req, res) {
                         error: true,
                         message: "Token encryption error"
                     });
+                    console.log(err);
                 } else {
                     res.json({
                         error: false,
