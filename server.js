@@ -81,21 +81,21 @@ function getJWTAPI(mail, password) {
 
 // API widget
 function getWidgetListAPI() {
-    return db.widget.getAll().then(function (list) {
-        return list;
-    }).catch(function (error) {
-        return null;
-    });
+    return db.widget.getAll();
 }
 
 // Routage Express
 app.get('/widget', (req, res) => {
     getWidgetListAPI().then(function (widgetList) {
-        if (widgetList) {
-            res.json(widgetList);
-        } else {
-            res.status(500).send('Error, see server console');
-        }
+        res.json({
+            'error': false,
+            'widgetList': widgetList
+        });
+    }).catch(function (error) {
+        res.status(500).json({
+            'error': 500,
+            'widgetList': null
+        });
     });
 })
 
@@ -118,7 +118,15 @@ io.on('connection', function(socket) {
 
     socket.on('getWidgetList', function () {
         getWidgetListAPI().then(function (widgetList) {
-            socket.emit('widgetList', widgetList);
+            socket.emit('widgetList', {
+                'error': false,
+                'widgetList': widgetList
+            });
+        }).catch(function (error) {
+            socket.emit('widgetList', {
+                'error': 500,
+                'widgetList': null
+            });
         });
     });
 

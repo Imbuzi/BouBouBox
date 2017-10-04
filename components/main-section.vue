@@ -22,7 +22,7 @@
         },
         sockets: {
             widgetList: function (value) {
-                this.$store.commit('setWidgetList', value);
+                this.$store.commit('setWidgetList', value.widgetList);
             }
         },
         computed: {
