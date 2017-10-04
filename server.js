@@ -7,15 +7,9 @@ const milight = require('./model/milight.js');
 const db = require('./model/db.js');
 const morgan = require('morgan'); // Charge le middleware de logging
 const app = express();
-
-/*
-    --- TESTS JWT ---
-*/
+const jwt = require('jsonwebtoken');
 
 // Bodyparser
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
 app.use(bodyParser.json());
 
 // Array temporaire avec infos des utilisateurs, stocké en BDD plus tard ...
@@ -28,7 +22,6 @@ var users = [
 ];
 
 app.post("/login", function (req, res) {
-    console.log(req.body);
     if (req.body.name && req.body.password) {
         var name = req.body.name;
         var password = req.body.password;
@@ -47,9 +40,6 @@ app.post("/login", function (req, res) {
         res.status(401).json({ error: "PASSWORD_MISMATCH" });
     }
 });
-/*
-    --- FIN DES TESTS JWT ---
-*/
 
 // Ecoute serveur HTTP
 const server = http.createServer(app).listen(3000);
