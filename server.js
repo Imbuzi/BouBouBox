@@ -73,6 +73,7 @@ console.log("Serveur HTTP en écoute ...");
 // Middlewares et configurations
 //app.use(morgan('combined'));
 app.use(express.static(__dirname + '/public'))
+app.use(express.static('/public.pem'))
 
 // Init bridges list
 let bridges = [];
