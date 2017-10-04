@@ -61,9 +61,12 @@
             </div>
         </div>
     </main>
+    <alert></alert>
 </template>
 
 <script>
+    import AlertComponent from './alert.vue';
+
     export default {
         data: function () {
             return {
@@ -112,6 +115,9 @@
             color: function () {
                 return this.$store.state.theme.color;
             }
+        },
+        components: {
+            'alert': AlertComponent
         }
     }
 </script>
