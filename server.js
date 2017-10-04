@@ -43,7 +43,6 @@ app.post("/login", function (req, res) {
                         error: true,
                         message: "Token encryption error"
                     });
-                    console.log(err);
                 } else {
                     res.json({
                         error: false,
