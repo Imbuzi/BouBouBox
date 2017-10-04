@@ -12,7 +12,7 @@
                                         <i class="material-icons">person</i>
                                     </span>
                                     <div class="form-line" v-bind:class="{ focused: mailFocused }">
-                                        <input type="email" v-model="mailAddress" class="form-control" v-on:blur="toggleMailFocused(false)" v-on:focus="toggleMailFocused(true)" name="mail" placeholder="Adresse mail" required autofocus>
+                                        <input v-bind:disabled="formLocked" type="email" v-model="mailAddress" class="form-control" v-on:blur="toggleMailFocused(false)" v-on:focus="toggleMailFocused(true)" name="mail" placeholder="Adresse mail" required autofocus>
                                     </div>
                                 </div>
                                 <div class="input-group">
@@ -20,12 +20,12 @@
                                         <i class="material-icons">lock</i>
                                     </span>
                                     <div class="form-line" v-bind:class="{ focused: passwordFocused }">
-                                        <input type="password" v-model="password" class="form-control" v-on:blur="togglePasswordFocused(false)" v-on:focus="togglePasswordFocused(true)" name="password" placeholder="Mot de passe" required>
+                                        <input v-bind:disabled="formLocked" type="password" v-model="password" class="form-control" v-on:blur="togglePasswordFocused(false)" v-on:focus="togglePasswordFocused(true)" name="password" placeholder="Mot de passe" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6 p-t-5">
-                                        <input type="checkbox" id="rememberme" name="rememberme" class="filled-in" v-bind:class="'chk-col-' + color">
+                                        <input v-bind:disabled="formLocked" type="checkbox" id="rememberme" name="rememberme" class="filled-in" v-bind:class="'chk-col-' + color">
                                         <label for="rememberme">Rester connecté</label>
                                     </div>
                                     <template v-if="!loading">
@@ -73,7 +73,8 @@
                 passwordFocused: false,
                 mailAddress: '',
                 password: '',
-                loading: false
+                loading: false,
+                formLocked: false
             }
         },
         methods: {
@@ -86,9 +87,12 @@
             toggleLoading: function (value) {
                 this.loading = value;
             },
+            lockForm: function (value) {
+                this.formLocked = value;
+            },
             submitForm: function () {
-                console.log(this.mailAddress + '  ' + this.password);
                 this.toggleLoading(true);
+                this.lockForm(true);
                 this.$socket.emit('getJWT', {
                     mail: this.mailAddress,
                     password: this.password
