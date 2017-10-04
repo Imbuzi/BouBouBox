@@ -32,7 +32,7 @@ function getJWTAPI(mail, password) {
         if (!mail || !password) {
             reject({
                 error: 400,
-                message: "Bad request"
+                message: "Erreur de requête"
             });
         } else {
             // Array temporaire avec infos des utilisateurs, stocké en BDD plus tard ...
@@ -48,7 +48,7 @@ function getJWTAPI(mail, password) {
             if (!user) {
                 reject({
                     error: 401,
-                    message: "User not found"
+                    message: "Utilisateur inexistant"
                 });
             } else {
                 if (user.password === password) {
@@ -58,12 +58,12 @@ function getJWTAPI(mail, password) {
                         if (err) {
                             reject({
                                 error: 500,
-                                message: "Token encryption error"
+                                message: "Erreur de chiffrement du token"
                             });
                         } else {
                             resolve({
                                 error: false,
-                                message: "Token retrieved",
+                                message: "Token récupéré",
                                 token: token
                             });
                         }
@@ -71,7 +71,7 @@ function getJWTAPI(mail, password) {
                 } else {
                     reject({
                         error: 401,
-                        message: "Password mismatch"
+                        message: "Mot de passe erroné"
                     });
                 }
             }
