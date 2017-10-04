@@ -60,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <alert></alert>
+        <alert v-bind:alert="alert"></alert>
     </main>
 </template>
 
@@ -75,7 +75,11 @@
                 mailAddress: '',
                 password: '',
                 loading: false,
-                formLocked: false
+                formLocked: false,
+                alert: {
+                    opened: false,
+                    message: ""
+                }
             }
         },
         methods: {
@@ -91,6 +95,14 @@
             lockForm: function (value) {
                 this.formLocked = value;
             },
+            alert: function (message, delay) {
+                this.alert.message = message;
+                this.alert.opened = true;
+                setTimeout(function () {
+                    this.alert.message = "";
+                    this.alert.opened = false;
+                }, delay);
+            },
             submitForm: function () {
                 this.toggleLoading(true);
                 this.lockForm(true);
@@ -105,7 +117,7 @@
                 if (result.error) {
                     this.toggleLoading(false);
                     this.lockForm(false);
-                    console.log(result);
+                    this.alert(result.message, 2000);
                 } else {
                     console.log(result);
                 }
