@@ -18,10 +18,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-const jwt = require('jsonwebtoken');
-//const passport = require("passport");
-//const passportJWT = require("passport-jwt");
-
 // Array temporaire avec infos des utilisateurs, stocké en BDD plus tard ...
 var users = [
     {
@@ -31,24 +27,8 @@ var users = [
     }
 ];
 
-/*var jwtOptions = {
-    jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'secret'
-};
-
-var localArrayStrategy = new passportJWT.Strategy(jwtOptions, function (jwt_payload, next) {
-    var user = users.filter((element) => (element.id == jwt_payload.id))[0];
-    if (user) {
-        next(null, user);
-    } else {
-        next(null, false);
-    }
-});
-
-passport.use(localArrayStrategy);
-app.use(passport.initialize());*/
-
 app.post("/login", function (req, res) {
+    console.log(req.body);
     if (req.body.name && req.body.password) {
         var name = req.body.name;
         var password = req.body.password;
