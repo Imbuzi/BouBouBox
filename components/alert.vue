@@ -1,12 +1,14 @@
 <template>
-    <div class="bootstrap-notify-container alert alert-dismissible bg-black p-r-35">
+    <div v-bind:class="{ open: alert.opened }" class="bootstrap-notify-container alert alert-dismissible bg-black p-r-35">
         <button type="button" class="close">×</button>
-        Turning standard Bootstrap alerts
+        {{alert.message}}
     </div>
 </template>
 
 <script>
-    export default {}
+    export default {
+        props: ['alert']
+    }
 </script>
 
 <style scoped>
@@ -16,9 +18,12 @@
         position: fixed;
         transition: all 0.5s ease-in-out;
         z-index: 1000;
-        top: 20px;
+        top: -50px;
         left: 0px;
         right: 0px;
+    }
+    .bootstrap-notify-container.open {
+        top: 20px;
     }
 
     .bootstrap-notify-container button.close {
