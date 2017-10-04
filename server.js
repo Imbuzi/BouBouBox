@@ -39,7 +39,7 @@ function getJWTAPI(mail, password) {
             let users = [
                 {
                     id: 1,
-                    mail: 'admin',
+                    mail: 'admin@admin.fr',
                     password: 'admin'
                 }
             ];
