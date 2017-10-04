@@ -29,25 +29,21 @@
                                         <label for="rememberme">Rester connecté</label>
                                     </div>
                                     <transition name="fade" mode="out-in">
-                                        <template v-if="!loading" key="button">
-                                            <div class="col-xs-6">
-                                                <button class="btn btn-block waves-effect" v-bind:class="'bg-' + color" type="submit">SE CONNECTER</button>
-                                            </div>
-                                        </template>
-                                        <template v-else key="loading">
-                                            <div class="col-xs-6 align-center">
-                                                <div class="preloader pl-size-xs">
-                                                    <div class="spinner-layer" v-bind:class="'pl-' + color">
-                                                        <div class="circle-clipper left">
-                                                            <div class="circle"></div>
-                                                        </div>
-                                                        <div class="circle-clipper right">
-                                                            <div class="circle"></div>
-                                                        </div>
+                                        <div v-if="!loading" class="col-xs-6" key="button">
+                                            <button class="btn btn-block waves-effect" v-bind:class="'bg-' + color" type="submit">SE CONNECTER</button>
+                                        </div>
+                                        <div v-else key="loading" class="col-xs-6 align-center">
+                                            <div class="preloader pl-size-xs">
+                                                <div class="spinner-layer" v-bind:class="'pl-' + color">
+                                                    <div class="circle-clipper left">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="circle-clipper right">
+                                                        <div class="circle"></div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </template>
+                                        </div>
                                     </transition>
                                 </div>
                                 <div class="row m-t-15 m-b--20">
