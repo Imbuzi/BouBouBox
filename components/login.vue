@@ -29,7 +29,21 @@
                                         <label for="rememberme">Rester connecté</label>
                                     </div>
                                     <div class="col-xs-6">
-                                        <button class="btn btn-block waves-effect" v-bind:class="'bg-' + color" type="submit">SE CONNECTER</button>
+                                        <template v-if="!loading">
+                                            <button class="btn btn-block waves-effect" v-bind:class="'bg-' + color" type="submit">SE CONNECTER</button>
+                                        </template>
+                                        <template v-else>
+                                            <div class="preloader">
+                                                <div class="spinner-layer pl-grey">
+                                                    <div class="circle-clipper left">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="circle-clipper right">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
                                     </div>
                                 </div>
                                 <div class="row m-t-15 m-b--20">
@@ -56,7 +70,8 @@
                 mailFocused: false,
                 passwordFocused: false,
                 mailAddress: '',
-                password: ''
+                password: '',
+                loading: false
             }
         },
         methods: {
@@ -66,8 +81,12 @@
             togglePasswordFocused: function (value) {
                 this.passwordFocused = value;
             },
+            toggleLoading: function (value) {
+                this.loading = value;
+            },
             submitForm: function () {
                 console.log(this.mailAddress + '  ' + this.password);
+                toggleLoading(true);
                 this.$socket.emit('getJWT', {
                     mail: this.mailAddress,
                     password: this.password
