@@ -60,8 +60,8 @@
                 </div>
             </div>
         </div>
+        <alert></alert>
     </main>
-    <alert></alert>
 </template>
 
 <script>
