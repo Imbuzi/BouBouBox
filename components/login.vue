@@ -28,7 +28,7 @@
                                         <input type="checkbox" id="rememberme" name="rememberme" class="filled-in" v-bind:class="'chk-col-' + color">
                                         <label for="rememberme">Rester connecté</label>
                                     </div>
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-6 align-center">
                                         <template v-if="!loading">
                                             <button class="btn btn-block waves-effect" v-bind:class="'bg-' + color" type="submit">SE CONNECTER</button>
                                         </template>
