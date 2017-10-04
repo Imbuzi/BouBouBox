@@ -27,9 +27,9 @@ milight.createBridges().then(function (value) {
 });
 
 // API JWT
-function getJWTAPI(name, password) {
+function getJWTAPI(mail, password) {
     return new Promise(function (resolve, reject) {
-        if (!name || !password) {
+        if (!mail || !password) {
             reject({
                 error: 400,
                 message: "Bad request"
@@ -39,11 +39,11 @@ function getJWTAPI(name, password) {
             let users = [
                 {
                     id: 1,
-                    name: 'admin',
+                    mail: 'admin',
                     password: 'admin'
                 }
             ];
-            let user = users.filter((element) => (element.name == name))[0];
+            let user = users.filter((element) => (element.mail == mail))[0];
 
             if (!user) {
                 reject({
@@ -100,7 +100,7 @@ app.get('/widget', (req, res) => {
 })
 
 app.post("/login", function (req, res) {
-    getJWTAPI(req.body.name, req.body.password).then(function (result) {
+    getJWTAPI(req.body.mail, req.body.password).then(function (result) {
         res.json(result);
     }).catch(function (result) {
         res.status(result.error).json(result);
@@ -123,7 +123,7 @@ io.on('connection', function(socket) {
     });
 
     socket.on('getJWT', function (data) {
-        getJWTAPI(data.name, data.password).all(function (result) {
+        getJWTAPI(data.mail, data.password).all(function (result) {
             socket.emit('JWT', result);
         });
     };
