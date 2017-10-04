@@ -28,13 +28,15 @@
                                         <input type="checkbox" id="rememberme" name="rememberme" class="filled-in" v-bind:class="'chk-col-' + color">
                                         <label for="rememberme">Rester connecté</label>
                                     </div>
-                                    <div class="col-xs-6 align-center">
-                                        <template v-if="!loading">
+                                    <template v-if="!loading">
+                                        <div class="col-xs-6">
                                             <button class="btn btn-block waves-effect" v-bind:class="'bg-' + color" type="submit">SE CONNECTER</button>
-                                        </template>
-                                        <template v-else>
+                                        </div>
+                                    </template>
+                                    <template v-else>
+                                        <div class="col-xs-6 align-center">
                                             <div class="preloader">
-                                                <div class="spinner-layer pl-grey">
+                                                <div class="spinner-layer" v-bind:class="'pl-' + color">
                                                     <div class="circle-clipper left">
                                                         <div class="circle"></div>
                                                     </div>
@@ -43,8 +45,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </template>
-                                    </div>
+                                        </div>
+                                    </template>
                                 </div>
                                 <div class="row m-t-15 m-b--20">
                                     <div class="col-xs-6">
