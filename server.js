@@ -71,22 +71,49 @@ function getJWTAPI(mail, password) {
 }
 
 // API widget
-function getWidgetListAPI() {
-    return db.widget.getAll();
+function getWidgetListAPI(token) {
+    return new Promise(function (resolve, reject) {
+        var cert = fs.readFileSync('./public/key/public.pem');
+        jwt.verify(token, cert, { algorithms: ['RS256'] }, function (err, decoded) {
+            if (err) {
+                reject({
+                    error: 401,
+                    message: "Erreur d'authentification (token invalide)"
+                });
+            } else {
+                db.widget.getAll().then(function (widgetList) {
+                    resolve({
+                        widgetList: widgetList
+                    });
+                }).catch(function (error) {
+                    reject({
+                        error: 500,
+                        message: "Erreur de base de données"
+                    });
+                });
+            }
+        });
+    });
+    var cert = fs.readFileSync('./public/key/public.pem');
+    jwt.verify(token, cert, { algorithms: ['RS256'] }, function (err, decoded) {
+        if (err) {
+            return {
+                error: true,
+                message: "Erreur d'authentification (token invalide)"
+            }
+        } else {
+            return db.widget.getAll();
+        }
+    });
 }
 
 // Routage Express
 app.get('/widget', (req, res) => {
-    getWidgetListAPI().then(function (widgetList) {
-        res.json({
-            'error': false,
-            'widgetList': widgetList
-        });
+    console.log(req.get('Authentication'));
+    getWidgetListAPI().then(function (result) {
+        res.json(result);
     }).catch(function (error) {
-        res.status(500).json({
-            'error': 500,
-            'widgetList': null
-        });
+        res.status(result.error).json(result);
     });
 })
 
@@ -108,16 +135,10 @@ io.on('connection', function(socket) {
     console.log(`User with id ${socket.id} connected`);
 
     socket.on('getWidgetList', function () {
-        getWidgetListAPI().then(function (widgetList) {
-            socket.emit('widgetList', {
-                'error': false,
-                'widgetList': widgetList
-            });
-        }).catch(function (error) {
-            socket.emit('widgetList', {
-                'error': 500,
-                'widgetList': null
-            });
+        getWidgetListAPI().then(function (result) {
+            socket.emit('widgetList', result);
+        }).catch(function (result) {
+            socket.emit('widgetList', result);
         });
     });
 
