@@ -6,9 +6,8 @@ const path = require('path');
 const milight = require('./model/milight.js');
 const db = require('./model/db.js');
 const morgan = require('morgan'); // Charge le middleware de logging
+const api = require('./api/functions.js');
 const app = express();
-const jwt = require('jsonwebtoken');
-const passwordHash = require('password-hash');
 
 // Bodyparser
 app.use(bodyParser.json());
@@ -27,102 +26,45 @@ milight.createBridges().then(function (value) {
     bridges = value;
 });
 
-// API JWT
-function getJWTAPI(mail, password) {
+function authenticateXMLHttpRequest(req) {
     return new Promise(function (resolve, reject) {
-        if (!mail || !password) {
+        let header = req.get('Authorization');
+        if (header) {
+            header = header.split(' ');
+            if (header[0] === 'Bearer') {
+                resolve({
+                    token: header[1]
+                });
+            } else {
+                reject({
+                    error: 400,
+                    message: "Erreur de requête"
+                });
+            }
+        } else {
             reject({
                 error: 400,
                 message: "Erreur de requête"
             });
-        } else {
-            db.user.getByMail(mail).then(function (user) {
-                if (!user) {
-                    reject({
-                        error: 401,
-                        message: "Utilisateur inexistant"
-                    });
-                } else {
-                    if (passwordHash.verify(password, user.password)) {
-                        let payload = { mail: user.mail };
-                        let cert = fs.readFileSync('./private.key');
-                        let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
-                            if (err) {
-                                reject({
-                                    error: 500,
-                                    message: "Erreur de chiffrement du token"
-                                });
-                            } else {
-                                resolve({
-                                    token: token
-                                });
-                            }
-                        });
-                    } else {
-                        reject({
-                            error: 401,
-                            message: "Mot de passe erroné"
-                        });
-                    }
-                }
-            });
         }
-    });
-}
-
-// API widget
-function getWidgetListAPI(token) {
-    return new Promise(function (resolve, reject) {
-        var cert = fs.readFileSync('./public/key/public.pem');
-        jwt.verify(token, cert, { algorithms: ['RS256'] }, function (err, decoded) {
-            if (err) {
-                reject({
-                    error: 401,
-                    message: "Erreur d'authentification (token invalide)"
-                });
-            } else {
-                db.widget.getAll().then(function (widgetList) {
-                    resolve({
-                        widgetList: widgetList
-                    });
-                }).catch(function (error) {
-                    reject({
-                        error: 500,
-                        message: "Erreur de base de données"
-                    });
-                });
-            }
-        });
     });
 }
 
 // Routage Express
 app.get('/widget', (req, res) => {
-    let header = req.get('Authorization');
-    if (header) {
-        header = header.split(' ');
-        if (header[0] === 'Bearer') {
-            getWidgetListAPI(header[1]).then(function (result) {
-                res.json(result);
-            }).catch(function (result) {
-                res.status(result.error).json(result);
-            });
-        } else {
-            res.status(400).json({
-                error: 400,
-                message: "Erreur de requête"
-            });
-        }
-    } else {
-        res.status(400).json({
-            error: 400,
-            message: "Erreur de requête"
+    api.authenticateXMLHttpRequest(req).then(function (authentication) {
+        api.getWidgetList(authentication.token).then(function (result) {
+            res.json(result);
+        }).catch(function (result) {
+            res.status(result.error).json(result);
         });
-    }
+    }).catch(function (result) {
+        res.status(result.error).json(result);
+    });
 })
 
 app.post("/login", function (req, res) {
-    getJWTAPI(req.body.mail, req.body.password).then(function (result) {
+    api.getJWT(req.body.mail, req.body.password).then(function (result) {
         res.json(result);
     }).catch(function (result) {
         res.status(result.error).json(result);
@@ -136,18 +78,15 @@ app.get('*', function (req, res) {
 // Création du WS Socket.io
 const io = require('socket.io')(server);
 io.on('connection', function(socket) {
-    console.log(`User with id ${socket.id} connected`);
-
     socket.on('getWidgetList', function (token) {
-        getWidgetListAPI(token).then(function (result) {
+        api.getWidgetList(token).then(function (result) {
             socket.emit('widgetList', result);
         }).catch(function (result) {
             socket.emit('widgetList', result);
         });
     });
-
     socket.on('getJWT', function (data) {
-        getJWTAPI(data.mail, data.password).then(function (result) {
+        api.getJWT(data.mail, data.password).then(function (result) {
             socket.emit('JWT', result);
         }).catch(function (result) {
             socket.emit('JWT', result);
@@ -184,8 +123,5 @@ io.on('connection', function(socket) {
         } else {
             console.log('Error while setting light power : bridge undefined !');
         };
-    });
-	socket.on('disconnect', function() {
-		console.log(`User with id ${socket.id} disconnected`);
     });
 });
