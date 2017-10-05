@@ -94,17 +94,6 @@ function getWidgetListAPI(token) {
             }
         });
     });
-    var cert = fs.readFileSync('./public/key/public.pem');
-    jwt.verify(token, cert, { algorithms: ['RS256'] }, function (err, decoded) {
-        if (err) {
-            return {
-                error: true,
-                message: "Erreur d'authentification (token invalide)"
-            }
-        } else {
-            return db.widget.getAll();
-        }
-    });
 }
 
 // Routage Express
