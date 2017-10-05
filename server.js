@@ -100,7 +100,7 @@ function getWidgetListAPI(token) {
 app.get('/widget', (req, res) => {
     let header = req.get('Authorization');
     if (header) {
-        let header = header.split(' ');
+        header = header.split(' ');
         if (header[0] === 'Bearer') {
             getWidgetListAPI(header[1]).then(function (result) {
                 res.json(result);
