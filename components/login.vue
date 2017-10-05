@@ -64,6 +64,12 @@
 <script>
     export default {
         beforeCreate: function () {
+            if (this.$localStorage.get('accessToken') && this.$localStorage.get('publicKey')) {
+                this.$store.commit('setTokenAndKey', {
+                    token: this.$localStorage.get('accessToken'),
+                    key: this.$localStorage.get('key')
+                });
+            }
             if (this.$store.state.user.token) {
                 this.$router.replace('');
             }
