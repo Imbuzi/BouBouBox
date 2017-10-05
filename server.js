@@ -98,12 +98,19 @@ function getWidgetListAPI(token) {
 
 // Routage Express
 app.get('/widget', (req, res) => {
-    console.log(req.get('Authentication'));
-    getWidgetListAPI().then(function (result) {
-        res.json(result);
-    }).catch(function (error) {
-        res.status(result.error).json(result);
-    });
+    let header = req.get('Authorization').split(' ');
+    if (header[0] === 'Bearer') {
+        getWidgetListAPI(header[1]).then(function (result) {
+            res.json(result);
+        }).catch(function (error) {
+            res.status(result.error).json(result);
+        });
+    } else {
+        res.status(400).json({
+            error: 400,
+            message: "Erreur de requête"
+        });
+    }
 })
 
 app.post("/login", function (req, res) {
