@@ -110,7 +110,11 @@
                         this.$localStorage.set('accessToken', result.token);
                         this.$localStorage.set('publicKey', result.key);
                     }
-                    
+                    this.$store.commit('setTokenAndKey', {
+                        token: result.token,
+                        key: result.key
+                    });
+                    this.$router.replace('');
                 }
             }
         },

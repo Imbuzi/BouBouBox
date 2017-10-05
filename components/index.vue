@@ -10,8 +10,16 @@
 
     export default {
         beforeCreate: function () {
-            if (!this.$localStorage.get('accessToken')) {
+            if (this.$localStorage.get('accessToken') && this.$localStorage.get('key')) {
+                this.$store.commit('setTokenAndKey', {
+                    token: this.$localStorage.get('accessToken'),
+                    key: this.$localStorage.get('key')
+                });
+            }
+            if (!this.$store.state.user.token) {
                 this.$router.replace('login');
+            } else {
+                console.log(this.$store.state.user.token);
             }
         },
         components: {
