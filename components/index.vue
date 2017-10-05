@@ -17,8 +17,9 @@
                 });
             }
             if (!this.$store.state.user.token) {
-                this.$router.replace('login');
+                this.$router.replace('/login');
             } else {
+                this.$router.replace('/');
                 console.log(this.$store.state.user.token);
             }
         },
