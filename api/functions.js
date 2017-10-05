@@ -11,8 +11,16 @@ api.authenticateXMLHttpRequest = function authenticateXMLHttpRequest(req) {
         if (header) {
             header = header.split(' ');
             if (header[0] === 'Bearer') {
-                resolve({
-                    token: header[1]
+                let cert = fs.readFileSync('./public/key/public.pem');
+                jwt.verify(header[1], cert, { algorithms: ['RS256'] }, function (err, decoded) {
+                    if (err) {
+                        reject({
+                            error: 401,
+                            message: "Erreur d'authentification (token invalide)"
+                        });
+                    } else {
+                        resolve();
+                    }
                 });
             } else {
                 reject({
@@ -31,25 +39,15 @@ api.authenticateXMLHttpRequest = function authenticateXMLHttpRequest(req) {
 
 api.getWidgetList = function(token) {
     return new Promise(function (resolve, reject) {
-        var cert = fs.readFileSync('./public/key/public.pem');
-        jwt.verify(token, cert, { algorithms: ['RS256'] }, function (err, decoded) {
-            if (err) {
-                reject({
-                    error: 401,
-                    message: "Erreur d'authentification (token invalide)"
-                });
-            } else {
-                db.widget.getAll().then(function (widgetList) {
-                    resolve({
-                        widgetList: widgetList
-                    });
-                }).catch(function (error) {
-                    reject({
-                        error: 500,
-                        message: "Erreur de base de données"
-                    });
-                });
-            }
+        db.widget.getAll().then(function (widgetList) {
+            resolve({
+                widgetList: widgetList
+            });
+        }).catch(function (error) {
+            reject({
+                error: 500,
+                message: "Erreur de base de données"
+            });
         });
     });
 }

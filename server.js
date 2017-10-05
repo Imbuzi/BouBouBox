@@ -26,16 +26,13 @@ milight.createBridges().then(function (value) {
 
 // Routage Express
 app.get('/widget', (req, res) => {
-    api.authenticateXMLHttpRequest(req).then(function (authentication) {
-        api.getWidgetList(authentication.token).then(function (result) {
-            console.log(result);
+    api.authenticateXMLHttpRequest(req).then(function () {
+        api.getWidgetList().then(function (result) {
             res.json(result);
         }).catch(function (error) {
-            console.log(error);
             res.status(error.error).json(error);
         });
     }).catch(function (error) {
-        console.log(error);
         res.status(error.error).json(error);
     });
 })
