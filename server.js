@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const express = require('express');
 const path = require('path');
 const milight = require('./model/milight.js');
-const db = require('./model/db.js');
 const morgan = require('morgan'); // Charge le middleware de logging
 const api = require('./api/functions.js');
 const app = express();

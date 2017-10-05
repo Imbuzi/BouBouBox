@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const passwordHash = require('password-hash');
 const fs = require('fs');
+const db = require('./model/db.js');
 
 let api = {};
 
