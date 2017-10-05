@@ -17,9 +17,12 @@ app.use(bodyParser.json());
 //app.use(morgan('combined'));
 app.use(express.static(__dirname + '/public'))
 
+// Création serveur HTTP
+const server = http.createServer(app)
+
 // Ecoute serveur HTTP après initialisation de l'API Milight
 Promise.all(preInitPromises).then(function () {
-    const server = http.createServer(app).listen(3000);
+    server.listen(3000);
     console.log("Serveur HTTP en écoute ...");
 }).catch(function () {
     console.log("Serveur HTTP hors service : erreur lors de l'initialisation ...");
