@@ -110,8 +110,10 @@
                         this.$localStorage.set('accessToken', result.token);
                         this.$localStorage.set('publicKey', result.key);
                     }
-
-                    console.log(result);
+                    
+                    jwt.verify(result.token, result.key, function (err, decoded) {
+                        console.log(decoded);
+                    });
 
                 }
             }
