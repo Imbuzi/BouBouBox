@@ -1,14 +1,12 @@
 // Initial state
 const state = {
-    token: null,
-    key: null
+    token: null
 }
 
 // Mutations
 const mutations = {
-    setTokenAndKey(state, payload) {
+    setToken(state, payload) {
         state.token = payload.token;
-        state.key = payload.key;
     }
 }
 

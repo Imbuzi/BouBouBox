@@ -40,8 +40,8 @@ function getJWTAPI(mail, password) {
             let users = [
                 {
                     id: 1,
-                    mail: 'admin@admin.fr',
-                    password: 'sha1$ac676672$1$df349c27624573001df03a3f397e1a8e9a6e469c'
+                    mail: 'nicolas.bourasseau@outlook.com',
+                    password: 'SHA512$edf16c2c$1$6dbcccba503f2f63058c81c50b15903b5e10e94692e7b87175effa144d908e123f46aacbb1852492f46c393ff6eaf0bbbf367e3bcae10469389934e9e3ddbff2'
                 }
             ];
             let user = users.filter((element) => (element.mail == mail))[0];
@@ -55,7 +55,6 @@ function getJWTAPI(mail, password) {
                 if (passwordHash.verify(password, user.password)) {
                     let payload = { id: user.id };
                     let cert = fs.readFileSync('./private.key');
-                    let publicKey = fs.readFileSync('./public/key/public.pem');
                     let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
                         if (err) {
                             reject({
@@ -64,8 +63,7 @@ function getJWTAPI(mail, password) {
                             });
                         } else {
                             resolve({
-                                token: token,
-                                key: publicKey
+                                token: token
                             });
                         }
                     });
