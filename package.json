@@ -48,7 +48,7 @@
     "url": "git+https://github.com/Imbuzi/BouBouBox.git"
   },
   "scripts": {
-    "watchify": "watchify -vd -p browserify-hmr -e clientApp.js -o public/js/app.js",
+    "watchify": "watchify -vd -e clientApp.js -o public/js/app.js",
     "nodemon": "nodemon",
     "dev": "npm-run-all --parallel watchify nodemon",
     "build": "cross-env NODE_ENV=production browserify -g envify clientApp.js | uglifyjs -c warnings=false -m > public/js/app.js"
