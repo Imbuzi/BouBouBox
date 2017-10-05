@@ -1,9 +1,9 @@
 <template>
-    <main v-bind:class="'theme-' + color">
+    <div>
         <navbar></navbar>
         <sidebar></sidebar>
         <main-section></main-section>
-    </main>
+    </div>
 </template>
 
 <script>
@@ -13,9 +13,6 @@
 
     export default {
         computed: {
-            color: function() {
-                return this.$store.state.theme.color;
-            },
             user: function () {
                 return this.$store.state.user;
             }

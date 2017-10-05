@@ -1,6 +1,8 @@
 <template>
-    <alert></alert>
-    <router-view></router-view>
+    <main v-bind:class="'theme-' + color">
+        <alert></alert>
+        <router-view></router-view>
+    </main>
 </template>
 
 <script>
@@ -14,6 +16,11 @@
         },
         components: {
             'alert': AlertComponent
+        },
+        computed: {
+            color: function () {
+                return this.$store.state.theme.color;
+            }
         }
     }
 </script>
