@@ -24,9 +24,3 @@
         }
     }
 </script>
-
-<style scoped>
-    main {
-        padding-top: 90px;
-    }
-</style>

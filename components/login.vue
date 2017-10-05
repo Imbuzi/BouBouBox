@@ -113,10 +113,6 @@
 </script>
 
 <style scoped>
-    main {
-        padding-top: 90px;
-    }
-
     .fade-enter-active, .fade-leave-active {
         transition: opacity .2s
     }
