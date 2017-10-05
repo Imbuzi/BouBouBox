@@ -102,7 +102,7 @@ app.get('/widget', (req, res) => {
     if (header[0] === 'Bearer') {
         getWidgetListAPI(header[1]).then(function (result) {
             res.json(result);
-        }).catch(function (error) {
+        }).catch(function (result) {
             res.status(result.error).json(result);
         });
     } else {
