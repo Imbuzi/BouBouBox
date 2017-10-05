@@ -8,6 +8,7 @@ const db = require('./model/db.js');
 const morgan = require('morgan'); // Charge le middleware de logging
 const app = express();
 const jwt = require('jsonwebtoken');
+const passwordHash = require('password-hash');
 
 // Bodyparser
 app.use(bodyParser.json());
@@ -40,7 +41,7 @@ function getJWTAPI(mail, password) {
                 {
                     id: 1,
                     mail: 'admin@admin.fr',
-                    password: 'admin'
+                    password: 'sha1$ac676672$1$df349c27624573001df03a3f397e1a8e9a6e469c'
                 }
             ];
             let user = users.filter((element) => (element.mail == mail))[0];
@@ -51,7 +52,7 @@ function getJWTAPI(mail, password) {
                     message: "Utilisateur inexistant"
                 });
             } else {
-                if (user.password === password) {
+                if (passwordHash.verify(password, user.password)) {
                     let payload = { id: user.id };
                     let cert = fs.readFileSync('./private.key');
                     let publicKey = fs.readFileSync('./public/key/public.pem');
