@@ -5,6 +5,7 @@ import sidebar from './modules/sidebar';
 import theme from './modules/theme';
 import widget from './modules/widget';
 import user from './modules/user';
+import alert from './modules/alert';
 
 Vue.use(Vuex);
 
@@ -16,7 +17,8 @@ export default new Vuex.Store({
         sidebar,
         theme,
         widget,
-        user
+        user,
+        alert
     },
     strict: dev
 })
