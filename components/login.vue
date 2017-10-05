@@ -24,7 +24,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-6 p-t-5">
-                                    <input v-bind:disabled="formLocked" type="checkbox" id="rememberme" name="rememberme" class="filled-in" v-bind:class="'chk-col-' + color">
+                                    <input v-bind:disabled="formLocked" v-model="rememberMe" type="checkbox" id="rememberme" name="rememberme" class="filled-in" v-bind:class="'chk-col-' + color">
                                     <label for="rememberme">Rester connecté</label>
                                 </div>
                                 <transition name="fade" mode="out-in">
@@ -70,7 +70,8 @@
                 mailAddress: '',
                 password: '',
                 loading: false,
-                formLocked: false
+                formLocked: false,
+                rememberMe: false
             }
         },
         methods: {
@@ -105,7 +106,13 @@
                         delay: 8000
                     });
                 } else {
+                    if (this.rememberMe) {
+                        this.$localStorage.set('accessToken', result.token);
+                        this.$localStorage.set('publicKey', result.key);
+                    }
+
                     console.log(result);
+
                 }
             }
         },

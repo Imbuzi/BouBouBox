@@ -54,6 +54,7 @@ function getJWTAPI(mail, password) {
                 if (user.password === password) {
                     let payload = { id: user.id };
                     let cert = fs.readFileSync('./private.key');
+                    let publicKey = fs.readFileSync('./public/key/public.pem');
                     let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
                         if (err) {
                             reject({
@@ -62,9 +63,8 @@ function getJWTAPI(mail, password) {
                             });
                         } else {
                             resolve({
-                                error: false,
-                                message: "Token récupéré",
-                                token: token
+                                token: token,
+                                key: publicKey
                             });
                         }
                     });
