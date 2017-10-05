@@ -11,7 +11,7 @@
     export default {
         beforeCreate: function () {
             if (!this.$localStorage.get('accessToken')) {
-                this.$router.push('login');
+                this.$router.replace('login');
             }
         },
         components: {
