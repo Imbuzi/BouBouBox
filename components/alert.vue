@@ -9,8 +9,8 @@
     export default {
         methods: {
             close: function () {
-                clearTimeout(this.alert.timeout);
-                this.alert.opened = false;
+                clearTimeout(this.$store.state.alert.timeout);
+                this.$store.commit('toggleAlert', false);
             }
         },
         computed: {
