@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import actions from './actions';
+import * as actions from './actions';
 import sidebar from './modules/sidebar';
 import theme from './modules/theme';
 import widget from './modules/widget';
