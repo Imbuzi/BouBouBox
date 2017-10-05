@@ -2,10 +2,13 @@ const http = require('http');
 const bodyParser = require("body-parser");
 const express = require('express');
 const path = require('path');
-const milight = require('./model/milight.js');
 const morgan = require('morgan'); // Charge le middleware de logging
 const api = require('./api/functions.js');
 const app = express();
+
+const preInitPromises = [
+    api.milight.discoverBridges()
+];
 
 // Bodyparser
 app.use(bodyParser.json());
@@ -14,14 +17,12 @@ app.use(bodyParser.json());
 //app.use(morgan('combined'));
 app.use(express.static(__dirname + '/public'))
 
-// Ecoute serveur HTTP
-const server = http.createServer(app).listen(3000);
-console.log("Serveur HTTP en écoute ...");
-
-// Init bridges list
-let bridges = [];
-milight.createBridges().then(function (value) {
-    bridges = value;
+// Ecoute serveur HTTP après initialisation de l'API Milight
+Promise.all(preInitPromises).then(function () {
+    const server = http.createServer(app).listen(3000);
+    console.log("Serveur HTTP en écoute ...");
+}).catch(function () {
+    console.log("Serveur HTTP hors service : erreur lors de l'initialisation ...");
 });
 
 // Routage Express
@@ -72,21 +73,18 @@ io.on('connection', function(socket) {
         });
     });
 
-    socket.on('setLightIntensity', function (data) {
-        console.log(data);
-        let bridge = bridges.filter(function (element) {
-            return element.mac == data.light.bridge.mac;
-        })[0];
-
-        if (typeof bridge !== "undefined") {
-            milight.setLightIntensity(bridge, data.light.zone, data.value).then(function () {
-                console.log('Command executed !');
+    socket.on('setLightIntensity', function (token, data) {
+        api.validateToken(token).then(function () {
+            api.milight.setLightIntensity(data.value, data.light).then(function () {
+                console.log('Commande executée !');
+            }).catch(function (error) {
+                console.log(error);
             });
-        } else {
-            console.log('Error while setting light intensity : bridge undefined !');
-        };
+        }).catch(function (result) {
+            console.log(result);
+        });
     });
-    socket.on('setLightPower', function (data) {
+    /*socket.on('setLightPower', function (data) {
         console.log(data);
 
         socket.broadcast.emit('updateLightPower', data);
@@ -102,5 +100,5 @@ io.on('connection', function(socket) {
         } else {
             console.log('Error while setting light power : bridge undefined !');
         };
-    });
+    });*/
 });

@@ -2,8 +2,11 @@ const jwt = require('jsonwebtoken');
 const passwordHash = require('password-hash');
 const fs = require('fs');
 const db = require('../model/db.js');
+const milightAPI = require('./milight/functions.js');
 
-let api = {};
+let api = {
+    milight: milightAPI
+};
 
 api.authenticateXMLHttpRequest = function (req) {
     return new Promise(function (resolve, reject) {

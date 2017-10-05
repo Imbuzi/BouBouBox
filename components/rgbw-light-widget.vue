@@ -26,7 +26,7 @@
         },
         methods: {
             intensitySet: function (value) {
-                this.$socket.emit('setLightIntensity', {
+                this.$socket.emit('setLightIntensity', this.$store.state.user.token, {
                     value: parseInt(value),
                     light: this.light
                 });
