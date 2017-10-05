@@ -30,12 +30,15 @@ milight.createBridges().then(function (value) {
 app.get('/widget', (req, res) => {
     api.authenticateXMLHttpRequest(req).then(function (authentication) {
         api.getWidgetList(authentication.token).then(function (result) {
+            console.log(result);
             res.json(result);
-        }).catch(function (result) {
-            res.status(result.error).json(result);
+        }).catch(function (error) {
+            console.log(error);
+            res.status(error.error).json(error);
         });
-    }).catch(function (result) {
-        res.status(result.error).json(result);
+    }).catch(function (error) {
+        console.log(error);
+        res.status(error.error).json(error);
     });
 })
 
