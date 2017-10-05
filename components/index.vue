@@ -20,7 +20,6 @@
                 this.$router.replace('/login');
             } else {
                 this.$router.replace('/');
-                console.log(this.$store.state.user.token);
             }
         },
         components: {
