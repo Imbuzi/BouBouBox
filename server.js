@@ -53,12 +53,17 @@ app.get('*', function (req, res) {
 const io = require('socket.io')(server);
 io.on('connection', function(socket) {
     socket.on('getWidgetList', function (token) {
-        api.getWidgetList(token).then(function (result) {
-            socket.emit('widgetList', result);
+        api.validateToken(token).then(function () {
+            api.getWidgetList().then(function (result) {
+                socket.emit('widgetList', result);
+            }).catch(function (error) {
+                socket.emit('widgetList', result);
+            });
         }).catch(function (result) {
             socket.emit('widgetList', result);
         });
     });
+
     socket.on('getJWT', function (data) {
         api.getJWT(data.mail, data.password).then(function (result) {
             socket.emit('JWT', result);

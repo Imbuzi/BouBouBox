@@ -5,22 +5,16 @@ const db = require('../model/db.js');
 
 let api = {};
 
-api.authenticateXMLHttpRequest = function authenticateXMLHttpRequest(req) {
+api.authenticateXMLHttpRequest = function (req) {
     return new Promise(function (resolve, reject) {
         let header = req.get('Authorization');
         if (header) {
             header = header.split(' ');
             if (header[0] === 'Bearer') {
-                let cert = fs.readFileSync('./public/key/public.pem');
-                jwt.verify(header[1], cert, { algorithms: ['RS256'] }, function (err, decoded) {
-                    if (err) {
-                        reject({
-                            error: 401,
-                            message: "Erreur d'authentification (token invalide)"
-                        });
-                    } else {
-                        resolve();
-                    }
+                api.validateToken(header[1]).then(function () {
+                    resolve();
+                }).catch(function (tokenError) {
+                    reject(tokenError);
                 });
             } else {
                 reject({
@@ -34,6 +28,22 @@ api.authenticateXMLHttpRequest = function authenticateXMLHttpRequest(req) {
                 message: "Erreur de requête"
             });
         }
+    });
+}
+
+api.validateToken = function (token) {
+    return new Promise(function (resolve, reject) {
+        let cert = fs.readFileSync('./public/key/public.pem');
+        jwt.verify(token, cert, { algorithms: ['RS256'] }, function (err, decoded) {
+            if (err) {
+                reject({
+                    error: 401,
+                    message: "Erreur d'authentification (token invalide)"
+                });
+            } else {
+                resolve();
+            }
+        });
     });
 }
 
