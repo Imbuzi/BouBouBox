@@ -49,8 +49,8 @@
   },
   "scripts": {
     "watchify": "watchify -vd -p browserify-hmr -e clientApp.js -o public/js/app.js",
-    "serve": "http-server -o -s -c 1 -a localhost",
-    "dev": "npm-run-all --parallel watchify serve",
+    "nodemon": "nodemon",
+    "dev": "npm-run-all --parallel watchify nodemon",
     "build": "cross-env NODE_ENV=production browserify -g envify clientApp.js | uglifyjs -c warnings=false -m > public/js/app.js"
   },
   "browserify": {
