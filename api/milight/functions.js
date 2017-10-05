@@ -18,7 +18,7 @@ api.discoverBridges = function () {
             });
         }).then(function () {
             resolve();
-        }).catch({
+        }).catch(function() {
             reject();
         });
     });
