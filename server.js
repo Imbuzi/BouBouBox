@@ -36,44 +36,36 @@ function getJWTAPI(mail, password) {
                 message: "Erreur de requête"
             });
         } else {
-            // Array temporaire avec infos des utilisateurs, stocké en BDD plus tard ...
-            let users = [
-                {
-                    id: 1,
-                    mail: 'nicolas.bourasseau@outlook.com',
-                    password: 'SHA512$edf16c2c$1$6dbcccba503f2f63058c81c50b15903b5e10e94692e7b87175effa144d908e123f46aacbb1852492f46c393ff6eaf0bbbf367e3bcae10469389934e9e3ddbff2'
-                }
-            ];
-            let user = users.filter((element) => (element.mail == mail))[0];
-
-            if (!user) {
-                reject({
-                    error: 401,
-                    message: "Utilisateur inexistant"
-                });
-            } else {
-                if (passwordHash.verify(password, user.password)) {
-                    let payload = { id: user.id };
-                    let cert = fs.readFileSync('./private.key');
-                    let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
-                        if (err) {
-                            reject({
-                                error: 500,
-                                message: "Erreur de chiffrement du token"
-                            });
-                        } else {
-                            resolve({
-                                token: token
-                            });
-                        }
-                    });
-                } else {
+            db.user.getByMail(mail).then(function (user) {
+                if (!user) {
                     reject({
                         error: 401,
-                        message: "Mot de passe erroné"
+                        message: "Utilisateur inexistant"
                     });
+                } else {
+                    if (passwordHash.verify(password, user.password)) {
+                        let payload = { mail: user.mail };
+                        let cert = fs.readFileSync('./private.key');
+                        let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
+                            if (err) {
+                                reject({
+                                    error: 500,
+                                    message: "Erreur de chiffrement du token"
+                                });
+                            } else {
+                                resolve({
+                                    token: token
+                                });
+                            }
+                        });
+                    } else {
+                        reject({
+                            error: 401,
+                            message: "Mot de passe erroné"
+                        });
+                    }
                 }
-            }
+            });
         }
     });
 }

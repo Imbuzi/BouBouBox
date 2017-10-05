@@ -3,7 +3,8 @@ const config = require('../db-config.js')[environment];
 const knex = require('knex')(config);
 
 const db = {
-    widget: {}
+    widget: {},
+    user: {}
 };
 
 db.widget.getAll = function () {
@@ -28,6 +29,14 @@ db.widget.getAll = function () {
 
             return result;
         });
+}
+
+db.user.getByMail = function (mail) {
+    return knex
+        .from('user')
+        .select('user.password as password')
+        .where('user.mail', mail)
+        .first()
 }
 
 module.exports = db;
