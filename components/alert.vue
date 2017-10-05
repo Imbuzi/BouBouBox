@@ -1,17 +1,24 @@
 <template>
-    <div v-bind:class="{ open: alert.opened }" class="bootstrap-notify-container alert alert-dismissible bg-black p-r-35">
+    <div v-bind:class="{ open: opened }" class="bootstrap-notify-container alert alert-dismissible bg-black p-r-35">
         <button v-on:click.prevent="close" type="button" class="close">×</button>
-        {{alert.message}}
+        {{message}}
     </div>
 </template>
 
 <script>
     export default {
-        props: ['alert'],
         methods: {
             close: function () {
                 clearTimeout(this.alert.timeout);
                 this.alert.opened = false;
+            }
+        },
+        computed: {
+            message: function () {
+                return this.$store.state.alert.message;
+            },
+            opened: function () {
+                return this.$store.state.alert.opened;
             }
         }
     }

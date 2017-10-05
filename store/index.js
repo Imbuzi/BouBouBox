@@ -1,10 +1,9 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-//import * as actions from './actions'
-//import * as getters from './getters'
-import sidebar from './modules/sidebar'
-import theme from './modules/theme'
-import widget from './modules/widget'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import actions from './actions';
+import sidebar from './modules/sidebar';
+import theme from './modules/theme';
+import widget from './modules/widget';
 import user from './modules/user';
 
 Vue.use(Vuex);
@@ -12,8 +11,7 @@ Vue.use(Vuex);
 const dev = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
-    //actions,
-    //getters,
+    actions,
     modules: {
         sidebar,
         theme,

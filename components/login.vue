@@ -60,13 +60,10 @@
                 </div>
             </div>
         </div>
-        <alert v-bind:alert="alert"></alert>
     </main>
 </template>
 
 <script>
-    import AlertComponent from './alert.vue';
-
     export default {
         data: function () {
             return {
@@ -75,12 +72,7 @@
                 mailAddress: '',
                 password: '',
                 loading: false,
-                formLocked: false,
-                alert: {
-                    opened: false,
-                    message: "",
-                    timeout: null
-                }
+                formLocked: false
             }
         },
         methods: {
@@ -96,15 +88,6 @@
             lockForm: function (value) {
                 this.formLocked = value;
             },
-            showAlert: function (message, delay) {
-                let vm = this;
-                vm.alert.message = message;
-                vm.alert.opened = true;
-                clearTimeout(vm.alert.timeout);
-                vm.alert.timeout = setTimeout(function () {
-                    vm.alert.opened = false;
-                }, delay);
-            },
             submitForm: function () {
                 this.toggleLoading(true);
                 this.lockForm(true);
@@ -119,7 +102,10 @@
                 if (result.error) {
                     this.toggleLoading(false);
                     this.lockForm(false);
-                    this.showAlert(result.message, 10000);
+                    this.$store.dispatch('showAlert', {
+                        message: result.message,
+                        delay: 8000
+                    });
                 } else {
                     console.log(result);
                 }
@@ -129,9 +115,6 @@
             color: function () {
                 return this.$store.state.theme.color;
             }
-        },
-        components: {
-            'alert': AlertComponent
         }
     }
 </script>
