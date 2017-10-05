@@ -22,7 +22,14 @@
         },
         sockets: {
             widgetList: function (value) {
-                this.$store.commit('setWidgetList', value.widgetList);
+                if (value.error) {
+                    this.$store.dispatch('showAlert', {
+                        message: value.message,
+                        delay: 8000
+                    });
+                } else {
+                    this.$store.commit('setWidgetList', value.widgetList);
+                }
             }
         },
         computed: {
@@ -31,7 +38,7 @@
             }
         },
         created: function () {
-            this.$socket.emit('getWidgetList');
+            this.$socket.emit('getWidgetList'/*, this.$store.state.user.token*/);
         }
     }
 </script>

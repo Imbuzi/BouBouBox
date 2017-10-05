@@ -138,8 +138,8 @@ const io = require('socket.io')(server);
 io.on('connection', function(socket) {
     console.log(`User with id ${socket.id} connected`);
 
-    socket.on('getWidgetList', function () {
-        getWidgetListAPI().then(function (result) {
+    socket.on('getWidgetList', function (token) {
+        getWidgetListAPI(token).then(function (result) {
             socket.emit('widgetList', result);
         }).catch(function (result) {
             socket.emit('widgetList', result);
