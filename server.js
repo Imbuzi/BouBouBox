@@ -26,30 +26,6 @@ milight.createBridges().then(function (value) {
     bridges = value;
 });
 
-function authenticateXMLHttpRequest(req) {
-    return new Promise(function (resolve, reject) {
-        let header = req.get('Authorization');
-        if (header) {
-            header = header.split(' ');
-            if (header[0] === 'Bearer') {
-                resolve({
-                    token: header[1]
-                });
-            } else {
-                reject({
-                    error: 400,
-                    message: "Erreur de requête"
-                });
-            }
-        } else {
-            reject({
-                error: 400,
-                message: "Erreur de requête"
-            });
-        }
-    });
-}
-
 // Routage Express
 app.get('/widget', (req, res) => {
     api.authenticateXMLHttpRequest(req).then(function (authentication) {
