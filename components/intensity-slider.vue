@@ -39,7 +39,8 @@
             });
         },
         watch: {
-            value: function (newInetnsity) {
+            value: function (newIntensity) {
+                console.log("New intensity received :" + newIntensity);
                 this.$refs.slider.set(newIntensity);
             }
         },

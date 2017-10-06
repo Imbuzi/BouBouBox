@@ -14,6 +14,7 @@
         sockets: {
             lightIntensity: function (value) {
                 if (value.light.bridge.mac == this.light.bridge.mac && value.light.zone == this.light.zone) {
+                    console.log("Light widget updated light prop with: " + value);
                     this.light.value = value.value;
                 }
             }
