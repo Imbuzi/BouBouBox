@@ -11,6 +11,11 @@
 
     export default {
         props: ['light'],
+        sockets: {
+            lightIntensity: function (value) {
+                console.log(value);
+            }
+        },
         components: {
             'rgbw-light-widget': RGBWLightWidget
         }

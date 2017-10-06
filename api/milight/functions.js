@@ -1,4 +1,5 @@
 const milight = require('node-milight-promise');
+const db = require('../../model/db.js');
 
 let api = {};
 
@@ -36,7 +37,17 @@ api.setLightIntensity = function (value, light) {
             bridge.sendCommands(commands.rgbw.brightness(light.zone, value));
             bridge.pause(100);
 
-            resolve();
+            db.milight.setLightIntensity(light, value).then(function () {
+                resolve({
+                    light: light,
+                    value: value
+                });
+            }).catch(function () {
+                reject({
+                    error: 500,
+                    message: "Erreur de base de données"
+                });
+            });
         } else {
             reject({
                 error: 500,

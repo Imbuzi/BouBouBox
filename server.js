@@ -78,8 +78,8 @@ io.on('connection', function(socket) {
 
     socket.on('setLightIntensity', function (token, data) {
         api.validateToken(token).then(function () {
-            api.milight.setLightIntensity(data.value, data.light).then(function () {
-                console.log('Commande executée !');
+            api.milight.setLightIntensity(data.value, data.light).then(function (result) {
+                io.emit('lightIntensity', result);
             }).catch(function (error) {
                 console.log(error);
             });

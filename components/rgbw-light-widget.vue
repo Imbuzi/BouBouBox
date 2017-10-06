@@ -19,11 +19,6 @@
 
     export default {
         props: ['light'],
-        sockets: {
-            updateLightPower: function (value) {
-                console.log(value);
-            }
-        },
         methods: {
             intensitySet: function (value) {
                 this.$socket.emit('setLightIntensity', this.$store.state.user.token, {

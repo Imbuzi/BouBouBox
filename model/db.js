@@ -4,8 +4,22 @@ const knex = require('knex')(config);
 
 const db = {
     widget: {},
-    user: {}
+    user: {},
+    milight: {}
 };
+
+db.milight.setLightIntensity = function(light, value) {
+    return knex
+        .from('light')
+        .innerJoin('bridge', 'bridge.id', 'light.router')
+        .where({
+            'light.zone': light.zone,
+            'router.mac': light.bridge.mac
+        })
+        .update({
+            'light.intensity': value
+        });
+}
 
 db.widget.getAll = function () {
     return knex
