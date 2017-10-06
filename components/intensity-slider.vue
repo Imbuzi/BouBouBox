@@ -33,7 +33,7 @@
                         function () {
                             vm.$emit('value', value);
                         },
-                        100
+                        25
                     );
                 })(values[0]);
             });
