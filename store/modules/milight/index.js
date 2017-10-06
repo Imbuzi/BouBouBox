@@ -1,3 +1,5 @@
+const state = {}
+
 const actions = {
     setLightIntensity(context, payload) {
         let widget = context.rootState.widget.list.filter(function (element) {
@@ -15,5 +17,6 @@ const actions = {
 }
 
 export default {
+    state,
     actions
 }
