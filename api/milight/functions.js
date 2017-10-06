@@ -32,12 +32,12 @@ api.setLightIntensity = function (value, light) {
         })[0];
 
         if (bridge) {
-            let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
-
-            bridge.sendCommands(commands.rgbw.brightness(light.zone, value));
-            bridge.pause(100);
-
             db.milight.setLightIntensity(light, value).then(function () {
+                let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
+
+                bridge.sendCommands(commands.rgbw.brightness(light.zone, value));
+                bridge.pause(100);
+
                 resolve({
                     light: light,
                     value: value

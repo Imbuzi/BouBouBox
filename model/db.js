@@ -14,7 +14,7 @@ db.milight.setLightIntensity = function(light, value) {
         .innerJoin('bridge', 'bridge.id', 'light.router')
         .where({
             'light.zone': light.zone,
-            'router.mac': light.bridge.mac
+            'bridge.mac': light.bridge.mac
         })
         .update({
             'light.intensity': value
