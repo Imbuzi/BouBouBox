@@ -7,7 +7,7 @@ const state = {
 
 const mutations = {
     setWidgetProperty(state, value) {
-        this._.set(value.widget, value.property, value.value);
+        _.set(value.widget, value.property, value.value);
     },
     setWidgetList(state, list) {
         state.list = list;
