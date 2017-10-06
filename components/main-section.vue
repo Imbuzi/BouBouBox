@@ -2,10 +2,29 @@
     <section>
         <div class="container-fluid">
             <div class="row">
-                <template v-for="widget in widgets">
+                <template v-if="widgets" v-for="widget in widgets">
                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                         <widget v-bind:key="widget.id" v-bind:widget="widget">
                         </widget>
+                    </div>
+                </template>
+                <template v-else>
+                    <div class="col-xs-12 align-center">
+                        <div class="main-container">
+                            <div class="preloader pl-size-xl" v-bind:class="'pl-' + color">
+                                <div class="spinner-layer" >
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 align-center">
+                        Chargement en cours ...
                     </div>
                 </template>
             </div>
@@ -35,6 +54,9 @@
         computed: {
             widgets: function () {
                 return this.$store.state.widget.list;
+            },
+            color: function () {
+                return this.$store.state.theme.color;
             }
         },
         created: function () {
@@ -42,3 +64,9 @@
         }
     }
 </script>
+
+<style scoped>
+    .main-container {
+        margin-top: 100px;
+    }
+</style>
