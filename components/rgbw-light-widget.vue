@@ -27,7 +27,7 @@
                 });
             },
             powerSwitch: function (value) {
-                this.$socket.emit('setLightPower', {
+                this.$socket.emit('setLightPower', this.$store.state.user.token, {
                     value: value,
                     light: this.light
                 });

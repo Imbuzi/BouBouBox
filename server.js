@@ -87,21 +87,16 @@ io.on('connection', function(socket) {
             console.log(result);
         });
     });
-    /*socket.on('setLightPower', function (data) {
-        console.log(data);
 
-        socket.broadcast.emit('updateLightPower', data);
-
-        let bridge = bridges.filter(function (element) {
-            return element.mac == data.light.bridge.mac;
-        })[0];
-
-        if (typeof bridge !== "undefined") {
-            milight.setLightPower(bridge, data.light.zone, data.value).then(function () {
-                console.log('Command executed !');
+    socket.on('setLightPower', function (token, data) {
+        api.validateToken(token).then(function () {
+            api.milight.setLightPower(data.value, data.light).then(function (result) {
+                io.emit('lightPower', result);
+            }).catch(function (error) {
+                console.log(error);
             });
-        } else {
-            console.log('Error while setting light power : bridge undefined !');
-        };
-    });*/
+        }).catch(function (result) {
+            console.log(result);
+        });
+    });
 });

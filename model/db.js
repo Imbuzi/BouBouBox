@@ -21,6 +21,19 @@ db.milight.setLightIntensity = function(light, value) {
         });
 }
 
+db.milight.setLightPower = function (light, value) {
+    return knex
+        .from('light')
+        .innerJoin('bridge', 'bridge.id', 'light.router')
+        .where({
+            'light.zone': light.zone,
+            'bridge.mac': light.bridge.mac
+        })
+        .update({
+            'light.power': value
+        });
+}
+
 db.widget.getAll = function () {
     return knex
         .from('widget')
