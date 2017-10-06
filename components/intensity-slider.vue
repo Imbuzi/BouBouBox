@@ -44,6 +44,14 @@
         width: 5px;
     }
 
+    .noUi-origin {
+        transition: all 300ms ease-in-out !important;
+    }
+
+    .noUi-connect {
+        transition: all 300ms ease-in-out !important;
+    }
+
     .noUi-handle {
         width: 15px !important;
         height: 15px !important;
