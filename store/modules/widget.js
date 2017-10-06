@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 import milight from './milight/';
 
 // Initial state
@@ -7,7 +9,7 @@ const state = {
 
 const mutations = {
     setWidgetProperty(state, value) {
-        _.set(value.widget, value.property, value.value);
+        Vue._.set(value.widget, value.property, value.value);
     },
     setWidgetList(state, list) {
         state.list = list;
