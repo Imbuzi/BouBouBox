@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        props: ["start"],
+        props: ["value"],
         mounted: function () {
             let timeout = null;
             let vm = this;
@@ -15,7 +15,7 @@
                 animate: true,
                 animationDuration: 300,
                 connect: [true, false],
-                start: [vm.start],
+                start: vm.value,
                 tooltips: false,
                 direction: 'rtl',
                 orientation: 'vertical',
@@ -37,7 +37,12 @@
                     );
                 })(values[0]);
             });
-        }
+        },
+        watch: {
+            value: function (newInetnsity) {
+                this.$refs.slider.set(newIntensity);
+            }
+        },
     }
 </script>
 

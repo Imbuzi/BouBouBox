@@ -8,25 +8,6 @@
                         </widget>
                     </div>
                 </template>
-                <template v-else>
-                    <div class="col-xs-12 align-center">
-                        <div class="main-container">
-                            <div class="preloader pl-size-xl" v-bind:class="'pl-' + color">
-                                <div class="spinner-layer" >
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="circle-clipper right">
-                                        <div class="circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 align-center">
-                        Chargement en cours ...
-                    </div>
-                </template>
             </div>
         </div>
     </section>
@@ -54,9 +35,6 @@
         computed: {
             widgets: function () {
                 return this.$store.state.widget.list;
-            },
-            color: function () {
-                return this.$store.state.theme.color;
             }
         },
         created: function () {
@@ -64,9 +42,3 @@
         }
     }
 </script>
-
-<style scoped>
-    .main-container {
-        margin-top: 100px;
-    }
-</style>

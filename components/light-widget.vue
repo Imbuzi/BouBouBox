@@ -13,7 +13,9 @@
         props: ['light'],
         sockets: {
             lightIntensity: function (value) {
-                console.log(value);
+                if (value.light.bridge.mac == this.light.bridge.mac && value.light.zone == this.light.zone) {
+                    this.light.value = value.value;
+                }
             }
         },
         components: {
