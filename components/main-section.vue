@@ -30,6 +30,9 @@
                 } else {
                     this.$store.commit('setWidgetList', value.widgetList);
                 }
+            },
+            lightIntensity: function (value) {
+                this.$store.commit('setLightIntensity', value);
             }
         },
         computed: {
