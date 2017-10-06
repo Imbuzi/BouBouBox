@@ -15,8 +15,8 @@ const mutations = {
 }
 
 export default {
-    mutations,
+    mutations/*,
     modules: {
         milight
-    }
+    }*/
 }
