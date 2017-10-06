@@ -2,7 +2,7 @@
     <div class="light-selectors-container container-fluid">
         <div class="row flex-content">
             <div class="col-xs-2">
-                <intensity-slider v-bind:start="light.value" v-on:value="intensitySet"></intensity-slider>
+                <intensity-slider v-bind:start="light.intensity" v-on:value="intensitySet"></intensity-slider>
             </div>
             <div class="col-xs-8">
                 <color-wheel></color-wheel>
