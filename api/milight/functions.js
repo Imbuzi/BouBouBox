@@ -68,9 +68,9 @@ api.setLightPower = function (value, light) {
                 let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
 
                 if (value) {
-                    bridge.sendCommands(commands.rgbw.on(light.zone);
+                    bridge.sendCommands(commands.rgbw.on(light.zone));
                 } else {
-                    bridge.sendCommands(commands.rgbw.off(light.zone);
+                    bridge.sendCommands(commands.rgbw.off(light.zone));
                 }
                 bridge.pause(100);
 
