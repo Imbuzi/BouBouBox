@@ -6,7 +6,7 @@
             </div>
             <div class="col-xs-8">
                 <color-wheel></color-wheel>
-                <power-switch v-on:value="powerSwitch"></power-switch>
+                <power-switch v-bind:value="light.power" v-on:value="powerSwitch"></power-switch>
             </div>
         </div>
     </div>
