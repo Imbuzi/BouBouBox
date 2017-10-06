@@ -32,7 +32,9 @@
                 }
             },
             lightIntensity: function (value) {
-                this.$store.commit('setLightIntensity', value);
+                this.$store.dispatch('setLightIntensity', {
+                    value: value
+                });
             }
         },
         computed: {

@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueRouter from 'vue-router';
+import Lodash from 'lodash'
+import VueLodash from 'vue-lodash'
 import VueLocalStorage from 'vue-localstorage'
 import SocketIO from 'socket.io-client';
 import VueSocketIO from 'vue-socket.io';
@@ -14,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 	Vue.use(VueSocketIO, SocketIOInstance, store);
     Vue.use(VueLocalStorage);
+    Vue.use(VueLodash, Lodash);
 
 	const App = new Vue({
 		el: 'main',
