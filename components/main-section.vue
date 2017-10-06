@@ -2,7 +2,7 @@
     <section>
         <div class="container-fluid">
             <div class="row">
-                <template v-if="widgets" v-for="widget in widgets">
+                <template v-for="widget in widgets">
                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                         <widget v-bind:key="widget.id" v-bind:widget="widget">
                         </widget>
