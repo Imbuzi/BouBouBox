@@ -4,13 +4,18 @@
 
 <script>
     export default {
+        props: ["start"],
         mounted: function () {
+            let timeout = null;
+            let vm = this;
+
             this.$refs.slider.style.height = "100%";
+
             noUiSlider.create(this.$refs.slider, {
                 animate: true,
                 animationDuration: 300,
                 connect: [true, false],
-                start: [100],
+                start: [vm.start],
                 tooltips: false,
                 direction: 'rtl',
                 orientation: 'vertical',
@@ -20,9 +25,6 @@
                     'max': 100
                 }
             });
-
-            let timeout = null;
-            let vm = this;
 
             this.$refs.slider.noUiSlider.on('slide', function (values, handle) {
                 (function (value) {
