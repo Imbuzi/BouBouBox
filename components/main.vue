@@ -24,3 +24,14 @@
         }
     }
 </script>
+
+<style>
+    body * {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        outline: none;
+    }
+</style>
