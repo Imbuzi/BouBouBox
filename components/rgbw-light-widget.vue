@@ -1,10 +1,10 @@
 <template>
     <div class="light-selectors-container container-fluid">
         <div class="row flex-content">
-            <div class="col-xs-2">
+            <div class="col-xs-1">
                 <intensity-slider v-bind:value="light.intensity" v-on:value="intensitySet"></intensity-slider>
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-10">
                 <color-wheel></color-wheel>
                 <power-switch v-bind:value="light.power" v-on:value="powerSwitch"></power-switch>
             </div>
