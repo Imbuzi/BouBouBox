@@ -2,11 +2,6 @@
     <div>
         <div class="font-bold uppercase widget-header">{{name}}
             <power-switch class="pull-right widget-button" v-bind:value="light.power" v-on:value="powerSwitch"></power-switch>
-            <div class="pull-right widget-button">
-                <a href="#">
-                    <i class="material-icons">more_vert</i>
-                </a>
-            </div>
         </div>
         <div class="align-center">
             <template v-if="light.type ==='rgbw'">
@@ -38,10 +33,8 @@
 </script>
 
 <style scoped>
-    .widget-button a i {
-        font-size: 20px;
-        margin-top: -2px;
-        color: #555;
+    .switch.widget-button {
+        margin-top: -3px;
     }
 
     .widget-header {
