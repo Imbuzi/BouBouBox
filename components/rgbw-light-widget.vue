@@ -6,7 +6,6 @@
             </div>
             <div class="col-xs-10">
                 <color-wheel></color-wheel>
-                <power-switch v-bind:value="light.power" v-on:value="powerSwitch"></power-switch>
             </div>
         </div>
     </div>
@@ -15,7 +14,6 @@
 <script>
     import ColorWheel from './color-wheel.vue';
     import IntensitySlider from './intensity-slider.vue';
-    import PowerSwitch from './power-switch.vue';
 
     export default {
         props: ['light'],
@@ -25,18 +23,11 @@
                     value: parseInt(value),
                     light: this.light
                 });
-            },
-            powerSwitch: function (value) {
-                this.$socket.emit('setLightPower', this.$store.state.user.token, {
-                    value: value,
-                    light: this.light
-                });
             }
         },
         components: {
             'color-wheel': ColorWheel,
-            'intensity-slider': IntensitySlider,
-            'power-switch': PowerSwitch
+            'intensity-slider': IntensitySlider
         }
     }
 </script>
