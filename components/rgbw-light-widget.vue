@@ -5,7 +5,7 @@
                 <intensity-slider v-bind:value="light.intensity" v-on:value="intensitySet"></intensity-slider>
             </div>
             <div class="col-xs-10">
-                <color-wheel></color-wheel>
+                <color-wheel v-on:color="colorSet"></color-wheel>
             </div>
         </div>
     </div>
@@ -21,6 +21,12 @@
             intensitySet: function (value) {
                 this.$socket.emit('setLightIntensity', this.$store.state.user.token, {
                     value: parseInt(value),
+                    light: this.light
+                });
+            },
+            colorSet: function (value) {
+                this.$socket.emit('setLightColor', this.$store.state.user.token, {
+                    value: value,
                     light: this.light
                 });
             }

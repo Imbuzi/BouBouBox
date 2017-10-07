@@ -88,6 +88,18 @@ io.on('connection', function(socket) {
         });
     });
 
+    socket.on('setLightColor', function (token, data) {
+        api.validateToken(token).then(function () {
+            api.milight.setLightColor(data.value, data.light).then(function (result) {
+                console.log(result);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }).catch(function (result) {
+            console.log(result);
+        });
+    });
+
     socket.on('setLightPower', function (token, data) {
         api.validateToken(token).then(function () {
             api.milight.setLightPower(data.value, data.light).then(function (result) {
