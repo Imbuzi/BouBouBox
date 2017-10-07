@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="font-bold uppercase widget-header">{{name}}
-            <power-switch v-bind:value="light.power" v-on:value="powerSwitch"></power-switch>
+            <power-switch class="pull-right widget-button" v-bind:value="light.power" v-on:value="powerSwitch"></power-switch>
             <div class="pull-right widget-button">
                 <a href="#">
                     <i class="material-icons">more_vert</i>
@@ -36,3 +36,19 @@
         }
     }
 </script>
+
+<style scoped>
+    .widget-button a i {
+        font-size: 20px;
+        margin-top: -2px;
+        color: #555;
+    }
+
+    .widget-header {
+        margin-bottom: 15px;
+    }
+
+    .uppercase {
+        text-transform: uppercase;
+    }
+</style>
