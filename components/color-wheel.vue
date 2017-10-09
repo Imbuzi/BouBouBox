@@ -97,19 +97,19 @@
                     <polygon points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" style="fill: rgb(25, 118, 210);"></polygon>
                 </g>
             </g>
-            <g data-color="Light Blue" id="Light Blue" transform="rotate(341.05263157894734)" tabindex="0">
+            <g v-on:click="$emit('color',{'red': 3, 'green': 169, 'blue': 244})" transform="rotate(341.05263157894734)" tabindex="0">
                 <g class="polygons">
                     <polygon points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" style="fill: rgb(3, 169, 244);"></polygon>
                     <polygon points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" style="fill: rgb(2, 136, 209);"></polygon>
                 </g>
             </g>
-            <g v-on:click="$emit('color','#3F51B5')" transform="rotate(303.1578947368421)" tabindex="0">
+            <g transform="rotate(303.1578947368421)" tabindex="0">
                 <g class="polygons">
                     <polygon points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" style="fill: #3F51B5;"></polygon>
                     <polygon points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" style="fill: #303F9F"></polygon>
                 </g>
             </g>
-            <g v-on:click="$emit('color','#E91E63')" transform="rotate(246.3157894736842)" tabindex="0">
+            <g transform="rotate(246.3157894736842)" tabindex="0">
                 <g class="polygons">
                     <polygon points="32.94244769737761,-94.41819284282845 82.35611924344403,-236.0454821070711 0,-250 0,-140" style="fill: #E91E63;"></polygon>
                     <polygon points="32.94244769737761,-94.41819284282845 46.11942677632865,-132.1854699799598 0,-140 0,-100" style="fill: #C2185B;"></polygon>
