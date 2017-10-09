@@ -66,7 +66,7 @@ api.setLightColor = function (value, light) {
         if (bridge) {
             let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
 
-            bridge.sendCommands(commands.rgbw.on(light.zone), commands.rgbw.hue(light.zone, milight.helper.rgbToHue(milight.helper.hexToRgb(value))));
+            bridge.sendCommands(commands.rgbw.rgb(light.zone, value.red, value.green, value.blue));
             bridge.pause(100);
 
             resolve({
