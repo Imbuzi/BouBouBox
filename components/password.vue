@@ -5,6 +5,7 @@
                 <div class="card">
                     <div class="body">
                         <form v-on:submit.prevent="submitForm">
+                            <h4>Récupération de mot de passe</h4>
                             <div class="msg">
                                 Veuillez saisir l'adresse mail que vous avez utilisé lors de votre création de compte.
                                 Vous allez recevoir par mail un lien pour réinitialiser votre mot de passe.
@@ -18,7 +19,7 @@
                                 </div>
                             </div>
 
-                            <button v:bind-class="'bg-' + color" class="btn btn-block btn-lg" type="submit">RÉINITIALISER MON MOT DE PASSE</button>
+                            <button v-bind:class="'bg-' + color" class="btn btn-block btn-lg" type="submit">RÉINITIALISER MON MOT DE PASSE</button>
                             <div class="row m-t-20 m-b--5 align-center">
                                 <a href="#" v-on:click.prevent="connect">Se connecter</a>
                             </div>
@@ -52,3 +53,9 @@
         }
     }
 </script>
+
+<style scoped>
+    .msg {
+        margin-bottom: 15px;
+    }
+</style>
