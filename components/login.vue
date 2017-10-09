@@ -47,10 +47,10 @@
                             </div>
                             <div class="row m-t-15 m-b--20">
                                 <div class="col-xs-6">
-                                    <a v-bind:class="'col-' + color" href="#" v-on:click="createAccount">Créer un compte</a>
+                                    <a v-bind:class="'col-' + color" href="#" v-on:click.prevent="createAccount">Créer un compte</a>
                                 </div>
                                 <div class="col-xs-6 align-right">
-                                    <a v-bind:class="'col-' + color" href="#" v-on:click="resetPassword">Mot de passe oublié</a>
+                                    <a v-bind:class="'col-' + color" href="#" v-on:click.prevent="resetPassword">Mot de passe oublié</a>
                                 </div>
                             </div>
                         </form>
