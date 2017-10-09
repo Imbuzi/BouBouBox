@@ -10,5 +10,11 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+        beforeCreate: function () {
+            if (this.$store.state.user.token) {
+                this.$router.replace('/');
+            }
+        }
+    }
 </script>

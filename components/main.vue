@@ -12,6 +12,11 @@
     import SideBar from './sidebar.vue';
 
     export default {
+        beforeCreate: function () {
+            if (!this.$store.state.user.token) {
+                this.$router.replace('/login');
+            }
+        },
         computed: {
             user: function () {
                 return this.$store.state.user;

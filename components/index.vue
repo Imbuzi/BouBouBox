@@ -15,11 +15,6 @@
                     token: this.$localStorage.get('accessToken')
                 });
             }
-            if (!this.$store.state.user.token) {
-                this.$router.replace('/login');
-            } else {
-                this.$router.replace('/');
-            }
         },
         components: {
             'alert': AlertComponent
