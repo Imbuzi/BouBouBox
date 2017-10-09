@@ -47,7 +47,7 @@
                             </div>
                             <div class="row m-t-15 m-b--20">
                                 <div class="col-xs-6">
-                                    <a v-bind:class="'col-' + color" href="#">Créer un compte</a>
+                                    <a v-bind:class="'col-' + color" v-on:click="createAccount">Créer un compte</a>
                                 </div>
                                 <div class="col-xs-6 align-right">
                                     <a v-bind:class="'col-' + color" href="#">Mot de passe oublié</a>
@@ -94,6 +94,9 @@
                     mail: this.mailAddress,
                     password: this.password
                 });
+            },
+            createAccount: function () {
+                this.$router.push('/sign-up');
             }
         },
         sockets: {
