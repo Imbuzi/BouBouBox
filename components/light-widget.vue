@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="font-bold uppercase widget-header">{{name}}
-            <button type="button" class="pull-right btn btn-circle" v-bind:class="''bg-' + color">
+            <button type="button" class="pull-right btn btn-circle" v-bind:class="'bg-' + color">
                 <i class="material-icons">brightness_2</i>
             </button>
             <power-switch class="pull-right widget-button" v-bind:value="light.power" v-on:value="powerSwitch"></power-switch>
