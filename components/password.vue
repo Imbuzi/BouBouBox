@@ -6,8 +6,8 @@
                     <div class="body">
                         <form v-on:submit.prevent="submitForm">
                             <div class="msg">
-                                Veuillez saisir l'adresse mail que vous avez utilisé lors de votre création de compte.
-                                Vous allez recevoir par mail un lien pour réinitialiser votre mot de passe.
+                                Veuillez saisir l'adresse mail que vous avez utilisÃ© lors de votre crÃ©ation de compte.
+                                Vous allez recevoir par mail un lien pour rÃ©initialiser votre mot de passe.
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
@@ -18,7 +18,7 @@
                                 </div>
                             </div>
 
-                            <button v:bind-class="'bg-' + color" class="btn btn-block btn-lg" type="submit">Réinitialiser mon mot de passe</button>
+                            <button v:bind-class="'bg-' + color" class="btn btn-block btn-lg" type="submit">RÃ‰INITIALISER MON MOT DE PASSE</button>
                             <div class="row m-t-20 m-b--5 align-center">
                                 <a href="#" v-on:click.prevent="connect">Se connecter</a>
                             </div>
