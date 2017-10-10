@@ -31,7 +31,7 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">email</i>
                                 </span>
-                                <div class="form-line" v-bind:class="{ focused: mailFocused }">
+                                <div class="form-line" v-bind:class="{ focused: mailAddressFocused }">
                                     <input v-bind:disabled="formLocked" type="email" class="form-control" v-model="mailAddress" v-on:blur="toggleMailFocused(false)" v-on:focus="toggleMailFocused(true)" name="email" placeholder="Adresse mail" required>
                                 </div>
                             </div>
@@ -90,6 +90,9 @@
             },
             toggleSurnameFocused: function (value) {
                 this.surnameFocused = value;
+            },
+            toggleMailFocused: function (value) {
+                this.mailAddressFocused = value;
             },
             togglePasswordFocused: function (value) {
                 this.passwordFocused = value;
