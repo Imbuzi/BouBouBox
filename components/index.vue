@@ -1,7 +1,9 @@
 <template>
     <main v-bind:class="'theme-' + color">
         <alert></alert>
-        <router-view></router-view>
+        <transition name="fade" mode="out-in">
+            <router-view></router-view>
+        </transition>
     </main>
 </template>
 
@@ -30,5 +32,13 @@
 <style scoped>
     main {
         padding-top: 90px;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .2s
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0
     }
 </style>
