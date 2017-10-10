@@ -150,7 +150,7 @@
             },
             passwordInputState: function () {
                 if (this.password) {
-                    if (this.password.match(/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S *?[^A-Za-z0-9])(?=\S*?[0-9])\S{8,})$/)) {
+                    if (this.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/)) {
                         return {
                             valid: true,
                             invalid: false
