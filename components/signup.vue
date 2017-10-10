@@ -51,11 +51,23 @@
                                     <input v-bind:disabled="formLocked" type="password" class="form-control" v-model="passwordConfirm" v-on:blur="togglePasswordConfirmFocused(false)" v-on:focus="togglePasswordConfirmFocused(true)" name="confirm" placeholder="Confirmation du mot de passe" required>
                                 </div>
                             </div>
-                            <button v-bind:disabled="buttonLocked" v-bind:class="'bg-' + color" class="btn btn-block btn-lg" type="submit">CRÉER LE COMPTE</button>
+                            <transition name="fade" mode="out-in">
+                                <button v-if="!loading" key="button" v-bind:disabled="buttonLocked" v-bind:class="'bg-' + color" class="btn btn-block btn-lg" type="submit">CRÉER LE COMPTE</button>
+                                <div v-else class="preloader pl-size-xs">
+                                    <div class="spinner-layer" v-bind:class="'pl-' + color">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </transition>
                             <div class="m-t-25 m-b--5 align-center">
                                 <a v-bind:class="'col-' + color" href="#" v-on:click.prevent="connect">Se connecter</a>
                             </div>
-                        </form>
+</form>
                     </div>
                 </div>
             </div>
@@ -195,6 +207,14 @@
 
     .body .col-xs-6 {
         margin-bottom: 0px !important;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .2s
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0
     }
 
     button {
