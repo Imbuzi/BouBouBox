@@ -42,7 +42,11 @@
         transition: all .2s ease-in;
     }
 
-    .slide-enter, .slide-leave-to {
+    .slide-enter {
         transform: translateX(100vw);
+    }
+
+    .slide-leave-to {
+        transform: translateX(-100vw);
     }
 </style>
