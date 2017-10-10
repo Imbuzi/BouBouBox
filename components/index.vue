@@ -1,7 +1,7 @@
 <template>
     <main v-bind:class="'theme-' + color">
         <alert></alert>
-        <transition name="slide" mode="out-in">
+        <transition v-bind:name="transitionName" mode="out-in">
             <router-view></router-view>
         </transition>
     </main>
@@ -25,6 +25,11 @@
             color: function () {
                 return this.$store.state.theme.color;
             }
+        },
+        watch: {
+            '$route': function(to, from) {
+                this.transitionName = (from === '/') ? 'fade' : 'slide';
+            }
         }
     }
 </script>
@@ -32,6 +37,14 @@
 <style scoped>
     main {
         padding-top: 90px;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .2s
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0
     }
 
     .slide-enter-active {
