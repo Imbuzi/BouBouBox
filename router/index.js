@@ -7,12 +7,45 @@ import PasswordReset from '../components/password.vue';
 
 Vue.use(VueRouter);
 
-export default new VueRouter({
+const router = new VueRouter({
     mode: 'history',
     routes: [
-        { path: '/', component: MainVueComponent },
-        { path: '/login', component: LoginComponent },
-        { path: '/sign-up', component: SignUpComponent },
-        { path: '/password-reset', component: PasswordReset }
+        {
+            path: '/',
+            component: MainVueComponent,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            path: '/login',
+            component: LoginComponent
+        },
+        {
+            path: '/sign-up',
+            component: SignUpComponent
+        },
+        {
+            path: '/password-reset',
+            component: PasswordReset
+        }
     ]
 });
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (!router.app.$store.state.user.token) {
+            next('/login');
+        } else {
+            next();
+        }
+    } else {
+        if (router.app.$store.state.user.token) {
+            next('/');
+        } else {
+            next();
+        }
+    }
+})
+
+export default router;
