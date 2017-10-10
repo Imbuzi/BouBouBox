@@ -29,7 +29,7 @@
                                 </div>
                                 <transition name="fade" mode="out-in">
                                     <div v-if="!loading" class="col-xs-6" key="button">
-                                        <button class="btn btn-block waves-effect" v-bind:class="'bg-' + color" type="submit">SE CONNECTER</button>
+                                        <button v-bind:disabled="buttonLocked" class="btn btn-block waves-effect" v-bind:class="'bg-' + color" type="submit">SE CONNECTER</button>
                                     </div>
                                     <div v-else key="loading" class="col-xs-6 align-center">
                                         <div class="preloader pl-size-xs">
@@ -167,6 +167,9 @@
                         invalid: false
                     };
                 }
+            },
+            buttonLocked: function () {
+                return !(this.passwordInputState.valid && this.mailInputState.valid);
             }
         }
     }
