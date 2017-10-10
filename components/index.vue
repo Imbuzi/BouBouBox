@@ -1,7 +1,7 @@
 <template>
     <main v-bind:class="'theme-' + color">
         <alert></alert>
-        <transition name="fade" mode="out-in">
+        <transition name="slide" mode="out-in">
             <router-view></router-view>
         </transition>
     </main>
@@ -34,11 +34,15 @@
         padding-top: 90px;
     }
 
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .2s
+    .slide-enter-active {
+        transition: all .2s ease-out;
     }
 
-    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-        opacity: 0
+    .slide-leave-active {
+        transition: all .2s ease-in;
+    }
+
+    .slide-enter, .slide-leave-to {
+        transform: translateX(100vw);
     }
 </style>
