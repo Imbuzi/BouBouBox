@@ -123,7 +123,7 @@
                     this.$store.commit('setToken', {
                         token: result.token
                     });
-                    this.$router.go(-(window.history.length));
+                    this.$router.go(-(window.history.length)+1);
                     this.$router.replace('/');
                 }
             }
