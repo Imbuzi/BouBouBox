@@ -96,10 +96,14 @@
                 });
             },
             createAccount: function () {
-                this.$router.push('/sign-up');
+                if (!this.formLocked) {
+                    this.$router.push('/sign-up');
+                }
             },
             resetPassword: function () {
-                this.$router.push('/password-reset');
+                if (!this.formLocked) {
+                    this.$router.push('/password-reset');
+                }
             }
         },
         sockets: {

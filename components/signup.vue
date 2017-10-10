@@ -131,7 +131,9 @@
                 });
             },
             connect: function () {
-                this.$router.push('/login');
+                if (!this.formLocked) {
+                    this.$router.push('/login');
+                }
             }
         },
         computed: {
