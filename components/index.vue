@@ -1,7 +1,7 @@
 <template>
     <main v-bind:class="'theme-' + color">
         <alert></alert>
-        <transition name="slide" mode="out-in">
+        <transition name="slide">
             <router-view></router-view>
         </transition>
     </main>
