@@ -94,4 +94,8 @@
     main {
         padding-top: 50px;
     }
+
+    .body .col-xs-6 {
+        margin-bottom: 0px !important;
+    }
 </style>
