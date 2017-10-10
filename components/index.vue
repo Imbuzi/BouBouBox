@@ -28,7 +28,7 @@
         },
         watch: {
             '$route': function(to, from) {
-                this.transitionName = (from.path === '/') ? 'fade' : 'slide';
+                this.transitionName = (from.path === '/') ? 'fade-instant-leave' : 'slide';
             }
         }
     }
@@ -39,11 +39,11 @@
         padding-top: 90px;
     }
 
-    .fade-enter-active, .fade-leave-active {
+    .fade-instant-leave-enter-active {
         transition: opacity .2s
     }
 
-    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    .fade-instant-leave-enter, .fade-instant-leave-leave-to /* .fade-leave-active below version 2.1.8 */ {
         opacity: 0
     }
 
