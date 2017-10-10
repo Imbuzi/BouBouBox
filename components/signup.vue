@@ -115,6 +115,9 @@
             lockForm: function (value) {
                 this.formLocked = value;
             },
+            toggleLoading: function (value) {
+                this.loading = value;
+            },
             submitForm: function () {
                 this.toggleLoading(true);
                 this.lockForm(true);
