@@ -22,13 +22,13 @@ api.authenticateXMLHttpRequest = function (req) {
             } else {
                 reject({
                     error: 400,
-                    message: "Erreur de requête"
+                    message: "Erreur de requÃªte"
                 });
             }
         } else {
             reject({
                 error: 400,
-                message: "Erreur de requête"
+                message: "Erreur de requÃªte"
             });
         }
     });
@@ -46,12 +46,12 @@ api.addUser = function (name, surname, mail, hashedPassword) {
             if (error.errno == 1062) {
                 reject({
                     error: 500,
-                    message: "Adresse mail déjà liée à un compte"
+                    message: "Adresse mail dÃ©jÃ  liÃ©e Ã  un compte"
                 });
             } else {
                 reject({
                     error: 500,
-                    message: "Erreur de base de données"
+                    message: "Erreur de base de donnÃ©es"
                 });
             }
         });
@@ -83,7 +83,7 @@ api.getWidgetList = function() {
         }).catch(function (error) {
             reject({
                 error: 500,
-                message: "Erreur de base de données"
+                message: "Erreur de base de donnÃ©es"
             });
         });
     });
@@ -94,7 +94,7 @@ api.getJWT = function(mail, password) {
         if (!mail || !password) {
             reject({
                 error: 400,
-                message: "Erreur de requête"
+                message: "Erreur de requÃªte"
             });
         } else {
             db.user.getByMail(mail).then(function (user) {
@@ -128,7 +128,7 @@ api.getJWT = function(mail, password) {
                         } else {
                             reject({
                                 error: 401,
-                                message: "Mot de passe erroné"
+                                message: "Mot de passe erronÃ©"
                             });
                         }
                     }
