@@ -28,7 +28,7 @@
         },
         watch: {
             '$route': function(to, from) {
-                this.transitionName = (from === '/') ? 'fade' : 'slide';
+                this.transitionName = (from.path === '/') ? 'fade' : 'slide';
             }
         }
     }
