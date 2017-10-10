@@ -106,7 +106,12 @@
             submitForm: function () {
                 this.toggleLoading(true);
                 this.lockForm(true);
-                // DO STUFF
+                this.$socket.emit('addUser', {
+                    name: this.name,
+                    surname: this.surname,
+                    mail: this.mailAddress,
+                    password: this.password
+                });
             },
             connect: function () {
                 this.$router.push('/login');
