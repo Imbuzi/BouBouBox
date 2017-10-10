@@ -163,7 +163,7 @@
             },
             passwordConfirmInputState: function () {
                 if (this.passwordConfirm) {
-                    if (this.passwordConfirm == this.password && passwordInputState.valid) {
+                    if (this.passwordConfirm == this.password && this.passwordInputState.valid) {
                         return {
                             valid: true,
                             invalid: false
