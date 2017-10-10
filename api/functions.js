@@ -43,11 +43,17 @@ api.addUser = function (name, surname, mail, hashedPassword) {
                 mail: mail
             });
         }).catch(function (error) {
-            console.log(error);
-            reject({
-                error: 500,
-                message: "Erreur de base de données"
-            });
+            if (error.errno == 1062) {
+                reject({
+                    error: 500,
+                    message: "Adresse mail déjà liée à un compte"
+                });
+            } else {
+                reject({
+                    error: 500,
+                    message: "Erreur de base de données"
+                });
+            }
         });
     });
 }

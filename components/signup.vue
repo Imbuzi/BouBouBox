@@ -103,7 +103,7 @@
                     this.toggleLoading(false);
                     this.lockForm(false);
                     this.$store.dispatch('showAlert', {
-                        message: result.message,
+                        message: data.message,
                         delay: 8000
                     });
                 } else {
