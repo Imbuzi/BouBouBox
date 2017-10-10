@@ -11,8 +11,7 @@
                                     <i class="material-icons">person</i>
                                 </span>
                                 <div class="form-line" v-bind:class="{ focused: mailFocused || mailInputState.valid || mailInputState.invalid, success: mailInputState.valid, error: mailInputState.invalid }">
-                                    <input v-bind:disabled="formLocked" type="email" v-model="mailAddress" class="form-control" v-on:blur="toggleMailFocused(false)" v-on:focus="toggleMailFocused(true)" name="mail" required autofocus>
-                                    <label class="form-label">Adresse mail</label>
+                                    <input v-bind:disabled="formLocked" type="email" v-model="mailAddress" class="form-control" v-on:blur="toggleMailFocused(false)" v-on:focus="toggleMailFocused(true)" name="mail" placeholder="Adresse mail" required autofocus>
                                 </div>
                             </div>
                             <div class="input-group">
@@ -20,8 +19,7 @@
                                     <i class="material-icons">lock</i>
                                 </span>
                                 <div class="form-line" v-bind:class="{ focused: passwordFocused || passwordInputState.valid || passwordInputState.invalid, success: passwordInputState.valid, error: passwordInputState.invalid }">
-                                    <input v-bind:disabled="formLocked" type="password" v-model="password" class="form-control" v-on:blur="togglePasswordFocused(false)" v-on:focus="togglePasswordFocused(true)" name="password" required>
-                                    <label class="form-label">Mot de passe</label>
+                                    <input v-bind:disabled="formLocked" type="password" v-model="password" class="form-control" v-on:blur="togglePasswordFocused(false)" v-on:focus="togglePasswordFocused(true)" name="password" placeholder="Mot de passe" required>
                                 </div>
                             </div>
                             <div class="row">
