@@ -11,13 +11,6 @@
     import AlertComponent from './alert.vue';
 
     export default {
-        beforeCreate: function () {
-            if (this.$localStorage.get('accessToken')) {
-                this.$store.commit('setToken', {
-                    token: this.$localStorage.get('accessToken')
-                });
-            }
-        },
         components: {
             'alert': AlertComponent
         },
