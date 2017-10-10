@@ -6,7 +6,7 @@
                     <div class="body">
                         <form v-on:submit.prevent="submitForm">
                             <h4>Connexion requise</h4>
-                            <div class="input-group form-float">
+                            <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="material-icons">person</i>
                                 </span>
@@ -15,7 +15,7 @@
                                     <label class="form-label">Adresse mail</label>
                                 </div>
                             </div>
-                            <div class="input-group form-float">
+                            <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="material-icons">lock</i>
                                 </span>
