@@ -114,6 +114,8 @@
                 } else {
                     if (this.rememberMe) {
                         this.$localStorage.set('accessToken', result.token);
+                    } else {
+                        this.$session.set('accessToken', result.token);
                     }
                     this.$store.commit('setToken', {
                         token: result.token
