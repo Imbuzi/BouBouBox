@@ -53,8 +53,8 @@
                             </div>
                             <transition name="fade" mode="out-in">
                                 <button v-if="!loading" key="button" v-bind:disabled="buttonLocked" v-bind:class="'bg-' + color" class="btn btn-block btn-lg" type="submit">CRÉER LE COMPTE</button>
-                                <div class="align-center">
-                                    <div v-else class="preloader pl-size-xs">
+                                <div v-else class="align-center">
+                                    <div class="preloader pl-size-xs">
                                         <div class="spinner-layer" v-bind:class="'pl-' + color">
                                             <div class="circle-clipper left">
                                                 <div class="circle"></div>
