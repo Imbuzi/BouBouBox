@@ -7,15 +7,24 @@
                         <form v-on:submit.prevent="submitForm">
                             <h4>Inscription</h4>
                             <div class="msg">
-                                Suite à la création de votre compte, celui-ci devra être validé par un utilisateur
-                                approuvé pour vous permettre l'accès à l'interface.
+                                Suite Ã  la crÃ©ation de votre compte, celui-ci devra Ãªtre validÃ© par un utilisateur
+                                approuvÃ© pour vous permettre l'accÃ¨s Ã  l'interface.
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="material-icons">person</i>
                                 </span>
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="namesurname" placeholder="Name Surname" required autofocus>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="name" placeholder="PrÃ©nom" required autofocus>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="surname" placeholder="Nom" required>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="input-group">
@@ -23,7 +32,7 @@
                                     <i class="material-icons">email</i>
                                 </span>
                                 <div class="form-line">
-                                    <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                                    <input type="email" class="form-control" name="email" placeholder="Adresse mail" required>
                                 </div>
                             </div>
                             <div class="input-group">
@@ -31,7 +40,7 @@
                                     <i class="material-icons">lock</i>
                                 </span>
                                 <div class="form-line">
-                                    <input type="password" class="form-control" name="password" minlength="6" placeholder="Password" required>
+                                    <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
                                 </div>
                             </div>
                             <div class="input-group">
@@ -39,18 +48,12 @@
                                     <i class="material-icons">lock</i>
                                 </span>
                                 <div class="form-line">
-                                    <input type="password" class="form-control" name="confirm" minlength="6" placeholder="Confirm Password" required>
+                                    <input type="password" class="form-control" name="confirm" placeholder="Confirmation" required>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-pink">
-                                <label for="terms">I read and agree to the <a href="javascript:void(0);">terms of usage</a>.</label>
-                            </div>
-
-                            <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">SIGN UP</button>
-
+                            <button v-bind:class="'bg-' + color" class="btn btn-block btn-lg" type="submit">CRÃ‰ER LE COMPTE</button>
                             <div class="m-t-25 m-b--5 align-center">
-                                <a href="sign-in.html">You already have a membership?</a>
+                                <a href="#" v-on:click.prevent="connect">Se connecter</a>
                             </div>
                         </form>
                     </div>
@@ -70,6 +73,14 @@
         methods: {
             submitForm: function () {
 
+            },
+            connect: function () {
+                this.$router.push('/login');
+            }
+        },
+        computed: {
+            color: function () {
+                return this.$store.state.theme.color;
             }
         }
     }
@@ -78,5 +89,9 @@
 <style scoped>
     .msg {
         margin-bottom: 15px;
+    }
+
+    main {
+        padding-top: 50px;
     }
 </style>
