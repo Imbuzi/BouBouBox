@@ -27,8 +27,14 @@
             }
         },
         watch: {
-            '$route': function(to, from) {
-                this.transitionName = (from.path === '/') ? 'fade-instant-leave' : 'slide';
+            '$route': function (to, from) {
+                if (from.path === '/') {
+                    this.transitionName = 'fade-instant-leave';
+                } else if (to.path === '/') {
+                    this.transitionName = 'slide-out-fade-in';
+                } else {
+                    this.transitionName = 'slide';
+                }
             }
         }
     }
@@ -65,5 +71,21 @@
 
     .slide-leave-to {
         transform: translateX(-100vw);
+    }
+
+    .slide-out-fade-in-enter-active {
+        transition: opacity .2s;
+    }
+
+    .slide-out-fade-in-leave-active {
+        transition: transform .2s ease-in;
+    }
+
+    .slide-out-fade-in-enter {
+        opacity: 0;
+    }
+
+    .slide-out-fade-in-leave-to {
+        transform: translateY(100vh);
     }
 </style>
