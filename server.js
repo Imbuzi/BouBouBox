@@ -79,7 +79,7 @@ io.on('connection', function(socket) {
     socket.on('setLightIntensity', function (token, data) {
         api.validateToken(token).then(function () {
             api.milight.setLightIntensity(data.value, data.light).then(function (result) {
-                io.emit('lightIntensity', result);
+                socket.broadcast.emit('lightIntensity', result);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -103,7 +103,7 @@ io.on('connection', function(socket) {
     socket.on('setLightPower', function (token, data) {
         api.validateToken(token).then(function () {
             api.milight.setLightPower(data.value, data.light).then(function (result) {
-                io.emit('lightPower', result);
+                socket.broadcast.emit('lightPower', result);
             }).catch(function (error) {
                 console.log(error);
             });
