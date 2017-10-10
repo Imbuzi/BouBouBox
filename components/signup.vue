@@ -48,12 +48,12 @@
                                     <i class="material-icons">lock</i>
                                 </span>
                                 <div class="form-line">
-                                    <input type="password" class="form-control" name="confirm" placeholder="Confirmation" required>
+                                    <input type="password" class="form-control" name="confirm" placeholder="Confirmation du mot de passe" required>
                                 </div>
                             </div>
                             <button v-bind:class="'bg-' + color" class="btn btn-block btn-lg" type="submit">CRÉER LE COMPTE</button>
                             <div class="m-t-25 m-b--5 align-center">
-                                <a href="#" v-on:click.prevent="connect">Se connecter</a>
+                                <a v-bind:class="'col-' + color" href="#" v-on:click.prevent="connect">Se connecter</a>
                             </div>
                         </form>
                     </div>
@@ -96,6 +96,6 @@
     }
 
     .body .col-xs-6 {
-        margin-bottom: 0px !important;
+        margin-bottom: 0px;
     }
 </style>

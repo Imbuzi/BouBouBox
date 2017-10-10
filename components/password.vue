@@ -21,7 +21,7 @@
 
                             <button v-bind:class="'bg-' + color" class="btn btn-block btn-lg" type="submit">RÉINITIALISER MON MOT DE PASSE</button>
                             <div class="row m-t-20 m-b--5 align-center">
-                                <a href="#" v-on:click.prevent="connect">Se connecter</a>
+                                <a v-bind:class="'col-' + color" href="#" v-on:click.prevent="connect">Se connecter</a>
                             </div>
                         </form>
                     </div>
