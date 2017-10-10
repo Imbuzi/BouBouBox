@@ -80,26 +80,33 @@ api.getJWT = function(mail, password) {
                         message: "Utilisateur inexistant"
                     });
                 } else {
-                    if (passwordHash.verify(password, user.password)) {
-                        let payload = { mail: user.mail };
-                        let cert = fs.readFileSync('./private.key');
-                        let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
-                            if (err) {
-                                reject({
-                                    error: 500,
-                                    message: "Erreur de chiffrement du token"
-                                });
-                            } else {
-                                resolve({
-                                    token: token
-                                });
-                            }
-                        });
-                    } else {
+                    if (!(user.access)) {
                         reject({
                             error: 401,
-                            message: "Mot de passe erroné"
+                            message: "Utilisateur en attente de validation"
                         });
+                    } else {
+                        if (passwordHash.verify(password, user.password)) {
+                            let payload = { mail: user.mail };
+                            let cert = fs.readFileSync('./private.key');
+                            let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
+                                if (err) {
+                                    reject({
+                                        error: 500,
+                                        message: "Erreur de chiffrement du token"
+                                    });
+                                } else {
+                                    resolve({
+                                        token: token
+                                    });
+                                }
+                            });
+                        } else {
+                            reject({
+                                error: 401,
+                                message: "Mot de passe erroné"
+                            });
+                        }
                     }
                 }
             });

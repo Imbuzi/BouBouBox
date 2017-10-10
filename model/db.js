@@ -65,7 +65,7 @@ db.widget.getAll = function () {
 db.user.getByMail = function (mail) {
     return knex
         .from('user')
-        .select('user.password as password')
+        .select('user.password as password','user.access as access')
         .where('user.mail', mail)
         .first()
 }
