@@ -76,6 +76,14 @@ io.on('connection', function(socket) {
         });
     });
 
+    socket.on('addUser', function (data) {
+        api.addUser(data.name, data.surname, data.mail, data.password).then(function (result) {
+            socket.emit('userAdded', result);
+        }).catch(function (result) {
+            socket.emit('userAdded', result);
+        });
+    });
+
     socket.on('setLightIntensity', function (token, data) {
         api.validateToken(token).then(function () {
             api.milight.setLightIntensity(data.value, data.light).then(function (result) {

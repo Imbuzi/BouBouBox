@@ -78,6 +78,8 @@
 </template>
 
 <script>
+    import PasswordHash from 'password-hash';
+
     export default {
         data: function () {
             return {
@@ -93,6 +95,24 @@
                 passwordConfirmFocused: false,
                 loading: false,
                 formLocked: false
+            }
+        },
+        sockets: {
+            userAdded: function (data) {
+                if (data.error) {
+                    this.toggleLoading(false);
+                    this.lockForm(false);
+                    this.$store.dispatch('showAlert', {
+                        message: result.message,
+                        delay: 8000
+                    });
+                } else {
+                    this.$router.push('/login');
+                    this.$store.dispatch('showAlert', {
+                        message: 'Compte créé avec succès',
+                        delay: 8000
+                    });
+                }
             }
         },
         methods: {
@@ -127,7 +147,7 @@
                     name: this.name,
                     surname: this.surname,
                     mail: this.mailAddress,
-                    password: this.password
+                    password: PasswordHash.generate(this.password, {algorithm: 'SHA512'})
                 });
             },
             connect: function () {

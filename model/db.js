@@ -70,4 +70,10 @@ db.user.getByMail = function (mail) {
         .first()
 }
 
+db.user.add = function (name, surname, mail, hashedPassword) {
+    return knex
+        .insert({ name: name, surname: surname, mail: mail, password: hashedPassword })
+        .into('user')
+}
+
 module.exports = db;
