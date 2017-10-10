@@ -10,7 +10,7 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">person</i>
                                 </span>
-                                <div class="form-line" v-bind:class="{ focused: mailFocused, success: mailInputState.valid, error: mailInputState.invalid }">
+                                <div class="form-line" v-bind:class="{ focused: mailFocused || mailInputState.valid || mailInputState.invalid, success: mailInputState.valid, error: mailInputState.invalid }">
                                     <input v-bind:disabled="formLocked" type="email" v-model="mailAddress" class="form-control" v-on:blur="toggleMailFocused(false)" v-on:focus="toggleMailFocused(true)" name="mail" required autofocus>
                                     <label class="form-label">Adresse mail</label>
                                 </div>
@@ -19,7 +19,7 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">lock</i>
                                 </span>
-                                <div class="form-line" v-bind:class="{ focused: passwordFocused, success: passwordInputState.valid, error: passwordInputState.invalid }">
+                                <div class="form-line" v-bind:class="{ focused: passwordFocused || passwordInputState.valid || passwordInputState.invalid, success: passwordInputState.valid, error: passwordInputState.invalid }">
                                     <input v-bind:disabled="formLocked" type="password" v-model="password" class="form-control" v-on:blur="togglePasswordFocused(false)" v-on:focus="togglePasswordFocused(true)" name="password" required>
                                     <label class="form-label">Mot de passe</label>
                                 </div>
