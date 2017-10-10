@@ -185,6 +185,6 @@
     }
 
     button {
-        transition: background .2s;
+        transition: opacity .2s
     }
 </style>
