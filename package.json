@@ -22,6 +22,7 @@
     "vue-localstorage": "^0.4.2",
     "vue-lodash": "^1.0.4",
     "vue-router": "^2.7.0",
+    "vue-sessionstorage": "^1.0.0",
     "vue-socket.io": "^2.1.1-a",
     "vuex": "^2.4.0"
   },
