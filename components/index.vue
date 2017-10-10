@@ -40,11 +40,15 @@
     }
 
     .fade-instant-leave-enter-active {
-        transition: opacity .2s
+        transition: opacity .2s;
+    }
+
+    .fade-instant-leave-leave-active {
+        transition: opacity 0s;
     }
 
     .fade-instant-leave-enter, .fade-instant-leave-leave-to /* .fade-leave-active below version 2.1.8 */ {
-        opacity: 0
+        opacity: 0;
     }
 
     .slide-enter-active {
