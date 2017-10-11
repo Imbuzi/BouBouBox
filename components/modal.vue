@@ -1,5 +1,5 @@
 <template>
-    <div v-bind:class="{ in: opened }" class="modal-backdrop fade">
+    <div v-if="opened" class="modal-backdrop in fade">
         <div v-bind:class="{ in: opened }" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
