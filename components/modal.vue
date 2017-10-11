@@ -48,6 +48,7 @@
     }
 
     .modal-container {
+        position: fixed;
         z-index: 1500;
     }
 </style>
