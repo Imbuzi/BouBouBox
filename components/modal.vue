@@ -1,6 +1,6 @@
 <template>
     <transition name="fade">
-        <div v-if="opened">
+        <div v-if="opened" class="modal-container">
             <div class="modal-backdrop in">
             </div>
             <div class="modal in">
@@ -45,5 +45,9 @@
 
     .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
         opacity: 0
+    }
+
+    .modal-container {
+        z-index: 1500;
     }
 </style>
