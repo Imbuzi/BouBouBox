@@ -10,5 +10,9 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+        color: function () {
+            return this.$store.state.theme.color;
+        }
+    }
 </script>
