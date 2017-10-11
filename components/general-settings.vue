@@ -14,6 +14,8 @@
 </template>
 
 <script>
+    import UserValidationModal from './user-validation-modal.vue';
+
     export default {
         sockets: {
             usersWaitingForValidation: function (result) {
@@ -43,6 +45,7 @@
         },
         methods: {
             showUsersWaitingForValidation: function () {
+                this.$store.commit('setVueComponent', UserValidationModal);
                 this.$store.commit('toggleModal', true);
             }
         }
