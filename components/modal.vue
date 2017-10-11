@@ -5,7 +5,7 @@
             </div>
             <div class="modal in">
                 <div class="modal-dialog">
-                    <modal-content></modal-content>
+                    <component v-bind:is="modalContentComponent"></component>
                 </div>
             </div>
         </div>
@@ -21,9 +21,6 @@
             modalContentComponent: function () {
                 return this.$store.state.modal.component;
             }
-        },
-        components: {
-            'modal-content': modalContentComponent
         }
     }
 </script>
