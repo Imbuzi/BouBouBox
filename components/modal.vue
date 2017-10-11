@@ -23,7 +23,7 @@
             }
         },
         components: {
-            'modal-content': this.modalContentComponent
+            'modal-content': modalContentComponent
         }
     }
 </script>
