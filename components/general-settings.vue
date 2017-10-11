@@ -6,7 +6,7 @@
                     <i class="material-icons">person</i>
                 </button>
                 <transition name="fade">
-                    <span v-if="usersWaitingForValidation" class="badge notification-badge bg-black">{{usersWaitingForValidation.length}}</span>
+                    <span v-if="usersWaitingForValidation.length" class="badge notification-badge bg-black">{{usersWaitingForValidation.length}}</span>
                 </transition>
             </div>
         </div>
