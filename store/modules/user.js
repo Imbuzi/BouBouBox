@@ -13,7 +13,7 @@ const mutations = {
         state.waitingForValidation.push(user);
     },
     setUsersWaitingForValidation(state, users) {
-        state.waitingForValidation = user;
+        state.waitingForValidation = users;
     }
 }
 
