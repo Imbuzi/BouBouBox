@@ -8,10 +8,10 @@
                 <li v-for="user in userList" class="list-group-item">
                     {{user.name}} {{user.surname}} ({{user.mail}})
                     <div class="pull-right">
-                        <button class="btn btn-circle btn-success" v-on:click.prevent="">
+                        <button class="btn btn-xs btn-success" v-on:click.prevent="">
                             <i class="material-icons">check</i>
                         </button>
-                        <button class="btn btn-circle btn-danger" v-on:click.prevent="">
+                        <button class="btn btn-xs btn-danger" v-on:click.prevent="">
                             <i class="material-icons">close</i>
                         </button>
                     </div>
