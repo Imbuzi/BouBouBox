@@ -5,7 +5,9 @@
                 <button v-bind:class="'bg-' + color" class="btn btn-circle">
                     <i class="material-icons">person</i>
                 </button>
-                <span class="badge notification-badge bg-black">1</span>
+                <transition name="fade">
+                    <span v-if="usersWaitingForValidation" class="badge notification-badge bg-black">{{usersWaitingForValidation.length}}</span>
+                </transition>
             </div>
         </div>
     </div>
@@ -13,9 +15,27 @@
 
 <script>
     export default {
+        sockets: {
+            usersWaitingForValidation: function (result) {
+                if (result.error) {
+                    this.$store.dispatch('showAlert', {
+                        message: result.message,
+                        delay: 8000
+                    });
+                } else {
+                    this.$store.commit('setUsersWaitingForValidation', result.userList);
+                }
+            }
+        },
+        created: function () {
+            this.$socket.emit('getUsersWaitingForValidation', this.$store.state.user.token);
+        },
         computed: {
             color: function () {
                 return this.$store.state.theme.color;
+            },
+            usersWaitingForValidation: function () {
+                return this.$store.state.user.waitingForValidation;
             }
         }
     }
@@ -25,6 +45,14 @@
     span.badge.notification-badge {
         margin-left: -20px;
         margin-top: -35px;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .2s
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0
     }
 
     button {

@@ -68,6 +68,18 @@ io.on('connection', function(socket) {
         });
     });
 
+    socket.on('getUsersWaitingForValidation', function (token) {
+        api.validateToken(token).then(function () {
+            api.getUsersWaitingForValidation().then(function (result) {
+                socket.emit('usersWaitingForValidation', result);
+            }).catch(function (result) {
+                socket.emit('usersWaitingForValidation', result);
+            });
+        }).catch(function (result) {
+            socket.emit('usersWaitingForValidation', result);
+        });
+    });
+
     socket.on('getJWT', function (data) {
         api.getJWT(data.mail, data.password).then(function (result) {
             socket.emit('JWT', result);

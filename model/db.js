@@ -70,6 +70,12 @@ db.user.getByMail = function (mail) {
         .first()
 }
 
+db.user.getNotValidated = function () {
+    return knex
+        .from('user')
+        .select('user.password as password', 'user.access as access', 'user.name as name', 'user.surname as surname', 'user.mail as mail')
+}
+
 db.user.add = function (name, surname, mail, hashedPassword) {
     return knex
         .insert({ name: name, surname: surname, mail: mail, password: hashedPassword })
