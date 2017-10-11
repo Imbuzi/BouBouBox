@@ -10,10 +10,10 @@
                 <div class="tab-content">
                     <transition name="fade" mode="out-in">
                         <div v-if="panelId == 'settings'" key="settings" class="tab-pane active">
-                            <b>Paramètres généraux</b>
+                            <general-settings></general-settings>
                         </div>
                         <div v-else-if="panelId == 'widgets'" key="widgets" class="tab-pane active">
-                            <b>Widgets</b>
+                            <widget-settings></widget-settings>
                         </div>
                     </transition>
                 </div>
@@ -23,6 +23,9 @@
 </template>
 
 <script>
+    import GeneralSettings from './general-settings.vue';
+    import WidgetSettings from './widget-settings.vue';
+
     export default {
         data: function () {
             return {
@@ -33,6 +36,10 @@
             setTabPanel: function (id) {
 
             }
+        },
+        components: {
+            'general-settings': GeneralSettings,
+            'widget-settings': WidgetSettings
         },
         computed: {
             opened: function() {
