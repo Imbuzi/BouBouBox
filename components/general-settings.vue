@@ -26,4 +26,8 @@
         margin-left: -20px;
         margin-top: -35px;
     }
+
+    button {
+        color: #fff !important;
+    }
 </style>
