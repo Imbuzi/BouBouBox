@@ -29,7 +29,7 @@
                 }
             },
             userRefused: function (result) {
-                if (value.error) {
+                if (result.error) {
                     this.$store.dispatch('showAlert', {
                         message: value.message,
                         delay: 8000
