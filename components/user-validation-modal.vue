@@ -38,4 +38,8 @@
     .pull-right {
         margin-top: -4px;
     }
+
+    .list-group {
+        margin-bottom: 0;
+    }
 </style>
