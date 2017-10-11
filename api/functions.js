@@ -49,6 +49,19 @@ api.getUsersWaitingForValidation = function () {
     });
 }
 
+api.refuseNewUser = function (mail) {
+    return new Promise(function (resolve, reject) {
+        db.user.delete(mail).then(function () {
+            resolve(mail);
+        }).catch(function (error) {
+            reject({
+                error: 500,
+                message: "Erreur de base de données"
+            });
+        });
+    });
+}
+
 api.addUser = function (name, surname, mail, hashedPassword) {
     return new Promise(function (resolve, reject) {
         db.user.add(name, surname, mail, hashedPassword).then(function () {

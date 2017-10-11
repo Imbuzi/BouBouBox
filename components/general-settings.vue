@@ -28,6 +28,16 @@
                     this.$store.commit('setUsersWaitingForValidation', result.userList);
                 }
             },
+            userRefused: function (result) {
+                if (value.error) {
+                    this.$store.dispatch('showAlert', {
+                        message: value.message,
+                        delay: 8000
+                    });
+                } else {
+                    this.$store.commit('removeUserWaitingForValidation', result);
+                }
+            },
             userAdded: function (user) {
                 this.$store.commit('addUserWaitingForValidation', user);
             }

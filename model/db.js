@@ -77,6 +77,13 @@ db.user.getNotValidated = function () {
         .where('user.access', 0)
 }
 
+db.user.delete = function (mail) {
+    return knex
+        .from('user')
+        .where('user.mail', mail)
+        .del()
+}
+
 db.user.add = function (name, surname, mail, hashedPassword) {
     return knex
         .insert({ name: name, surname: surname, mail: mail, password: hashedPassword })

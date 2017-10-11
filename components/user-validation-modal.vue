@@ -5,19 +5,19 @@
         </div>
         <div class="modal-body">
             <ul v-if="userList" class="list-group">
-                <transition name="slideOut">
-                    <li v-for="user in userList" class="list-group-item">
+                <transition-group name="slideOut">
+                    <li v-for="user in userList" key="user.mail" class="list-group-item">
                         {{user.name}} {{user.surname}} ({{user.mail}})
                         <div class="pull-right">
-                            <button class="btn btn-xs btn-success" v-on:click.prevent="refuseNewUser(user.mail)">
+                            <button class="btn btn-xs btn-success" v-on:click.prevent="acceptNewUser(user.mail)">
                                 <i class="material-icons">check</i>
                             </button>
-                            <button class="btn btn-xs btn-danger" v-on:click.prevent="acceptNewUser(user.mail)">
+                            <button class="btn btn-xs btn-danger" v-on:click.prevent="refuseNewUser(user.mail)">
                                 <i class="material-icons">close</i>
                             </button>
                         </div>
                     </li>
-                </transition>
+                </transition-group>
             </ul>
         </div>
         <div class="modal-footer">
@@ -35,10 +35,10 @@
         },
         methods: {
             refuseNewUser: function (mail) {
-                console.log('Refuse : ' + mail);
+                this.$socket.emit('refuseNewUser', this.$store.state.user.token, mail);
             },
             acceptNewUser: function (mail) {
-                console.log('Accept : ' + mail);
+                this.$socket.emit('acceptNewUser', this.$store.state.user.token, mail);
             }
         }
     }
