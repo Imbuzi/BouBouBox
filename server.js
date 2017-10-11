@@ -54,6 +54,7 @@ app.get('*', function (req, res) {
 });
 
 // Création du WS Socket.io
+// TODO : API socket dans un autre fichier
 const io = require('socket.io')(server);
 io.on('connection', function(socket) {
     socket.on('getWidgetList', function (token) {
