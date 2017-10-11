@@ -91,6 +91,7 @@ io.on('connection', function(socket) {
     socket.on('addUser', function (data) {
         api.addUser(data.name, data.surname, data.mail, data.password).then(function (result) {
             socket.emit('userAdded', result);
+            socket.broadcast.emit('userAdded', result);
         }).catch(function (result) {
             socket.emit('userAdded', result);
         });

@@ -25,6 +25,9 @@
                 } else {
                     this.$store.commit('setUsersWaitingForValidation', result.userList);
                 }
+            },
+            userAdded: function (user) {
+                this.$store.commit('addUserWaitingForValidation', user);
             }
         },
         created: function () {
