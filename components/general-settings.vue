@@ -11,8 +11,10 @@
 
 <script>
     export default {
-        color: function () {
-            return this.$store.state.theme.color;
+        computed: {
+            color: function () {
+                return this.$store.state.theme.color;
+            }
         }
     }
 </script>
