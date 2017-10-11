@@ -52,4 +52,42 @@
     .list-group {
         margin-bottom: 0;
     }
+
+    .slideOut-enter-active {
+        animation: slideOut .2s reverse;
+    }
+
+    .slideOut-leave-active {
+        animation: slideOut .2s;
+    }
+
+    @keyframes slideout {
+        0% {
+            opacity: 1;
+            padding: 10px 15px;
+            height: auto;
+            display: block;
+        }
+
+        50% {
+            opacity: 0;
+            padding: 10px 15px;
+            height: auto;
+            display: block;
+        }
+
+        99% {
+            opacity: 0;
+            padding: 0;
+            height: 0;
+            display: block;
+        }
+
+        100% {
+            opacity: 0;
+            padding: 0;
+            height: 0;
+            display: none;
+        }
+    }
 </style>
