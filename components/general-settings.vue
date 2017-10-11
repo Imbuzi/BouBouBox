@@ -1,6 +1,6 @@
 <template>
-    <div class="row">
-        <div class="cotnainer-fluid">
+    <div class="container-fluid">
+        <div class="row">
             <button v-bind:class="'bg-' + color" class="btn btn-default btn-circle">
                 <i class="material-icons">person</i>
             </button>
