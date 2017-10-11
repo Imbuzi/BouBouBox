@@ -3,16 +3,16 @@
         <div class="container-fluid">
             <div class="row">
                 <ul class="nav nav-tabs tab-nav-right">
-                    <li v-bind:class="{ active: panelId == 'settings' }"><a v-on:click.prevent="panelId = 'settings'" href="#">PARAMÈTRES</a></li>
+                    <li v-bind:class="{ active: panelId == 'settings' }"><a v-on:click.prevent="panelId = 'settings'" href="#">PARAMÃˆTRES</a></li>
                     <li v-bind:class="{ active: panelId == 'widgets' }"><a v-on:click.prevent="panelId = 'widgets'" href="#">WIDGETS</a></li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <transition name="fade" mode="out-in">
-                        <div v-if="panelId == 'settings'" role="tabpanel" class="tab-pane active">
-                            <b>Paramètres généraux</b>
+                        <div v-if="panelId == 'settings'" key="settings" class="tab-pane active">
+                            <b>ParamÃ¨tres gÃ©nÃ©raux</b>
                         </div>
-                        <div v-else-if="panelId == 'widgets'" role="tabpanel" class="tab-pane active">
+                        <div v-else-if="panelId == 'widgets'" key="widgets" class="tab-pane active">
                             <b>Widgets</b>
                         </div>
                     </transition>
