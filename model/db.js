@@ -73,7 +73,8 @@ db.user.getByMail = function (mail) {
 db.user.getNotValidated = function () {
     return knex
         .from('user')
-        .select('user.password as password', 'user.access as access', 'user.name as name', 'user.surname as surname', 'user.mail as mail')
+        .select('user.password as password', 'user.name as name', 'user.surname as surname', 'user.mail as mail')
+        .where('user.access', 0)
 }
 
 db.user.add = function (name, surname, mail, hashedPassword) {
