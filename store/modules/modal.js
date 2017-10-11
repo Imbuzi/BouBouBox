@@ -1,15 +1,11 @@
 // Initial state
 const state = {
-    opened: false,
     component: null
 }
 
 // Mutations
 const mutations = {
-    toggleModal(state, value) {
-        state.opened = value;
-    },
-    setVueComponent(state, component) {
+    setModalComponent(state, component) {
         state.component = component;
     }
 }

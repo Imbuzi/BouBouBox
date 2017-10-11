@@ -1,11 +1,11 @@
 <template>
     <transition name="fade">
-        <div v-if="opened && modalContentComponent" class="modal-container">
+        <div v-if="modalContentComponent" class="modal-container">
             <div class="modal-backdrop in">
             </div>
             <div class="modal in">
                 <div class="modal-dialog">
-                    <component v-bind:is="modalContentComponent"></component>
+                    <component v-on:closeModal="closeModal" v-bind:is="modalContentComponent"></component>
                 </div>
             </div>
         </div>
@@ -15,11 +15,13 @@
 <script>
     export default {
         computed: {
-            opened: function () {
-                return this.$store.state.modal.opened;
-            },
             modalContentComponent: function () {
                 return this.$store.state.modal.component;
+            }
+        },
+        methods: {
+            closeModal: function () {
+                this.$store.commit('setModalComponent', null);
             }
         }
     }

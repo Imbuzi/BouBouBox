@@ -45,8 +45,7 @@
         },
         methods: {
             showUsersWaitingForValidation: function () {
-                this.$store.commit('setVueComponent', UserValidationModal);
-                this.$store.commit('toggleModal', true);
+                this.$store.commit('setModalComponent', UserValidationModal);
             }
         }
     }

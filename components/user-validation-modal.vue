@@ -12,7 +12,13 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-link">SAVE CHANGES</button>
-            <button type="button" class="btn btn-link">CLOSE</button>
+            <button type="button" class="btn btn-link" v-on:click.prevent="$emit('closeModal')">FERMER</button>
         </div>
     </div>
 </template>
+
+<style scoped>
+    .modal.in {
+        display: block;
+    }
+</style>
