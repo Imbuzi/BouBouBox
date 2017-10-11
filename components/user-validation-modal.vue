@@ -33,3 +33,9 @@
         }
     }
 </script>
+
+<style scoped>
+    .pull-right {
+        margin-top: -4px;
+    }
+</style>
