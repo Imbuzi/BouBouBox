@@ -9,7 +9,7 @@ const mutations = {
     toggleModal(state, value) {
         state.opened = value;
     },
-    setVueComponent(component) {
+    setVueComponent(state, component) {
         state.component = component;
     }
 }
