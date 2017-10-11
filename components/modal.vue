@@ -1,6 +1,6 @@
 <template>
-    <div v-bind:class="{ in: opened }" class="modal-backdrop">
-        <div v-bind:class="{ in: opened }" class="modal">
+    <div v-bind:class="{ in: opened }" class="modal-backdrop fade">
+        <div v-bind:class="{ in: opened }" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
