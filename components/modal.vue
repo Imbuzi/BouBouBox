@@ -40,4 +40,8 @@
         position: fixed;
         z-index: 1500;
     }
+
+    .modal.in {
+        display: block;
+    }
 </style>

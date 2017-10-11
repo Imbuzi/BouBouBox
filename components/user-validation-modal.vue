@@ -16,9 +16,3 @@
         </div>
     </div>
 </template>
-
-<style scoped>
-    .modal.in {
-        display: block;
-    }
-</style>
