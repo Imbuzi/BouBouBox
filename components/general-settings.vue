@@ -41,7 +41,7 @@
                 return this.$store.state.user.waitingForValidation;
             }
         },
-        method: {
+        methods: {
             showUsersWaitingForValidation: function () {
                 this.$store.commit('toggleModal', true);
             }
