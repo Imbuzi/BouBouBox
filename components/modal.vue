@@ -1,26 +1,11 @@
 <template>
     <transition name="fade">
-        <div v-if="opened" class="modal-container">
+        <div v-if="opened && modalContentComponent" class="modal-container">
             <div class="modal-backdrop in">
             </div>
             <div class="modal in">
                 <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Modal title</h4>
-                        </div>
-                        <div class="modal-body">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales orci ante, sed ornare eros vestibulum ut. Ut accumsan
-                            vitae eros sit amet tristique. Nullam scelerisque nunc enim, non dignissim nibh faucibus ullamcorper.
-                            Fusce pulvinar libero vel ligula iaculis ullamcorper. Integer dapibus, mi ac tempor varius, purus
-                            nibh mattis erat, vitae porta nunc nisi non tellus. Vivamus mollis ante non massa egestas fringilla.
-                            Vestibulum egestas consectetur nunc at ultricies. Morbi quis consectetur nunc.
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-link">SAVE CHANGES</button>
-                            <button type="button" class="btn btn-link">CLOSE</button>
-                        </div>
-                    </div>
+                    <modal-content></modal-content>
                 </div>
             </div>
         </div>
@@ -29,11 +14,16 @@
 
 <script>
     export default {
-        methods: {},
         computed: {
             opened: function () {
                 return this.$store.state.modal.opened;
+            },
+            modalContentComponent: function () {
+                return this.$store.state.modal.component;
             }
+        },
+        components: {
+            'modal-content': this.modalContentComponent
         }
     }
 </script>
