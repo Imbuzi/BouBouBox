@@ -4,15 +4,18 @@
         <transition v-bind:name="transitionName" mode="out-in">
             <router-view></router-view>
         </transition>
+        <modal></modal>
     </main>
 </template>
 
 <script>
     import AlertComponent from './alert.vue';
+    import ModalComponent from './modal.vue';
 
     export default {
         components: {
-            'alert': AlertComponent
+            'alert': AlertComponent,
+            'modal': ModalComponent
         },
         computed: {
             color: function () {
