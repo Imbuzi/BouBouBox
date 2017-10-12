@@ -5,7 +5,7 @@
         </div>
         <div class="modal-body">
             <ul v-if="userList" class="list-group">
-                <transition-group name="slideOut">
+                <transition-group name="slideOut" mode="out-in">
                     <li v-for="user in userList" key="user.mail" class="list-group-item">
                         {{user.name}} {{user.surname}} ({{user.mail}})
                         <div class="pull-right">
@@ -16,6 +16,9 @@
                                 <i class="material-icons">close</i>
                             </button>
                         </div>
+                    </li>
+                    <li v-if="!userList" key="no-user" class="list-group-item col-grey font-italic">
+                        Aucun utilisateur en attente de validation
                     </li>
                 </transition-group>
             </ul>
