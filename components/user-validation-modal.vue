@@ -60,7 +60,8 @@
     .slideOut-leave-active {
         animation: slideOut .2s;
     }
-
+</style>
+<style>
     @keyframes slideOut {
         0% {
             opacity: 1;
