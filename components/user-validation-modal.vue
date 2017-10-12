@@ -17,7 +17,7 @@
                             </button>
                         </div>
                     </li>
-                    <li v-if="!userList" key="no-user" class="list-group-item col-grey font-italic">
+                    <li v-if="userList.length == 0" key="no-user" class="list-group-item col-grey font-italic">
                         Aucun utilisateur en attente de validation
                     </li>
                 </transition-group>
