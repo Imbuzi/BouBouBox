@@ -61,7 +61,7 @@
         animation: slideOut .2s;
     }
 
-    @keyframes slideout {
+    @keyframes slideOut {
         0% {
             opacity: 1;
             padding: 10px 15px;
