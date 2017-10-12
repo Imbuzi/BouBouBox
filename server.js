@@ -82,6 +82,19 @@ io.on('connection', function(socket) {
         });
     });
 
+    socket.on('acceptNewUser', function (token, mail) {
+        api.validateToken(token).then(function () {
+            api.acceptNewUser(mail).then(function (result) {
+                socket.emit('userAccepted', result);
+                socket.broadcast.emit('userAccepted', result);
+            }).catch(function (result) {
+                socket.emit('userAccepted', result);
+            });
+        }).catch(function (result) {
+            socket.emit('userRefused', result);
+        });
+    });
+
     socket.on('getUsersWaitingForValidation', function (token) {
         api.validateToken(token).then(function () {
             api.getUsersWaitingForValidation().then(function (result) {

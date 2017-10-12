@@ -84,6 +84,15 @@ db.user.delete = function (mail) {
         .del()
 }
 
+db.user.acceptUser = function (mail) {
+    return knex
+        .from('user')
+        .where('user.mail', mail)
+        .update({
+            'access': 1
+        })
+}
+
 db.user.add = function (name, surname, mail, hashedPassword) {
     return knex
         .insert({ name: name, surname: surname, mail: mail, password: hashedPassword })

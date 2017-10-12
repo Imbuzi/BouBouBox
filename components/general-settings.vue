@@ -38,6 +38,16 @@
                     this.$store.commit('removeUserWaitingForValidation', result);
                 }
             },
+            userAccepted: function (result) {
+                if (result.error) {
+                    this.$store.dispatch('showAlert', {
+                        message: value.message,
+                        delay: 8000
+                    });
+                } else {
+                    this.$store.commit('removeUserWaitingForValidation', result);
+                }
+            },
             userAdded: function (user) {
                 this.$store.commit('addUserWaitingForValidation', user);
             }

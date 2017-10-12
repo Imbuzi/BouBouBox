@@ -62,6 +62,19 @@ api.refuseNewUser = function (mail) {
     });
 }
 
+api.acceptNewUser = function (mail) {
+    return new Promise(function (resolve, reject) {
+        db.user.acceptUser(mail).then(function () {
+            resolve(mail);
+        }).catch(function (error) {
+            reject({
+                error: 500,
+                message: "Erreur de base de données"
+            });
+        });
+    });
+}
+
 api.addUser = function (name, surname, mail, hashedPassword) {
     return new Promise(function (resolve, reject) {
         db.user.add(name, surname, mail, hashedPassword).then(function () {
