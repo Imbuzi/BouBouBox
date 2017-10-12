@@ -60,6 +60,18 @@
     .slideOut-leave-active {
         animation: slideOut .5s;
     }
+
+    .slideOut-leave-to {
+        opacity: 0;
+        padding: 0;
+        height: 0;
+    }
+
+    .slideOut-enter-to {
+        opacity: 0;
+        padding: 0;
+        height: 0;
+    }
 </style>
 <style>
     @keyframes slideOut {
