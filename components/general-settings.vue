@@ -55,9 +55,7 @@
         },
         methods: {
             showUsersWaitingForValidation: function () {
-                if (this.usersWaitingForValidation.length) {
-                    this.$store.commit('setModalComponent', UserValidationModal);
-                }
+                this.$store.commit('setModalComponent', UserValidationModal);
             }
         }
     }
