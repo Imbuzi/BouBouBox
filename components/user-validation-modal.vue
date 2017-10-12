@@ -4,7 +4,7 @@
             <h4 class="modal-title">Utilisateurs en attente de validation</h4>
         </div>
         <div class="modal-body">
-            <ul v-if="userList" class="list-group">
+            <ul class="list-group">
                 <transition-group name="slideOut" mode="out-in">
                     <li v-for="user in userList" key="user.mail" class="list-group-item">
                         {{user.name}} {{user.surname}} ({{user.mail}})
