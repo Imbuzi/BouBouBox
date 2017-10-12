@@ -2,7 +2,7 @@
 
 BouBouBox is a french project, it's goal is to bring home automation to everyone, integrating low cost and high efficiency solutions to our box.
 
-### Tech
+## Tech
 
 BouBouBox uses a number of open source projects to work properly:
 
@@ -16,3 +16,21 @@ BouBouBox uses a number of open source projects to work properly:
 * [morgan](https://github.com/expressjs/morgan) - HTTP request logger middleware for node.js
 
 And of course BouBouBox itself is open source with a [public repository](https://github.com/Imbuzi/BouBouBox) on GitHub.
+
+## Testing
+
+You can test the BouBouBox project without the milight bridge. You just need to run the project in dev mode to see the commands sent to the bridge in the server NodeJS console.
+To set up your project to run in dev mode, you'll need to run this commands on your BouBouBox project directory.
+
+	## Setting up git repository
+    git clone <git-url>
+	cd BouBouBoux/
+	git checkout tags/<version-name>
+	git pull
+
+	## Setting up node project
+	npm install
+	npm run build-dev
+	nodemon
+
+The Node JS server is now listening on port 3000. You can access it from your machine through http://localhost:3000.

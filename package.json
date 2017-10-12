@@ -55,7 +55,8 @@
     "watchify": "watchify -vd -e clientApp.js -o public/js/app.js",
     "nodemon": "nodemon",
     "dev": "npm-run-all --parallel watchify nodemon",
-    "build": "cross-env NODE_ENV=production browserify -g envify clientApp.js | uglifyjs -c warnings=false -m > public/js/app.js"
+    "build": "cross-env NODE_ENV=production browserify -g envify clientApp.js | uglifyjs -c warnings=false -m > public/js/app.js",
+    "build-dev": "cross-env NODE_ENV=development browserify -g envify clientApp.js | uglifyjs -c warnings=false -m > public/js/app.js"
   },
   "browserify": {
     "transform": [
