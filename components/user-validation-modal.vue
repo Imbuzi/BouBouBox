@@ -5,7 +5,7 @@
         </div>
         <div class="modal-body">
             <ul v-if="userList" class="list-group">
-                <transition-group name="slideOut">
+                <transition-group v-bind:duration="200" name="slideOut">
                     <li v-for="user in userList" key="user.mail" class="list-group-item">
                         {{user.name}} {{user.surname}} ({{user.mail}})
                         <div class="pull-right">
