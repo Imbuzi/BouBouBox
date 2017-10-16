@@ -38,6 +38,12 @@ api.setLightIntensity = function (value, light) {
                 bridge.sendCommands(commands.rgbw.brightness(light.zone, value));
                 bridge.pause(100);
 
+                if (process.env.NODE_ENV != "production") {
+                    console.log("Setting light intensity : ");
+                    console.log(light);
+                    console.log("Intensity set : " + value);
+                }
+
                 resolve({
                     light: light,
                     value: value
@@ -69,6 +75,12 @@ api.setLightColor = function (value, light) {
             bridge.sendCommands(commands.rgbw.rgb(light.zone, value.red, value.green, value.blue));
             bridge.pause(100);
 
+            if (process.env.NODE_ENV != "production") {
+                console.log("Setting light color : ");
+                console.log(light);
+                console.log("Color set : " + value);
+            }
+
             resolve({
                 light: light,
                 value: value
@@ -98,6 +110,12 @@ api.setLightPower = function (value, light) {
                     bridge.sendCommands(commands.rgbw.off(light.zone));
                 }
                 bridge.pause(100);
+
+                if (process.env.NODE_ENV != "production") {
+                    console.log("Setting light power : ");
+                    console.log(light);
+                    console.log("Power set : " + value);
+                }
 
                 resolve({
                     light: light,
