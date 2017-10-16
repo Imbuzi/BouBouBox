@@ -42,4 +42,5 @@ To set up your project to run in dev mode, you'll need to run this commands on y
 	npm install -g nodemon
 	nodemon
 
-The Node JS server is now listening on port 3000. You can access it from your machine through http://localhost:3000. The default user credentials are 'admin@boubou.io', with password 'Admin123!'.
+The Node JS server is now listening on port 3000. You can access it from your machine through http://localhost:3000.
+The default user credentials are 'admin@boubou.io', with password 'Admin123!'.
