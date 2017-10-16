@@ -25,7 +25,7 @@ This project requires a MySQL database.
 ### Before running commands
 
 You should configure your user credentials for your MySQL database based on [knexfile.js.example](https://github.com/Imbuzi/BouBouBox/blob/master/knexfile.js.example), and rename it `knexfile.js` (this file should be placed on your project root directory).
-Don't forget to create an empty database named `bouboubox`.
+Don't forget to run in MySQL CLI : `CREATE DATABASE bouboubox CHARACTER SET utf8 COLLATE utf8_general_ci;`.
 
 ### Commands used to start BouBouBox
 
