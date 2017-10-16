@@ -24,24 +24,14 @@ exports.up = function (knex, Promise) {
             })
         })
         .then(function () {
-            return knex.schema.createTableIfNotExists('widget', table => {
-                table.increments('id').primary().notNullable()
-                table.string('name', 100).notNullable()
-                table.enum('type', ['light'])
-            })
-        })
-        .then(function () {
             return knex.schema.createTableIfNotExists('light', table => {
+                table.integer('router').notNullable().defaultTo(0).unsigned().references('id').inTable('bridge')
+                table.primary(['router', 'zone'])
                 table.integer('zone').notNullable().defaultTo(0)
                 table.enum('type', ['rgbw']).notNullable()
                 table.boolean('power').notNullable().defaultTo(false)
                 table.integer('intensity').notNullable().defaultTo(100)
-            })
-        }).then(function () {
-            return knex.schema.table('light', function (table) {
-                table.integer('widget_id').notNullable().references('id').inTable('widget')
-                table.integer('router').notNullable().defaultTo(0).references('id').inTable('bridge')
-                table.primary(['router', 'zone'])
+                table.integer('widget_id').notNullable().unsigned().references('id').inTable('widget')
             })
         })
         .finally(function () {
