@@ -62,3 +62,6 @@ typings/
 
 # visual studio files
 .vs
+
+# knex configuration file
+knexfile.js
