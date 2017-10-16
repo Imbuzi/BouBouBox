@@ -33,6 +33,12 @@ exports.up = function (knex, Promise) {
     });
 };
 
-exports.down = function(knex, Promise) {
-    return knex.schema.dropTable('user')
+exports.down = function (knex, Promise) {
+    return Promise.all([
+        knex.schema.dropTable('user'),
+        knex.schema.dropTable('widget'),
+        knex.schema.dropTable('bridge')
+    ]).then(function () {
+        knex.schema.dropTable('light')
+    });
 };
