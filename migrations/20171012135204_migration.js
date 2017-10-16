@@ -45,5 +45,5 @@ exports.down = function (knex, Promise) {
             knex.schema.dropTable('widget'),
             knex.schema.dropTable('bridge'),
             knex.schema.dropTable('light')
-    });
+    ]);
 };
