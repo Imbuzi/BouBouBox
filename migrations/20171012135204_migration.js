@@ -44,7 +44,7 @@ exports.down = function (knex, Promise) {
         .then(function () {
             return Promise.all([
                 knex.schema.dropTable('user'),
-                knex.schema.dropTable('router'),
+                knex.schema.dropTable('bridge'),
                 knex.schema.dropTable('widget'),
                 knex.schema.dropTable('light')
             ]);
