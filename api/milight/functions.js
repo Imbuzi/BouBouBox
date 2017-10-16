@@ -12,6 +12,7 @@ api.discoverBridges = function () {
                 ip: '0.0.0.0',
                 type: 'legacy'
             });
+            bridge.mac = 'FF:FF:FF:FF:FF:FF';
 
             console.log("Creating fake bridge to send commands");
             api.bridges.push(bridge);
