@@ -6,22 +6,36 @@ let api = {};
 api.discoverBridges = function () {
     return new Promise(function (resolve, reject) {
         api.bridges = [];
-        milight.discoverBridges({
-            type: 'all'
-        }).then(function (results) {
-            results.forEach(function (element) {
-                let bridge = new milight.MilightController({
-                    ip: element.ip,
-                    type: element.type
-                });
-                bridge.mac = element.mac;
-                api.bridges.push(bridge);
+
+        if (process.env.NODE_ENV != "production") {
+            let bridge = new milight.MilightController({
+                ip: '0.0.0.0',
+                type: 'v6'
             });
-        }).then(function () {
+
+            console.log("Creating fake bridge to send commands");
+            console.log(bridge);
+            api.bridges.push(bridge);
+
             resolve();
-        }).catch(function() {
-            reject();
-        });
+        } else {
+            milight.discoverBridges({
+                type: 'all'
+            }).then(function (results) {
+                results.forEach(function (element) {
+                    let bridge = new milight.MilightController({
+                        ip: element.ip,
+                        type: element.type
+                    });
+                    bridge.mac = element.mac;
+                    api.bridges.push(bridge);
+                });
+            }).then(function () {
+                resolve();
+            }).catch(function () {
+                reject();
+            });
+        }
     });
 }
 
