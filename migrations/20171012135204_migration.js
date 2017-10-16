@@ -2,7 +2,7 @@ exports.up = function (knex, Promise) {
     return knex.raw('SET foreign_key_checks = 0;')
         .then(function () {
             return knex.schema.createTableIfNotExists('user', table => {
-                table.string('mail', 250).primary().notNullable()
+                table.string('mail', 150).primary().notNullable()
                 table.string('name').notNullable()
                 table.string('surname', 100).notNullable()
                 table.string('password', 250).notNullable()
