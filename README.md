@@ -26,18 +26,20 @@ To set up your project to run in dev mode, you'll need to run this commands on y
 	## Setting up git repository
     git clone <git-url>
 	cd BouBouBoux/
-	git checkout tags/<version-name>
-	git pull
+	git checkout <version-name>
 
 	## Setting up node project
 	npm install
+	mkdir public/js
 	npm run build-dev
 	
 	## Populating database
+	npm install -g knex
 	knex migrate:latest
 	knex seed:run
 
 	## Starting Node JS
+	npm install -g nodemon
 	nodemon
 
-The Node JS server is now listening on port 3000. You can access it from your machine through http://localhost:3000.
+The Node JS server is now listening on port 3000. You can access it from your machine through http://localhost:3000. The default user credentials are 'admin@boubou.io', with password 'Admin123!'.
