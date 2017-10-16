@@ -42,12 +42,10 @@ To set up your project to run in dev mode, you'll need to run this commands on y
 	npm run build-dev
 	
 	## Populating database
-	npm install -g knex
-	knex migrate:latest
-	knex seed:run
+	npm run db
 
 	## Starting Node JS
-	npm install -g nodemon
+	npm run nodemon
 	nodemon
 
 The Node JS server is now listening on port 3000. You can access it from your machine through http://localhost:3000.
