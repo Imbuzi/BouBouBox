@@ -42,9 +42,13 @@ exports.up = function (knex, Promise) {
 exports.down = function (knex, Promise) {
     return knex.raw('SET foreign_key_checks = 0;')
         .then(function () {
-            return ['user', 'widget', 'bridge', 'light'];
+            return Promise.all([
+                knex.schema.dropTable('user'),
+                knex.schema.dropTable('router'),
+                knex.schema.dropTable('widget'),
+                knex.schema.dropTable('light')
+            ]);
         })
-        .map(knex.schema.dropTable)
         .finally(function () {
             return knex.raw('SET foreign_key_checks = 1;');
 
