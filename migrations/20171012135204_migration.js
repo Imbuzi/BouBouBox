@@ -1,6 +1,5 @@
-
 exports.up = function (knex, Promise) {
-    return Promise(function (resolve, reject) {
+    return new Promise(function (resolve, reject) {
         Promise.all([
             knex.schema.createTableIfNotExists('user', table => {
                 table.string('mail', 250).primary().notNullable()
