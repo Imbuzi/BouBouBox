@@ -14,6 +14,7 @@ exports.seed = function(knex, Promise) {
                 mail: 'admin@boubou.io',
                 name: 'Admin',
                 surname: 'BouBou.io',
+                access: 1,
                 password: 'SHA512$172154e2$1$83167962460978714d3a810a6cc2ac6d584ea82993b2dc5f603ff0cededfc85f869302ec071aff009986dd921b582a154fb4b8bec5c60026bdc365bf644e2004' //Admin123!
             });
         }).then(function () {

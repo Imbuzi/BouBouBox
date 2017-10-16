@@ -13,10 +13,9 @@ import store from './store';
 import router from './router';
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    if (process.env.NODE_ENV == 'production') {
-        const SocketIOInstance = SocketIO('http://box.boubou.io')
-    } else {
-        const SocketIOInstance = SocketIO('http://localhost:3000')
+    const SocketIOInstance = SocketIO('http://box.boubou.io')
+    if (process.env.NODE_ENV != 'production') {
+        SocketIOInstance = SocketIO('http://localhost:3000')
     }
 
 	Vue.use(VueSocketIO, SocketIOInstance, store);
