@@ -38,7 +38,7 @@ exports.up = function (knex, Promise) {
                 table.primary(['router', 'zone'])
                 table.enum('type', ['rgbw']).notNullable()
                 table.boolean('power').notNullable().defaultTo(false)
-                table.integer('intensity').notNullable().defaulTo(100)
+                table.integer('intensity').notNullable().defaultTo(100)
                 table.integer('widget_id').notNullable()
                 table.foreign('widget_id').references('widget.id')
             })
