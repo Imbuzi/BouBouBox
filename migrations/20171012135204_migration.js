@@ -32,15 +32,13 @@ exports.up = function (knex, Promise) {
         })
         .then(function () {
             return knex.schema.createTableIfNotExists('light', table => {
-                table.integer('router').notNullable().defaultTo(0)
-                table.foreign('router').references('bridge.id')
+                table.integer('router').notNullable().defaultTo(0).inTable('bridge').references('id')
                 table.integer('zone').notNullable().defaultTo(0)
                 table.primary(['router', 'zone'])
                 table.enum('type', ['rgbw']).notNullable()
                 table.boolean('power').notNullable().defaultTo(false)
                 table.integer('intensity').notNullable().defaultTo(100)
-                table.integer('widget_id').notNullable()
-                table.foreign('widget_id').references('widget.id')
+                table.integer('widget_id').notNullable().inTable('widget').references('id')
             })
         })
         .finally(function () {
