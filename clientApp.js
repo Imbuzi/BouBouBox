@@ -13,10 +13,12 @@ import store from './store';
 import router from './router';
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    const SocketIOInstance = SocketIO('http://box.boubou.io')
+    let SocketIODomain = 'http://box.boubou.io'
     if (process.env.NODE_ENV != 'production') {
-        SocketIOInstance = SocketIO('http://localhost:3000')
+        SocketIODomain = 'http://localhost:3000'
     }
+
+    const SocketIOInstance = SocketIO(SocketIODomain)
 
 	Vue.use(VueSocketIO, SocketIOInstance, store);
     Vue.use(VueLocalStorage);
