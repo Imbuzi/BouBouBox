@@ -34,7 +34,7 @@ exports.up = function (knex, Promise) {
             return knex.schema.createTableIfNotExists('light', table => {
                 table.integer('router').notNullable().defaultTo(0)
                 table.foreign('router').references('bridge.id')
-                table.integer('zone').notNullable().defaulTo(0)
+                table.integer('zone').notNullable().defaultTo(0)
                 table.primary(['router', 'zone'])
                 table.enum('type', ['rgbw']).notNullable()
                 table.boolean('power').notNullable().defaultTo(false)
