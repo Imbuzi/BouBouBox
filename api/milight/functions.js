@@ -10,11 +10,10 @@ api.discoverBridges = function () {
         if (process.env.NODE_ENV != "production") {
             let bridge = new milight.MilightController({
                 ip: '0.0.0.0',
-                type: 'v6'
+                type: 'legacy'
             });
 
             console.log("Creating fake bridge to send commands");
-            console.log(bridge);
             api.bridges.push(bridge);
 
             resolve();
