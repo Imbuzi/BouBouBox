@@ -7,7 +7,7 @@ api.discoverBridges = function () {
     return new Promise(function (resolve, reject) {
         api.bridges = [];
 
-        if (process.env.NODE_ENV != "production") {
+        if (process.env.NODE_ENV == "development") {
             let bridge = new milight.MilightController({
                 ip: '0.0.0.0',
                 type: 'legacy'

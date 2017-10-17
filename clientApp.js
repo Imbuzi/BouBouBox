@@ -14,7 +14,7 @@ import router from './router';
 
 document.addEventListener("DOMContentLoaded", function (event) {
     let SocketIODomain = 'http://box.boubou.io'
-    if (process.env.NODE_ENV != 'production') {
+    if (process.env.NODE_ENV == 'development') {
         SocketIODomain = 'http://localhost:3000'
     }
 

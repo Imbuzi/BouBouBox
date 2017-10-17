@@ -55,9 +55,11 @@
   "scripts": {
     "watchify": "watchify -vd -e clientApp.js -o public/js/app.js",
     "nodemon": "nodemon",
-    "dev": "npm-run-all --parallel watchify nodemon",
+    "watch-dev": "npm-run-all --parallel cross-env NODE_ENV=development watchify nodemon",
+    "watch-staging": "npm-run-all --parallel cross-env NODE_ENV=staging watchify nodemon",
     "build": "cross-env NODE_ENV=production browserify -g envify clientApp.js | uglifyjs -c warnings=false -m > public/js/app.js",
     "build-dev": "cross-env NODE_ENV=development browserify -g envify clientApp.js | uglifyjs -c warnings=false -m > public/js/app.js",
+    "build-staging": "cross-env NODE_ENV=staging browserify -g envify clientApp.js | uglifyjs -c warnings=false -m > public/js/app.js",
     "db": "knex migrate:rollback && knex migrate:latest && knex seed:run"
   },
   "browserify": {
