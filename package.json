@@ -55,6 +55,7 @@
   },
   "scripts": {
     "watchify": "watchify -vd -t envify -e clientApp.js -o public/js/app.js",
+    "nodemon": "nodemon",
     "dev-env": "cross-env NODE_ENV=development",
     "staging-env": "cross-env NODE_ENV=staging",
     "watch-dev": "npm-run-all dev-env --parallel watchify nodemon",
