@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const http = require('http');
 const bodyParser = require("body-parser");
 const express = require('express');
