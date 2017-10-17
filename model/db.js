@@ -41,12 +41,13 @@ db.widget.getAll = function () {
         .select()
         .then(function (result) {
             result.forEach(function (element) {
+                console.log(element);
                 knex
                     .from('widget_' + element.widget_type)
-                    .select()
                     .where('id', element.widget_type_id)
-                    .then(function (result) {
-                        element[element.widget_type] = result.first();
+                    .select()
+                    .then(function (subRes) {
+                        element[element.widget_type] = subRes.first();
                     })
             });
 
