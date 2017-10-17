@@ -54,7 +54,7 @@
     "url": "git+https://github.com/Imbuzi/BouBouBox.git"
   },
   "scripts": {
-    "watchify": "watchify -vd -e clientApp.js -o public/js/app.js",
+    "watchify": "watchify -vd -g envify -e clientApp.js -o public/js/app.js",
     "nodemon": "nodemon",
     "dev-env": "cross-env NODE_ENV=development",
     "staging-env": "cross-env NODE_ENV=staging",
