@@ -5,6 +5,7 @@ import theme from './modules/theme';
 import widget from './modules/widget';
 import user from './modules/user';
 import alert from './modules/alert';
+import modal from './modules/modal';
 
 Vue.use(Vuex);
 
@@ -16,7 +17,8 @@ export default new Vuex.Store({
         theme,
         widget,
         user,
-        alert
+        alert,
+        modal
     },
     strict: dev
 })

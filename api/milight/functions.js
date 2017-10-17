@@ -6,22 +6,36 @@ let api = {};
 api.discoverBridges = function () {
     return new Promise(function (resolve, reject) {
         api.bridges = [];
-        milight.discoverBridges({
-            type: 'all'
-        }).then(function (results) {
-            results.forEach(function (element) {
-                let bridge = new milight.MilightController({
-                    ip: element.ip,
-                    type: element.type
-                });
-                bridge.mac = element.mac;
-                api.bridges.push(bridge);
+
+        if (process.env.NODE_ENV == "development") {
+            let bridge = new milight.MilightController({
+                ip: '0.0.0.0',
+                type: 'legacy'
             });
-        }).then(function () {
+            bridge.mac = 'FF:FF:FF:FF:FF:FF';
+
+            console.log("Creating fake bridge to send commands");
+            api.bridges.push(bridge);
+
             resolve();
-        }).catch(function() {
-            reject();
-        });
+        } else {
+            milight.discoverBridges({
+                type: 'all'
+            }).then(function (results) {
+                results.forEach(function (element) {
+                    let bridge = new milight.MilightController({
+                        ip: element.ip,
+                        type: element.type
+                    });
+                    bridge.mac = element.mac;
+                    api.bridges.push(bridge);
+                });
+            }).then(function () {
+                resolve();
+            }).catch(function () {
+                reject();
+            });
+        }
     });
 }
 
@@ -37,6 +51,12 @@ api.setLightIntensity = function (value, light) {
 
                 bridge.sendCommands(commands.rgbw.brightness(light.zone, value));
                 bridge.pause(100);
+
+                if (process.env.NODE_ENV != "production") {
+                    console.log("Setting light intensity : ");
+                    console.log(light);
+                    console.log("Intensity set : " + value);
+                }
 
                 resolve({
                     light: light,
@@ -69,6 +89,12 @@ api.setLightColor = function (value, light) {
             bridge.sendCommands(commands.rgbw.rgb(light.zone, value.red, value.green, value.blue));
             bridge.pause(100);
 
+            if (process.env.NODE_ENV != "production") {
+                console.log("Setting light color : ");
+                console.log(light);
+                console.log("Color set : " + value);
+            }
+
             resolve({
                 light: light,
                 value: value
@@ -98,6 +124,12 @@ api.setLightPower = function (value, light) {
                     bridge.sendCommands(commands.rgbw.off(light.zone));
                 }
                 bridge.pause(100);
+
+                if (process.env.NODE_ENV != "production") {
+                    console.log("Setting light power : ");
+                    console.log(light);
+                    console.log("Power set : " + value);
+                }
 
                 resolve({
                     light: light,

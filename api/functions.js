@@ -34,6 +34,47 @@ api.authenticateXMLHttpRequest = function (req) {
     });
 }
 
+api.getUsersWaitingForValidation = function () {
+    return new Promise(function (resolve, reject) {
+        db.user.getNotValidated().then(function (result) {
+            resolve({
+                userList: result
+            });
+        }).catch(function (error) {
+            reject({
+                error: 500,
+                message: "Erreur de base de données"
+            });
+        });
+    });
+}
+
+api.refuseNewUser = function (mail) {
+    return new Promise(function (resolve, reject) {
+        db.user.delete(mail).then(function () {
+            resolve(mail);
+        }).catch(function (error) {
+            reject({
+                error: 500,
+                message: "Erreur de base de données"
+            });
+        });
+    });
+}
+
+api.acceptNewUser = function (mail) {
+    return new Promise(function (resolve, reject) {
+        db.user.acceptUser(mail).then(function () {
+            resolve(mail);
+        }).catch(function (error) {
+            reject({
+                error: 500,
+                message: "Erreur de base de données"
+            });
+        });
+    });
+}
+
 api.addUser = function (name, surname, mail, hashedPassword) {
     return new Promise(function (resolve, reject) {
         db.user.add(name, surname, mail, hashedPassword).then(function () {

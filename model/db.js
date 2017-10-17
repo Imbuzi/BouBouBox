@@ -1,5 +1,5 @@
 const environment = process.env.NODE_ENV || 'development';
-const config = require('../db-config.js')[environment];
+const config = require('../knexfile.js')[environment];
 const knex = require('knex')(config);
 
 const db = {
@@ -68,6 +68,29 @@ db.user.getByMail = function (mail) {
         .select('user.password as password','user.access as access')
         .where('user.mail', mail)
         .first()
+}
+
+db.user.getNotValidated = function () {
+    return knex
+        .from('user')
+        .select('user.name as name', 'user.surname as surname', 'user.mail as mail')
+        .where('user.access', 0)
+}
+
+db.user.delete = function (mail) {
+    return knex
+        .from('user')
+        .where('user.mail', mail)
+        .del()
+}
+
+db.user.acceptUser = function (mail) {
+    return knex
+        .from('user')
+        .where('user.mail', mail)
+        .update({
+            'access': 1
+        })
 }
 
 db.user.add = function (name, surname, mail, hashedPassword) {

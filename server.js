@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const http = require('http');
 const bodyParser = require("body-parser");
 const express = require('express');
@@ -50,10 +51,15 @@ app.post("/login", function (req, res) {
 });
 
 app.get('*', function (req, res) {
-    res.sendFile('./app.html', { root: __dirname });
+    if (process.env.NODE_ENV == 'production') {
+        res.sendFile('./app-prod.html', { root: __dirname });
+    } else {
+        res.sendFile('./app.html', { root: __dirname });
+    }
 });
 
 // Création du WS Socket.io
+// TODO : API socket dans un autre fichier
 const io = require('socket.io')(server);
 io.on('connection', function(socket) {
     socket.on('getWidgetList', function (token) {
@@ -68,6 +74,44 @@ io.on('connection', function(socket) {
         });
     });
 
+    socket.on('refuseNewUser', function (token, mail) {
+        api.validateToken(token).then(function () {
+            api.refuseNewUser(mail).then(function (result) {
+                socket.emit('userRefused', result);
+                socket.broadcast.emit('userRefused', result);
+            }).catch(function (result) {
+                socket.emit('userRefused', result);
+            });
+        }).catch(function (result) {
+            socket.emit('userRefused', result);
+        });
+    });
+
+    socket.on('acceptNewUser', function (token, mail) {
+        api.validateToken(token).then(function () {
+            api.acceptNewUser(mail).then(function (result) {
+                socket.emit('userAccepted', result);
+                socket.broadcast.emit('userAccepted', result);
+            }).catch(function (result) {
+                socket.emit('userAccepted', result);
+            });
+        }).catch(function (result) {
+            socket.emit('userRefused', result);
+        });
+    });
+
+    socket.on('getUsersWaitingForValidation', function (token) {
+        api.validateToken(token).then(function () {
+            api.getUsersWaitingForValidation().then(function (result) {
+                socket.emit('usersWaitingForValidation', result);
+            }).catch(function (result) {
+                socket.emit('usersWaitingForValidation', result);
+            });
+        }).catch(function (result) {
+            socket.emit('usersWaitingForValidation', result);
+        });
+    });
+
     socket.on('getJWT', function (data) {
         api.getJWT(data.mail, data.password).then(function (result) {
             socket.emit('JWT', result);
@@ -79,6 +123,7 @@ io.on('connection', function(socket) {
     socket.on('addUser', function (data) {
         api.addUser(data.name, data.surname, data.mail, data.password).then(function (result) {
             socket.emit('userAdded', result);
+            socket.broadcast.emit('userAdded', result);
         }).catch(function (result) {
             socket.emit('userAdded', result);
         });

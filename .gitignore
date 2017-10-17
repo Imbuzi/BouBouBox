@@ -27,7 +27,7 @@ coverage
 bower_components
 
 # Browserfified files
-public/js/
+public/js
 
 # node-waf configuration
 .lock-wscript
@@ -62,3 +62,6 @@ typings/
 
 # visual studio files
 .vs
+
+# knex configuration file
+knexfile.js
