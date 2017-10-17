@@ -50,7 +50,11 @@ app.post("/login", function (req, res) {
 });
 
 app.get('*', function (req, res) {
-    res.sendFile('./app.html', { root: __dirname });
+    if (process.env.NODE_ENV == 'production') {
+        res.sendFile('./app-prod.html', { root: __dirname });
+    } else {
+        res.sendFile('./app.html', { root: __dirname });
+    }
 });
 
 // Création du WS Socket.io
