@@ -40,6 +40,7 @@ db.widget.getAll = function () {
         .from('widget')
         .select()
         .then(function (result) {
+            console.log(result);
             result.forEach(function (element) {
                 console.log(element);
                 knex
