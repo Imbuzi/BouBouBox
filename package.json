@@ -55,15 +55,16 @@
   },
   "scripts": {
     "watchify": "watchify -vd -t envify -e clientApp.js -o public/js/app.js",
-    "nodemon": "nodemon",
     "dev-env": "cross-env NODE_ENV=development",
     "staging-env": "cross-env NODE_ENV=staging",
-    "watch-dev": "npm-run-all dev-env --parallel watchify nodemon",
-    "watch-staging": "npm-run-all staging-env --parallel watchify nodemon",
+    "watch-dev": "npm-run-all dev-env --parallel watchify start-dev",
+    "watch-staging": "npm-run-all staging-env --parallel watchify start-staging",
     "build": "cross-env NODE_ENV=production browserify -g envify clientApp.js | uglifyjs -c warnings=false -m > public/js/app.min.js",
     "build-dev": "cross-env NODE_ENV=development browserify -g envify clientApp.js | uglifyjs -c warnings=false -m > public/js/app.js",
     "build-staging": "cross-env NODE_ENV=staging browserify -g envify clientApp.js | uglifyjs -c warnings=false -m > public/js/app.js",
-    "db": "knex migrate:rollback && knex migrate:latest && knex seed:run"
+    "db": "knex migrate:rollback && knex migrate:latest && knex seed:run",
+    "start-dev": "NODE_ENV=dev nodemon",
+    "start-staging": "NODE_ENV=staging nodemon"
   },
   "browserify": {
     "transform": [
