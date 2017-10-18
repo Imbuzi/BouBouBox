@@ -35,30 +35,39 @@ db.milight.setLightPower = function (light, value) {
         });
 }
 
-db.widget.getAll = function () {
+db.widget.getList = function () {
+    return knex.from('widget').select()
+}
+
+db.widget.getWidgetListDetails = function (widgetList) {
     return new Promise(function (resolve, reject) {
-        knex
-        .from('widget')
-        .select()
-        .then(function (widgetList) {
-            return Promise.all(
-                widgetList.map(function (widget) {
-                    return knex
-                        .from('widget_' + widget.widget_type)
-                        .select()
-                        .where('id', widget.widget_type_id)
-                        .first()
-                        .then(function (res) {
-                            widget[widget.widget_type] = res
-                        })
-                })
-            )
-        }).then(function (promises) {
+        Promise.all(
+            widgetList.map(function (widget) {
+                return knex
+                    .from('widget_' + widget.widget_type)
+                    .select()
+                    .where('id', widget.widget_type_id)
+                    .first()
+                    .then(function (res) {
+                        widget[widget.widget_type] = res
+                    })
+            })
+        ).then(function (promises) {
             console.log(widgetList);
             resolve(widgetList);
         }).catch(function (error) {
             reject(error);
         })
+    });
+}
+
+db.widget.getAll = function () {
+    return new Promise(function (resolve, reject) {
+        db.widget.getList().getWidgetListDetails().then(function (result) {
+            resolve(result);
+        }).catch(function (error) {
+            reject(error);
+        });
     });
 }
 
