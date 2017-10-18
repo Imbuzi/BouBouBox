@@ -42,20 +42,24 @@ db.widget.getAll = function () {
 }
 
 db.widget.getWidgetListDetails = function (widgetList) {
-    Promise.all(
-        widgetList.map(function (widget) {
-            return knex
-                .from('widget_' + widget.widget_type)
-                .select()
-                .where('id', widget.widget_type_id)
-                .then(function (res) {
-                    console.log(res)
-                    widget[widget.widget_type] = res
-                    console.log(widgetList)
-                })
-        })
-    ).then(function (promises) {
-        return widgetList;
+    return new Promise(function (resolve, reject) {
+        Promise.all(
+            widgetList.map(function (widget) {
+                return knex
+                    .from('widget_' + widget.widget_type)
+                    .select()
+                    .where('id', widget.widget_type_id)
+                    .then(function (res) {
+                        console.log(res)
+                        widget[widget.widget_type] = res
+                        console.log(widgetList)
+                    })
+            })
+        ).then(function (promises) {
+            resolve(widgetList);
+        }).catch(function (error) {
+            reject(error);
+        });
     });
 }
 
