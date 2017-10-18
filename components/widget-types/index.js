@@ -1,5 +1,5 @@
-import fs from 'fs'
-import path from 'path'
+import fs from '/node_modules/fs'
+import path from '/node_modules/path'
 
 console.log(fs);
 
