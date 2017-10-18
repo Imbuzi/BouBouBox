@@ -12,15 +12,11 @@
 </template>
 
 <script>
-    import RGBWLightWidget from './rgbw-light-widget.vue';
-    import PowerSwitch from './power-switch.vue';
+    import * as components from './components';
 
     export default {
         props: ['widget'],
-        components: {
-            'rgbw-light-widget': RGBWLightWidget,
-            'power-switch': PowerSwitch
-        },
+        components: components,
         methods: {
             powerSwitch: function (value) {
                 this.$socket.emit('setLightPower', this.$store.state.user.token, {
