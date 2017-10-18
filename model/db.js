@@ -36,30 +36,28 @@ db.milight.setLightPower = function (light, value) {
 }
 
 db.widget.getAll = function () {
-    return knex
-        .from('widget')
-        .select()
-}
-
-db.widget.getWidgetListDetails = function (widgetList) {
     return new Promise(function (resolve, reject) {
-        Promise.all(
-            widgetList.map(function (widget) {
-                return knex
-                    .from('widget_' + widget.widget_type)
-                    .select()
-                    .where('id', widget.widget_type_id)
-                    .then(function (res) {
-                        console.log(res)
-                        widget[widget.widget_type] = res
-                        console.log(widgetList)
+        knex
+            .from('widget')
+            .select()
+            .then(function (widgetList) {
+                Promise.all(
+                    widgetList.map(function (widget) {
+                        return knex
+                            .from('widget_' + widget.widget_type)
+                            .select()
+                            .where('id', widget.widget_type_id)
+                            .first()
+                            .then(function (res) {
+                                widget[widget.widget_type] = res
+                            })
                     })
+                ).then(function (promises) {
+                    resolve(widgetList);
+                }).catch(function (error) {
+                    reject(error);
+                })
             })
-        ).then(function (promises) {
-            resolve(widgetList);
-        }).catch(function (error) {
-            reject(error);
-        });
     });
 }
 
