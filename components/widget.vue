@@ -10,10 +10,10 @@
 </template>
 
 <script>
-    import * as components from './widget-types/*';
+    import * as components from './widget-types';
 
     console.log(components.milight);
-    console.log(components.toJSON());
+    console.log(JSON.stringify(components));
 
     export default {
         props: ['widget'],
