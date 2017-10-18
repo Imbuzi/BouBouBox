@@ -49,6 +49,7 @@ db.widget.getWidgetListDetails = function (widgetList) {
                 .select()
                 .where('id', widget.widget_type_id)
                 .then(function (result) {
+                    console.log(result)
                     widget[widget.widget_type] = result
                 })
         })
