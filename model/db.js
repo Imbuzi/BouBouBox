@@ -44,20 +44,20 @@ db.widget.getAll = function () {
             Promise.all(
                 widgetList.map(function (widget) {
                     return knex
-                    .from('widget_' + widget.widget_type)
-                    .select()
-                    .where('id', widget.widget_type_id)
-                    .first()
-                    .then(function (res) {
-                        widget[widget.widget_type] = res
-                    })
+                        .from('widget_' + widget.widget_type)
+                        .select()
+                        .where('id', widget.widget_type_id)
+                        .first()
+                        .then(function (res) {
+                            widget[widget.widget_type] = res
+                        })
                 })
-            ).then(function (promises) {
-                console.log(widgetList);
-                resolve(widgetList);
-            }).catch(function (error) {
-                reject(error);
-            })
+            )
+        }).then(function (promises) {
+            console.log(widgetList);
+            resolve(widgetList);
+        }).catch(function (error) {
+            reject(error);
         })
     });
 }
