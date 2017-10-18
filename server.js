@@ -32,8 +32,8 @@ Promise.all(preInitPromises).then(function () {
 // Routage Express
 app.get('/widget', (req, res) => {
     api.authenticateXMLHttpRequest(req).then(function () {
-        api.getWidgetList().then(function (result) {
-            res.json(result);
+        api.getWidgetList().then(function (widgetList) {
+            res.json(widgetList);
         }).catch(function (error) {
             res.status(error.error).json(error);
         });
