@@ -1,4 +1,11 @@
 {
   "presets": [ "es2015" ],
-  "plugins": [ "wildcard" ]
+  "plugins": [
+    [
+      "wildcard",
+      {
+        "exts": [ "js", "es6", "es", "jsx", "vue", "javascript" ]
+      }
+    ]
+  ]
 }
