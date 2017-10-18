@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="font-bold uppercase widget-header">{{name}}
-            <power-switch class="pull-right widget-button" v-bind:value="light.power" v-on:value="powerSwitch"></power-switch>
+        <div class="font-bold uppercase widget-header">{{widget.name}}
+            <power-switch class="pull-right widget-button" v-bind:value="widget.milight.power" v-on:value="powerSwitch"></power-switch>
         </div>
         <div class="align-center">
-            <template v-if="light.type ==='rgbw'">
-                <rgbw-light-widget v-bind:light="light"></rgbw-light-widget>
+            <template v-if="widget.milight.type ==='rgbw'">
+                <rgbw-light-widget v-bind:light="widget.milight"></rgbw-light-widget>
             </template>
         </div>
     </div>
@@ -16,7 +16,7 @@
     import PowerSwitch from './power-switch.vue';
 
     export default {
-        props: ['light','name'],
+        props: ['widget'],
         components: {
             'rgbw-light-widget': RGBWLightWidget,
             'power-switch': PowerSwitch
@@ -25,7 +25,7 @@
             powerSwitch: function (value) {
                 this.$socket.emit('setLightPower', this.$store.state.user.token, {
                     value: value,
-                    light: this.light
+                    light: this.widget.milight
                 });
             }
         },

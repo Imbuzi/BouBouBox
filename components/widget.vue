@@ -12,8 +12,7 @@
 <script>
     import * as components from './widget-types';
 
-    console.log(components.milight);
-    console.log(JSON.stringify(components));
+    console.log(components);
 
     export default {
         props: ['widget'],
