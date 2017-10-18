@@ -64,10 +64,10 @@ const io = require('socket.io')(server);
 io.on('connection', function(socket) {
     socket.on('getWidgetList', function (token) {
         api.validateToken(token).then(function () {
-            api.getWidgetList().then(function (result) {
-                socket.emit('widgetList', result);
+            api.getWidgetList().then(function (widgetList) {
+                socket.emit('widgetList', widgetList);
             }).catch(function (error) {
-                socket.emit('widgetList', result);
+                socket.emit('widgetList', widgetList);
             });
         }).catch(function (result) {
             socket.emit('widgetList', result);
