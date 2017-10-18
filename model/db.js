@@ -50,7 +50,7 @@ db.widget.getAll = function () {
                         .then(function (subRes) {
                             element[element.widget_type] = subRes;
                         })
-                })
+                }),result
             );
         });
 }
