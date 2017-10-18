@@ -41,7 +41,7 @@ db.widget.getAll = function () {
         .from('widget')
         .select()
         .then(function (widgetList) {
-            Promise.all(
+            return Promise.all(
                 widgetList.map(function (widget) {
                     return knex
                         .from('widget_' + widget.widget_type)
