@@ -36,31 +36,23 @@ db.milight.setLightPower = function (light, value) {
 }
 
 db.widget.getAll = function () {
-    let queries;
-
-    queries.push(
-        knex
-            .from('widget')
-            .select()
-            .then(function (result) {
-                result.forEach(function (element) {
-                    queries.push(
-                        knex
-                            .from('widget_' + element.widget_type)
-                            .where('id', element.widget_type_id)
-                            .select()
-                            .first()
-                            .then(function (subRes) {
-                                element[element.widget_type] = subRes;
-                            })
-                    );
-                });
-
-                return result;
-            })
-    );
-
-    return Promise.all(queries);
+    return knex
+        .from('widget')
+        .select()
+        .then(function (result) {
+            return Promise.all(
+                result.map(function (element) {
+                    knex
+                        .from('widget_' + element.widget_type)
+                        .where('id', element.widget_type_id)
+                        .select()
+                        .first()
+                        .then(function (subRes) {
+                            element[element.widget_type] = subRes;
+                        })
+                })
+            );
+        });
 }
 
 db.user.getByMail = function (mail) {
