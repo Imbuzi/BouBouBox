@@ -118,7 +118,7 @@ api.validateToken = function (token) {
 api.getWidgetList = function() {
     return new Promise(function (resolve, reject) {
         db.widget.getAll().then(function (widgetList) {
-            console.log('Widget List : ' + widgetList)
+            console.log(widgetList);
             resolve({
                 widgetList: widgetListDetailed
             });

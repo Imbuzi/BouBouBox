@@ -53,7 +53,6 @@ db.widget.getWidgetListDetails = function (widgetList) {
                     })
             })
         ).then(function (promises) {
-            console.log(widgetList);
             resolve(widgetList);
         }).catch(function (error) {
             reject(error);
