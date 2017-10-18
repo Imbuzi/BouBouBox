@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+const fs = require('../../node_modules/fs');
 const path = require('path');
 
 console.log(fs);
