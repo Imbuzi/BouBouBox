@@ -1,7 +1,7 @@
-const { readdirSync } = require('fs');
+import * as fs from 'fs';
 const path = require('path');
 
-console.log(readdirSync);
+console.log(fs);
 console.log(path);
 
 const getDirectories = srcPath => readdirSync(srcPath).filter(file => fs.statSync(path.join(srcPath, file)).isDirectory())
