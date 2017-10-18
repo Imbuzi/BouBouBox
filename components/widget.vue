@@ -2,21 +2,18 @@
     <article>
         <div class="card">
             <div class="body">
-                <template v-if="widget.type == 'light'">
-                    <light-widget v-bind:name="widget.name" v-bind:light="widget.light"></light-widget>
-                </template>
+                <!--<light-widget v-bind:name="widget.name" v-bind:light="widget.light"></light-widget>-->
+                <component v-bind:widget="widget" v-bind:is="widget.widget_type"></component>
             </div>
         </div>
     </article>
 </template>
 
 <script>
-    import LightWidget from './light-widget.vue';
+    import * as components from './widget-types/';
 
     export default {
         props: ['widget'],
-        components: {
-            'light-widget': LightWidget
-        }
+        components: components
     }
 </script>
