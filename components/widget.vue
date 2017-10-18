@@ -13,6 +13,7 @@
     import * as components from './widget-types/';
 
     console.log(components.milight);
+    console.log(components.toJSON());
 
     export default {
         props: ['widget'],
