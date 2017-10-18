@@ -50,6 +50,7 @@ db.widget.getWidgetListDetails = function (widgetList) {
                 .where('id', widget.widget_type_id)
                 .then(function (result) {
                     console.log(result)
+                    console.log(widgetList)
                     widget[widget.widget_type] = result
                 })
         })
