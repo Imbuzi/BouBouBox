@@ -5,7 +5,6 @@
   },
   "dependencies": {
     "body-parser": "^1.18.2",
-    "bookshelf": "^0.10.4",
     "express": "^4.15.4",
     "fs": "0.0.1-security",
     "jsonwebtoken": "^8.0.1",
