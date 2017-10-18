@@ -36,7 +36,7 @@ db.milight.setLightPower = function (light, value) {
 }
 
 db.widget.getAll = function () {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolveGetAll, rejectGetAll) {
         knex
             .from('widget')
             .select()
@@ -53,9 +53,9 @@ db.widget.getAll = function () {
                             })
                     })
                 ).then(function (promises) {
-                    resolve(widgetList);
+                    resolveGetAll(widgetList);
                 }).catch(function (error) {
-                    reject(error);
+                    rejectGetAll(error);
                 })
             })
     });
