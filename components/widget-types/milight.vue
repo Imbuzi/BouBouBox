@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import * as components from './components';
+    import * as components from './milight-components';
 
     export default {
         props: ['widget'],

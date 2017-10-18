@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const passwordHash = require('password-hash');
-const fs = require('fs-extra');
+const fs = require('fs');
 const dbAPI = require('./db');
 const milightAPI = require('./milight');
 
