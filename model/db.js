@@ -39,20 +39,22 @@ db.widget.getAll = function () {
     return knex
         .from('widget')
         .select()
-        .then(function (result) {
-            return Promise.all(
-                result.map(function (element) {
-                    knex
-                        .from('widget_' + element.widget_type)
-                        .where('id', element.widget_type_id)
-                        .select()
-                        .first()
-                        .then(function (subRes) {
-                            element[element.widget_type] = subRes;
-                        })
-                }),result
-            );
-        });
+}
+
+db.widget.getWidgetListDetails = function (widgetList) {
+    Promise.all(
+        widgetList.map(function (widget) {
+            return knex
+                .from(widget.widget_type)
+                .select()
+                .where('id', widget.widget_type_id)
+                .then(function (result) {
+                    widget[widget.widget_type] = result
+                })
+        })
+    ).then(function (promises) {
+        return widgetList;
+    });
 }
 
 db.user.getByMail = function (mail) {

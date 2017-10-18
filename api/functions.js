@@ -118,8 +118,15 @@ api.validateToken = function (token) {
 api.getWidgetList = function() {
     return new Promise(function (resolve, reject) {
         db.widget.getAll().then(function (widgetList) {
-            resolve({
-                widgetList: widgetList
+            db.widget.getWidgetListDetails(widgetList).then(function (widgetList) {
+                resolve({
+                    widgetList: widgetList
+                });
+            }).catch(function (error) {
+                reject({
+                    error: 500,
+                    message: "Erreur de base de données"
+                });
             });
         }).catch(function (error) {
             reject({
