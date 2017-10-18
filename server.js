@@ -67,7 +67,7 @@ io.on('connection', function(socket) {
             api.getWidgetList().then(function (widgetList) {
                 socket.emit('widgetList', widgetList);
             }).catch(function (error) {
-                socket.emit('widgetList', widgetList);
+                socket.emit('widgetList', error);
             });
         }).catch(function (result) {
             socket.emit('widgetList', result);
