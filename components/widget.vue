@@ -12,6 +12,8 @@
 <script>
     import * as components from './widget-types/';
 
+    console.log(components);
+
     export default {
         props: ['widget'],
         components: components
