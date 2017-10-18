@@ -1,7 +1,9 @@
 const { lstatSync, readdirSync } = require('fs')
 const { join } = require('path')
 
-const getDirectories = srcPath => readdirSync(srcPath).filter(file => lstatSync(join(srcPath, file)).isDirectory())
+const isDirectory = source => lstatSync(source).isDirectory()
+const getDirectories = source =>
+    readdirSync(source).map(name => join(source, name)).filter(isDirectory)
 
 console.log(getDirectories('./'));
 
