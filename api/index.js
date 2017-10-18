@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 const passwordHash = require('password-hash');
 const fs = require('fs');
-const db = require('../model/db.js');
-const milightAPI = require('./milight/functions.js');
+const dbAPI = require('./db');
+const milightAPI = require('./milight');
 
 let api = {
     milight: milightAPI
@@ -36,7 +36,7 @@ api.authenticateXMLHttpRequest = function (req) {
 
 api.getUsersWaitingForValidation = function () {
     return new Promise(function (resolve, reject) {
-        db.user.getNotValidated().then(function (result) {
+        dbAPI.user.getNotValidated().then(function (result) {
             resolve({
                 userList: result
             });
@@ -51,7 +51,7 @@ api.getUsersWaitingForValidation = function () {
 
 api.refuseNewUser = function (mail) {
     return new Promise(function (resolve, reject) {
-        db.user.delete(mail).then(function () {
+        dbAPI.user.delete(mail).then(function () {
             resolve(mail);
         }).catch(function (error) {
             reject({
@@ -64,7 +64,7 @@ api.refuseNewUser = function (mail) {
 
 api.acceptNewUser = function (mail) {
     return new Promise(function (resolve, reject) {
-        db.user.acceptUser(mail).then(function () {
+        dbAPI.user.acceptUser(mail).then(function () {
             resolve(mail);
         }).catch(function (error) {
             reject({
@@ -77,7 +77,7 @@ api.acceptNewUser = function (mail) {
 
 api.addUser = function (name, surname, mail, hashedPassword) {
     return new Promise(function (resolve, reject) {
-        db.user.add(name, surname, mail, hashedPassword).then(function () {
+        dbAPI.user.add(name, surname, mail, hashedPassword).then(function () {
             resolve({
                 name: name,
                 surname: surname,
@@ -117,7 +117,7 @@ api.validateToken = function (token) {
 
 api.getWidgetList = function() {
     return new Promise(function (resolve, reject) {
-        db.widget.getAll().then(function (widgetListDetailed) {
+        dbAPI.widget.getAll().then(function (widgetListDetailed) {
             resolve({
                 widgetList: widgetListDetailed
             });
@@ -138,7 +138,7 @@ api.getJWT = function(mail, password) {
                 message: "Erreur de requête"
             });
         } else {
-            db.user.getByMail(mail).then(function (user) {
+            dbAPI.user.getByMail(mail).then(function (user) {
                 if (!user) {
                     reject({
                         error: 401,

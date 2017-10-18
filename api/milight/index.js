@@ -1,5 +1,5 @@
 const milight = require('node-milight-promise');
-const db = require('../../model/db.js');
+const dbAPI = require('../db');
 
 let api = {};
 
@@ -46,7 +46,7 @@ api.setLightIntensity = function (value, light) {
         })[0];
 
         if (bridge) {
-            db.milight.setLightIntensity(light, value).then(function () {
+            dbAPI.milight.setLightIntensity(light, value).then(function () {
                 let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
 
                 bridge.sendCommands(commands.rgbw.brightness(light.zone, value));
@@ -115,7 +115,7 @@ api.setLightPower = function (value, light) {
         })[0];
 
         if (bridge) {
-            db.milight.setLightPower(light, value).then(function () {
+            dbAPI.milight.setLightPower(light, value).then(function () {
                 let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
 
                 if (value) {

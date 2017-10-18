@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan'); // Charge le middleware de logging
-const api = require('./api/functions.js');
+const api = require('./api');
 const app = express();
 
 const preInitPromises = [

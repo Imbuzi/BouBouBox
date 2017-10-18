@@ -1,5 +1,5 @@
 const environment = process.env.NODE_ENV || 'development';
-const config = require('../knexfile.js')[environment];
+const config = require('../../knexfile.js')[environment];
 const knex = require('knex')(config);
 
 const db = {
@@ -8,7 +8,7 @@ const db = {
     milight: {}
 };
 
-db.milight.setLightIntensity = function(light, value) {
+db.milight.setLightIntensity = function (light, value) {
     return knex
         .from('light')
         .innerJoin('bridge', 'bridge.id', 'light.router')
@@ -76,7 +76,7 @@ db.widget.getAll = function () {
 db.user.getByMail = function (mail) {
     return knex
         .from('user')
-        .select('user.password as password','user.access as access')
+        .select('user.password as password', 'user.access as access')
         .where('user.mail', mail)
         .first()
 }
