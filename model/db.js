@@ -63,7 +63,7 @@ db.widget.getWidgetListDetails = function (widgetList) {
 db.widget.getAll = function () {
     return new Promise(function (resolve, reject) {
         db.widget.getList().then(function (widgetList) {
-            db.widget.getWidgetListDetails(widgetList).then(function (widgetListDetailed) {
+            return db.widget.getWidgetListDetails(widgetList).then(function (widgetListDetailed) {
                 resolve(widgetListDetailed);
             }).catch(function (error) {
                 reject(error);
