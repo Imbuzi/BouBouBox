@@ -1,4 +1,4 @@
-const fs = require('fs-extra');
+const fs = require('browserify-fs');
 const path = require('path');
 
 console.log(fs);
