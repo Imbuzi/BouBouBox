@@ -30,6 +30,7 @@ module.exports = function (io) {
                 });
             });
 
+            requests[''] = {};
             files.forEach(function (file) {
                 let name = file.replace(/\.[^/.]+$/, "");
                 requests[''][name] = require("./request/" + file)(socket, io);
