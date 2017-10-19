@@ -1,21 +1,19 @@
 const api = require('../../api');
 
-module.exports = function () {
-    let module = {};
+let request = {};
 
-    module.method = "GET";
+request.method = "GET";
 
-    module.listener = function(req, res) {
-        api.authenticateXMLHttpRequest(req).then(function () {
-            api.getWidgetList().then(function (widgetList) {
-                res.json(widgetList);
-            }).catch(function (error) {
-                res.status(error.error).json(error);
-            });
+request.listener = function(req, res) {
+    api.authenticateXMLHttpRequest(req).then(function () {
+        api.getWidgetList().then(function (widgetList) {
+            res.json(widgetList);
         }).catch(function (error) {
             res.status(error.error).json(error);
         });
-    };
-
-    return module;
+    }).catch(function (error) {
+        res.status(error.error).json(error);
+    });
 };
+
+module.exports = request;

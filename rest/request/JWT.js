@@ -1,17 +1,15 @@
 const api = require('../../api');
 
-module.exports = function () {
-    let module = {};
+let request = {};
 
-    module.method = "POST";
+request.method = "POST";
 
-    module.listener = function (req, res) {
-        api.getJWT(req.body.mail, req.body.password).then(function (result) {
-            res.json(result);
-        }).catch(function (result) {
-            res.status(result.error).json(result);
-        });
-    };
-
-    return module;
+request.listener = function (req, res) {
+    api.getJWT(req.body.mail, req.body.password).then(function (result) {
+        res.json(result);
+    }).catch(function (result) {
+        res.status(result.error).json(result);
+    });
 };
+
+module.exports = request;
