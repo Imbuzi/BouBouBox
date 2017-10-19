@@ -36,16 +36,17 @@ module.exports = function (io) {
                 requests[''][name] = require("./request/" + file)(socket, io);
             });
 
-            console.log(requests);
-
             Object.keys(requests).forEach(function (module) {
                 Object.keys(requests[module]).forEach(function (key) {
-                    console.log(module);
-                    console.log(key);
-                    console.log(requests[module][key]);
-                    //socket.on(key, requests[key].listener);
+                    if (module) {
+                        socket.on(module + '/' + key, requests[module][key].listener);
+                    } else {
+                        socket.on(key, requests[module][key].listener);
+                    }
                 });
             });
+
+            console.log(socket.eventNames());
         });
     }
 
