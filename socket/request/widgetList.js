@@ -14,4 +14,6 @@ module.exports = function (socket, io) {
             socket.emit('widgetList', result);
         });
     };
+
+    return module;
 };
