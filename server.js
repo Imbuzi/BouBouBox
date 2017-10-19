@@ -36,8 +36,6 @@ app.get('*', function (req, res) {
     }
 });
 
-console.log(app._router.stack);
-
 // Socket.io API
 const io = require('socket.io')(server);
 const socketAPI = require('./socket')(io);
