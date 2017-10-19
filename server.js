@@ -24,9 +24,9 @@ const server = http.createServer(app)
 // Ecoute serveur HTTP après initialisation de l'API Milight
 Promise.all(preInitPromises).then(function () {
     server.listen(3000);
-    console.log("Serveur HTTP en écoute ...");
+    console.log("[EXPRESS] HTTP server listening ...");
 }).catch(function () {
-    console.log("Serveur HTTP hors service : erreur lors de l'initialisation ...");
+    console.log("[EXPRESS] HTTP server start script failed : init error ...");
 });
 
 // Routage Express

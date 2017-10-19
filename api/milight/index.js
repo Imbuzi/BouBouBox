@@ -14,7 +14,7 @@ api.discoverBridges = function () {
             });
             bridge.mac = 'FF:FF:FF:FF:FF:FF';
 
-            console.log("Creating fake bridge to send commands");
+            console.log("[MILIGHT] Creating fake bridge to send commands");
             api.bridges.push(bridge);
 
             resolve();

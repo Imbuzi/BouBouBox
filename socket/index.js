@@ -15,7 +15,7 @@ module.exports = function (io) {
         io.on('connection', function (socket) {
 
             if (process.env.NODE_ENV != 'production') {
-                console.log('Socket.io - User connected with ID ' + socket.id);
+                console.log('[SOCKET.IO] User connected with ID ' + socket.id);
                 console.log(requests);
             }
 
