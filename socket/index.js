@@ -1,11 +1,3 @@
-const normalizedPath = require("path").join(__dirname, "request");
-const requests = {};
-
-require("fs").readdirSync(normalizedPath).forEach(function (file) {
-    let name = file.replace(/\.[^/.]+$/, "");
-    requests[name] = require("./request/" + file);
-});
-
 // TODO : Remove API
 const api = require('../api');
 
@@ -19,10 +11,18 @@ module.exports = function (io) {
                 console.log('[SOCKET.IO] User connected with ID ' + socket.id);
             }
 
+            const normalizedPath = require("path").join(__dirname, "request");
+            const requests = {};
+
+            require("fs").readdirSync(normalizedPath).forEach(function (file) {
+                let name = file.replace(/\.[^/.]+$/, "");
+                requests[name] = require("./request/" + file)(socket, io);
+            });
+
             Object.keys(requests).forEach(function (key) {
                 console.log(key);
                 console.log(requests[key]);
-                socket.on(key, requests[key]);
+                socket.on(key, requests[key].listener);
             });
 
             console.log(socket.eventNames());
