@@ -1,5 +1,9 @@
 const api = require('../../api');
 
+var appDir = require('path').dirname(require.main.filename);
+
+console.log(appDir);
+
 let request = {};
 
 request.method = "GET";
