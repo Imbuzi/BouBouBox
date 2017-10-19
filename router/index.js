@@ -33,6 +33,8 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+    console.log("Router here !");
+
     if (router.app.$session.get('accessToken') && !router.app.$store.state.user.token) {
         router.app.$store.commit('setToken', {
             token: router.app.$session.get('accessToken')
