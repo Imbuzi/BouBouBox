@@ -23,7 +23,7 @@ module.exports = function (io) {
             });
 
             dirs.forEach(function (dir) {
-                fs.readdirSync(path.join(__dirname, dir)).forEach(function (subFile) {
+                fs.readdirSync(path.join(__dirname, 'request/' + dir)).forEach(function (subFile) {
                     let name = subFile.replace(/\.[^/.]+$/, "");
                     requests[dir][name] = require("./request/" + dir + '/' + subFile)(socket, io);
                 });
