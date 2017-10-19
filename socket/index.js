@@ -1,6 +1,3 @@
-// TODO : Remove API
-const api = require('../api');
-
 module.exports = function (io) {
     let module = {};
 
@@ -11,7 +8,8 @@ module.exports = function (io) {
                 console.log('[SOCKET.IO] User connected with ID ' + socket.id);
             }
 
-            require("fs").readdirSync(require("path").join(__dirname, "request")).forEach(function (file) {
+            let dir = require("path").join(__dirname, "request")
+            require("fs").readdirSync(dir).forEach(function (file) {
                 let name = file.replace(/\.[^/.]+$/, "");
                 requests[name] = require("./request/" + file)(socket, io);
             });
