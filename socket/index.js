@@ -11,9 +11,19 @@ module.exports = function (io) {
             }
 
             let requests = {};
-            const dirs = fs.readdirSync(path.join(__dirname, "request")).filter(f => fs.statSync(path.join(path.join(__dirname, "request"), f)).isDirectory());
+            const dirs = [];
+            const files = [];
+            fs.readdirSync(path.join(__dirname, "request")).map(function (f) {
+                let stat = fs.statSync(path.join(path.join(__dirname, "request"), f));
+                if (stat.isDirectory()) {
+                    dirs.push(f);
+                } else if (stat.isFile()) {
+                    files.push(f);
+                }
+            });
 
             console.log(dirs);
+            console.log(files);
 
             fs.readdirSync(path.join(__dirname, "request")).forEach(function (item) {
                 console.log(item);
