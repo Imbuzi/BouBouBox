@@ -34,16 +34,10 @@ module.exports = function (app) {
 
     Object.keys(requests).forEach(function (module) {
         Object.keys(requests[module]).forEach(function (key) {
-            console.log(requests[module]);
-            console.log(requests[module][key]);
-            console.log(requests[module][key].listener);
-            console.log(requests[module][key].method);
-            console.log(requests[module][key].method.toLowerCase());
-            console.log(app[requests[module][key].method.toLowerCase()]);
             if (module) {
-                app[requests[module][key].method](module + '/' + key, requests[module][key].listener);
+                app[requests[module][key].method.toLowerCase()](module + '/' + key, requests[module][key].listener);
             } else {
-                app[requests[module][key].method](key, requests[module][key].listener);
+                app[requests[module][key].method.toLowerCase()](key, requests[module][key].listener);
             }
         });
     });
