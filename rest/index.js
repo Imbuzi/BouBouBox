@@ -36,6 +36,7 @@ module.exports = function (app) {
         Object.keys(requests[module]).forEach(function (key) {
             console.log(requests[module]);
             console.log(requests[module][key]);
+            console.log(requests[module][key].listener);
             console.log(requests[module][key].method);
             console.log(requests[module][key].method.toLowerCase());
             console.log(app[requests[module][key].method.toLowerCase()]);
