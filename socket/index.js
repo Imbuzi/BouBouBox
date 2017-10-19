@@ -44,7 +44,7 @@ module.exports = function (io) {
                     console.log(key);
                     console.log(requests[module][key]);
                     //socket.on(key, requests[key].listener);
-                }
+                });
             });
         });
     }
