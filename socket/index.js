@@ -8,14 +8,10 @@ require("fs").readdirSync(normalizedPath).forEach(function (file) {
 // TODO : Remove API
 const api = require('../api');
 
-module.exports = function (app, io) {
+module.exports = function (io) {
     let module = {};
-    console.log(app);
-    console.log(io);
 
     module.listen = function () {
-        console.log(app);
-        console.log(io);
         io.on('connection', function (socket) {
 
             if (process.env.NODE_ENV != 'production') {
