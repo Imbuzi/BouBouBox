@@ -8,12 +8,12 @@ module.exports = function (io) {
             }
 
             let requests = {};
-            require("fs").readdirSync(require("path").join(__dirname, "request")).forEach(function (file) {
-                console.log(file);
-                console.log(require("fs").lstatSync(file))
+            require("fs").readdirSync(require("path").join(__dirname, "request")).forEach(function (item) {
+                console.log(item);
+                console.log(require("fs").lstatSync(require("path").join(__dirname, item)))
 
-                let name = file.replace(/\.[^/.]+$/, "");
-                requests[name] = require("./request/" + file)(socket, io);
+                let name = item.replace(/\.[^/.]+$/, "");
+                requests[name] = require("./request/" + item)(socket, io);
             });
 
             Object.keys(requests).forEach(function (key) {
