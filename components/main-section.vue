@@ -48,7 +48,7 @@
             }
         },
         created: function () {
-            this.$socket.emit('getWidgetList', this.$store.state.user.token);
+            this.$socket.emit('widgetList', this.$store.state.user.token);
         }
     }
 </script>
