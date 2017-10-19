@@ -22,17 +22,19 @@ module.exports = function (io) {
                 }
             });
 
-            console.log(dirs);
-            console.log(files);
-
-            fs.readdirSync(path.join(__dirname, "request")).forEach(function (item) {
-                console.log(item);
-                console.log(fs.lstatSync(path.join(__dirname, item)))
-
-
-                let name = item.replace(/\.[^/.]+$/, "");
-                requests[name] = require("./request/" + item)(socket, io);
+            dirs.forEach(function (dir) {
+                fs.readdirSync(path.join(__dirname, dir)).forEach(function (subFile) {
+                    let name = subFile.replace(/\.[^/.]+$/, "");
+                    requests[dir][name] = require("./request/" + dir + '/' + subFile)(socket, io);
+                });
             });
+
+            files.forEach(function (file) {
+                let name = file.replace(/\.[^/.]+$/, "");
+                requests[''][name] = require("./request/" + file)(socket, io);
+            });
+
+            console.log(requests);
 
             Object.keys(requests).forEach(function (key) {
                 socket.on(key, requests[key].listener);
