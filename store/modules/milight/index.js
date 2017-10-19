@@ -1,3 +1,5 @@
+// TODO : namespace
+
 const state = {}
 
 const actions = {
