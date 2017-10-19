@@ -27,8 +27,6 @@ Promise.all(preInitPromises).then(function () {
 // REST API
 const RESTAPI = require('./rest')(app);
 
-console.log(app._router.stack);
-
 // Static file serving
 app.get('*', function (req, res) {
     if (process.env.NODE_ENV == 'production') {
@@ -37,6 +35,8 @@ app.get('*', function (req, res) {
         res.sendFile('./app.html', { root: __dirname });
     }
 });
+
+console.log(app._router.stack);
 
 // Socket.io API
 const io = require('socket.io')(server);
