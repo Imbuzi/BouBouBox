@@ -25,6 +25,8 @@ module.exports = function (io) {
                 socket.on(key, requests[key]);
             });
 
+            console.log(socket.eventNames());
+
             socket.on('refuseNewUser', function (token, mail) {
                 api.validateToken(token).then(function () {
                     api.refuseNewUser(mail).then(function (result) {
