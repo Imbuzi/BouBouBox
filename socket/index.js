@@ -39,6 +39,8 @@ module.exports = function (io) {
             console.log(requests);
 
             Object.keys(requests).forEach(function (key) {
+                console.log(key);
+                console.log(requests[key]);
                 socket.on(key, requests[key].listener);
             });
         });
