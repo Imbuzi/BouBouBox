@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 module.exports = function (io) {
     let module = {};
 
@@ -8,9 +11,9 @@ module.exports = function (io) {
             }
 
             let requests = {};
-            require("fs").readdirSync(require("path").join(__dirname, "request")).forEach(function (item) {
+            fs.readdirSync(path.join(__dirname, "request")).forEach(function (item) {
                 console.log(item);
-                console.log(require("fs").lstatSync(require("path").join(__dirname, item)))
+                console.log(fs.lstatSync(path.join(__dirname, item)))
 
                 let name = item.replace(/\.[^/.]+$/, "");
                 requests[name] = require("./request/" + item)(socket, io);
