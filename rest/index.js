@@ -22,14 +22,14 @@ module.exports = function (app) {
         requests[dir] = {};
         fs.readdirSync(path.join(__dirname, 'request/' + dir)).forEach(function (subFile) {
             let name = subFile.replace(/\.[^/.]+$/, "");
-            requests[dir][name] = require("./request/" + dir + '/' + subFile)(req, res);
+            requests[dir][name] = require("./request/" + dir + '/' + subFile);
         });
     });
 
     requests[''] = {};
     files.forEach(function (file) {
         let name = file.replace(/\.[^/.]+$/, "");
-        requests[''][name] = require("./request/" + file)(req, res);
+        requests[''][name] = require("./request/" + file);
     });
 
     Object.keys(requests).forEach(function (module) {

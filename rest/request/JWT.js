@@ -1,6 +1,6 @@
 const api = require('../../api');
 
-module.exports = function (req, res) {
+module.exports = function () {
     let module = {};
 
     module.method = "POST";
