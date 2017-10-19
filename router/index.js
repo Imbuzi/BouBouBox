@@ -54,11 +54,10 @@ router.beforeEach((to, from, next) => {
         }
     } else {
         if (router.app.$store.state.user.token) {
-            console.log("Router here 1 !");
             next('/');
         } else {
-            console.log("Router here 2 !");
-            next();
+
+            next('/login');
         }
     }
 })
