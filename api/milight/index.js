@@ -9,7 +9,7 @@ api.discoverBridges = function () {
 
         if (process.env.NODE_ENV == "development") {
             let bridge = new milight.MilightController({
-                ip: '0.0.0.0',
+                ip: '192.168.1.255',
                 type: 'legacy'
             });
             bridge.mac = 'FF:FF:FF:FF:FF:FF';
