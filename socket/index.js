@@ -1,4 +1,10 @@
-const requests = require('./requests');
+const normalizedPath = require("path").join(__dirname, "requests");
+const requests = {};
+
+require("fs").readdirSync(normalizedPath).forEach(function (file) {
+    requests[file] = require("./requests/" + file);
+});
+
 // TODO : Remove API
 const api = require('../api');
 
