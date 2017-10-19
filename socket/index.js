@@ -10,6 +10,7 @@ const api = require('../api');
 
 module.exports = function (app, io) {
     let module = {};
+    console.log(io);
 
     module.listen = function() {
         io.on('connection', function (socket) {
