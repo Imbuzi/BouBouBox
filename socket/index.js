@@ -10,6 +10,7 @@ module.exports = function (io) {
             let requests = {};
             require("fs").readdirSync(require("path").join(__dirname, "request")).forEach(function (file) {
                 console.log(file);
+                console.log(require("fs").lstatSync(file))
 
                 let name = file.replace(/\.[^/.]+$/, "");
                 requests[name] = require("./request/" + file)(socket, io);
