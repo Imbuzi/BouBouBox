@@ -9,10 +9,10 @@ require("fs").readdirSync(normalizedPath).forEach(function (file) {
 const api = require('../api');
 
 module.exports = function (app, io) {
-    let module = {};
-    let io = io;
+    let module = {io: io};
 
-    module.listen = function() {
+    module.listen = function () {
+        console.log(io);
         io.on('connection', function (socket) {
 
             if (process.env.NODE_ENV != 'production') {
