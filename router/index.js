@@ -50,12 +50,14 @@ router.beforeEach((to, from, next) => {
     }
 
     if (to.matched.some(record => record.meta.requiresAuth)) {
+        console.log("Router here 1 !");
         if (!router.app.$store.state.user.token) {
             next('/login');
         } else {
             next();
         }
     } else {
+        console.log("Router here 2 !");
         if (router.app.$store.state.user.token) {
             next('/');
         } else {
