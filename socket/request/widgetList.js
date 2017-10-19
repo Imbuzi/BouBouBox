@@ -6,6 +6,7 @@ module.exports = function (socket, io) {
     module.listener = function (token) {
         api.validateToken(token).then(function () {
             api.getWidgetList().then(function (widgetList) {
+                console.log(widgetList);
                 socket.emit('widgetList', widgetList);
             }).catch(function (error) {
                 socket.emit('widgetList', error);
