@@ -1,4 +1,4 @@
-const api = require('../../api');
+const api = require(require('path').dirname(require.main.filename) + '/api');
 
 let request = {};
 

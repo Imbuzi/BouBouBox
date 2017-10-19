@@ -1,4 +1,4 @@
-const api = require('../../../api');
+const api = require(require('path').dirname(require.main.filename) + '/api');
 
 // TODO : Remove console.log
 module.exports = function (socket, io) {
