@@ -34,6 +34,9 @@ module.exports = function (app) {
 
     Object.keys(requests).forEach(function (module) {
         Object.keys(requests[module]).forEach(function (key) {
+            console.log(requests[module][key].method);
+            console.log(requests[module][key].method.toLowerCase());
+            console.log(app[requests[module][key].method.toLowerCase()]);
             if (module) {
                 app[requests[module][key].method](module + '/' + key, requests[module][key].listener);
             } else {
