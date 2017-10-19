@@ -11,7 +11,7 @@ module.exports = function (io) {
             }
 
             let requests = {};
-            const dirs = fs.readdirSync(path.join(__dirname, "request")).filter(f => fs.statSync(path.join(p, f)).isDirectory());
+            const dirs = fs.readdirSync(path.join(__dirname, "request")).filter(f => fs.statSync(path.join(path.join(__dirname, "request"), f)).isDirectory());
 
             console.log(dirs);
 
