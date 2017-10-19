@@ -1,6 +1,6 @@
 const api = require('../../api');
 
-export default function (token) {
+module.exports = function (token) {
     api.validateToken(token).then(function () {
         api.getWidgetList().then(function (widgetList) {
             socket.emit('widgetList', widgetList);
