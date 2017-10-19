@@ -35,9 +35,9 @@ module.exports = function (app) {
     Object.keys(requests).forEach(function (module) {
         Object.keys(requests[module]).forEach(function (key) {
             if (module) {
-                app[requests[module][key].method.toLowerCase()](module + '/' + key, requests[module][key].listener);
+                app[requests[module][key].method.toLowerCase()]('/' + module + '/' + key, requests[module][key].listener);
             } else {
-                app[requests[module][key].method.toLowerCase()](key, requests[module][key].listener);
+                app[requests[module][key].method.toLowerCase()]('/' + key, requests[module][key].listener);
             }
         });
     });
