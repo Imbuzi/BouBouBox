@@ -1,7 +1,5 @@
 const api = require('../../api');
 
-console.log(process.env.NODE_PATH);
-
 let request = {};
 
 request.method = "GET";
