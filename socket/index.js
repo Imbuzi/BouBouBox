@@ -17,20 +17,10 @@ module.exports = function (io) {
 
             if (process.env.NODE_ENV != 'production') {
                 console.log('[SOCKET.IO] User connected with ID ' + socket.id);
-                console.log(requests);
             }
 
-
-            socket.on('getWidgetList', function (token) {
-                api.validateToken(token).then(function () {
-                    api.getWidgetList().then(function (widgetList) {
-                        socket.emit('widgetList', widgetList);
-                    }).catch(function (error) {
-                        socket.emit('widgetList', error);
-                    });
-                }).catch(function (result) {
-                    socket.emit('widgetList', result);
-                });
+            Object.keys(requests).forEach(function (key) {
+                socket.on(key, requests.key);
             });
 
             socket.on('refuseNewUser', function (token, mail) {
