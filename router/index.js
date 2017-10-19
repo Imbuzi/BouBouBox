@@ -33,9 +33,6 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    console.log("Router here !");
-    console.log(to);
-    console.log(from);
 
     if (router.app.$session.get('accessToken') && !router.app.$store.state.user.token) {
         router.app.$store.commit('setToken', {
@@ -50,17 +47,17 @@ router.beforeEach((to, from, next) => {
     }
 
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        console.log("Router here 1 !");
         if (!router.app.$store.state.user.token) {
             next('/login');
         } else {
             next();
         }
     } else {
-        console.log("Router here 2 !");
         if (router.app.$store.state.user.token) {
+            console.log("Router here 1 !");
             next('/');
         } else {
+            console.log("Router here 2 !");
             next();
         }
     }
