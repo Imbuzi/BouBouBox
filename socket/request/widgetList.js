@@ -1,4 +1,4 @@
-import api from './api';
+const api = require('../../api');
 
 export default function (token) {
     api.validateToken(token).then(function () {

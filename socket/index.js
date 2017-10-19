@@ -1,6 +1,6 @@
-import * as requests from './requests';
+const requests = require('./requests');
 // TODO : Remove API
-import api from './api';
+const api = require('../api');
 
 module.exports = function (app, io) {
     let module = {};
