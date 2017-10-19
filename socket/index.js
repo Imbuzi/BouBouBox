@@ -1,8 +1,19 @@
+import * as requests from './requests';
+// TODO : Remove API
+import api from './api';
+
 module.exports = function (app, io) {
     let module = {};
 
     module.listen = function() {
         io.on('connection', function (socket) {
+
+            if (process.env.NODE_ENV != 'production') {
+                console.log('Socket.io - User connected with ID ' + socket.id);
+                console.log(requests);
+            }
+
+
             socket.on('getWidgetList', function (token) {
                 api.validateToken(token).then(function () {
                     api.getWidgetList().then(function (widgetList) {
