@@ -1,8 +1,6 @@
-const api = require('../../api');
+const api = require(require('path').dirname(require.main.filename) + 'api');
 
-var appDir = require('path').dirname(require.main.filename);
-
-console.log(appDir);
+console.log(require('path').dirname(require.main.filename) + 'api');
 
 let request = {};
 
