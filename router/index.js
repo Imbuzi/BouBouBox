@@ -56,8 +56,11 @@ router.beforeEach((to, from, next) => {
         if (router.app.$store.state.user.token) {
             next('/');
         } else {
-
-            next('/login');
+            if (to.matched.some()) {
+                next();
+            } else {
+                next('/login');
+            }
         }
     }
 })
