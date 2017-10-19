@@ -12,7 +12,7 @@ module.exports = function (app, io) {
     let module = {io: io};
 
     module.listen = function () {
-        console.log(io);
+        console.log(module.io);
         io.on('connection', function (socket) {
 
             if (process.env.NODE_ENV != 'production') {
