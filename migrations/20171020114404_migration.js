@@ -1,3 +1,17 @@
+let plugins = {};
+const files = [];
+fs.readdirSync(path.join(__dirname, "plugins")).map(function (f) {
+    let stat = fs.statSync(path.join(path.join(__dirname, "plugins"), f));
+    if (stat.isFile()) {
+        files.push(f);
+    }
+});
+
+files.forEach(function (file) {
+    let name = file.replace(/\.[^/.]+$/, "");
+    plugins[name] = require("./plugins/" + file);
+});
+
 exports.up = function (knex, Promise) {
     return knex.raw('SET foreign_key_checks = 0;')
         .then(function () {
@@ -13,26 +27,12 @@ exports.up = function (knex, Promise) {
             return knex.schema.createTableIfNotExists('widget', table => {
                 table.increments('id').primary().notNullable()
                 table.string('name', 100).notNullable()
-                table.enum('type', ['light'])
+                table.integer('widget_type_id').unsigned().notNullable()
+                table.enum('widget_type', ['light']).notNullable()
             })
         })
         .then(function () {
-            return knex.schema.createTableIfNotExists('bridge', table => {
-                table.increments('id').primary().notNullable()
-                table.string('mac', 17).notNullable()
-                table.string('name', 100).defaultTo(null)
-            })
-        })
-        .then(function () {
-            return knex.schema.createTableIfNotExists('light', table => {
-                table.integer('router').notNullable().defaultTo(0).unsigned().references('id').inTable('bridge')
-                table.primary(['router', 'zone'])
-                table.integer('zone').notNullable().defaultTo(0)
-                table.enum('type', ['rgbw']).notNullable()
-                table.boolean('power').notNullable().defaultTo(false)
-                table.integer('intensity').notNullable().defaultTo(100)
-                table.integer('widget_id').notNullable().unsigned().references('id').inTable('widget')
-            })
+            console.log(plugins);
         })
         .finally(function () {
             return knex.raw('SET foreign_key_checks = 1;');
@@ -42,12 +42,18 @@ exports.up = function (knex, Promise) {
 exports.down = function (knex, Promise) {
     return knex.raw('SET foreign_key_checks = 0;')
         .then(function () {
-            return Promise.all([
+            let drops = [
                 knex.schema.dropTableIfExists('user'),
                 knex.schema.dropTableIfExists('bridge'),
                 knex.schema.dropTableIfExists('widget'),
                 knex.schema.dropTableIfExists('light')
-            ]);
+            ];
+
+            Object.keys(plugins).forEach(function (element) {
+                drops.push(knex.schema.dropTableIfExists('widget_' + element));
+            });
+
+            return Promise.all(drops);
         })
         .finally(function () {
             return knex.raw('SET foreign_key_checks = 1;');
