@@ -10,6 +10,10 @@ import * as plugins from './modules/plugins';
 
 Vue.use(Vuex);
 
+plugins = Vue._.transform(plugins, function (result, val, key) {
+    result[key.toLowerCase()] = val;
+});
+
 const dev = process.env.NODE_ENV != 'production'
 
 let modules = Object.assign(
