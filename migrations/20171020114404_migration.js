@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 let plugins = {};
 const files = [];
 fs.readdirSync(path.join(__dirname, "plugins")).map(function (f) {
