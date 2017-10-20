@@ -10,7 +10,7 @@ import * as plugins from './modules/plugins';
 
 Vue.use(Vuex);
 
-let formattedPlugins{};
+let formattedPlugins = {};
 Object.keys(plugins).forEach(function (key) {
     formattedPlugins[key.toLowerCase()] = plugins[key];
 });
