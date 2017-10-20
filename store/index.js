@@ -10,7 +10,7 @@ import * as plugins from './modules/plugins';
 
 Vue.use(Vuex);
 
-plugins = Vue._.transform(plugins, function (result, val, key) {
+let formattedPlugins = Vue._.transform(plugins, function (result, val, key) {
     result[key.toLowerCase()] = val;
 });
 
@@ -25,7 +25,7 @@ let modules = Object.assign(
         alert,
         modal
     },
-    plugins
+    formattedPlugins
 );
 
 console.log(modules);
