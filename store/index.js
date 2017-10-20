@@ -12,7 +12,7 @@ Vue.use(Vuex);
 
 const dev = process.env.NODE_ENV !== 'production'
 
-console.log(components);
+console.log(plugins);
 
 export default new Vuex.Store({
     modules: {
