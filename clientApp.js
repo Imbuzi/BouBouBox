@@ -9,6 +9,11 @@ import SocketIO from 'socket.io-client';
 import VueSocketIO from 'vue-socket.io';
 import IndexVueComponent from './components/index.vue';
 
+Vue.use(VueSocketIO, SocketIOInstance, store);
+Vue.use(VueLocalStorage);
+Vue.use(VueSessionStorage);
+Vue.use(VueLodash, Lodash);
+
 import store from './store';
 import router from './router';
 
@@ -18,11 +23,6 @@ if (process.env.NODE_ENV == 'development') {
 }
 
 const SocketIOInstance = SocketIO(SocketIODomain)
-
-Vue.use(VueSocketIO, SocketIOInstance, store);
-Vue.use(VueLocalStorage);
-Vue.use(VueSessionStorage);
-Vue.use(VueLodash, Lodash);
 
 document.addEventListener("DOMContentLoaded", function (event) {
 	const App = new Vue({
