@@ -10,12 +10,10 @@ import * as plugins from './modules/plugins';
 
 Vue.use(Vuex);
 
-const dev = process.env.NODE_ENV !== 'production'
+const dev = process.env.NODE_ENV != 'production'
 
-console.log(plugins);
-
-export default new Vuex.Store({
-    modules: {
+let modules = Object.assign(
+    {
         sidebar,
         theme,
         widget,
@@ -23,5 +21,12 @@ export default new Vuex.Store({
         alert,
         modal
     },
+    plugins
+);
+
+console.log(modules);
+
+export default new Vuex.Store({
+    modules: modules,
     strict: dev
 })
