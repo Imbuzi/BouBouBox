@@ -8,6 +8,8 @@ import alert from './modules/alert';
 import modal from './modules/modal';
 import * as plugins from './modules/plugins';
 
+console.log(Vue._);
+
 Vue.use(Vuex);
 
 let formattedPlugins = Vue._.transform(plugins, function (result, val, key) {
