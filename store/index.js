@@ -10,6 +10,8 @@ import * as plugins from './modules/plugins';
 
 Vue.use(Vuex);
 
+console.log(plugins);
+
 let formattedPlugins = plugins.map(function (item) {
     for (let key in item) {
         item[key.toLowerCase()] = item[key];
