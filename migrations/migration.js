@@ -35,7 +35,12 @@ exports.up = function (knex, Promise) {
             })
         })
         .then(function () {
-            console.log(plugins);
+            let pluginsTablesPromises = [];
+            Object.keys(plugins).forEach(function (key) {
+                pluginsTablesPromises.push(knex.schema.createTableIfNotExists('widget_' + key, plugins[key]));
+            });
+
+            return Promise.all(pluginsTablesPromises);
         })
         .finally(function () {
             return knex.raw('SET foreign_key_checks = 1;');
