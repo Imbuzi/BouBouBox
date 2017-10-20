@@ -6,7 +6,7 @@ import VueLodash from 'vue-lodash';
 import VueLocalStorage from 'vue-localstorage';
 import VueSessionStorage from 'vue-sessionstorage';
 import SocketIO from 'socket.io-client';
-import VueSocketIO from 'vue-socket.io
+import VueSocketIO from 'vue-socket.io';
 
 Vue.use(VueSocketIO, SocketIOInstance, store);
 Vue.use(VueLocalStorage);
