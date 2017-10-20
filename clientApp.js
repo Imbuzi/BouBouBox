@@ -12,19 +12,19 @@ import IndexVueComponent from './components/index.vue';
 import store from './store';
 import router from './router';
 
+let SocketIODomain = 'http://box.boubou.io'
+if (process.env.NODE_ENV == 'development') {
+    SocketIODomain = 'http://localhost:3000'
+}
+
+const SocketIOInstance = SocketIO(SocketIODomain)
+
+Vue.use(VueSocketIO, SocketIOInstance, store);
+Vue.use(VueLocalStorage);
+Vue.use(VueSessionStorage);
+Vue.use(VueLodash, Lodash);
+
 document.addEventListener("DOMContentLoaded", function (event) {
-    let SocketIODomain = 'http://box.boubou.io'
-    if (process.env.NODE_ENV == 'development') {
-        SocketIODomain = 'http://localhost:3000'
-    }
-
-    const SocketIOInstance = SocketIO(SocketIODomain)
-
-	Vue.use(VueSocketIO, SocketIOInstance, store);
-    Vue.use(VueLocalStorage);
-    Vue.use(VueSessionStorage);
-    Vue.use(VueLodash, Lodash);
-
 	const App = new Vue({
 		el: 'main',
         store,
