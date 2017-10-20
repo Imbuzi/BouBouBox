@@ -31,7 +31,7 @@ exports.up = function (knex, Promise) {
                 table.increments('id').primary().notNullable()
                 table.string('name', 100).notNullable()
                 table.integer('widget_type_id').unsigned().notNullable()
-                table.enum('widget_type', ['light']).notNullable()
+                table.enum('widget_type', Object.keys(plugins)).notNullable()
             })
         })
         .then(function () {
