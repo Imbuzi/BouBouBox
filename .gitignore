@@ -27,7 +27,7 @@ coverage
 bower_components
 
 # Browserfified files
-public/js/*
+public/js/*.js
 
 # node-waf configuration
 .lock-wscript
