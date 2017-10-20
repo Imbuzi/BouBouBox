@@ -8,11 +8,6 @@ import VueSessionStorage from 'vue-sessionstorage';
 import SocketIO from 'socket.io-client';
 import VueSocketIO from 'vue-socket.io';
 
-Vue.use(VueSocketIO, SocketIOInstance, store);
-Vue.use(VueLocalStorage);
-Vue.use(VueSessionStorage);
-Vue.use(VueLodash, Lodash);
-
 import IndexVueComponent from './components/index.vue';
 
 import store from './store';
@@ -23,7 +18,12 @@ if (process.env.NODE_ENV == 'development') {
     SocketIODomain = 'http://localhost:3000'
 }
 
-const SocketIOInstance = SocketIO(SocketIODomain)
+const SocketIOInstance = SocketIO(SocketIODomain);
+
+Vue.use(VueSocketIO, SocketIOInstance, store);
+Vue.use(VueLocalStorage);
+Vue.use(VueSessionStorage);
+Vue.use(VueLodash, Lodash);
 
 document.addEventListener("DOMContentLoaded", function (event) {
 	const App = new Vue({
