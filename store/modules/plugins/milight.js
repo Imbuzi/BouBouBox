@@ -1,4 +1,4 @@
-// TODO : namespace
+const namespaced = true
 
 const state = {}
 
@@ -32,6 +32,7 @@ const actions = {
 }
 
 export default {
+    namespaced,
     state,
     actions
 }
