@@ -6,13 +6,14 @@ import VueLodash from 'vue-lodash';
 import VueLocalStorage from 'vue-localstorage';
 import VueSessionStorage from 'vue-sessionstorage';
 import SocketIO from 'socket.io-client';
-import VueSocketIO from 'vue-socket.io';
-import IndexVueComponent from './components/index.vue';
+import VueSocketIO from 'vue-socket.io
 
 Vue.use(VueSocketIO, SocketIOInstance, store);
 Vue.use(VueLocalStorage);
 Vue.use(VueSessionStorage);
 Vue.use(VueLodash, Lodash);
+
+import IndexVueComponent from './components/index.vue';
 
 import store from './store';
 import router from './router';
