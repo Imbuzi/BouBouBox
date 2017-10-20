@@ -1,7 +1,5 @@
 import Vue from 'vue';
 
-import milight from './milight/';
-
 // Initial state
 const state = {
     list: []
@@ -18,8 +16,5 @@ const mutations = {
 
 export default {
     state,
-    mutations,
-    modules: {
-        milight
-    }
+    mutations
 }

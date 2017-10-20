@@ -6,10 +6,13 @@ import widget from './modules/widget';
 import user from './modules/user';
 import alert from './modules/alert';
 import modal from './modules/modal';
+import * as plugins from './module/plugins';
 
 Vue.use(Vuex);
 
 const dev = process.env.NODE_ENV !== 'production'
+
+console.log(components);
 
 export default new Vuex.Store({
     modules: {
