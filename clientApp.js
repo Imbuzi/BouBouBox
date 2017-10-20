@@ -13,8 +13,6 @@ import IndexVueComponent from './components/index.vue';
 import store from './store';
 import router from './router';
 
-console.log(store);
-
 let SocketIODomain = 'http://box.boubou.io'
 if (process.env.NODE_ENV == 'development') {
     SocketIODomain = 'http://localhost:3000'
