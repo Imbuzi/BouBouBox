@@ -29,8 +29,6 @@ let modules = Object.assign(
     formattedPlugins
 );
 
-console.log(modules);
-
 export default new Vuex.Store({
     modules: modules,
     strict: dev
