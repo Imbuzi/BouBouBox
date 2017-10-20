@@ -26,7 +26,7 @@ This project requires a MySQL database.
 
 ### Before running commands
 
-You should configure your user credentials for your MySQL database based on [knexfile.js.example](https://github.com/Imbuzi/BouBouBox/blob/master/knexfile.js.example), and rename it `knexfile.js` (this file should be placed on your project root directory).
+You should configure your user credentials for your MySQL database based on [`knexfile.js.example`](https://github.com/Imbuzi/BouBouBox/blob/master/knexfile.js.example), and rename it `knexfile.js` (this file should be placed on your project root directory).
 Don't forget to run in MySQL CLI : `CREATE DATABASE bouboubox CHARACTER SET utf8 COLLATE utf8_general_ci;`.
 
 ### Commands used to start BouBouBox
@@ -40,14 +40,12 @@ To set up your project to run in dev mode, you'll need to run this commands on y
 
 	## Setting up node project
 	npm install
-	mkdir public/js
-	npm run build-dev
 	
 	## Populating database
 	npm run db
 
 	## Starting Node JS
-	npm run nodemon
+	npm run watch-dev
 
 The Node JS server is now listening on port 3000. You can access it from your machine through http://localhost:3000.
 The default user credentials are `admin@boubou.io`, with password `Admin123!`.
