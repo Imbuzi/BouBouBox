@@ -6,7 +6,7 @@ import widget from './modules/widget';
 import user from './modules/user';
 import alert from './modules/alert';
 import modal from './modules/modal';
-import * as plugins from './module/plugins';
+import * as plugins from './modules/plugins';
 
 Vue.use(Vuex);
 
