@@ -1,4 +1,4 @@
-modules.exports = function (table) {
+module.exports = function (table) {
     table.increments('id').primary().notNullable()
     table.integer('zone').notNullable().defaultTo(0)
     table.enum('type', ['rgbw']).notNullable()
