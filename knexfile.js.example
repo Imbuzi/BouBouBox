@@ -1,12 +1,9 @@
 module.exports = {
     development: {
-        client: 'mysql',
+        client: 'sqlite3',
         connection: {
-            host: '127.0.0.1',
-            database: 'bouboubox',
-            user: <DATABASE USER>,
-            password: <DATABASE PASSWORD>
-        }
+			filename: './bouboubox.sqlite3'
+		}
     },
 
     staging: {
