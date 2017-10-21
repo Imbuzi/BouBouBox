@@ -1,13 +1,10 @@
 exports.up = function (knex, Promise) {
-    return knex.raw('SET foreign_key_checks = 0;')
-        .then(function () {
-            return knex.schema.createTableIfNotExists('user', table => {
-                table.string('mail', 150).primary().notNullable()
-                table.string('name').notNullable()
-                table.string('surname', 100).notNullable()
-                table.string('password', 250).notNullable()
-                table.boolean('access').notNullable().defaultTo(false)
-            })
+        return knex.schema.createTableIfNotExists('user', table => {
+            table.string('mail', 150).primary().notNullable()
+            table.string('name').notNullable()
+            table.string('surname', 100).notNullable()
+            table.string('password', 250).notNullable()
+            table.boolean('access').notNullable().defaultTo(false)
         })
         .then(function () {
             return knex.schema.createTableIfNotExists('widget', table => {
@@ -34,23 +31,13 @@ exports.up = function (knex, Promise) {
                 table.integer('widget_id').notNullable().unsigned().references('id').inTable('widget')
             })
         })
-        .finally(function () {
-            return knex.raw('SET foreign_key_checks = 1;');
-        });
 };
 
 exports.down = function (knex, Promise) {
-    return knex.raw('SET foreign_key_checks = 0;')
-        .then(function () {
-            return Promise.all([
-                knex.schema.dropTable('user'),
-                knex.schema.dropTable('bridge'),
-                knex.schema.dropTable('widget'),
-                knex.schema.dropTable('light')
-            ]);
-        })
-        .finally(function () {
-            return knex.raw('SET foreign_key_checks = 1;');
-
-        });
+    return Promise.all([
+        knex.schema.dropTable('user'),
+        knex.schema.dropTable('bridge'),
+        knex.schema.dropTable('widget'),
+        knex.schema.dropTable('light')
+    ]);
 };
