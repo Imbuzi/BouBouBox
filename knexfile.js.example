@@ -4,7 +4,7 @@ module.exports = {
         connection: {
 			filename: './bouboubox.sqlite3'
 		},
-		useNullAsDefaut: true
+		useNullAsDefaut: false
     },
 
     staging: {
