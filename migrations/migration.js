@@ -16,15 +16,12 @@ files.forEach(function (file) {
 });
 
 exports.up = function (knex, Promise) {
-    return knex.raw('SET foreign_key_checks = 0;')
-        .then(function () {
-            return knex.schema.createTableIfNotExists('user', table => {
-                table.string('mail', 150).primary().notNullable()
-                table.string('name').notNullable()
-                table.string('surname', 100).notNullable()
-                table.string('password', 250).notNullable()
-                table.boolean('access').notNullable().defaultTo(false)
-            })
+    return knex.schema.createTableIfNotExists('user', table => {
+            table.string('mail', 150).primary().notNullable()
+            table.string('name').notNullable()
+            table.string('surname', 100).notNullable()
+            table.string('password', 250).notNullable()
+            table.boolean('access').notNullable().defaultTo(false)
         })
         .then(function () {
             return knex.schema.createTableIfNotExists('widget', table => {
@@ -42,28 +39,19 @@ exports.up = function (knex, Promise) {
 
             return Promise.all(pluginsTablesPromises);
         })
-        .finally(function () {
-            return knex.raw('SET foreign_key_checks = 1;');
-        });
 };
 
 exports.down = function (knex, Promise) {
-    return knex.raw('SET foreign_key_checks = 0;')
-        .then(function () {
-            let drops = [
-                knex.schema.dropTableIfExists('user'),
-                knex.schema.dropTableIfExists('bridge'),
-                knex.schema.dropTableIfExists('widget'),
-                knex.schema.dropTableIfExists('light')
-            ];
+    let drops = [
+        knex.schema.dropTableIfExists('user'),
+        knex.schema.dropTableIfExists('bridge'),
+        knex.schema.dropTableIfExists('widget'),
+        knex.schema.dropTableIfExists('light')
+    ];
 
-            Object.keys(plugins).forEach(function (element) {
-                drops.push(knex.schema.dropTableIfExists('widget_' + element));
-            });
+    Object.keys(plugins).forEach(function (element) {
+        drops.push(knex.schema.dropTableIfExists('widget_' + element));
+    });
 
-            return Promise.all(drops);
-        })
-        .finally(function () {
-            return knex.raw('SET foreign_key_checks = 1;');
-        });
+    return Promise.all(drops);
 };
