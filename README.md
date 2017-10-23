@@ -22,12 +22,12 @@ And of course BouBouBox itself is open source with a [public repository](https:/
 ## Testing
 
 You can test the BouBouBox project without the milight bridge. You just need to run the project in dev mode to see the commands sent to the bridge in the server NodeJS console.
-This project requires a MySQL database.
+This project requires a MySQL database **only in staging and production mode**. If you don't own a milight bridge, and just want to test the project in dev mode, you don't need any MySQL server : the project runs on a sqlite3 db.
+You should probably comment `staging` and `production` entries in your `knexfile.js`.
 
-### Before running commands
+### Before running commands in dev mode
 
-You should configure your user credentials for your MySQL database based on [`knexfile.js.example`](https://github.com/Imbuzi/BouBouBox/blob/master/knexfile.js.example), and rename it `knexfile.js` (this file should be placed on your project root directory).
-Don't forget to run in MySQL CLI : `CREATE DATABASE bouboubox CHARACTER SET utf8 COLLATE utf8_general_ci;`.
+You should remove unused user credentials for MySQL database based on [knexfile.js.example](https://github.com/Imbuzi/BouBouBox/blob/master/knexfile.js.example), and rename it `knexfile.js` (this file should be placed on your project root directory).
 
 ### Commands used to start BouBouBox
 
