@@ -25,11 +25,7 @@ You can test the BouBouBox project without the milight bridge. You just need to 
 This project requires a MySQL database **only in staging and production mode**. If you don't own a milight bridge, and just want to test the project in dev mode, you don't need any MySQL server : the project runs on a sqlite3 db.
 You should probably comment `staging` and `production` entries in your `knexfile.js`.
 
-### Before running commands in dev mode
-
-You should remove unused user credentials for MySQL database based on [knexfile.js.example](https://github.com/Imbuzi/BouBouBox/blob/master/knexfile.js.example), and rename it `knexfile.js` (this file should be placed on your project root directory).
-
-### Commands used to start BouBouBox
+### Commands used to start BouBouBox demo
 
 To set up your project to run in dev mode, you'll need to run this commands on your BouBouBox project directory.
 
@@ -38,14 +34,8 @@ To set up your project to run in dev mode, you'll need to run this commands on y
 	cd BouBouBoux/
 	git checkout <version-name>
 
-	## Setting up node project
-	npm install
-	
-	## Populating database
-	npm run db
-
-	## Starting Node JS
-	npm run watch-dev
+	## Launching demo
+	npm run demo
 
 The Node JS server is now listening on port 3000. You can access it from your machine through http://localhost:3000.
 The default user credentials are `admin@boubou.io`, with password `Admin123!`.
