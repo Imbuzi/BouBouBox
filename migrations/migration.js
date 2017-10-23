@@ -44,9 +44,7 @@ exports.up = function (knex, Promise) {
 exports.down = function (knex, Promise) {
     let drops = [
         knex.schema.dropTableIfExists('user'),
-        knex.schema.dropTableIfExists('bridge'),
-        knex.schema.dropTableIfExists('widget'),
-        knex.schema.dropTableIfExists('light')
+        knex.schema.dropTableIfExists('widget')
     ];
 
     Object.keys(plugins).forEach(function (element) {
