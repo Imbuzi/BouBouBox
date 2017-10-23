@@ -10,16 +10,16 @@
                                 <span class="input-group-addon">
                                     <i class="material-icons">person</i>
                                 </span>
-                                <div class="form-line" v-bind:class="{ focused: mailFocused || mailInputState.valid || mailInputState.invalid, success: mailInputState.valid, error: mailInputState.invalid }">
-                                    <input v-bind:disabled="formLocked" type="email" v-model="mailAddress" class="form-control" v-on:blur="toggleMailFocused(false)" v-on:focus="toggleMailFocused(true)" name="mail" placeholder="Adresse mail" required autofocus>
+                                <div class="form-line" v-bind:class="{ focused: mail.focused || mailInputState.valid || mailInputState.invalid, success: mailInputState.valid, error: mailInputState.invalid }">
+                                    <input v-bind:disabled="formLocked" type="email" v-model="mail.value" class="form-control" v-on:blur="mail.focused = false" v-on:focus="mail.focused = true" name="mail" placeholder="Adresse mail" required autofocus>
                                 </div>
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="material-icons">lock</i>
                                 </span>
-                                <div class="form-line" v-bind:class="{ focused: passwordFocused || passwordInputState.valid || passwordInputState.invalid, success: passwordInputState.valid, error: passwordInputState.invalid }">
-                                    <input v-bind:disabled="formLocked" type="password" v-model="password" class="form-control" v-on:blur="togglePasswordFocused(false)" v-on:focus="togglePasswordFocused(true)" name="password" placeholder="Mot de passe" required>
+                                <div class="form-line" v-bind:class="{ focused: password.focused || passwordInputState.valid || passwordInputState.invalid, success: passwordInputState.valid, error: passwordInputState.invalid }">
+                                    <input v-bind:disabled="formLocked" type="password" v-model="password.value" class="form-control" v-on:blur="password.focused = false" v-on:focus="password.focused = true" name="password" placeholder="Mot de passe" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -65,34 +65,26 @@
     export default {
         data: function () {
             return {
-                mailFocused: false,
-                passwordFocused: false,
-                mailAddress: '',
-                password: '',
+                mail: {
+                    focused: false,
+                    value: ''
+                },
+                password: {
+                    focused: false,
+                    value: ''
+                },
                 loading: false,
                 formLocked: false,
                 rememberMe: false
             }
         },
         methods: {
-            toggleMailFocused: function (value) {
-                this.mailFocused = value;
-            },
-            togglePasswordFocused: function (value) {
-                this.passwordFocused = value;
-            },
-            toggleLoading: function (value) {
-                this.loading = value;
-            },
-            lockForm: function (value) {
-                this.formLocked = value;
-            },
             submitForm: function () {
-                this.toggleLoading(true);
-                this.lockForm(true);
-                this.$socket.emit('getJWT', {
-                    mail: this.mailAddress,
-                    password: this.password
+                this.loading = true;
+                this.formLocked = true;
+                this.$socket.emit('JWT', {
+                    mail: this.mail.value,
+                    password: this.password.value
                 });
             },
             createAccount: function () {
@@ -109,8 +101,8 @@
         sockets: {
             JWT: function (result) {
                 if (result.error) {
-                    this.toggleLoading(false);
-                    this.lockForm(false);
+                    this.loading = false;
+                    this.formLocked = false;
                     this.$store.dispatch('showAlert', {
                         message: result.message,
                         delay: 8000
@@ -133,8 +125,8 @@
                 return this.$store.state.theme.color;
             },
             mailInputState: function () {
-                if (this.mailAddress) {
-                    if (this.mailAddress.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+                if (this.mail.value) {
+                    if (this.mail.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
                         return {
                             valid: true,
                             invalid: false
@@ -153,8 +145,8 @@
                 }
             },
             passwordInputState: function () {
-                if (this.password) {
-                    if (this.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/)) {
+                if (this.password.value) {
+                    if (this.password.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/)) {
                         return {
                             valid: true,
                             invalid: false
