@@ -36,6 +36,8 @@ api.discoverBridges = function () {
                 reject();
             });
         }
+
+        console.log(api.bridges);
     });
 }
 
@@ -74,8 +76,6 @@ api.setLightIntensity = function (value, light) {
                 message: "Routeur Milight introuvable"
             });
         };
-
-        console.log(api.bridges);
     });
 };
 
