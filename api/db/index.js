@@ -9,6 +9,4 @@ fs.readdirSync(__dirname).map(function (f) {
     }
 });
 
-console.log(db);
-
 module.exports = db;

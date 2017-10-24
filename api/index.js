@@ -1,12 +1,17 @@
 const jwt = require('jsonwebtoken');
 const passwordHash = require('password-hash');
 const fs = require('fs');
-const dbAPI = require('./db');
-const milightAPI = require('./milight');
+const path = require('path');
 
-let api = {
-    milight: milightAPI
-};
+let api = {};
+fs.readdirSync(__dirname).map(function (f) {
+    let stat = fs.statSync(path.join(__dirname, f));
+    if (stat.isDirectory()) {
+        api[f] = require(path.join(__dirname, f));
+    }
+});
+
+console.log(api);
 
 api.authenticateXMLHttpRequest = function (req) {
     return new Promise(function (resolve, reject) {
