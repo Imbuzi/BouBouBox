@@ -98,7 +98,7 @@
             }
         },
         sockets: {
-            userAdded: function (data) {
+            'user/add': function (data) {
                 if (data.error) {
                     this.toggleLoading(false);
                     this.lockForm(false);
@@ -143,7 +143,7 @@
             submitForm: function () {
                 this.toggleLoading(true);
                 this.lockForm(true);
-                this.$socket.emit('addUser', {
+                this.$socket.emit('user/add', {
                     name: this.name,
                     surname: this.surname,
                     mail: this.mailAddress,
