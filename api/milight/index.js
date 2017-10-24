@@ -36,8 +36,6 @@ api.discoverBridges = function () {
                 reject();
             });
         }
-
-        console.log(api.bridges);
     });
 }
 
@@ -115,6 +113,8 @@ api.setLightPower = function (value, light) {
         let bridge = api.bridges.filter(function (element) {
             return element.mac == light.bridge.mac;
         })[0];
+
+        console.log(light);
 
         if (bridge) {
             dbAPI.milight.setLightPower(light, value).then(function () {
