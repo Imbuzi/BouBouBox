@@ -120,7 +120,7 @@ api.validateToken = function (token) {
 
 api.getWidgetList = function() {
     return new Promise(function (resolve, reject) {
-        console.log(api);
+        console.log(api.db.widget.getAll);
         api.db.widget.getAll().then(function (widgetListDetailed) {
             resolve({
                 widgetList: widgetListDetailed
