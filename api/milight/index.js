@@ -3,7 +3,7 @@ const dbAPI = require('../db');
 
 let api = {};
 
-api.discoverBridges = function () {
+api.bridges = function () {
     return new Promise(function (resolve, reject) {
         api.bridges = [];
 
@@ -39,7 +39,7 @@ api.discoverBridges = function () {
     });
 }
 
-api.setLightIntensity = function (value, light) {
+api.intensity = function (value, light) {
     return new Promise(function (resolve, reject) {
         let bridge = api.bridges.filter(function (element) {
             return element.mac == light.bridge;
@@ -62,6 +62,8 @@ api.setLightIntensity = function (value, light) {
                     light: light,
                     value: value
                 });
+
+                return null;
             }).catch(function () {
                 reject({
                     error: 500,
@@ -77,7 +79,7 @@ api.setLightIntensity = function (value, light) {
     });
 };
 
-api.setLightColor = function (value, light) {
+api.color = function (value, light) {
     return new Promise(function (resolve, reject) {
         let bridge = api.bridges.filter(function (element) {
             return element.mac == light.bridge;
@@ -108,7 +110,7 @@ api.setLightColor = function (value, light) {
     });
 };
 
-api.setLightPower = function (value, light) {
+api.power = function (value, light) {
     return new Promise(function (resolve, reject) {
         let bridge = api.bridges.filter(function (element) {
             return element.mac == light.bridge;

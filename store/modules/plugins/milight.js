@@ -3,17 +3,17 @@ const namespaced = true
 const state = {}
 
 const actions = {
-    setLightIntensity(context, payload) {
+    intensity(context, payload) {
         let widget = context.rootState.widget.list.filter(function (element) {
-            return element.type == 'light' && element.light.bridge.mac == payload.value.light.bridge.mac && element.light.zone == payload.value.light.zone;
+            return element.widget_type == 'milight' && element.milight.id == payload.id;
         })[0];
 
         if (widget) {
-            context.commit('setWidgetProperty', {
+            context.commit('widgetProperty', {
                 widget: widget,
-                property: 'light.intensity',
-                value: payload.value.value
-            });
+                property: 'milight.intensity',
+                value: payload.intensity
+            }, { root: true });
         }
     },
     power(context, payload) {

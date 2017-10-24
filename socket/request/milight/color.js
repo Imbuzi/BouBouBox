@@ -6,7 +6,7 @@ module.exports = function (socket, io) {
 
     module.listener = function (token, data) {
         api.validateToken(token).then(function () {
-            api.milight.setLightColor(data.value, data.light).then(function (result) {
+            api.milight.color(data.value, data.light).then(function (result) {
                 console.log(result);
             }).catch(function (error) {
                 console.log(error);

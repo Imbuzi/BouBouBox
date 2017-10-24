@@ -19,16 +19,26 @@
         props: ['light'],
         methods: {
             intensitySet: function (value) {
-                this.$socket.emit('setLightIntensity', this.$store.state.user.token, {
+                this.$socket.emit('milight/intensity', this.$store.state.user.token, {
                     value: parseInt(value),
                     light: this.light
                 });
             },
             colorSet: function (value) {
-                this.$socket.emit('setLightColor', this.$store.state.user.token, {
+                this.$socket.emit('milight/color', this.$store.state.user.token, {
                     value: value,
                     light: this.light
                 });
+            }
+        },
+        sockets: {
+            'milight/intensity': function (result) {
+                if (result.light.id == this.widget.milight.id) {
+                    this.$store.dispatch('milight/intensity', {
+                        id: this.widget.milight.id,
+                        intensity: result.value
+                    });
+                }
             }
         },
         components: {
