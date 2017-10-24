@@ -39,7 +39,7 @@ api.authenticateXMLHttpRequest = function (req) {
 
 api.getUsersWaitingForValidation = function () {
     return new Promise(function (resolve, reject) {
-        dbAPI.user.getNotValidated().then(function (result) {
+        api.db.user.getNotValidated().then(function (result) {
             resolve({
                 userList: result
             });
@@ -54,7 +54,7 @@ api.getUsersWaitingForValidation = function () {
 
 api.refuseNewUser = function (mail) {
     return new Promise(function (resolve, reject) {
-        dbAPI.user.delete(mail).then(function () {
+        api.db.user.delete(mail).then(function () {
             resolve(mail);
         }).catch(function (error) {
             reject({
@@ -67,7 +67,7 @@ api.refuseNewUser = function (mail) {
 
 api.acceptNewUser = function (mail) {
     return new Promise(function (resolve, reject) {
-        dbAPI.user.acceptUser(mail).then(function () {
+        api.db.user.acceptUser(mail).then(function () {
             resolve(mail);
         }).catch(function (error) {
             reject({
@@ -80,7 +80,7 @@ api.acceptNewUser = function (mail) {
 
 api.addUser = function (name, surname, mail, hashedPassword) {
     return new Promise(function (resolve, reject) {
-        dbAPI.user.add(name, surname, mail, hashedPassword).then(function () {
+        api.db.user.add(name, surname, mail, hashedPassword).then(function () {
             resolve({
                 name: name,
                 surname: surname,
@@ -120,7 +120,7 @@ api.validateToken = function (token) {
 
 api.getWidgetList = function() {
     return new Promise(function (resolve, reject) {
-        dbAPI.widget.getAll().then(function (widgetListDetailed) {
+        api.db.widget.getAll().then(function (widgetListDetailed) {
             resolve({
                 widgetList: widgetListDetailed
             });
@@ -141,7 +141,7 @@ api.getJWT = function(mail, password) {
                 message: "Erreur de requête"
             });
         } else {
-            dbAPI.user.getByMail(mail).then(function (user) {
+            api.db.user.getByMail(mail).then(function (user) {
                 if (!user) {
                     reject({
                         error: 401,
