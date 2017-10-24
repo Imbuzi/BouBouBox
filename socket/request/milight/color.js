@@ -7,7 +7,7 @@ module.exports = function (socket, io) {
     module.listener = function (token, data) {
         api.validateToken(token).then(function () {
             api.milight.color(data.value, data.light).then(function (result) {
-                console.log(result);
+                null;
             }).catch(function (error) {
                 console.log(error);
             });
