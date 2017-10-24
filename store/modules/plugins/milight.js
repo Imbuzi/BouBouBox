@@ -16,7 +16,7 @@ const actions = {
             });
         }
     },
-    setLightPower(context, payload) {
+    power(context, payload) {
         let widget = context.rootState.widget.list.filter(function (element) {
             return element.widget_type == 'milight' && element.milight.id == payload.id;
         })[0];

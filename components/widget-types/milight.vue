@@ -28,7 +28,7 @@
         sockets: {
             'milight/power': function (result) {
                 if (result.light.id == this.widget.milight.id) {
-                    this.$store.dispatch('setLightPower', {
+                    this.$store.dispatch('milight/power', {
                         id: this.widget.milight.id,
                         power: result.value
                     });
