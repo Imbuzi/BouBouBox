@@ -74,6 +74,8 @@ api.setLightIntensity = function (value, light) {
                 message: "Routeur Milight introuvable"
             });
         };
+
+        console.log(api.bridges);
     });
 };
 
