@@ -18,14 +18,14 @@ const actions = {
     },
     setLightPower(context, payload) {
         let widget = context.rootState.widget.list.filter(function (element) {
-            return element.type == 'light' && element.light.bridge.mac == payload.value.light.bridge.mac && element.light.zone == payload.value.light.zone;
+            return element.widget_type == 'milight' && element.milight.id == payload.id;
         })[0];
 
         if (widget) {
             context.commit('setWidgetProperty', {
                 widget: widget,
-                property: 'light.power',
-                value: payload.value.value
+                property: 'milight.power',
+                value: payload.value
             });
         }
     }

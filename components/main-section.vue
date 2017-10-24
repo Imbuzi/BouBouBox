@@ -35,11 +35,6 @@
                 this.$store.dispatch('setLightIntensity', {
                     value: value
                 });
-            },
-            lightPower: function (value) {
-                this.$store.dispatch('setLightPower', {
-                    value: value
-                });
             }
         },
         computed: {

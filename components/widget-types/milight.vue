@@ -27,10 +27,11 @@
         },
         sockets: {
             'milight/power': function (result) {
-                console.log(result)
-                console.log(this.widget.milight)
                 if (result.light.id == this.widget.milight.id) {
-                    this.widget.milight.power = result.value
+                    this.$store.dispatch('setLightPower', {
+                        id: this.widget.milight.id,
+                        power: result.value
+                    });
                 }
             }
         },
