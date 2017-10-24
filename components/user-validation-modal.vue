@@ -38,10 +38,10 @@
         },
         methods: {
             refuseNewUser: function (mail) {
-                this.$socket.emit('refuseNewUser', this.$store.state.user.token, mail);
+                this.$socket.emit('user/refuseNew', this.$store.state.user.token, mail);
             },
             acceptNewUser: function (mail) {
-                this.$socket.emit('acceptNewUser', this.$store.state.user.token, mail);
+                this.$socket.emit('user/acceptNew', this.$store.state.user.token, mail);
             }
         }
     }
