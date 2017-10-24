@@ -11,8 +11,6 @@ fs.readdirSync(__dirname).map(function (f) {
     }
 });
 
-console.log(api);
-
 api.authenticateXMLHttpRequest = function (req) {
     return new Promise(function (resolve, reject) {
         let header = req.get('Authorization');
