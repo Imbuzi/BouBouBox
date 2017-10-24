@@ -25,7 +25,7 @@ const actions = {
             context.commit('widgetProperty', {
                 widget: widget,
                 property: 'milight.power',
-                value: payload.value
+                value: payload.power
             }, { root: true });
         }
     }
