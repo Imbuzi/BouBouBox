@@ -9,9 +9,11 @@ let db = {};
 fs.readdirSync(__dirname).map(function (f) {
     let stat = fs.statSync(path.join(__dirname, f));
     if (stat.isDirectory()) {
-        console.log(f);
+        db[f] = require(path.join(__dirname, f));
     }
 });
+
+console.log(db);
 
 db = {
     widget: {},
