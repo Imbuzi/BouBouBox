@@ -33,9 +33,9 @@
         },
         sockets: {
             'milight/intensity': function (result) {
-                if (result.light.id == this.widget.milight.id) {
+                if (result.light.id == this.light.id) {
                     this.$store.dispatch('milight/intensity', {
-                        id: this.widget.milight.id,
+                        id: this.light.id,
                         intensity: result.value
                     });
                 }
