@@ -66,7 +66,7 @@
     "build-dev": "cross-env NODE_ENV=development browserify -g envify clientApp.js | uglifyjs -c warnings=false -m > public/js/app.js",
     "build-staging": "cross-env NODE_ENV=staging browserify -g envify clientApp.js | uglifyjs -c warnings=false -m > public/js/app.js",
     "db": "knex migrate:rollback && knex migrate:latest && knex seed:run",
-    "demo": "npm install && npm run build-dev && cp-cli knexfile.js.example knexfile.js && npm run db && npm run nodemon"
+    "demo": "npm install && npm run build-dev && cp-cli knexfile.js.example knexfile.js && npm run db && npm run nodemon-dev"
   },
   "browserify": {
     "transform": [
