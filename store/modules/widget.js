@@ -6,7 +6,7 @@ const state = {
 }
 
 const mutations = {
-    setWidgetProperty(state, value) {
+    widgetProperty(state, value) {
         Vue._.set(value.widget, value.property, value.value);
     },
     setWidgetList(state, list) {

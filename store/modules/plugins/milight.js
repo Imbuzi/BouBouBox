@@ -22,11 +22,11 @@ const actions = {
         })[0];
 
         if (widget) {
-            context.commit('setWidgetProperty', {
+            context.commit('widgetProperty', {
                 widget: widget,
                 property: 'milight.power',
                 value: payload.value
-            });
+            }, { root: true });
         }
     }
 }
