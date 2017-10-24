@@ -114,8 +114,6 @@ api.setLightPower = function (value, light) {
             return element.mac == light.bridge;
         })[0];
 
-        console.log(light);
-
         if (bridge) {
             dbAPI.milight.setLightPower(light, value).then(function () {
                 let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
