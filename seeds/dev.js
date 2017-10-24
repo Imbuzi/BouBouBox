@@ -33,7 +33,7 @@ exports.seed = function(knex, Promise) {
             return knex('widget_milight').insert([
                 {
                     id: 1,
-                    router: "FF:FF:FF:FF:FF:FF",
+                    bridge: "FF:FF:FF:FF:FF:FF",
                     zone: 1,
                     type: 'rgbw',
                     power: false,
@@ -41,7 +41,7 @@ exports.seed = function(knex, Promise) {
                 },
                 {
                     id: 2,
-                    router: "FF:FF:FF:FF:FF:FF",
+                    bridge: "FF:FF:FF:FF:FF:FF",
                     zone: 2,
                     type: 'rgbw',
                     power: false,
