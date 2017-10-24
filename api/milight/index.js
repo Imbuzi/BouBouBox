@@ -42,7 +42,7 @@ api.discoverBridges = function () {
 api.setLightIntensity = function (value, light) {
     return new Promise(function (resolve, reject) {
         let bridge = api.bridges.filter(function (element) {
-            return element.mac == light.bridge.mac;
+            return element.mac == light.bridge;
         })[0];
 
         if (bridge) {
@@ -80,7 +80,7 @@ api.setLightIntensity = function (value, light) {
 api.setLightColor = function (value, light) {
     return new Promise(function (resolve, reject) {
         let bridge = api.bridges.filter(function (element) {
-            return element.mac == light.bridge.mac;
+            return element.mac == light.bridge;
         })[0];
 
         if (bridge) {
@@ -111,7 +111,7 @@ api.setLightColor = function (value, light) {
 api.setLightPower = function (value, light) {
     return new Promise(function (resolve, reject) {
         let bridge = api.bridges.filter(function (element) {
-            return element.mac == light.bridge.mac;
+            return element.mac == light.bridge;
         })[0];
 
         console.log(light);
