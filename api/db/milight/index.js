@@ -6,10 +6,10 @@ let milight = {};
 
 milight.setLightIntensity = function (light, value) {
     return knex
-        .from('light')
+        .from('widget_milight')
         .where({
             'zone': light.zone,
-            'bridge.mac': light.bridge
+            'bridge': light.bridge
         })
         .update({
             'intensity': value
@@ -18,7 +18,7 @@ milight.setLightIntensity = function (light, value) {
 
 milight.setLightPower = function (light, value) {
     return knex
-        .from('milight')
+        .from('widget_milight')
         .where({
             'zone': light.zone,
             'bridge': light.bridge
