@@ -115,7 +115,7 @@ api.setLightPower = function (value, light) {
         })[0];
 
         if (bridge) {
-            return dbAPI.milight.setLightPower(light, value).then(function () {
+            dbAPI.milight.setLightPower(light, value).then(function () {
                 let commands = bridge.type == 'v6' ? milight.commandsV6 : milight.commands2;
 
                 if (value) {
@@ -135,6 +135,8 @@ api.setLightPower = function (value, light) {
                     light: light,
                     value: value
                 });
+
+                return null;
             }).catch(function (error) {
                 reject({
                     error: 500,
