@@ -19,10 +19,16 @@
         components: components,
         methods: {
             powerSwitch: function (value) {
-                this.$socket.emit('setLightPower', this.$store.state.user.token, {
+                this.$socket.emit('milight/power', this.$store.state.user.token, {
                     value: value,
                     light: this.widget.milight
                 });
+            }
+        },
+        sockets: {
+            'milight/power': function (result) {
+                console.log(result)
+                this.widget.milight.power = result.value
             }
         },
         computed: {
