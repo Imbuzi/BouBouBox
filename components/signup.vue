@@ -125,9 +125,6 @@
             toggleSurnameFocused: function (value) {
                 this.surnameFocused = value;
             },
-            toggleMailFocused: function (value) {
-                this.mailAddressFocused = value;
-            },
             togglePasswordFocused: function (value) {
                 this.passwordFocused = value;
             },

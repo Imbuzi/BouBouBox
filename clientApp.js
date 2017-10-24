@@ -26,7 +26,7 @@ Vue.use(VueSessionStorage);
 Vue.use(VueLodash, Lodash);
 
 document.addEventListener("DOMContentLoaded", function (event) {
-	const App = new Vue({
+	new Vue({
 		el: 'main',
         store,
         router,

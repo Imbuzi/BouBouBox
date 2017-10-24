@@ -157,7 +157,7 @@ api.getJWT = function(mail, password) {
                         if (passwordHash.verify(password, user.password)) {
                             let payload = { mail: user.mail };
                             let cert = fs.readFileSync('./private.key');
-                            let token = jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
+                            jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
                                 if (err) {
                                     reject({
                                         error: 500,
