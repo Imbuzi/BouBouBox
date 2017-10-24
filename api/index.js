@@ -120,12 +120,12 @@ api.validateToken = function (token) {
 
 api.getWidgetList = function() {
     return new Promise(function (resolve, reject) {
+        console.log(api);
         api.db.widget.getAll().then(function (widgetListDetailed) {
             resolve({
                 widgetList: widgetListDetailed
             });
         }).catch(function (error) {
-            console.log(error);
             reject({
                 error: 500,
                 message: "Erreur de base de données"
