@@ -13,7 +13,7 @@ fs.readdirSync(__dirname).map(function (f) {
     }
 });
 
-let db = {
+db = {
     widget: {},
     user: {}
 };
