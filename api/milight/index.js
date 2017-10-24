@@ -137,7 +137,8 @@ api.setLightPower = function (value, light) {
                     light: light,
                     value: value
                 });
-            }).catch(function () {
+            }).catch(function (error) {
+                console.log(error);
                 reject({
                     error: 500,
                     message: "Erreur de base de données"
