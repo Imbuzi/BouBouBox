@@ -18,7 +18,7 @@
 
     export default {
         sockets: {
-            usersWaitingForValidation: function (result) {
+            'user/waitingForValidation': function (result) {
                 if (result.error) {
                     this.$store.dispatch('showAlert', {
                         message: result.message,
@@ -28,7 +28,7 @@
                     this.$store.commit('setUsersWaitingForValidation', result.userList);
                 }
             },
-            userRefused: function (result) {
+            'user/refuseNew': function (result) {
                 if (result.error) {
                     this.$store.dispatch('showAlert', {
                         message: value.message,
@@ -38,7 +38,7 @@
                     this.$store.commit('removeUserWaitingForValidation', result);
                 }
             },
-            userAccepted: function (result) {
+            'user/acceptNew': function (result) {
                 if (result.error) {
                     this.$store.dispatch('showAlert', {
                         message: value.message,
@@ -48,12 +48,12 @@
                     this.$store.commit('removeUserWaitingForValidation', result);
                 }
             },
-            userAdded: function (user) {
+            'user/add': function (user) {
                 this.$store.commit('addUserWaitingForValidation', user);
             }
         },
         created: function () {
-            this.$socket.emit('getUsersWaitingForValidation', this.$store.state.user.token);
+            this.$socket.emit('user/waitingForValidation', this.$store.state.user.token);
         },
         computed: {
             color: function () {
