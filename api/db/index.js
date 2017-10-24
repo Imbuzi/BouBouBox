@@ -1,38 +1,24 @@
+const path = require('path');
+const fs = require('fs');
+
 const environment = process.env.NODE_ENV || 'development';
 const config = require('../../knexfile.js')[environment];
 const knex = require('knex')(config);
 
-const db = {
+let db = {};
+fs.readdirSync(__dirname).map(function (f) {
+    let stat = fs.statSync(path.join(__dirname, f));
+    if (stat.isDirectory()) {
+        console.log(f);
+    }
+});
+
+let db = {
     widget: {},
-    user: {},
-    milight: {}
+    user: {}
 };
 
-db.milight.setLightIntensity = function (light, value) {
-    return knex
-        .from('light')
-        .innerJoin('bridge', 'bridge.id', 'light.router')
-        .where({
-            'light.zone': light.zone,
-            'bridge.mac': light.bridge.mac
-        })
-        .update({
-            'light.intensity': value
-        });
-}
 
-db.milight.setLightPower = function (light, value) {
-    return knex
-        .from('light')
-        .innerJoin('bridge', 'bridge.id', 'light.router')
-        .where({
-            'light.zone': light.zone,
-            'bridge.mac': light.bridge.mac
-        })
-        .update({
-            'light.power': value
-        });
-}
 
 db.widget.getList = function () {
     return knex.from('widget').select()
