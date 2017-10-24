@@ -25,7 +25,7 @@ exports.seed = function(knex, Promise) {
                 {
                     id: 2,
                     name: 'Pièce 2',
-                    type: 'milight',
+                    widget_type: 'milight',
                     widget_type_id: 2
                 }
             ]);
