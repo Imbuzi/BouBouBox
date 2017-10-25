@@ -1,6 +1,6 @@
 # BouBouBox
 
-![Version 0.2.0](https://img.shields.io/badge/version-v0.2.0-brightgreen.svg) ![License CC BY-NC-SA 4.0](https://img.shields.io/badge/license-cc%20by--nc--sa%204.0-blue.svg)
+[![GitHub tag](https://img.shields.io/github/tag/Imbuzi/BouBouBox.svg)]() [![GitHub last commit](https://img.shields.io/github/last-commit/Imbuzi/BouBouBox.svg)]() [![License CC BY-NC-SA 4.0](https://img.shields.io/badge/license-cc%20by--nc--sa%204.0-blue.svg)]()
 
 BouBouBox is a french project, it's goal is to bring home automation to everyone, integrating low cost and high efficiency solutions to our box.
 
