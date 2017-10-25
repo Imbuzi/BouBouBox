@@ -68,7 +68,7 @@
     "db": "cross-env NODE_ENV=production knex migrate:rollback && cross-env NODE_ENV=production knex migrate:latest && cross-env NODE_ENV=production knex seed:run",
     "db-dev": "cross-env NODE_ENV=development knex migrate:rollback && cross-env NODE_ENV=development knex migrate:latest && cross-env NODE_ENV=development knex seed:run",
     "db-staging": "cross-env NODE_ENV=staging knex migrate:rollback && cross-env NODE_ENV=staging knex migrate:latest && cross-env NODE_ENV=staging knex seed:run",
-    "demo": "npm install && npm run build-dev && cp-cli knexfile.js.example knexfile.js && npm run db && npm run nodemon-dev"
+    "demo": "npm install && npm run build-dev && cp-cli knexfile.js.example knexfile.js && npm run db-dev && npm run nodemon-dev"
   },
   "browserify": {
     "transform": [
