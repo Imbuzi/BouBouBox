@@ -38,6 +38,16 @@
                     this.$store.commit('removeUserWaitingForValidation', result);
                 }
             },
+            'user/refuse': function (result) {
+                if (result.error) {
+                    this.$store.dispatch('showAlert', {
+                        message: value.message,
+                        delay: 8000
+                    });
+                } else {
+                    this.$store.commit('removeUserValidated', result);
+                }
+            },
             'user/acceptNew': function (result) {
                 if (result.error) {
                     this.$store.dispatch('showAlert', {
@@ -46,14 +56,26 @@
                     });
                 } else {
                     this.$store.commit('removeUserWaitingForValidation', result);
+                    this.$store.commit('addUserValidated', result);
                 }
             },
             'user/add': function (user) {
                 this.$store.commit('addUserWaitingForValidation', user);
+            },
+            'user/validated': function (result) {
+                if (result.error) {
+                    this.$store.dispatch('showAlert', {
+                        message: result.message,
+                        delay: 8000
+                    });
+                } else {
+                    this.$store.commit('setUsersValidated', result.userList);
+                }
             }
         },
         created: function () {
             this.$socket.emit('user/waitingForValidation', this.$store.state.user.token);
+            this.$socket.emit('user/validated', this.$store.state.user.token);
         },
         computed: {
             color: function () {

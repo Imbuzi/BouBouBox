@@ -6,7 +6,7 @@
         <div class="modal-body">
             <ul class="list-group">
                 <transition-group name="slideOut">
-                    <li v-for="user in userList" key="user.mail" class="list-group-item">
+                    <li v-for="user in usersWaitingForValidationList" key="user.mail" class="list-group-item">
                         {{user.name}} {{user.surname}} ({{user.mail}})
                         <div class="pull-right">
                             <button class="btn btn-xs btn-success" v-on:click.prevent="acceptNewUser(user.mail)">
@@ -17,8 +17,28 @@
                             </button>
                         </div>
                     </li>
-                    <li v-if="userList.length == 0" key="no-user" class="list-group-item col-grey font-italic">
+                    <li v-if="usersWaitingForValidationList.length == 0" key="no-user" class="list-group-item col-grey font-italic">
                         Aucun utilisateur en attente de validation
+                    </li>
+                </transition-group>
+            </ul>
+        </div>
+        <div class="modal-body">
+            <hr />
+        </div>
+        <div class="modal-header">
+            <h4 class="modal-title">Utilisateurs validés</h4>
+        </div>
+        <div class="modal-body">
+            <ul class="list-group">
+                <transition-group name="slideOut">
+                    <li v-for="user in usersValidatedList" key="user.mail" class="list-group-item">
+                        {{user.name}} {{user.surname}} ({{user.mail}})
+                        <div class="pull-right">
+                            <button class="btn btn-xs btn-danger" v-on:click.prevent="refuseUser(user.mail)">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </div>
                     </li>
                 </transition-group>
             </ul>
@@ -26,19 +46,25 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-link" v-on:click.prevent="$emit('closeModal')">FERMER</button>
         </div>
-    </div>
+        </div>
 </template>
 
 <script>
     export default {
         computed: {
-            userList: function () {
+            usersWaitingForValidationList: function () {
                 return this.$store.state.user.waitingForValidation;
+            },
+            usersValidatedList: function () {
+                return this.$store.state.user.validated;
             }
         },
         methods: {
             refuseNewUser: function (mail) {
                 this.$socket.emit('user/refuseNew', this.$store.state.user.token, mail);
+            },
+            refuseUser: function (mail) {
+                this.$socket.emit('user/refuse', this.$store.state.user.token, mail);
             },
             acceptNewUser: function (mail) {
                 this.$socket.emit('user/acceptNew', this.$store.state.user.token, mail);
@@ -74,6 +100,11 @@
         opacity: 0;
         padding: 0;
         height: 0;
+    }
+
+    hr {
+        margin-top: 0;
+        margin-bottom: 0;
     }
 </style>
 <style>

@@ -11,10 +11,17 @@ user.getNotValidated = function () {
         .where('user.access', 0)
 }
 
+user.getValidated = function () {
+    return knex
+        .from('user')
+        .select('user.name as name', 'user.surname as surname', 'user.mail as mail')
+        .where('user.access', 1)
+}
+
 user.getByMail = function (mail) {
     return knex
         .from('user')
-        .select('user.password as password', 'user.access as access')
+        .select('user.name as name', 'user.surname as surname', 'user.mail as mail', 'user.password as password', 'user.access as access')
         .where('user.mail', mail)
         .first()
 }
