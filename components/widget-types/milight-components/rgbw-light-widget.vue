@@ -19,6 +19,7 @@
         props: ['light'],
         methods: {
             intensitySet: function (value) {
+                console.log(light);
                 this.$socket.emit('milight/intensity', this.$store.state.user.token, {
                     value: parseInt(value),
                     light: this.light
