@@ -23,6 +23,10 @@
                     value: parseInt(value),
                     light: this.light
                 });
+                this.$store.dispatch('milight/intensity', {
+                    id: this.widget.milight.id,
+                    intensity: parseInt(value)
+                });
             },
             colorSet: function (value) {
                 this.$socket.emit('milight/color', this.$store.state.user.token, {

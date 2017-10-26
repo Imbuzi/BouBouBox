@@ -23,6 +23,10 @@
                     value: value,
                     light: this.widget.milight
                 });
+                this.$store.dispatch('milight/power', {
+                    id: this.widget.milight.id,
+                    power: value
+                });
             }
         },
         sockets: {

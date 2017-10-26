@@ -1,37 +1,29 @@
-let getWidgetById = function (context, id) {
-    return context.rootState.widget.list.filter(function (element) {
-        return element.widget_type == 'milight' && element.milight.id == id;
-    })[0];
-}
-
 const namespaced = true
 
 const state = {}
 
 const actions = {
     intensity(context, payload) {
+        let widget = context.rootState.widget.list.filter(function (element) {
+            return element.widget_type == 'milight' && element.milight.id == payload.id;
+        })[0];
+
         if (widget) {
-            console.log({
-                widget: getWidgetById(context, payload.id),
-                property: 'milight.intensity',
-                value: payload.intensity
-            });
             context.commit('widgetProperty', {
-                widget: getWidgetById(context, payload.id),
+                widget: widget,
                 property: 'milight.intensity',
                 value: payload.intensity
             }, { root: true });
         }
     },
     power(context, payload) {
+        let widget = context.rootState.widget.list.filter(function (element) {
+            return element.widget_type == 'milight' && element.milight.id == payload.id;
+        })[0];
+
         if (widget) {
-            console.log({
-                widget: getWidgetById(context, payload.id),
-                property: 'milight.intensity',
-                value: payload.intensity
-            });
             context.commit('widgetProperty', {
-                widget: getWidgetById(context, payload.id),
+                widget: widget,
                 property: 'milight.power',
                 value: payload.power
             }, { root: true });
