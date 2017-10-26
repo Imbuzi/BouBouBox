@@ -17,12 +17,10 @@
                             </button>
                         </div>
                     </li>
-                </transition-group>
-                <transition name="slideOut">
                     <li v-if="userList.length == 0" key="no-user" class="list-group-item col-grey font-italic">
                         Aucun utilisateur en attente de validation
                     </li>
-                </transition>
+                </transition-group>
             </ul>
         </div>
         <div class="modal-footer">
@@ -62,13 +60,8 @@
         animation: slideOut .5s reverse;
     }
 
-    .slideOut-leave {
-        position: absolute;
-    }
-
     .slideOut-leave-active {
         animation: slideOut .5s;
-        position: absolute;
     }
 
     .slideOut-leave-to {
