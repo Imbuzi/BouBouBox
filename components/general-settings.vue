@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
-                <button v-bind:disabled="!usersWaitingForValidation" v-bind:class="'bg-' + color" class="btn btn-circle" v-on:click.prevent="showUsersWaitingForValidation">
+                <button v-bind:class="'bg-' + color" class="btn btn-circle" v-on:click.prevent="showUsersWaitingForValidation">
                     <i class="material-icons">person</i>
                 </button>
                 <transition name="fade">
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import UserValidationModal from './user-validation-modal.vue';
+    import UserModal from './user-modal.vue';
 
     export default {
         sockets: {
@@ -65,7 +65,7 @@
         },
         methods: {
             showUsersWaitingForValidation: function () {
-                this.$store.commit('setModalComponent', UserValidationModal);
+                this.$store.commit('setModalComponent', UserModal);
             }
         }
     }
