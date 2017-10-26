@@ -116,6 +116,7 @@
                     this.$store.commit('setToken', {
                         token: result.token
                     });
+                    this.$store.commit('setMail', result.mail);
                     this.$router.replace('/');
                 }
             }

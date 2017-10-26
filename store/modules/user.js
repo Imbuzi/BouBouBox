@@ -1,6 +1,7 @@
 // Initial state
 const state = {
     token: null,
+    mail: null,
     waitingForValidation: [],
     validated: []
 }
@@ -9,6 +10,9 @@ const state = {
 const mutations = {
     setToken(state, payload) {
         state.token = payload.token;
+    },
+    setToken(state, mail) {
+        state.mail = mail;
     },
     addUserWaitingForValidation(state, user) {
         state.waitingForValidation.push(user);

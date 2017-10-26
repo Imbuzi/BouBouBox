@@ -189,7 +189,8 @@ api.getJWT = function(mail, password) {
                                     });
                                 } else {
                                     resolve({
-                                        token: token
+                                        token: token,
+                                        mail: mail
                                     });
                                 }
                             });
