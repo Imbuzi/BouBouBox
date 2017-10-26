@@ -17,10 +17,12 @@
                             </button>
                         </div>
                     </li>
+                </transition-group>
+                <transition name="slideOut">
                     <li v-if="userList.length == 0" key="no-user" class="list-group-item col-grey font-italic">
                         Aucun utilisateur en attente de validation
                     </li>
-                </transition-group>
+                </transition>
             </ul>
         </div>
         <div class="modal-footer">
