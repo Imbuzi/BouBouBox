@@ -19,13 +19,12 @@
         props: ['light'],
         methods: {
             intensitySet: function (value) {
-                console.log(this.light);
                 this.$socket.emit('milight/intensity', this.$store.state.user.token, {
                     value: parseInt(value),
                     light: this.light
                 });
                 this.$store.dispatch('milight/intensity', {
-                    id: this.widget.milight.id,
+                    id: this.light.id,
                     intensity: parseInt(value)
                 });
             },
