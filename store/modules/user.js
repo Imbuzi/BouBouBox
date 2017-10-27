@@ -11,7 +11,7 @@ const mutations = {
     setToken(state, payload) {
         state.token = payload.token;
     },
-    setToken(state, mail) {
+    setMail(state, mail) {
         state.mail = mail;
     },
     addUserWaitingForValidation(state, user) {
