@@ -3,8 +3,6 @@ const config = require(require('path').dirname(require.main.filename) + '/knexfi
 const knex = require('knex')(config);
 
 module.exports = function (light, value) {
-    console.log(light);
-    console.log(value);
     return knex
         .from('widget_milight')
         .where({
