@@ -21,6 +21,4 @@ const tree = dirTree(path.join(__dirname, "modules"));
 
 requireNested(tree);
 
-console.log(modules);
-
 module.exports = modules;
