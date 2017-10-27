@@ -5,7 +5,7 @@ const api = {
     },
     db: {
         milight: {
-            setLightPower: require(require('path').dirname(require.main.filename) + '/api/modules/db/milight/setLightIntensity')
+            setLightPower: require(require('path').dirname(require.main.filename) + '/api/modules/db/milight/setLightPower')
         }
     }
 }
