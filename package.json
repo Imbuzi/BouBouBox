@@ -4,6 +4,7 @@
     "url": "https://github.com/Imbuzi/BouBouBox/issues"
   },
   "dependencies": {
+    "directory-tree":  "^2.0.0",
     "body-parser": "^1.18.2",
     "express": "^4.15.4",
     "fs": "^0.0.1-security",

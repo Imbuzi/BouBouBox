@@ -2,13 +2,11 @@ const environment = process.env.NODE_ENV || 'development';
 const config = require(require('path').dirname(require.main.filename) + '/knexfile.js')[environment];
 const knex = require('knex')(config);
 
-let widget = {};
-
-widget.getList = function () {
+function getList () {
     return knex.from('widget').select()
 }
 
-widget.getWidgetListDetails = function (widgetList) {
+function getWidgetListDetails (widgetList) {
     return new Promise(function (resolve, reject) {
         Promise.all(
             widgetList.map(function (widget) {
@@ -29,10 +27,10 @@ widget.getWidgetListDetails = function (widgetList) {
     });
 }
 
-widget.getAll = function () {
+module.exports = function () {
     return new Promise(function (resolve, reject) {
-        widget.getList().then(function (widgetList) {
-            return widget.getWidgetListDetails(widgetList).then(function (widgetListDetailed) {
+        getList().then(function (widgetList) {
+            return getWidgetListDetails(widgetList).then(function (widgetListDetailed) {
                 resolve(widgetListDetailed);
             }).catch(function (error) {
                 reject(error);
@@ -42,5 +40,3 @@ widget.getAll = function () {
         });
     });
 }
-
-module.exports = widget;

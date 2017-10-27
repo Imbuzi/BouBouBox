@@ -1,0 +1,1 @@
+module.exports = require(require('path').dirname(require.main.filename) + '/api/modules/refuseNewUser');

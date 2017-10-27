@@ -6,7 +6,7 @@ const api = require('./api');
 const app = express();
 
 const preInitPromises = [
-    api.milight.bridges()
+    api.milight.bridges.init()
 ];
 
 // Middlewares et configurations
