@@ -1,13 +1,6 @@
 language: node_js
 node_js:
   - "node"
-addons:
-  sonarcloud:
-    organization: "imbuzi-github"
-    token:
-      secure: d26a40ce87b5f64a48358d31f82b9796f277b223
-	github_token:
-      secure: d13e351c50e67973e7b2206267ad11140d405c9d
 install:
   - npm install
 script:
