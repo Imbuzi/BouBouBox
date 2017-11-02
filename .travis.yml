@@ -1,7 +1,9 @@
 language: node_js
 node_js:
   - "node"
-before_install:
-  - npm install codecov
+install:
+  - npm install
+script:
+  - npm test
 after_success:
-  - ./node_modules/.bin/codecov --token=:568c59ea-ef4b-4b51-860c-5b1ce8790af3
+  - npm run coverage
