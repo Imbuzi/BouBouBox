@@ -60,7 +60,7 @@
     "url": "git+https://github.com/Imbuzi/BouBouBox.git"
   },
   "scripts": {
-    "test": "npm install && npm run build-dev && cp-cli knexfile.js.example knexfile.js && npm run db-dev",
+    "test": "nyc mocha",
     "watchify-dev": "cross-env NODE_ENV=development watchify -vd -t envify -p browserify-hmr -e clientApp.js -o public/js/app.js",
     "watchify-staging": "cross-env NODE_ENV=development watchify -vd -t envify -p browserify-hmr -e clientApp.js -o public/js/app.js",
     "nodemon-dev": "cross-env NODE_ENV=development nodemon",
@@ -74,7 +74,8 @@
     "db-dev": "cross-env NODE_ENV=development knex migrate:rollback && cross-env NODE_ENV=development knex migrate:latest && cross-env NODE_ENV=development knex seed:run",
     "db-staging": "cross-env NODE_ENV=staging knex migrate:rollback && cross-env NODE_ENV=staging knex migrate:latest && cross-env NODE_ENV=staging knex seed:run",
     "demo": "npm install && npm run build-dev && cp-cli knexfile.js.example knexfile.js && npm run db-dev && npm run nodemon-dev",
-    "start": "cross-env NODE_ENV=production node server.js"
+    "start": "cross-env NODE_ENV=production node server.js",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "browserify": {
     "transform": [
