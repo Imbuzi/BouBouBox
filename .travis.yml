@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-	- "node"
+  - "node"
 before_install:
-	- npm install codecov
+  - npm install codecov
 after_success:
-	- ./node_modules/.bin/codecov --token=:568c59ea-ef4b-4b51-860c-5b1ce8790af3
+  - ./node_modules/.bin/codecov --token=:568c59ea-ef4b-4b51-860c-5b1ce8790af3
