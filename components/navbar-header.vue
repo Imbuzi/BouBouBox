@@ -1,7 +1,8 @@
 <template>
   <div class="row">
 	  <div class="navbar-header col-xs-10">
-      <a class="navbar-brand" v-on:click.prevent="" href="#">{{title}}</a>
+        <img class="img-responsive pull-left" alt="Logo" title="Logo" src="/images/logo-blanc.png" />
+        <a class="navbar-brand" v-on:click.prevent="" href="#">{{title}}</a>
 	  </div>
     <div class="navbar-header col-xs-2">
       <div class="pull-right">
@@ -44,5 +45,9 @@
   }
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0
+  }
+
+  img {
+      height: 50px;
   }
 </style>
