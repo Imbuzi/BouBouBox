@@ -2,8 +2,8 @@
     <div>
         <div class="font-bold uppercase widget-header">
             <div class="row">
-                <div class="col-xs-6">{{widget.name}}</div>
-                <div class="col-xs-6">
+                <div class="col-xs-10">{{widget.name}}</div>
+                <div class="col-xs-2">
                     <power-switch class="pull-right widget-button" v-bind:value="widget.milight.power" v-on:value="powerSwitch"></power-switch>
                 </div>
             </div>
