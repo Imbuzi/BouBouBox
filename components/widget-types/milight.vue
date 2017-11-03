@@ -2,8 +2,8 @@
     <div>
         <div class="font-bold uppercase widget-header">
             <div class="row">
-                <div class="col-xs-10">{{widget.name}}</div>
-                <div class="col-xs-2">
+                <div class="col-xs-9 widget-name">{{widget.name}}</div>
+                <div class="col-xs-3">
                     <power-switch class="pull-right widget-button" v-bind:value="widget.milight.power" v-on:value="powerSwitch"></power-switch>
                 </div>
             </div>
@@ -59,6 +59,12 @@
 
     .widget-header {
         margin-bottom: 15px;
+    }
+
+    .widget-name {
+        overflow-x: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .uppercase {
