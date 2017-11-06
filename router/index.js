@@ -50,6 +50,7 @@ router.beforeEach((to, from, next) => {
         if (!router.app.$store.state.user.token) {
             next('/login');
         } else {
+            router.app.$socket.emit('user/mail', router.app.$store.state.user.token);
             next();
         }
     } else {

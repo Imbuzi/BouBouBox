@@ -35,6 +35,9 @@ const mutations = {
     },
     setUsersValidated(state, users) {
         state.validated = users;
+    },
+    'SOCKET_USER/MAIL'(state, response) {
+        state.mail = response.payload.mail;
     }
 }
 

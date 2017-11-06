@@ -33,7 +33,7 @@ module.exports = function (mail, password) {
                     } else {
                         if (passwordHash.verify(password, user.password)) {
                             let payload = { mail: user.mail };
-                            let cert = fs.readFileSync('./private.key');
+                            let cert = fs.readFileSync(require('path').dirname(require.main.filename) + '/private.key');
                             jwt.sign(payload, cert, { algorithm: 'RS256' }, function (err, token) {
                                 if (err) {
                                     reject({
