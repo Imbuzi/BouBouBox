@@ -35,7 +35,7 @@
                     <li v-for="user in usersValidatedList" key="user.mail" class="list-group-item">
                         {{user.name}} {{user.surname}} ({{user.mail}})
                         <div class="pull-right">
-                            <button class="btn btn-xs btn-danger" v-on:click.prevent="refuseUser(user.mail)">
+                            <button v-if="user.mail != currentUserMail" class="btn btn-xs btn-danger" v-on:click.prevent="refuseUser(user.mail)">
                                 <i class="material-icons">close</i>
                             </button>
                         </div>
@@ -57,6 +57,9 @@
             },
             usersValidatedList: function () {
                 return this.$store.state.user.validated;
+            },
+            currentUserMail: function () {
+                return this.$store.state.user.mail;
             }
         },
         methods: {
